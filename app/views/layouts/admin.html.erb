@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>Admin — <%= content_for(:title) || "Dashboard" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="min-h-screen bg-cream">
+    <nav class="bg-charcoal text-cream px-6 py-3">
+      <div class="max-w-6xl mx-auto flex items-center justify-between">
+        <span class="font-bold">Admin Dashboard</span>
+        <div class="flex space-x-4 text-sm">
+          <%= link_to "Dashboard", admin_root_path, class: "hover:text-blush" %>
+          <%= link_to "Question Sets", admin_question_sets_path, class: "hover:text-blush" %>
+          <%= link_to "Audit Logs", admin_audit_logs_path, class: "hover:text-blush" %>
+          <%= link_to "Site", root_path, class: "hover:text-blush" %>
+        </div>
+      </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-6 py-8">
+      <% if flash[:notice] %>
+        <div class="mb-4 p-3 bg-sage/30 text-charcoal rounded-lg text-sm"><%= flash[:notice] %></div>
+      <% end %>
+      <% if flash[:alert] %>
+        <div class="mb-4 p-3 bg-blush/50 text-charcoal rounded-lg text-sm"><%= flash[:alert] %></div>
+      <% end %>
+      <%= yield %>
+    </main>
+  </body>
+</html>

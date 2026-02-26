@@ -1,0 +1,55 @@
+<% content_for(:title, "Alert ##{@alert.id}") %>
+
+<div class="space-y-6">
+  <div class="flex justify-between items-center">
+    <h1 class="text-2xl font-bold">Alert #<%= @alert.id %></h1>
+    <%= link_to "Back", admin_alerts_path, class: "px-4 py-2 bg-light-gray rounded-lg text-sm" %>
+  </div>
+
+  <div class="bg-white rounded-xl p-6 shadow-sm space-y-4">
+    <div class="grid grid-cols-2 gap-4">
+      <div>
+        <p class="text-sm text-warm-gray">Type</p>
+        <p class="font-medium"><%= @alert.alert_type %></p>
+      </div>
+      <div>
+        <p class="text-sm text-warm-gray">Severity</p>
+        <p class="font-medium"><%= @alert.severity %></p>
+      </div>
+      <div>
+        <p class="text-sm text-warm-gray">Status</p>
+        <p class="font-medium"><%= @alert.status %></p>
+      </div>
+      <div>
+        <p class="text-sm text-warm-gray">Created</p>
+        <p class="font-medium"><%= @alert.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
+      </div>
+    </div>
+
+    <div>
+      <p class="text-sm text-warm-gray">Message</p>
+      <p class="mt-1"><%= @alert.message %></p>
+    </div>
+
+    <% if @alert.notes.present? %>
+      <div>
+        <p class="text-sm text-warm-gray">Notes</p>
+        <p class="mt-1"><%= @alert.notes %></p>
+      </div>
+    <% end %>
+  </div>
+
+  <% unless @alert.status.in?(%w[resolved dismissed]) %>
+    <%= form_with model: [:admin, @alert], class: "bg-white rounded-xl p-6 shadow-sm space-y-4" do |f| %>
+      <div>
+        <label class="block text-sm font-medium mb-1">Update Status</label>
+        <%= f.select :status, Alert::STATUSES, {}, class: "w-full p-3 rounded-xl border bg-light-gray" %>
+      </div>
+      <div>
+        <label class="block text-sm font-medium mb-1">Notes</label>
+        <%= f.text_area :notes, rows: 3, class: "w-full p-3 rounded-xl border bg-light-gray" %>
+      </div>
+      <%= f.submit "Update", class: "px-6 py-3 bg-charcoal text-cream rounded-xl font-medium cursor-pointer" %>
+    <% end %>
+  <% end %>
+</div>

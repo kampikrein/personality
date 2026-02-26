@@ -1,0 +1,3 @@
+<% content_for(:title, "질문 #{@assessment.current_question_index + 1} / #{@assessment.total_questions}") %>
+
+<%= render "question", question: @question, assessment: @assessment, sequence: @assessment.current_question_index %>

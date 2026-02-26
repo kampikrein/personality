@@ -1,0 +1,23 @@
+<% content_for(:title, "삭제 요청 상태") %>
+
+<div class="max-w-md mx-auto space-y-6 py-8 text-center">
+  <div class="space-y-2">
+    <h1 class="text-2xl font-bold">삭제 요청이 접수되었습니다</h1>
+    <p class="text-warm-gray text-sm">
+      요청 번호: <code class="bg-light-gray px-2 py-1 rounded text-xs"><%= @deletion_request.request_token %></code>
+    </p>
+  </div>
+
+  <div class="bg-sand/20 rounded-xl p-4 space-y-2">
+    <p class="text-sm">
+      상태: <span class="font-medium"><%= @deletion_request.status %></span>
+    </p>
+    <p class="text-xs text-warm-gray">
+      처리 기한: <%= @deletion_request.sla_deadline&.strftime("%Y년 %m월 %d일") %>
+    </p>
+  </div>
+
+  <%= link_to "홈으로 돌아가기", root_path,
+      class: "inline-block py-3 px-6 bg-charcoal text-cream rounded-xl font-medium
+               hover:bg-charcoal/90 transition-colors" %>
+</div>

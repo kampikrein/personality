@@ -1,0 +1,26 @@
+<% content_for(:title, "Audit Logs") %>
+
+<div class="space-y-4">
+  <h1 class="text-2xl font-bold">Audit Logs</h1>
+
+  <table class="w-full text-sm">
+    <thead>
+      <tr class="border-b text-left text-warm-gray">
+        <th class="p-3">Time</th>
+        <th class="p-3">Action</th>
+        <th class="p-3">Actor</th>
+        <th class="p-3">Resource</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @audit_logs.each do |log| %>
+        <tr class="border-b">
+          <td class="p-3 text-warm-gray"><%= log.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+          <td class="p-3 font-medium"><%= log.action %></td>
+          <td class="p-3"><%= [log.actor_type, log.actor_id].compact.join("#") %></td>
+          <td class="p-3"><%= [log.resource_type, log.resource_id].compact.join("#") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,20 @@
+<% content_for(:title, "Edit Question Set") %>
+
+<div class="max-w-lg mx-auto space-y-6">
+  <h1 class="text-2xl font-bold">Edit Question Set</h1>
+
+  <%= form_with model: [:admin, @question_set], class: "space-y-4" do |f| %>
+    <div>
+      <label class="block text-sm font-medium mb-1">Version Code</label>
+      <%= f.text_field :version_code, class: "w-full p-3 rounded-xl border bg-light-gray" %>
+    </div>
+    <div>
+      <label class="block text-sm font-medium mb-1">Status</label>
+      <%= f.select :status, QuestionSet::STATUSES, {}, class: "w-full p-3 rounded-xl border bg-light-gray" %>
+    </div>
+    <div class="flex space-x-2">
+      <%= f.submit "Update", class: "px-6 py-3 bg-charcoal text-cream rounded-xl font-medium cursor-pointer" %>
+      <%= link_to "Cancel", admin_question_set_path(@question_set), class: "px-6 py-3 bg-light-gray rounded-xl font-medium" %>
+    </div>
+  <% end %>
+</div>

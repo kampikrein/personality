@@ -1,0 +1,88 @@
+<% content_for(:title, "#{@profile.type_code} — #{@profile.character_name_ko}") %>
+
+<div class="space-y-12 py-4">
+  <%# Type Hero Section %>
+  <%= render "results/type_hero", profile: @profile %>
+
+  <%# Spectrum Bars %>
+  <%= render "results/spectrum", profile: @profile %>
+
+  <%# Strengths & Caution %>
+  <div class="grid sm:grid-cols-2 gap-6">
+    <div class="bg-sage/15 rounded-2xl p-6 space-y-3">
+      <h3 class="font-semibold text-lg">강점</h3>
+      <ul class="space-y-2">
+        <% (@profile.strengths || []).each do |s| %>
+          <li class="flex items-start space-x-2">
+            <span class="text-sage mt-0.5">+</span>
+            <span class="text-sm"><%= s %></span>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="bg-blush/20 rounded-2xl p-6 space-y-3">
+      <h3 class="font-semibold text-lg">주의 패턴</h3>
+      <ul class="space-y-2">
+        <% (@profile.caution_patterns || []).each do |c| %>
+          <li class="flex items-start space-x-2">
+            <span class="text-blush mt-0.5">~</span>
+            <span class="text-sm"><%= c %></span>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <%# Suggested Actions %>
+  <% if @profile.suggested_actions.present? %>
+    <div class="bg-sky/10 rounded-2xl p-6 space-y-3">
+      <h3 class="font-semibold text-lg">추천 행동</h3>
+      <ul class="space-y-2">
+        <% @profile.suggested_actions.each do |action| %>
+          <li class="flex items-start space-x-2">
+            <span class="text-sky mt-0.5">→</span>
+            <span class="text-sm"><%= action %></span>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%# Insight Tabs %>
+  <% if @insights.any? %>
+    <div class="space-y-4">
+      <h2 class="text-xl font-bold">인사이트</h2>
+
+      <div class="flex flex-wrap gap-2" data-controller="tabs" data-tabs-active-class="bg-charcoal text-cream" data-tabs-inactive-class="bg-light-gray text-warm-gray">
+        <% context_labels = { "collaboration" => "협업", "conflict" => "갈등", "learning" => "학습", "career" => "커리어", "recovery" => "회복" } %>
+        <% @insights.each_with_index do |insight, i| %>
+          <button class="px-4 py-2 rounded-full text-sm font-medium transition-colors
+                         <%= i == 0 ? 'bg-charcoal text-cream' : 'bg-light-gray text-warm-gray' %>"
+                  data-action="click->tabs#select"
+                  data-tabs-target="tab"
+                  data-index="<%= i %>">
+            <%= context_labels[insight.context] || insight.context %>
+          </button>
+        <% end %>
+      </div>
+
+      <% @insights.each_with_index do |insight, i| %>
+        <div data-tabs-target="panel" class="<%= 'hidden' unless i == 0 %>">
+          <%= render "results/insight_card", insight: insight %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%# Trust Notice %>
+  <%= render "results/trust_notice" %>
+
+  <%# Actions %>
+  <div class="flex flex-col sm:flex-row gap-3 pt-4">
+    <%= link_to "다시 검사하기", root_path,
+        class: "text-center py-3 px-6 bg-light-gray text-charcoal rounded-xl text-sm font-medium
+                hover:bg-sand/30 transition-colors" %>
+    <%= link_to "삭제 요청", new_deletion_request_path,
+        class: "text-center py-3 px-6 text-warm-gray/60 text-sm hover:text-warm-gray transition-colors" %>
+  </div>
+</div>

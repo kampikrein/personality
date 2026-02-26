@@ -1,0 +1,25 @@
+<% content_for(:title, "동의 관리") %>
+
+<div class="max-w-md mx-auto space-y-6 py-8">
+  <h1 class="text-2xl font-bold">데이터 처리 동의</h1>
+
+  <%= form_with model: @consent, url: consents_path, class: "space-y-6" do |f| %>
+    <div class="space-y-4">
+      <%# 데이터 처리 동의 (필수) — consent_type: data_processing %>
+      <%= f.hidden_field :consent_type, value: "data_processing" %>
+      <%= f.hidden_field :version, value: "1.0" %>
+
+      <label class="flex items-start space-x-3 p-4 bg-light-gray rounded-xl cursor-pointer">
+        <%= f.check_box :granted, class: "mt-1 rounded", required: true %>
+        <div>
+          <p class="font-medium text-sm">데이터 처리 동의 (필수)</p>
+          <p class="text-xs text-warm-gray mt-1">검사 응답 데이터를 처리하여 성격 프로필을 생성합니다.</p>
+        </div>
+      </label>
+    </div>
+
+    <%= f.submit "동의하고 계속",
+        class: "w-full py-3 bg-charcoal text-cream rounded-xl font-medium
+                 hover:bg-charcoal/90 cursor-pointer" %>
+  <% end %>
+</div>

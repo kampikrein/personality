@@ -1,0 +1,36 @@
+<% content_for(:title, "Audit Log ##{@audit_log.id}") %>
+
+<div class="space-y-6">
+  <div class="flex justify-between items-center">
+    <h1 class="text-2xl font-bold">Audit Log #<%= @audit_log.id %></h1>
+    <%= link_to "Back", admin_audit_logs_path, class: "px-4 py-2 bg-light-gray rounded-lg text-sm" %>
+  </div>
+
+  <div class="bg-white rounded-xl p-6 shadow-sm space-y-4">
+    <div class="grid grid-cols-2 gap-4">
+      <div>
+        <p class="text-sm text-warm-gray">Action</p>
+        <p class="font-medium"><%= @audit_log.action %></p>
+      </div>
+      <div>
+        <p class="text-sm text-warm-gray">Time</p>
+        <p class="font-medium"><%= @audit_log.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
+      </div>
+      <div>
+        <p class="text-sm text-warm-gray">Actor</p>
+        <p class="font-medium"><%= [@audit_log.actor_type, @audit_log.actor_id].compact.join("#") %></p>
+      </div>
+      <div>
+        <p class="text-sm text-warm-gray">Resource</p>
+        <p class="font-medium"><%= [@audit_log.resource_type, @audit_log.resource_id].compact.join("#") %></p>
+      </div>
+    </div>
+
+    <% if @audit_log.metadata.present? %>
+      <div>
+        <p class="text-sm text-warm-gray">Metadata</p>
+        <pre class="mt-1 p-3 bg-light-gray rounded-lg text-xs overflow-auto"><%= JSON.pretty_generate(@audit_log.metadata) %></pre>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title><%= content_for(:title) || "Personality Profile" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Personality Profile">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="description" content="나를 이해하는 새로운 방법 — 독자적 성격 프로필 서비스">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="min-h-screen">
+    <% if content_for?(:navbar) %>
+      <%= yield :navbar %>
+    <% end %>
+
+    <main class="max-w-2xl mx-auto px-4 sm:px-6 py-8">
+      <% if flash[:notice] %>
+        <div class="mb-4 p-3 bg-sage/30 text-charcoal rounded-lg text-sm" data-controller="dismissable">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+      <% if flash[:alert] %>
+        <div class="mb-4 p-3 bg-blush/50 text-charcoal rounded-lg text-sm" data-controller="dismissable">
+          <%= flash[:alert] %>
+        </div>
+      <% end %>
+
+      <%= yield %>
+    </main>
+
+    <%# Trust Notice — always visible on result pages %>
+    <% if content_for?(:trust_notice) %>
+      <%= yield :trust_notice %>
+    <% end %>
+  </body>
+</html>

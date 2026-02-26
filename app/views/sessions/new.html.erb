@@ -1,0 +1,55 @@
+<% content_for(:title, "나를 이해하는 새로운 방법") %>
+
+<div class="flex flex-col items-center justify-center min-h-[80vh] text-center">
+  <div class="space-y-8 max-w-lg">
+    <div class="space-y-4">
+      <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-charcoal">
+        나를 이해하는<br>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-lavender to-sky">새로운 방법</span>
+      </h1>
+      <p class="text-lg text-warm-gray leading-relaxed">
+        20개의 질문으로 당신만의 성격 프로필을 발견하세요.<br>
+        약 5분이면 충분합니다.
+      </p>
+    </div>
+
+    <div class="flex flex-col items-center space-y-4">
+      <%= form_with url: session_path, method: :post, class: "w-full max-w-xs" do |f| %>
+        <%= f.submit "시작하기",
+            class: "w-full py-4 px-8 bg-charcoal text-cream rounded-2xl text-lg font-medium
+                     hover:bg-charcoal/90 active:scale-[0.98] transition-all duration-200
+                     cursor-pointer shadow-lg shadow-charcoal/10" %>
+      <% end %>
+      <p class="text-sm text-warm-gray/70">
+        회원가입 없이 바로 시작할 수 있어요
+      </p>
+    </div>
+
+    <div class="pt-8 grid grid-cols-4 gap-3">
+      <div class="flex flex-col items-center space-y-2">
+        <div class="w-12 h-12 rounded-full bg-sage/40 flex items-center justify-center">
+          <span class="text-xl">🌿</span>
+        </div>
+        <span class="text-xs text-warm-gray">에너지 흐름</span>
+      </div>
+      <div class="flex flex-col items-center space-y-2">
+        <div class="w-12 h-12 rounded-full bg-sky/40 flex items-center justify-center">
+          <span class="text-xl">🔍</span>
+        </div>
+        <span class="text-xs text-warm-gray">판단 렌즈</span>
+      </div>
+      <div class="flex flex-col items-center space-y-2">
+        <div class="w-12 h-12 rounded-full bg-lavender/40 flex items-center justify-center">
+          <span class="text-xl">💜</span>
+        </div>
+        <span class="text-xs text-warm-gray">연결 방식</span>
+      </div>
+      <div class="flex flex-col items-center space-y-2">
+        <div class="w-12 h-12 rounded-full bg-sand/40 flex items-center justify-center">
+          <span class="text-xl">🔋</span>
+        </div>
+        <span class="text-xs text-warm-gray">충전 패턴</span>
+      </div>
+    </div>
+  </div>
+</div>

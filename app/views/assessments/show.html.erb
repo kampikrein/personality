@@ -1,0 +1,24 @@
+<% content_for(:title, "성격 프로필 검사") %>
+
+<div data-controller="questionnaire">
+  <% if @current_question %>
+    <%= render partial: "assessment_questions/question",
+               locals: { assessment: @assessment, question: @current_question, sequence: @assessment.current_question_index + 1 } %>
+  <% else %>
+    <%# All questions answered — show submit. Wrapped in turbo-frame so
+        the last question's frame replacement lands here correctly. %>
+    <turbo-frame id="current_question" class="block">
+      <div class="text-center space-y-6 py-12">
+        <h2 class="text-2xl font-bold">모든 질문에 답변했습니다</h2>
+        <p class="text-warm-gray">결과를 확인할 준비가 되셨나요?</p>
+        <%= button_to "결과 확인하기",
+            submit_assessment_path(@assessment),
+            method: :patch,
+            data: { turbo_frame: "_top" },
+            class: "py-4 px-8 bg-charcoal text-cream rounded-2xl text-lg font-medium
+                     hover:bg-charcoal/90 active:scale-[0.98] transition-all duration-200
+                     cursor-pointer shadow-lg shadow-charcoal/10" %>
+      </div>
+    </turbo-frame>
+  <% end %>
+</div>

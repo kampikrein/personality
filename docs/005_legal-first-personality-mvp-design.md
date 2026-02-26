@@ -1,169 +1,169 @@
-# Legal-First Personality Service MVP Design
+# 법률 우선 성격 서비스 MVP 설계
 
-Date: 2026-02-20
-Owner: Project team
-Status: Approved draft for planning
+날짜: 2026-02-20
+소유자: 프로젝트 팀
+상태: 기획용 승인 초안
 
-## 1) Goal and Product Positioning
+## 1) 목표와 제품 포지셔닝
 
-### Goal
-Build an MVP that prioritizes legal stability and brand trust before growth optimization.
+### 목표
+성장 최적화보다 법적 안정성과 브랜드 신뢰를 우선하는 MVP를 구축한다.
 
-### Product Positioning
-- Not a clinical diagnostic product
-- A self-understanding and relationship insight service
-- Uses behavior guidance and context-based recommendations instead of fixed identity labeling
+### 제품 포지셔닝
+- 임상 진단 제품이 아님
+- 자기이해 및 관계 인사이트 서비스
+- 고정된 정체성 라벨링 대신 행동 가이드와 맥락 기반 추천 사용
 
-### Legal Boundary Principles
-- Do not use official MBTI/Enneagram test items, report text, or protected brand expressions
-- Use original question bank, original scale labels, and original report wording
-- Keep transparent notices: "reference insight" and "not a diagnosis"
+### 법적 경계 원칙
+- 공식 MBTI/애니어그램 검사 문항, 보고서 문구, 보호된 브랜드 표현을 사용하지 않음
+- 독자적인 문항 뱅크, 독자적인 척도 라벨, 독자적인 보고서 문구 사용
+- "참고용 인사이트", "진단이 아님" 고지를 투명하게 유지
 
-## 2) MVP Scope
+## 2) MVP 범위
 
-### Core Components
-1. Explore: personality tendency questionnaire flow
-2. Profile: user tendency profile card
-3. Insight: actionable suggestions by context (work, collaboration, conflict, recovery)
+### 핵심 구성요소
+1. 탐색: 성향 설문 플로우
+2. 프로필: 사용자 성향 프로필 카드
+3. 인사이트: 맥락별 실행 가능한 제안(업무, 협업, 갈등, 회복)
 
-### Non-Goals (MVP)
-- No AI-generated diagnosis narrative
-- No social feed or viral sharing features
-- No complex recommendation marketplace
+### 비목표(MVP)
+- AI 생성 진단 서사 제공 없음
+- 소셜 피드/바이럴 공유 기능 없음
+- 복잡한 추천 마켓플레이스 없음
 
-## 3) Component Design
+## 3) 구성요소 설계
 
-### A. Question Engine
-- Domain-based question bank (energy, decision-making, relationship, recovery)
-- Versioned sets (`qset_v1`, `qset_v2`)
-- Mostly neutral Likert-style questions (1-5)
-- Quality checks: non-response rate, extreme-response rate, item clarity
+### A. 문항 엔진
+- 도메인 기반 문항 뱅크(에너지, 의사결정, 관계, 회복)
+- 버전 관리 세트(`qset_v1`, `qset_v2`)
+- 대부분 중립적인 리커트형 문항(1-5)
+- 품질 점검: 무응답률, 극단응답률, 문항 명확성
 
-### B. Scoring Engine
-- Domain scores normalized to 0-100
-- Reliability adjustment using consistency and abnormal response-speed checks
-- Output stored as profile vector (not hard type lock-in)
-- Policy block for sensitive or clinically suggestive outputs
+### B. 점수 엔진
+- 도메인 점수를 0-100으로 정규화
+- 응답 일관성 및 비정상 응답 속도 점검을 통한 신뢰도 보정
+- 출력은 프로필 벡터로 저장(고정 유형 강제 없음)
+- 민감하거나 임상적으로 암시적인 출력 차단 정책 적용
 
-### C. Profile Composer
-- Converts score vectors into user-facing cards:
-  - strengths
-  - caution patterns
-  - suggested actions
-- Uses original naming conventions
-- Content tone policy: no stigma, no deterministic claims, action-oriented phrasing
+### C. 프로필 컴포저
+- 점수 벡터를 사용자 노출 카드로 변환:
+  - 강점
+  - 주의 패턴
+  - 권장 행동
+- 독자적인 네이밍 규칙 사용
+- 콘텐츠 톤 정책: 낙인 금지, 결정론적 주장 금지, 행동 지향 문구
 
-### D. Insight Modules
-- Context modules: collaboration, conflict, learning, career, recovery
-- Start with rules + templates, expand personalization later
-- Include "why this suggestion appears" explanation block
+### D. 인사이트 모듈
+- 맥락 모듈: 협업, 갈등, 학습, 커리어, 회복
+- 초기는 규칙 + 템플릿으로 시작하고 이후 개인화를 확장
+- "이 제안이 표시되는 이유" 설명 블록 포함
 
-### E. Trust and Compliance Layer
-- Minimal personal data collection, anonymous default option
-- Always-visible notice for product scope and limitation
-- Data lifecycle policy: purpose, retention period, deletion request flow
-- Text policy filtering for restricted expressions
+### E. 신뢰 및 컴플라이언스 레이어
+- 최소한의 개인정보 수집, 기본 익명 옵션 제공
+- 제품 범위와 한계 고지를 항상 표시
+- 데이터 수명주기 정책: 목적, 보관 기간, 삭제 요청 흐름
+- 제한 표현 대상 텍스트 정책 필터링
 
-### F. Quality Operations
-- Dashboard: completion rate, drop-off rate, satisfaction, report/complaint rate
-- Alerts: bot-like response patterns, abnormal traffic, specific item complaint spikes
-- Release gate: regression checks for question text and report text changes
+### F. 품질 운영
+- 대시보드: 완료율, 이탈률, 만족도, 신고/불만 비율
+- 경보: 봇 유사 응답 패턴, 비정상 트래픽, 특정 문항 불만 급증
+- 배포 게이트: 문항 텍스트 및 보고서 텍스트 변경 회귀 점검
 
-## 4) Data Flow
+## 4) 데이터 흐름
 
-1. `start` -> create anonymous session ID
-2. load question set -> save step-by-step answers
-3. submit -> score computation
-4. profile + insight generation
-5. result render with trust notice
-6. optional account linking with explicit consent
+1. `start` -> 익명 세션 ID 생성
+2. 문항 세트 로드 -> 단계별 응답 저장
+3. 제출 -> 점수 계산
+4. 프로필 + 인사이트 생성
+5. 신뢰 고지와 함께 결과 렌더링
+6. 명시적 동의 기반의 선택적 계정 연동
 
-### Storage Separation
-- Separate PII data and response data stores
-- Encrypt at rest
-- Keep consent history with versioning
-- Support cascade deletion for user deletion requests
+### 저장소 분리
+- PII 데이터 저장소와 응답 데이터 저장소를 분리
+- 저장 시 암호화
+- 동의 이력을 버전과 함께 보관
+- 사용자 삭제 요청 시 연쇄 삭제 지원
 
-## 5) Error Handling and Safety
+## 5) 오류 처리와 안전성
 
-### Failures and Fallbacks
-- Question load failure: retry, then cached set fallback
-- Submit failure: local temporary save + retry token
-- Scoring failure: delayed processing queue + user-visible pending state
-- Policy violation detection: block output and show safe fallback text
+### 실패와 폴백
+- 문항 로드 실패: 재시도 후 캐시 세트로 폴백
+- 제출 실패: 로컬 임시 저장 + 재시도 토큰
+- 점수 계산 실패: 지연 처리 큐 + 사용자에게 보이는 대기 상태
+- 정책 위반 탐지: 출력 차단 후 안전한 폴백 문구 표시
 
-### Security and Audit
-- Role-based access for operators
-- Separate audit logs for sensitive operations
-- Access logging for data review and deletion workflows
+### 보안 및 감사
+- 운영자 역할 기반 접근 제어
+- 민감 작업용 별도 감사 로그
+- 데이터 조회 및 삭제 워크플로우 접근 로그 기록
 
-## 6) Testing Strategy
+## 6) 테스트 전략
 
-### Unit Tests
-- Question parser
-- Scoring formulas and normalization
-- Reliability adjustment rules
-- Policy filter behavior
+### 단위 테스트
+- 문항 파서
+- 점수 계산식 및 정규화
+- 신뢰도 보정 규칙
+- 정책 필터 동작
 
-### Integration / E2E
-- Full flow: answer -> score -> profile -> insight render
-- Failure paths for network/compute/policy filter
+### 통합 / E2E
+- 전체 흐름: 응답 -> 점수 -> 프로필 -> 인사이트 렌더링
+- 네트워크/연산/정책 필터 실패 경로
 
-### Trust / Content QA
-- Edge-case answer simulation (random, extreme, very fast)
-- Restricted-language snapshot tests
-- Manual quality checklist for user-facing wording
+### 신뢰 / 콘텐츠 QA
+- 엣지 케이스 응답 시뮬레이션(랜덤, 극단, 초고속)
+- 제한 표현 스냅샷 테스트
+- 사용자 노출 문구 수동 품질 체크리스트
 
-### Release Criteria
-- Policy-violation exposure: 0
-- Core flow error rate <= 1%
-- Deletion SLA compliance >= 95%
+### 배포 기준
+- 정책 위반 노출: 0
+- 핵심 플로우 오류율 <= 1%
+- 삭제 SLA 준수율 >= 95%
 
-## 7) 8-Week Roadmap
+## 7) 8주 로드맵
 
-### Week 1-2: Foundation
-- Finalize domains, label dictionary, and restricted-expression rules v1
-- Define schema for answers, scores, consent, and deletion requests
-- Build anonymous session flow baseline
+### 1-2주차: 기반 구축
+- 도메인, 라벨 사전, 제한 표현 규칙 v1 확정
+- 응답, 점수, 동의, 삭제 요청 스키마 정의
+- 익명 세션 플로우 베이스라인 구축
 
-### Week 3-4: Core Build
-- Implement Question Engine, Scoring Engine, Profile Composer
-- Build result page with trust disclosure
-- Complete internal end-to-end MVP
+### 3-4주차: 핵심 개발
+- 문항 엔진, 점수 엔진, 프로필 컴포저 구현
+- 신뢰 고지가 포함된 결과 페이지 구축
+- 내부 엔드투엔드 MVP 완성
 
-### Week 5-6: Trust and Quality
-- Add policy filters, access controls, deletion workflow, and fallback handling
-- Pilot with small users and refine questions/text
-- Produce trust and compliance check report
+### 5-6주차: 신뢰와 품질
+- 정책 필터, 접근 제어, 삭제 워크플로우, 폴백 처리 추가
+- 소규모 사용자 파일럿 및 문항/문구 개선
+- 신뢰 및 컴플라이언스 점검 보고서 작성
 
-### Week 7-8: Pilot Release
-- Controlled beta launch
-- Monitor dashboard and alerts
-- Final legal/content review and release decision
+### 7-8주차: 파일럿 출시
+- 통제된 베타 출시
+- 대시보드 및 경보 모니터링
+- 최종 법무/콘텐츠 검토 및 출시 의사결정
 
-## 8) KPI Framework (Trust-First)
+## 8) KPI 프레임워크(신뢰 우선)
 
-### Trust / Legal
-- policy violation exposure: 0
-- deletion SLA compliance: >= 95%
+### 신뢰 / 법무
+- 정책 위반 노출: 0
+- 삭제 SLA 준수율: >= 95%
 
-### Product Quality
-- test completion rate: >= 70%
-- result-page immediate drop-off: <= 30%
+### 제품 품질
+- 테스트 완료율: >= 70%
+- 결과 페이지 즉시 이탈률: <= 30%
 
-### User Value
-- "helpful" response rate: >= 60%
-- 7-day return rate: >= 20%
+### 사용자 가치
+- "도움이 됐다" 응답률: >= 60%
+- 7일 재방문율: >= 20%
 
-### Operational Stability
-- critical path failure rate: <= 1%
+### 운영 안정성
+- 크리티컬 경로 실패율: <= 1%
 
-## 9) Open Decisions for Planning Phase
+## 9) 기획 단계 오픈 의사결정
 
-- Final public naming strategy for profile labels
-- Minimum set of contexts for MVP insight modules
-- Legal review checklist ownership and sign-off process
+- 프로필 라벨의 최종 대외 네이밍 전략
+- MVP 인사이트 모듈의 최소 맥락 집합
+- 법무 검토 체크리스트 소유권 및 승인 프로세스
 
 ---
 
-This document is the approved design baseline for legal-first MVP planning.
+이 문서는 법률 우선 MVP 기획을 위한 승인된 설계 기준선이다.

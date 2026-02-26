@@ -1,0 +1,66 @@
+<turbo-frame id="current_question">
+  <div class="space-y-6">
+    <%# Progress bar — inside the Turbo Frame so it updates with each question %>
+    <div class="space-y-2">
+      <div class="flex justify-between text-sm text-warm-gray">
+        <span><%= assessment.current_question_index + 1 %> / <%= assessment.total_questions %></span>
+        <span><%= assessment.progress_percentage %>%</span>
+      </div>
+      <div class="w-full h-2 bg-light-gray rounded-full overflow-hidden">
+        <div class="h-full bg-gradient-to-r from-sage to-sky rounded-full transition-all duration-500 ease-out"
+             style="width: <%= assessment.progress_percentage %>%">
+        </div>
+      </div>
+    </div>
+
+  <div class="space-y-8 py-4" data-controller="likert countdown" data-countdown-start-value="<%= (Time.current.to_f * 1000).to_i %>">
+    <%# Domain indicator %>
+    <% domain_colors = { "energy" => "sage", "decision_making" => "sky", "relationship" => "lavender", "recovery" => "sand" } %>
+    <% domain_names = { "energy" => "에너지 흐름", "decision_making" => "판단 렌즈", "relationship" => "연결 방식", "recovery" => "충전 패턴" } %>
+
+    <div class="flex items-center space-x-2">
+      <span class="inline-block w-3 h-3 rounded-full bg-<%= domain_colors[question.domain] %>"></span>
+      <span class="text-sm text-warm-gray"><%= domain_names[question.domain] %></span>
+    </div>
+
+    <%# Question text %>
+    <h2 class="text-xl sm:text-2xl font-medium leading-relaxed">
+      <%= question.body_ko %>
+    </h2>
+
+    <%# Likert scale %>
+    <%= form_with url: assessment_question_path(assessment, question),
+                  method: :patch,
+                  data: { likert_target: "form", turbo_frame: "current_question" } do |f| %>
+
+      <input type="hidden" name="response[response_time_ms]" value="0" data-countdown-target="field">
+      <input type="hidden" name="response[sequence_number]" value="<%= sequence %>">
+
+      <div class="space-y-3" data-likert-target="options">
+        <% labels = ["전혀 아니다", "아닌 편이다", "보통이다", "그런 편이다", "매우 그렇다"] %>
+        <% [1, 2, 3, 4, 5].each do |val| %>
+          <label class="flex items-center p-4 rounded-xl border-2 border-transparent bg-light-gray
+                        hover:border-<%= domain_colors[question.domain] %>/50 hover:bg-<%= domain_colors[question.domain] %>/10
+                        cursor-pointer transition-all duration-200
+                        has-[:checked]:border-<%= domain_colors[question.domain] %> has-[:checked]:bg-<%= domain_colors[question.domain] %>/20"
+                 data-likert-target="option" data-action="click->likert#select">
+            <input type="radio" name="response[value]" value="<%= val %>"
+                   class="sr-only" data-action="change->likert#submit">
+            <span class="flex-1 text-base"><%= labels[val - 1] %></span>
+            <span class="text-sm text-warm-gray"><%= val %></span>
+          </label>
+        <% end %>
+      </div>
+
+      <%# Skip option %>
+      <div class="text-center pt-2">
+        <button type="button" data-action="click->likert#skip"
+                class="text-sm text-warm-gray/60 hover:text-warm-gray transition-colors underline decoration-dashed underline-offset-4">
+          이 질문 건너뛰기
+        </button>
+        <input type="hidden" name="skip" value="0" data-likert-target="skipField">
+      </div>
+    <% end %>
+  </div>
+  </div>
+</turbo-frame>

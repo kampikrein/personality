@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #FFF8F0;
+  --color-blush: #FFE4D6;
+  --color-sage: #C8D5B9;
+  --color-sky: #B8D4E3;
+  --color-lavender: #D4C5E2;
+  --color-sand: #E8DCC8;
+  --color-charcoal: #2D2D2D;
+  --color-warm-gray: #6B6560;
+  --color-light-gray: #F5F0EB;
+
+  --font-sans: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-cream text-charcoal font-sans antialiased;
+  }
+}
