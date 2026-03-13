@@ -1,0 +1,12 @@
+description: "UI/UX 전문가 기억 인덱스"
+storage_path: ".claude/agent-memory/uiux-expert/memories/"
+
+# 기억이 추가되면 아래 index 배열에 항목이 누적됩니다.
+# 포맷:
+#   - id: "001"
+#     date: "YYYY-MM-DD"
+#     type: finding | decision | pattern | review
+#     keywords: [...]
+#     summary: "한 줄 요약"
+#     path: "memories/001_키워드.yaml"
+index: []

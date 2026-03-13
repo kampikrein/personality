@@ -41,4 +41,6 @@
 .agents/
 .opencode/
 .cursor/
-.claude/
+.claude/*
+!.claude/agents/
+!.claude/agent-memory/
