@@ -134,6 +134,37 @@ Step 4: [검토 에이전트] → 최종 검토 (선택적)
 | 학술 검증 | psychology-expert | — |
 | 접근성/UX 검토 | uiux-expert | — |
 
+# SOP Master Protocol
+
+워커 에이전트는 Observe → Think → Act → Share의 SOP 행동 루프를 따른다.
+오케스트레이터는 이 루프의 입출력을 관리한다.
+
+## 워커 스폰 시 Observe 재료 구성
+
+에이전트를 스폰할 때, 프롬프트에 아래 5가지를 반드시 포함하여 워커의 Observe 단계를 지원한다:
+
+1. **작업 목표**: 구체적으로 무엇을 생산해야 하는지
+2. **참조 파일 경로**: 이전 단계 산출물, 관련 데이터 파일
+3. **산출물 저장 위치**: `.claude/work-orders/{workflow-id}/step-{N}_{slug}.md`
+4. **완료 기준**: 어떤 상태가 되면 작업이 완료인지
+5. **이전 피드백** (재작업 시): 이전 evaluation의 summary + fail 항목의 fix_suggestion
+
+## Share 산출물 확인 프로토콜
+
+워커 완료 후 산출물을 확인할 때:
+
+1. **Level 2 읽기**: frontmatter의 summary + key_findings로 결과 파악
+2. **confidence 확인**: high → 추가 검증 없이 진행 / medium → 검증 에이전트 1회 / low → 반드시 교차 검증
+3. **다음 단계 결정**: key_findings와 next_steps를 기반으로 후속 에이전트 스폰 여부 결정
+
+## 릴레이 감쇠 규칙 (파이프라인 전용)
+
+파이프라인(Pattern A, C)에서 에이전트 간 산출물이 전달될 때:
+- 수신측 에이전트의 confidence는 원본 에이전트의 confidence보다 **한 단계 낮게** 시작한다.
+  (high → medium → low)
+- 3단계 이상 릴레이된 정보는 원본 파일을 직접 읽도록 지시한다.
+- 평가루프(Pattern B) 내에서는 검증자가 원본에 직접 접근하므로 감쇠를 적용하지 않는다.
+
 # Evaluation Loop Protocol
 
 ## 평가 결과 포맷
@@ -146,20 +177,47 @@ evaluation:
   verdict: pass | fail | conditional_pass
   iteration: 1
   max_iterations: 3
+  workflow_id: ""
+  step: 0
+  evaluator: ""
+  target_agent: ""
+  overall_score: 0.0          # count(pass) / count(total)
   criteria:
     - name: "{기준명}"
+      severity: blocker | major | minor
       status: pass | fail
       detail: "{상세 설명}"
       fix_suggestion: "{수정 제안}"  # fail인 경우만
   summary: "{1-2줄 종합 판단}"
+  previous_iterations:
+    - iteration: 1
+      overall_score: 0.0
+      verdict: ""
+      failed_criteria: []
 ---
 ```
+
+## severity 기반 verdict 자동 판정
+
+| fail 항목 유형 | verdict | 후속 처리 |
+|--------------|---------|----------|
+| 없음 | **pass** | 다음 단계 진행 |
+| minor만 | **conditional_pass** | 생성 에이전트에 minor 수정 1회 지시 (재평가 없이 자동 통과). "나머지 변경 금지" 명시 |
+| major 포함 | **fail** | 재생성 (iteration++) |
+| blocker 포함 | **fail** | 재생성 + blocker를 우선 수정 대상으로 명시 |
+
+## 점수 미개선 자동 감지
+
+`overall_score`와 `previous_iterations`로 자동 판정:
+- 현재 overall_score ≤ 이전 iteration의 overall_score → 즉시 루프 중단 + HitL 트리거
+- 동일 criteria가 2회 연속 동일 fix_suggestion으로 fail → 자동 수정 불가 판정 + HitL 트리거
 
 ## 가드레일
 
 1. **최대 반복**: 3회 하드코딩. 3회 후에도 fail이면 현재 최선 결과 + 미해결 사항 목록으로 진행
-2. **점수 미개선 시 중단**: 이전 반복 대비 개선이 없으면 즉시 중단
+2. **점수 미개선 시 중단**: overall_score 기반 자동 감지 (위 참조)
 3. **턴 예산 관리**: 전체 워크플로우에서 평가루프는 1개만 포함 (maxTurns 30 제약)
+4. **conditional_pass 효율**: minor만 남은 경우 재평가 없이 1회 수정으로 처리하여 턴 절약
 
 # Workflow State Management
 
@@ -202,6 +260,49 @@ evaluation:
 - Read/Write/Edit = 각 1턴
 - 30턴 예산 내에서 최대 효율 추구
 - 불필요한 파일 읽기 최소화 (Level 2 우선)
+
+# Human-in-the-Loop Protocol
+
+## HitL 트리거
+
+아래 상황에서는 자동 진행을 중단하고 사용자에게 개입을 요청한다:
+
+| # | 트리거 | 긴급도 |
+|---|--------|-------|
+| H1 | max_iterations 도달 (3회 fail 후) | 필수 |
+| H2 | 점수 미개선 (2회 연속 overall_score 동일/하락) | 필수 |
+| H3 | 동일 criteria가 2회 연속 동일 fix_suggestion으로 fail | 필수 |
+| H4 | blocker 수준에서 도메인 전문가 간 의견 충돌 | 높음 |
+| H5 | 파괴적 작업 (DB 마이그레이션, 파일 대량 삭제) | 필수 |
+| H6 | 워크플로우 유형 불명확 (패턴 선택 확신 없음) | 높음 |
+| H7 | 저작권/법적 판단이 필요한 콘텐츠 | 높음 |
+
+## 개입 요청 포맷
+
+```
+⚠️ 사용자 개입 요청
+
+**상황**: {1-2줄 요약}
+
+**반복 이력**:
+| Iteration | Score | 변화 |
+|-----------|-------|------|
+| 1 | 0.43 | — |
+| 2 | 0.43 | 미개선 |
+
+**선택지**:
+1. 현재 결과로 진행 (미해결 사항 목록 첨부)
+2. 수동 수정 후 재평가
+3. 워크플로우 중단
+4. 기준 완화 (특정 criteria 삭제/severity 하향)
+```
+
+## 개입 후 재개
+
+- 사용자 선택 1: 미해결 사항을 manifest의 `checkpoint.unresolved`에 기록하고 다음 단계로 진행
+- 사용자 선택 2: 사용자의 수정 완료를 기다린 후 검증 에이전트 재스폰
+- 사용자 선택 3: manifest를 `status: aborted`로 갱신하고 종료
+- 사용자 선택 4: 해당 criteria를 제거/하향하고 현재 결과를 재판정
 
 # Red Lines
 
