@@ -261,6 +261,53 @@ evaluation:
 - 30턴 예산 내에서 최대 효율 추구
 - 불필요한 파일 읽기 최소화 (Level 2 우선)
 
+# Role-Specific Verification Criteria
+
+검증 에이전트 스폰 시, 작업 유형에 따라 아래 기준 세트를 프롬프트에 포함한다.
+검증 에이전트는 각 기준을 evaluation의 criteria 항목으로 평가한다.
+
+## 학술 검증 기준 (PSY) — psychology-expert가 검증 시
+
+| ID | 기준 | severity |
+|----|------|----------|
+| PSY-01 | 모든 성격 관련 주장에 학술 근거(이론명, 연구자, 연도)가 인용됨 | blocker |
+| PSY-02 | 바넘 효과 문구 없음 (모든 유형에 적용되는 보편적 서술 배제) | blocker |
+| PSY-03 | 결정론적 서술 없음 (유형을 고정 라벨이 아닌 스펙트럼으로 다룸) | blocker |
+| PSY-04 | 구성 타당도(construct validity) 충족 (측정 대상과 문항 내용 일치) | blocker |
+| PSY-05 | 변별력 확보 (유형 간 유의미한 차이를 만드는 문항/서술) | major |
+| PSY-06 | 윤리 기준 준수 (낙인, 병리화, 진단적 표현 배제) | major |
+| PSY-07 | 저작권/상표권 안전 (공식 검사 문항·브랜드 표현 미사용) | major |
+
+## 코드 검증 기준 (CODE) — psychology-expert 또는 coding-expert가 검증 시
+
+| ID | 기준 | severity |
+|----|------|----------|
+| CODE-01 | 도메인 정합성 (도메인 전문가 설계와 코드 구현의 일치) | blocker |
+| CODE-02 | 테스트 커버리지 (핵심 로직에 RSpec 테스트 존재) | blocker |
+| CODE-03 | 엣지 케이스 처리 (nil, 빈 배열, 경계값 등) | major |
+| CODE-04 | Rails 컨벤션 준수 (모델/컨트롤러/서비스 패턴) | major |
+| CODE-05 | 보안/PII 기준 (개인정보 분리, 암호화, 인젝션 방지) | minor |
+
+## UX 검증 기준 (UX) — uiux-expert가 검증 시
+
+| ID | 기준 | severity |
+|----|------|----------|
+| UX-01 | 모바일 퍼스트 (375px 이상 정상 동작, 터치 타겟 44px+) | blocker |
+| UX-02 | WCAG 2.1 AA 접근성 (색상 대비, 키보드, 스크린리더) | blocker |
+| UX-03 | 감정 흐름 일관성 (해당 화면의 감정 단계에 맞는 UI 톤) | blocker |
+| UX-04 | 인지 부하 최소화 (한 화면에 의사결정 1-2개 이하) | major |
+| UX-05 | 문화적 적합성 (한국 사용자 UX 관습 준수) | major |
+| UX-06 | 부정적 감정 방지 (결과 표현에서 불안/열등감 유발 배제) | minor |
+
+## 기준 선택 가이드
+
+| 검증 대상 | 적용 기준 | 검증 에이전트 |
+|----------|----------|-------------|
+| 문항/유형 설명 콘텐츠 | PSY 전체 | psychology-expert |
+| 점수 계산/API 구현 | CODE 전체 | coding-expert (자체) 또는 psychology-expert (도메인) |
+| UI 컴포넌트/화면 | UX 전체 | uiux-expert |
+| 콘텐츠 + 구현 (복합) | PSY + CODE | psychology-expert → coding-expert 순차 |
+
 # Human-in-the-Loop Protocol
 
 ## HitL 트리거

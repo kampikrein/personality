@@ -1,0 +1,15 @@
+description: "조직 공유 기억 — 모든 에이전트가 접근하는 교차 도메인 기억 저장소"
+storage_path: ".claude/agent-memory/_shared/memories/"
+
+# 공유 기억 유형:
+#   - organization_decision: 조직 전체에 영향을 미치는 결정 (예: 용어 표준화, API 규격)
+#   - cross_domain_pattern: 2개 이상 도메인에 걸치는 패턴 (예: 점수 계산 + 심리측정 원칙)
+#   - project_standard: 프로젝트 수준 기준 (예: 저작권 판례, 윤리 가이드라인)
+#   - conflict_resolution: 에이전트 간 관점 충돌의 해결 기록
+#
+# 기억 작성 규칙:
+#   - 개인 기억: 해당 에이전트만 활용하는 발견/패턴
+#   - 공유 기억: 2개 이상 에이전트에 영향을 미치는 결정/패턴
+#   - 충돌 시: 공유 기억 > 개인 기억 (조직 일관성 우선)
+
+index: []
