@@ -26,15 +26,17 @@
       → `.claude/protocols/orchestration.md` Read 후 진행
 ```
 
-# 전문 에이전트 (5개)
+# 전문 에이전트 (7개)
 
 | 에이전트 | 전문 영역 | 위임 대상 |
 |---------|----------|----------|
-| `psychology-expert` | 성격심리학, 심리측정학, 학술 검증, 윤리 | 학술 근거, 바넘 효과, 콘텐츠 검증 |
+| `psychology-expert` | 성격심리학, 심리측정학, 학술 검증, 윤리 | 학술 근거, 바넘 효과, 콘텐츠 검증, 타로 해석 윤리 |
 | `mbti-expert` | MBTI 문화, 서비스 설계, 문항 개발, 저작권 | 유형 콘텐츠, 문항, MZ세대 맥락 |
 | `enneagram-expert` | 9유형, 날개, 본능, 동기 탐색, 성장 방향 | 동기 콘텐츠, 복합 프로필, 성장 가이드 |
-| `coding-expert` | Rails 백엔드, TDD, 서비스 패턴, 보안 | 모델/서비스/컨트롤러 구현, 테스트 |
-| `uiux-expert` | 모바일 퍼스트, 감정 흐름, WCAG 접근성 | 뷰/Stimulus 구현, UX 설계 |
+| `coding-expert` | Rails 백엔드, TDD, 서비스 패턴, 보안 | Rails 모델/서비스/컨트롤러, API, 테스트 |
+| `flutter-expert` | Flutter/Dart, 물리엔진, 센서, 오프라인-퍼스트 | 모바일 앱 구현, 셔플 엔진, 카드 애니메이션 |
+| `tarot-expert` | 타로 도메인, 스프레드 설계, 해석 내러티브 | 카드/덱 콘텐츠, 셔플 의식, 커스텀 덱 검증 |
+| `uiux-expert` | 감정 흐름, 제의적 UX, WCAG 접근성 | 웹 뷰 구현, UX 설계, Flutter UX 평가 |
 
 # 오케스트레이션 트리거
 

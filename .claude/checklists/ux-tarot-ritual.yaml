@@ -1,0 +1,107 @@
+# 타로 앱 특수 UX 평가 체크리스트
+# uiux-expert가 평가 모드에서 로딩하여 사용
+# Research(006)의 5개 범주(SC/IM/RT/CD/SO)에서 도출
+
+version: "1.0"
+last_updated: "2026-03-15"
+
+categories:
+  - name: "영적 연결감 (Spiritual Connection)"
+    id_prefix: "SC"
+    criteria:
+      - id: "SC-01"
+        name: "셔플 과정에서 사용자 물리적 개입 존재"
+        severity: blocker
+        verification: "인터랙션 존재 여부 — 흔들기/스와이프/탭 중 최소 1개"
+      - id: "SC-02"
+        name: "카드 선택 시 에이전시 감각"
+        severity: major
+        verification: "사용자 입력과 결과의 직접적 연결 확인"
+      - id: "SC-03"
+        name: "조건부 어조 사용"
+        severity: major
+        verification: "해석 텍스트에 예측적 표현(~할 것이다) 0건"
+      - id: "SC-04"
+        name: "사용자 컨텍스트 기반 커스터마이징"
+        severity: minor
+        verification: "질문/키워드 입력 기반 해석 조정 기능 존재"
+
+  - name: "몰입도 (Immersion)"
+    id_prefix: "IM"
+    criteria:
+      - id: "IM-01"
+        name: "다크 모드 기본, 액센트 대비 4.5:1+"
+        severity: blocker
+        verification: "Flutter Accessibility Guideline API 또는 수동 대비 측정"
+      - id: "IM-02"
+        name: "카드 해석 점진적 공개"
+        severity: major
+        verification: "한 번에 전체 공개되지 않고 단계적 드러남 확인"
+      - id: "IM-03"
+        name: "셔플/뒤집기 애니메이션 존재"
+        severity: major
+        verification: "물리 엔진 기반 또는 커스텀 애니메이션 존재 확인"
+      - id: "IM-04"
+        name: "의미 있는 순간에 의도적 지연"
+        severity: minor
+        verification: "카드 오픈 시 적절한 포즈(300ms+) 확인"
+      - id: "IM-05"
+        name: "reduced-motion 접근성 존중"
+        severity: blocker
+        verification: "prefers-reduced-motion 설정 반영 확인"
+
+  - name: "제의적 UX (Ritual UX)"
+    id_prefix: "RT"
+    criteria:
+      - id: "RT-01"
+        name: "준비→셔플→드로우→해석 4단계 흐름 명확"
+        severity: blocker
+        verification: "네비게이션 그래프에서 4단계 구분 확인"
+      - id: "RT-02"
+        name: "단계 전환 경계 신호 존재"
+        severity: major
+        verification: "시각/청각/햅틱 중 최소 1개 전환 피드백"
+      - id: "RT-03"
+        name: "흐름 중단 없는 뒤로가기/건너뛰기"
+        severity: major
+        verification: "의식 흐름을 깨뜨리지 않으면서 제어 가능"
+      - id: "RT-04"
+        name: "해석 후 성찰 시간/저널링 기회"
+        severity: minor
+        verification: "해석 완료 후 저널 입력 또는 성찰 프롬프트 존재"
+
+  - name: "커스텀 덱 UX"
+    id_prefix: "CD"
+    criteria:
+      - id: "CD-01"
+        name: "대량 업로드 시 진행 상태 및 오류 복구"
+        severity: blocker
+        verification: "프로그레스 바 + 개별 파일 에러 핸들링 확인"
+      - id: "CD-02"
+        name: "화면당 의사결정 1-2개 이하"
+        severity: major
+        verification: "메타데이터 편집 화면 인지 부하 분석"
+      - id: "CD-03"
+        name: "메이저/마이너 아르카나 그룹화"
+        severity: major
+        verification: "78장을 논리적 그룹으로 분류하여 표시"
+
+  - name: "소셜 UX"
+    id_prefix: "SO"
+    criteria:
+      - id: "SO-01"
+        name: "익명화 옵션 기본 제공"
+        severity: blocker
+        verification: "공유 시 익명 모드 기본값 확인"
+      - id: "SO-02"
+        name: "위기 상황 키워드 감지 및 리소스 안내"
+        severity: blocker
+        verification: "자해/위기 키워드 감지 로직 + 전문 리소스 연결"
+      - id: "SO-03"
+        name: "건강한 바운티 참여 구조"
+        severity: major
+        verification: "금전적 압박감 없는 포인트 시스템 설계 확인"
+      - id: "SO-04"
+        name: "신고/차단 메커니즘"
+        severity: major
+        verification: "접근 가능하고 반응적인 신고/차단 UI"

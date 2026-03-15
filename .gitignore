@@ -38,6 +38,8 @@ mobile/ios/.symlinks/
 .claude/*
 !.claude/agents/
 !.claude/agent-memory/
+!.claude/protocols/
+!.claude/checklists/
 
 # === OS ===
 .DS_Store
