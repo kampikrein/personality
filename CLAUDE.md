@@ -1,7 +1,12 @@
 # personality 프로젝트
 
-성격 포탈 웹 서비스 — 자기 이해, 타인 수용, 자유 추구.
-Ruby on Rails 7+, PostgreSQL, RSpec, Hotwire/Turbo, Tailwind CSS.
+성격 포탈 + 타로 모바일 — 자기 이해, 타인 수용, 자유 추구.
+
+## 모노레포 구조
+- `server/` — Rails 8+ 백엔드 (PostgreSQL, RSpec, Hotwire/Turbo, Tailwind CSS)
+- `mobile/` — Flutter 모바일 앱 (타로 + 성격 서비스, 구조만 세팅됨)
+- `shared/` — API 계약 (OpenAPI 스키마, placeholder)
+- `docs/` — 공유 문서 (산출물 중앙화)
 
 # 위임 판단
 
