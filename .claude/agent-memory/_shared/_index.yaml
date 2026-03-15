@@ -12,4 +12,10 @@ storage_path: ".claude/agent-memory/_shared/memories/"
 #   - 공유 기억: 2개 이상 에이전트에 영향을 미치는 결정/패턴
 #   - 충돌 시: 공유 기억 > 개인 기억 (조직 일관성 우선)
 
-index: []
+index:
+  - id: "001"
+    file: "memories/001_파운더비전_성격포탈.yaml"
+    type: project_standard
+    date: "2026-03-15"
+    keywords: ["파운더비전", "성격포탈", "리텐션", "캐릭터", "커뮤니티", "소셜", "UX전략", "콘텐츠깊이"]
+    summary: "파운더의 프로젝트 목표점 — 성격 포탈, 중독적 리텐션, 캐릭터 인터랙션, 소셜 커뮤니티 진화"

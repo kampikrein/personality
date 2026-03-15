@@ -9,4 +9,10 @@ storage_path: ".claude/agent-memory/coding-expert/memories/"
 #     keywords: [...]
 #     summary: "한 줄 요약"
 #     path: "memories/001_키워드.yaml"
-index: []
+index:
+  - id: "001"
+    date: "2026-03-15"
+    type: review
+    keywords: ["코드베이스현황", "테스트커버리지", "기술부채", "미테스트서비스", "Wave1완료"]
+    summary: "2026-03-15 기준 코드베이스 직접 탐색 결과 — Wave1 수정 완료, 미테스트 7개 서비스 확인"
+    path: "memories/001_코드베이스현황_2026-03-15.yaml"

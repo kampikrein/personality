@@ -9,4 +9,10 @@ storage_path: ".claude/agent-memory/uiux-expert/memories/"
 #     keywords: [...]
 #     summary: "한 줄 요약"
 #     path: "memories/001_키워드.yaml"
-index: []
+index:
+  - id: "001"
+    date: "2026-03-15"
+    type: decision
+    keywords: ["카드스와이프", "scroll-snap", "리텐션", "캐릭터인터랙션", "감정여정", "Phase"]
+    summary: "파운더 비전 기반 스와이프/쇼츠형 UX 설계 — 카드 피드 + 캐릭터 3단계 구현 계획 확정"
+    path: "memories/001_스와이프_카드피드_설계.yaml"

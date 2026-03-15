@@ -1,0 +1,46 @@
+id: "001"
+date: "2026-03-15"
+type: review
+keywords: ["코드베이스현황", "테스트커버리지", "기술부채", "미테스트서비스", "Wave1완료"]
+summary: "2026-03-15 기준 코드베이스 직접 탐색 결과 — Wave1 수정 완료, 미테스트 7개 서비스 확인"
+
+context: |
+  WF-20260315-비전스코핑 step-5 작업 중 코드베이스 직접 탐색 수행.
+  이전 코드 점검 보고서(docs/02_코드점검, 2026-02-22)와 현재 상태 비교.
+
+details: |
+  ## 테스트 현황
+  - 총 테스트: 266 examples, 0 failures (2026-03-15 실행 확인)
+  - 전체 통과 상태
+
+  ## 이전 보고서(2026-02-22) 대비 완료된 수정
+  - Alert 모델: 미존재 → app/models/alert.rb 구현 완료
+  - responses 복합 유니크 인덱스: DB 레벨 추가 완료
+  - domain_scores 복합 유니크 인덱스: DB 레벨 추가 완료
+  - ResultsController: transaction + rescue 모두 적용 완료
+  - Admin 뷰 6개: 생성 완료
+  - 다수 서비스 스펙 추가: ReliabilityAdjuster, ContextEngine, Composer, BotDetector 등
+
+  ## 실제 미테스트 서비스 (7개)
+  - app/services/insights/collaboration_module.rb (100줄)
+  - app/services/insights/conflict_module.rb (99줄)
+  - app/services/insights/learning_module.rb (103줄)
+  - app/services/insights/career_module.rb (111줄)
+  - app/services/insights/recovery_module.rb (100줄)
+  - app/services/insights/explanation_builder.rb (84줄)
+  - app/services/profiles/type_content_service.rb (49줄)
+  총 646줄의 미테스트 프로덕션 코드
+
+  ## 주요 기술 부채
+  1. 위 7개 서비스 미테스트
+  2. 개발(SQLite) vs 프로덕션(PostgreSQL) DB 불일치
+  3. personality_types 시드 데이터 부재 (16개 MBTI 유형)
+  4. Admin 인증(C-1) 적용 여부 미확인
+
+implications: |
+  - 새 스펙 파일 작성 시 이 7개 서비스부터 우선 진행
+  - personality_types 시드 없이는 E2E 플로우 오류 발생
+  - 개발 환경 PostgreSQL 전환을 V2 이전에 완료해야 함
+  - Wave 1 수정이 완료됐으므로 Wave 2(테스트 작성)가 현재 최우선 과제
+
+related_memories: []

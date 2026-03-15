@@ -9,4 +9,10 @@ storage_path: ".claude/agent-memory/mbti-expert/memories/"
 #     keywords: [...]
 #     summary: "한 줄 요약"
 #     path: "memories/001_키워드.yaml"
-index: []
+index:
+  - id: "001"
+    date: "2026-03-15"
+    type: decision
+    keywords: ["depth-ladder", "콘텐츠깊이", "리텐션", "Level1-4", "갭분석", "Phase계획"]
+    summary: "4단계 Depth Ladder 설계 완료 — Level 1 카드 콘텐츠 부재가 최우선 갭"
+    path: "memories/001_콘텐츠깊이래더_설계.yaml"

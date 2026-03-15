@@ -1,0 +1,47 @@
+id: "001"
+date: "2026-03-15"
+type: decision
+keywords: ["depth-ladder", "콘텐츠깊이", "리텐션", "Level1-4", "갭분석", "Phase계획"]
+summary: "4단계 Depth Ladder 설계 완료 — Level 1 카드 콘텐츠 부재가 최우선 갭"
+
+context: |
+  WF-20260315-비전스코핑 Step 1 작업.
+  파운더 비전(성격 포탈, 쇼츠형 리텐션)을 기반으로
+  가벼운 것→무거운 것 콘텐츠 깊이 구조를 설계했다.
+
+details: |
+  ## 4단계 Depth Ladder 정의
+
+  Level 1 (캐주얼): 한줄 카드, 밈, 공유 콘텐츠 → 제작 쉬움, 바이럴 핵심
+  Level 2 (탐색): 유형별 상세 설명, 상황별 분석 → 원재료 50% 있음
+  Level 3 (심층): 심리학적 근거, 기능 발달, 성장 가이드 → 전무, 심리학 전문가 필요
+  Level 4 (전문): 관계 역학, 팀 분석, 개인화 → 전무, 기술 구현 필요
+
+  ## 현재 갭
+  - Level 1: 0% 커버 → 최우선 해결 과제
+  - Level 2 하단(검사+결과): 70% (구현 진행 중)
+  - Level 2 상단(맥락 시나리오): 50% (원재료만 있음)
+  - Level 3-4: 0%
+
+  ## seeds.rb 데이터 활용 가능성
+  현재 16유형 × (summary, strengths, caution_patterns, collaboration_style,
+  conflict_style, learning_style, career_hints, recovery_style) 보유.
+  이 데이터만으로 Level 1 카드 20개+ 즉시 제작 가능.
+
+  ## 리텐션 핵심 구조
+  쇼츠형 설계의 핵심은 "현재 콘텐츠가 다음 콘텐츠를 예고"하는 Hook & Bridge 구조.
+  자기 관련성(self-relevance)이 모든 레벨의 공통 동력.
+
+  ## 한국 MZ세대 공유 동기 3가지
+  1. 자기 확인 (Self-Validation): "이거 완전 나잖아" 쾌감
+  2. 타인 이해 (Other-Understanding): 관계 갈등 해소 욕구
+  3. 자기 소개 도구 (Identity Signal): 유형을 약식 자기소개 언어로 사용
+
+implications: |
+  1. Phase 1 최우선 작업: Level 1 카드 20개 제작 (seeds.rb에서 즉시 분해 가능)
+  2. UI/UX 전문가에게: 카드 공유 버튼 + 스와이프 플로우 UX 설계 요청
+  3. 코딩 전문가에게: 일별 콘텐츠 큐레이션 순환 로직 구현 요청 (Phase 2)
+  4. 심리학 전문가에게: Level 3 콘텐츠 (Jung 기능 발달론, 스트레스 반응) 검증 요청
+  5. Level 1 없이는 검사 시작 전 이탈을 막을 수 없음 — 단선 구조의 치명적 약점
+
+related_memories: []

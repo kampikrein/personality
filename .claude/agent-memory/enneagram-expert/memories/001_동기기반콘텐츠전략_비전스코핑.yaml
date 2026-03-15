@@ -1,0 +1,55 @@
+id: "001"
+date: "2026-03-15"
+type: decision
+keywords: ["동기기반콘텐츠", "MBTI교차", "리텐션", "비전스코핑", "복합프로필", "건강수준", "날개", "본능하위유형"]
+summary: "파운더 비전 기반 애니어그램 동기 콘텐츠 전략 설계 — 3단계 실행 로드맵 및 DB 요구사항 정의"
+
+context: |
+  WF-20260315-비전스코핑 step-2 작업.
+  파운더 비전(docs/memo.md)의 "깊이 있는 심리학적 분석"과 "중독적 리텐션" 목표를
+  애니어그램 동기 기반 콘텐츠로 실현하는 전략을 설계.
+  현재 코드베이스: MBTI 16유형 personality_type, 행동 도메인 점수 엔진, 5개 맥락 insight.
+
+details: |
+  ## 핵심 전략 결정
+
+  ### 결정 1: 진입 훅
+  MBTI 결과 직후 "왜 같은 MBTI인데 다른가?"라는 질문을 트리거로
+  애니어그램 동기 탐색으로 자연스럽게 연결.
+  MBTI 사용자가 이미 가진 실생활 경험(같은 유형인데 전혀 다른 사람)에 답을 제공.
+
+  ### 결정 2: 콘텐츠 깊이 5단계 구조
+  Level 0(MBTI) → Level 1(애니어그램 기본) → Level 2(날개) →
+  Level 3(본능 하위유형) → Level 4(건강수준) → Level 5(통합/분열 성장가이드)
+  각 레벨은 독립 소비 가능하며 다음 레벨 호기심을 자극.
+
+  ### 결정 3: 건강 수준 = 주기적 재방문 메커니즘
+  "지금 나는 어느 구간인가"를 주 1회, 월 1회 체크하고 싶은 구조.
+  Riso-Hudson 9단계를 3구간으로 단순화하여 서비스에 적용.
+
+  ### 결정 4: DB 분리 원칙
+  애니어그램 모델은 MBTI personality_type과 독립 설계.
+  두 유형론은 다른 차원이므로 별도 테이블로 분리.
+  교차 콘텐츠는 PersonalityTypeCrossProfile 별도 테이블로 관리.
+
+  ### 결정 5: Phase별 실행
+  Phase 1: 정적 콘텐츠 레이어 (DB 변경 없음)
+  Phase 2: EnneagramType + EnneagramProfile + CrossProfile 모델 추가
+  Phase 3: 풀 스펙 144개 교차 프로필 완성
+
+  ## 탐색 노드 수치
+  MBTI 16 × 애니어그램 9 = 144개 기본 교차 프로필
+  × 날개 2 = 288개
+  × 본능 3 = 432개
+  → 리텐션 메커니즘: 자기/비교/관계/시간축 4방향 탐색
+
+implications: |
+  1. coding-expert에게 EnneagramType, EnneagramProfile, CrossProfile 모델 요구사항 전달 필요
+  2. psychology-expert에게 9유형 핵심 동기/두려움 서술 정확성 검증 요청 필요
+  3. uiux-expert와 5단계 깊이 구조의 스와이프/탐색 UX 협력 필요
+  4. MBTI step-1 산출물과 교차하여 결합 콘텐츠 노드 구조 합의 필요
+  5. Phase 1은 DB 변경 없이 시작 가능 — MVP 8주 로드맵에 병행 가능
+  6. Insight 모델의 context 확장 (motivation, growth 추가) 검토 필요
+
+related_memories:
+  - shared/001_파운더비전_성격포탈

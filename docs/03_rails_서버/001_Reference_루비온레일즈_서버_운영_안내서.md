@@ -1,3 +1,14 @@
+---
+id: "001"
+type: research
+title: "루비온레일즈 서버 구동 및 운영 안내서"
+created: 2026-02-23
+summary: >
+  Ruby 3.3.10 / Rails 8.1.2 / SQLite3(개발) · PostgreSQL(프로덕션) 환경의
+  서버 구동과 운영에 필요한 명령어, 설정, 트러블슈팅을 정리한 안내서.
+keywords: [Rails, Ruby, 서버운영, PostgreSQL, SQLite3]
+---
+
 # 루비온레일즈 서버 구동 및 운영 안내서
 
 날짜: 2026-02-23

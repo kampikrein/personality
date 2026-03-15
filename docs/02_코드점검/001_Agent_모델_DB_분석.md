@@ -1,3 +1,14 @@
+---
+id: "001"
+type: agent
+title: "Agent A: 모델 & DB 레이어 분석"
+created: 2026-02-22
+summary: >
+  성격 서비스 Rails 프로젝트의 모델 14개와 DB 레이어를 분석한 에이전트 리포트.
+  핵심 관계, 인덱스, 잠재 이슈를 정리한다.
+keywords: [Rails, 모델분석, DB, 코드점검]
+---
+
 # Agent A: 모델 & DB 레이어 분석
 
 > 분석일: 2026-02-22

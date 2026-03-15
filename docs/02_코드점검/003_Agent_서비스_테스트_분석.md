@@ -1,3 +1,14 @@
+---
+id: "003"
+type: agent
+title: "Agent C: 서비스 & 테스트 분석"
+created: 2026-02-22
+summary: >
+  성격 서비스 Rails 프로젝트의 서비스 계층 19개와 테스트(spec/)를 분석한 에이전트 리포트.
+  Scoring 파이프라인을 포함한 서비스 구조와 테스트 커버리지를 정리한다.
+keywords: [Rails, 서비스계층, 테스트, Scoring, 코드점검]
+---
+
 # Agent C: 서비스 & 테스트 분석
 
 > 분석일: 2026-02-22

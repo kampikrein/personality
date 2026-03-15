@@ -9,4 +9,10 @@ storage_path: ".claude/agent-memory/enneagram-expert/memories/"
 #     keywords: [...]
 #     summary: "한 줄 요약"
 #     path: "memories/001_키워드.yaml"
-index: []
+index:
+  - id: "001"
+    date: "2026-03-15"
+    type: decision
+    keywords: ["동기기반콘텐츠", "MBTI교차", "리텐션", "비전스코핑", "복합프로필", "건강수준", "날개", "본능하위유형"]
+    summary: "파운더 비전 기반 애니어그램 동기 콘텐츠 전략 — 3단계 로드맵 및 DB 요구사항"
+    path: "memories/001_동기기반콘텐츠전략_비전스코핑.yaml"

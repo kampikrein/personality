@@ -9,4 +9,10 @@ storage_path: ".claude/agent-memory/psychology-expert/memories/"
 #     keywords: [...]
 #     summary: "한 줄 요약"
 #     path: "memories/001_키워드.yaml"
-index: []
+index:
+  - id: "001"
+    date: "2026-03-15"
+    type: decision
+    keywords: ["학술차별화", "바넘효과", "Big Five", "심리측정", "차별화전략", "콘텐츠설계", "임상경계"]
+    summary: "경쟁 서비스 대비 학술 차별화의 핵심 3요소와 실행 원칙 확립"
+    path: "memories/001_학술차별화전략_핵심발견.yaml"
