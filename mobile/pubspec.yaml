@@ -3,17 +3,55 @@ description: "Personality + Tarot mobile app"
 version: 0.1.0
 
 environment:
-  sdk: ^3.0.0
-  flutter: ">=3.10.0"
+  sdk: ^3.6.0
+  flutter: ">=3.29.0"
 
 dependencies:
   flutter:
     sdk: flutter
+
+  # State Management + DI
+  flutter_riverpod: ^2.6.0
+  riverpod_annotation: ^2.6.0
+
+  # Sensors & Entropy
+  sensors_plus: ^5.0.0
+  pointycastle: ^3.7.0
+  crypto: ^3.0.0
+
+  # Database
+  drift: ^2.22.0
+  sqlite3_flutter_libs: ^0.5.0
+  path_provider: ^2.1.0
+  path: ^1.9.0
+
+  # Serialization
+  freezed_annotation: ^2.4.0
+  json_annotation: ^4.9.0
+
+  # Routing
+  go_router: ^14.6.0
+
+  # Utilities
+  uuid: ^4.5.0
+  collection: ^1.18.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
 
+  # Code Generation
+  build_runner: ^2.4.0
+  riverpod_generator: ^2.6.0
+  freezed: ^2.5.0
+  json_serializable: ^6.8.0
+  drift_dev: ^2.22.0
+
+  # Testing
+  mocktail: ^1.0.0
+
 flutter:
   uses-material-design: true
+  assets:
+    - assets/data/

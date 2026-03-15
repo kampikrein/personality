@@ -1,0 +1,947 @@
+{
+  "deck": {
+    "id": "rws-standard",
+    "name": "Rider-Waite-Smith",
+    "isStandardTarot": true,
+    "totalCards": 78,
+    "creator": "A.E. Waite & Pamela Colman Smith"
+  },
+  "cards": [
+    {
+      "cardId": "major-00",
+      "name": "The Fool",
+      "arcana": "major",
+      "suit": null,
+      "number": 0,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["new beginnings", "innocence", "spontaneity", "free spirit"],
+        "reversed": ["recklessness", "naivety", "risk-taking"]
+      }
+    },
+    {
+      "cardId": "major-01",
+      "name": "The Magician",
+      "arcana": "major",
+      "suit": null,
+      "number": 1,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["willpower", "manifestation", "resourcefulness", "skill"],
+        "reversed": ["manipulation", "trickery", "untapped potential"]
+      }
+    },
+    {
+      "cardId": "major-02",
+      "name": "The High Priestess",
+      "arcana": "major",
+      "suit": null,
+      "number": 2,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["intuition", "mystery", "inner knowledge", "the subconscious"],
+        "reversed": ["secrets", "withdrawal", "silence"]
+      }
+    },
+    {
+      "cardId": "major-03",
+      "name": "The Empress",
+      "arcana": "major",
+      "suit": null,
+      "number": 3,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["abundance", "nurturing", "fertility", "nature"],
+        "reversed": ["dependence", "smothering", "creative block"]
+      }
+    },
+    {
+      "cardId": "major-04",
+      "name": "The Emperor",
+      "arcana": "major",
+      "suit": null,
+      "number": 4,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["authority", "structure", "stability", "leadership"],
+        "reversed": ["tyranny", "rigidity", "lack of discipline"]
+      }
+    },
+    {
+      "cardId": "major-05",
+      "name": "The Hierophant",
+      "arcana": "major",
+      "suit": null,
+      "number": 5,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["tradition", "spiritual wisdom", "conformity", "education"],
+        "reversed": ["rebellion", "unconventionality", "new approaches"]
+      }
+    },
+    {
+      "cardId": "major-06",
+      "name": "The Lovers",
+      "arcana": "major",
+      "suit": null,
+      "number": 6,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["love", "harmony", "partnership", "choices"],
+        "reversed": ["disharmony", "imbalance", "misalignment"]
+      }
+    },
+    {
+      "cardId": "major-07",
+      "name": "The Chariot",
+      "arcana": "major",
+      "suit": null,
+      "number": 7,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["determination", "willpower", "triumph", "control"],
+        "reversed": ["lack of direction", "aggression", "powerlessness"]
+      }
+    },
+    {
+      "cardId": "major-08",
+      "name": "Strength",
+      "arcana": "major",
+      "suit": null,
+      "number": 8,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["courage", "patience", "inner strength", "compassion"],
+        "reversed": ["self-doubt", "weakness", "insecurity"]
+      }
+    },
+    {
+      "cardId": "major-09",
+      "name": "The Hermit",
+      "arcana": "major",
+      "suit": null,
+      "number": 9,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["soul-searching", "introspection", "solitude", "inner guidance"],
+        "reversed": ["isolation", "loneliness", "withdrawal"]
+      }
+    },
+    {
+      "cardId": "major-10",
+      "name": "Wheel of Fortune",
+      "arcana": "major",
+      "suit": null,
+      "number": 10,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["cycles", "fate", "turning point", "good luck"],
+        "reversed": ["bad luck", "resistance to change", "broken cycles"]
+      }
+    },
+    {
+      "cardId": "major-11",
+      "name": "Justice",
+      "arcana": "major",
+      "suit": null,
+      "number": 11,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["fairness", "truth", "law", "cause and effect"],
+        "reversed": ["dishonesty", "unfairness", "lack of accountability"]
+      }
+    },
+    {
+      "cardId": "major-12",
+      "name": "The Hanged Man",
+      "arcana": "major",
+      "suit": null,
+      "number": 12,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["surrender", "new perspective", "pause", "letting go"],
+        "reversed": ["stalling", "resistance", "indecision"]
+      }
+    },
+    {
+      "cardId": "major-13",
+      "name": "Death",
+      "arcana": "major",
+      "suit": null,
+      "number": 13,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["transformation", "endings", "transition", "release"],
+        "reversed": ["resistance to change", "stagnation", "fear of endings"]
+      }
+    },
+    {
+      "cardId": "major-14",
+      "name": "Temperance",
+      "arcana": "major",
+      "suit": null,
+      "number": 14,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["balance", "moderation", "patience", "harmony"],
+        "reversed": ["imbalance", "excess", "lack of long-term vision"]
+      }
+    },
+    {
+      "cardId": "major-15",
+      "name": "The Devil",
+      "arcana": "major",
+      "suit": null,
+      "number": 15,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["bondage", "materialism", "shadow self", "attachment"],
+        "reversed": ["release", "breaking free", "reclaiming power"]
+      }
+    },
+    {
+      "cardId": "major-16",
+      "name": "The Tower",
+      "arcana": "major",
+      "suit": null,
+      "number": 16,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["sudden upheaval", "chaos", "revelation", "awakening"],
+        "reversed": ["avoidance of disaster", "fear of change", "delayed destruction"]
+      }
+    },
+    {
+      "cardId": "major-17",
+      "name": "The Star",
+      "arcana": "major",
+      "suit": null,
+      "number": 17,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["hope", "inspiration", "renewal", "serenity"],
+        "reversed": ["despair", "disconnection", "lack of faith"]
+      }
+    },
+    {
+      "cardId": "major-18",
+      "name": "The Moon",
+      "arcana": "major",
+      "suit": null,
+      "number": 18,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["illusion", "intuition", "uncertainty", "the unconscious"],
+        "reversed": ["confusion", "fear", "misinterpretation"]
+      }
+    },
+    {
+      "cardId": "major-19",
+      "name": "The Sun",
+      "arcana": "major",
+      "suit": null,
+      "number": 19,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["joy", "success", "vitality", "optimism"],
+        "reversed": ["temporary sadness", "lack of clarity", "overly optimistic"]
+      }
+    },
+    {
+      "cardId": "major-20",
+      "name": "Judgement",
+      "arcana": "major",
+      "suit": null,
+      "number": 20,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["reflection", "reckoning", "awakening", "rebirth"],
+        "reversed": ["self-doubt", "refusal of self-examination", "stagnation"]
+      }
+    },
+    {
+      "cardId": "major-21",
+      "name": "The World",
+      "arcana": "major",
+      "suit": null,
+      "number": 21,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["completion", "accomplishment", "wholeness", "travel"],
+        "reversed": ["incompletion", "shortcuts", "lack of closure"]
+      }
+    },
+    {
+      "cardId": "wands-01",
+      "name": "Ace of Wands",
+      "arcana": "minor",
+      "suit": "wands",
+      "number": 1,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["inspiration", "new opportunity", "creative spark", "potential"],
+        "reversed": ["delays", "lack of motivation", "missed opportunity"]
+      }
+    },
+    {
+      "cardId": "wands-02",
+      "name": "Two of Wands",
+      "arcana": "minor",
+      "suit": "wands",
+      "number": 2,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["planning", "future vision", "discovery", "progress"],
+        "reversed": ["fear of the unknown", "lack of planning", "playing it safe"]
+      }
+    },
+    {
+      "cardId": "wands-03",
+      "name": "Three of Wands",
+      "arcana": "minor",
+      "suit": "wands",
+      "number": 3,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["expansion", "foresight", "overseas opportunities", "leadership"],
+        "reversed": ["obstacles", "delays", "frustration"]
+      }
+    },
+    {
+      "cardId": "wands-04",
+      "name": "Four of Wands",
+      "arcana": "minor",
+      "suit": "wands",
+      "number": 4,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["celebration", "harmony", "homecoming", "community"],
+        "reversed": ["conflict at home", "instability", "lack of support"]
+      }
+    },
+    {
+      "cardId": "wands-05",
+      "name": "Five of Wands",
+      "arcana": "minor",
+      "suit": "wands",
+      "number": 5,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["competition", "conflict", "tension", "diversity"],
+        "reversed": ["avoidance of conflict", "compromise", "agreement"]
+      }
+    },
+    {
+      "cardId": "wands-06",
+      "name": "Six of Wands",
+      "arcana": "minor",
+      "suit": "wands",
+      "number": 6,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["victory", "recognition", "success", "public acclaim"],
+        "reversed": ["ego", "fall from grace", "lack of recognition"]
+      }
+    },
+    {
+      "cardId": "wands-07",
+      "name": "Seven of Wands",
+      "arcana": "minor",
+      "suit": "wands",
+      "number": 7,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["perseverance", "defensiveness", "standing your ground", "challenge"],
+        "reversed": ["giving up", "overwhelm", "being overrun"]
+      }
+    },
+    {
+      "cardId": "wands-08",
+      "name": "Eight of Wands",
+      "arcana": "minor",
+      "suit": "wands",
+      "number": 8,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["swift action", "movement", "quick decisions", "momentum"],
+        "reversed": ["delays", "frustration", "waiting"]
+      }
+    },
+    {
+      "cardId": "wands-09",
+      "name": "Nine of Wands",
+      "arcana": "minor",
+      "suit": "wands",
+      "number": 9,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["resilience", "persistence", "last stand", "near completion"],
+        "reversed": ["exhaustion", "giving up", "paranoia"]
+      }
+    },
+    {
+      "cardId": "wands-10",
+      "name": "Ten of Wands",
+      "arcana": "minor",
+      "suit": "wands",
+      "number": 10,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["burden", "responsibility", "hard work", "overcommitment"],
+        "reversed": ["release", "delegation", "inability to delegate"]
+      }
+    },
+    {
+      "cardId": "wands-11",
+      "name": "Page of Wands",
+      "arcana": "minor",
+      "suit": "wands",
+      "number": 11,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["enthusiasm", "exploration", "discovery", "free spirit"],
+        "reversed": ["setbacks", "lack of direction", "procrastination"]
+      }
+    },
+    {
+      "cardId": "wands-12",
+      "name": "Knight of Wands",
+      "arcana": "minor",
+      "suit": "wands",
+      "number": 12,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["energy", "passion", "adventure", "impulsiveness"],
+        "reversed": ["haste", "scattered energy", "frustration"]
+      }
+    },
+    {
+      "cardId": "wands-13",
+      "name": "Queen of Wands",
+      "arcana": "minor",
+      "suit": "wands",
+      "number": 13,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["confidence", "independence", "warmth", "determination"],
+        "reversed": ["selfishness", "jealousy", "insecurity"]
+      }
+    },
+    {
+      "cardId": "wands-14",
+      "name": "King of Wands",
+      "arcana": "minor",
+      "suit": "wands",
+      "number": 14,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["bold leadership", "vision", "entrepreneurship", "honor"],
+        "reversed": ["impulsiveness", "ruthlessness", "high expectations"]
+      }
+    },
+    {
+      "cardId": "cups-01",
+      "name": "Ace of Cups",
+      "arcana": "minor",
+      "suit": "cups",
+      "number": 1,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["new love", "compassion", "emotional awakening", "creativity"],
+        "reversed": ["emotional loss", "blocked feelings", "emptiness"]
+      }
+    },
+    {
+      "cardId": "cups-02",
+      "name": "Two of Cups",
+      "arcana": "minor",
+      "suit": "cups",
+      "number": 2,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["partnership", "unity", "mutual attraction", "connection"],
+        "reversed": ["imbalance", "broken communication", "tension"]
+      }
+    },
+    {
+      "cardId": "cups-03",
+      "name": "Three of Cups",
+      "arcana": "minor",
+      "suit": "cups",
+      "number": 3,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["celebration", "friendship", "community", "joy"],
+        "reversed": ["overindulgence", "gossip", "isolation"]
+      }
+    },
+    {
+      "cardId": "cups-04",
+      "name": "Four of Cups",
+      "arcana": "minor",
+      "suit": "cups",
+      "number": 4,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["apathy", "contemplation", "disconnection", "re-evaluation"],
+        "reversed": ["awareness", "new perspective", "acceptance"]
+      }
+    },
+    {
+      "cardId": "cups-05",
+      "name": "Five of Cups",
+      "arcana": "minor",
+      "suit": "cups",
+      "number": 5,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["grief", "loss", "regret", "disappointment"],
+        "reversed": ["acceptance", "moving on", "finding peace"]
+      }
+    },
+    {
+      "cardId": "cups-06",
+      "name": "Six of Cups",
+      "arcana": "minor",
+      "suit": "cups",
+      "number": 6,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["nostalgia", "childhood memories", "innocence", "generosity"],
+        "reversed": ["stuck in the past", "unrealistic ideals", "naivety"]
+      }
+    },
+    {
+      "cardId": "cups-07",
+      "name": "Seven of Cups",
+      "arcana": "minor",
+      "suit": "cups",
+      "number": 7,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["fantasy", "illusion", "wishful thinking", "choices"],
+        "reversed": ["clarity", "alignment", "making a choice"]
+      }
+    },
+    {
+      "cardId": "cups-08",
+      "name": "Eight of Cups",
+      "arcana": "minor",
+      "suit": "cups",
+      "number": 8,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["walking away", "disillusionment", "seeking truth", "letting go"],
+        "reversed": ["avoidance", "fear of change", "aimless drifting"]
+      }
+    },
+    {
+      "cardId": "cups-09",
+      "name": "Nine of Cups",
+      "arcana": "minor",
+      "suit": "cups",
+      "number": 9,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["contentment", "satisfaction", "wish fulfillment", "gratitude"],
+        "reversed": ["dissatisfaction", "greed", "materialism"]
+      }
+    },
+    {
+      "cardId": "cups-10",
+      "name": "Ten of Cups",
+      "arcana": "minor",
+      "suit": "cups",
+      "number": 10,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["divine love", "harmony", "family happiness", "alignment"],
+        "reversed": ["broken family", "disconnection", "misaligned values"]
+      }
+    },
+    {
+      "cardId": "cups-11",
+      "name": "Page of Cups",
+      "arcana": "minor",
+      "suit": "cups",
+      "number": 11,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["creative opportunity", "curiosity", "intuitive message", "sensitivity"],
+        "reversed": ["emotional immaturity", "escapism", "insecurity"]
+      }
+    },
+    {
+      "cardId": "cups-12",
+      "name": "Knight of Cups",
+      "arcana": "minor",
+      "suit": "cups",
+      "number": 12,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["romance", "charm", "imagination", "idealism"],
+        "reversed": ["moodiness", "unrealistic expectations", "jealousy"]
+      }
+    },
+    {
+      "cardId": "cups-13",
+      "name": "Queen of Cups",
+      "arcana": "minor",
+      "suit": "cups",
+      "number": 13,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["compassion", "nurturing", "emotional security", "intuition"],
+        "reversed": ["co-dependency", "emotional manipulation", "insecurity"]
+      }
+    },
+    {
+      "cardId": "cups-14",
+      "name": "King of Cups",
+      "arcana": "minor",
+      "suit": "cups",
+      "number": 14,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["emotional balance", "diplomacy", "generosity", "wisdom"],
+        "reversed": ["emotional manipulation", "moodiness", "coldness"]
+      }
+    },
+    {
+      "cardId": "swords-01",
+      "name": "Ace of Swords",
+      "arcana": "minor",
+      "suit": "swords",
+      "number": 1,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["clarity", "breakthrough", "new idea", "truth"],
+        "reversed": ["confusion", "misinformation", "brutality"]
+      }
+    },
+    {
+      "cardId": "swords-02",
+      "name": "Two of Swords",
+      "arcana": "minor",
+      "suit": "swords",
+      "number": 2,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["indecision", "stalemate", "difficult choices", "avoidance"],
+        "reversed": ["information overload", "lesser of two evils", "no right choice"]
+      }
+    },
+    {
+      "cardId": "swords-03",
+      "name": "Three of Swords",
+      "arcana": "minor",
+      "suit": "swords",
+      "number": 3,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["heartbreak", "sorrow", "grief", "painful truth"],
+        "reversed": ["recovery", "forgiveness", "releasing pain"]
+      }
+    },
+    {
+      "cardId": "swords-04",
+      "name": "Four of Swords",
+      "arcana": "minor",
+      "suit": "swords",
+      "number": 4,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["rest", "recovery", "contemplation", "solitude"],
+        "reversed": ["restlessness", "burnout", "stagnation"]
+      }
+    },
+    {
+      "cardId": "swords-05",
+      "name": "Five of Swords",
+      "arcana": "minor",
+      "suit": "swords",
+      "number": 5,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["conflict", "defeat", "winning at all costs", "hostility"],
+        "reversed": ["reconciliation", "making amends", "moving past conflict"]
+      }
+    },
+    {
+      "cardId": "swords-06",
+      "name": "Six of Swords",
+      "arcana": "minor",
+      "suit": "swords",
+      "number": 6,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["transition", "moving on", "leaving behind", "mental clarity"],
+        "reversed": ["emotional baggage", "unresolved issues", "resistance to change"]
+      }
+    },
+    {
+      "cardId": "swords-07",
+      "name": "Seven of Swords",
+      "arcana": "minor",
+      "suit": "swords",
+      "number": 7,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["deception", "strategy", "cunning", "stealth"],
+        "reversed": ["coming clean", "conscience", "exposure"]
+      }
+    },
+    {
+      "cardId": "swords-08",
+      "name": "Eight of Swords",
+      "arcana": "minor",
+      "suit": "swords",
+      "number": 8,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["imprisonment", "restriction", "self-limiting beliefs", "helplessness"],
+        "reversed": ["self-acceptance", "new perspective", "freedom"]
+      }
+    },
+    {
+      "cardId": "swords-09",
+      "name": "Nine of Swords",
+      "arcana": "minor",
+      "suit": "swords",
+      "number": 9,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["anxiety", "nightmares", "worry", "despair"],
+        "reversed": ["hope", "reaching out", "overcoming fear"]
+      }
+    },
+    {
+      "cardId": "swords-10",
+      "name": "Ten of Swords",
+      "arcana": "minor",
+      "suit": "swords",
+      "number": 10,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["painful ending", "rock bottom", "betrayal", "loss"],
+        "reversed": ["recovery", "regeneration", "resisting an inevitable end"]
+      }
+    },
+    {
+      "cardId": "swords-11",
+      "name": "Page of Swords",
+      "arcana": "minor",
+      "suit": "swords",
+      "number": 11,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["curiosity", "mental agility", "new ideas", "thirst for knowledge"],
+        "reversed": ["deception", "manipulation", "all talk no action"]
+      }
+    },
+    {
+      "cardId": "swords-12",
+      "name": "Knight of Swords",
+      "arcana": "minor",
+      "suit": "swords",
+      "number": 12,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["ambition", "determination", "swift action", "intellectual"],
+        "reversed": ["impatience", "recklessness", "unfocused energy"]
+      }
+    },
+    {
+      "cardId": "swords-13",
+      "name": "Queen of Swords",
+      "arcana": "minor",
+      "suit": "swords",
+      "number": 13,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["clear thinking", "independence", "direct communication", "perceptive"],
+        "reversed": ["coldness", "cruelty", "bitterness"]
+      }
+    },
+    {
+      "cardId": "swords-14",
+      "name": "King of Swords",
+      "arcana": "minor",
+      "suit": "swords",
+      "number": 14,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["intellectual power", "authority", "truth", "clear judgment"],
+        "reversed": ["manipulation", "tyranny", "abuse of power"]
+      }
+    },
+    {
+      "cardId": "pentacles-01",
+      "name": "Ace of Pentacles",
+      "arcana": "minor",
+      "suit": "pentacles",
+      "number": 1,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["new financial opportunity", "prosperity", "abundance", "security"],
+        "reversed": ["lost opportunity", "scarcity", "instability"]
+      }
+    },
+    {
+      "cardId": "pentacles-02",
+      "name": "Two of Pentacles",
+      "arcana": "minor",
+      "suit": "pentacles",
+      "number": 2,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["balance", "adaptability", "juggling priorities", "flexibility"],
+        "reversed": ["overwhelm", "disorganization", "financial loss"]
+      }
+    },
+    {
+      "cardId": "pentacles-03",
+      "name": "Three of Pentacles",
+      "arcana": "minor",
+      "suit": "pentacles",
+      "number": 3,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["teamwork", "collaboration", "craftsmanship", "learning"],
+        "reversed": ["lack of teamwork", "poor quality", "misalignment"]
+      }
+    },
+    {
+      "cardId": "pentacles-04",
+      "name": "Four of Pentacles",
+      "arcana": "minor",
+      "suit": "pentacles",
+      "number": 4,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["security", "conservation", "control", "possessiveness"],
+        "reversed": ["greed", "materialism", "self-protection"]
+      }
+    },
+    {
+      "cardId": "pentacles-05",
+      "name": "Five of Pentacles",
+      "arcana": "minor",
+      "suit": "pentacles",
+      "number": 5,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["hardship", "financial loss", "poverty", "isolation"],
+        "reversed": ["recovery", "charity", "improvement"]
+      }
+    },
+    {
+      "cardId": "pentacles-06",
+      "name": "Six of Pentacles",
+      "arcana": "minor",
+      "suit": "pentacles",
+      "number": 6,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["generosity", "charity", "giving and receiving", "sharing wealth"],
+        "reversed": ["strings attached", "debt", "selfishness"]
+      }
+    },
+    {
+      "cardId": "pentacles-07",
+      "name": "Seven of Pentacles",
+      "arcana": "minor",
+      "suit": "pentacles",
+      "number": 7,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["patience", "long-term investment", "perseverance", "reward"],
+        "reversed": ["impatience", "lack of reward", "wasted effort"]
+      }
+    },
+    {
+      "cardId": "pentacles-08",
+      "name": "Eight of Pentacles",
+      "arcana": "minor",
+      "suit": "pentacles",
+      "number": 8,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["diligence", "skill development", "mastery", "dedication"],
+        "reversed": ["perfectionism", "lack of motivation", "misdirected effort"]
+      }
+    },
+    {
+      "cardId": "pentacles-09",
+      "name": "Nine of Pentacles",
+      "arcana": "minor",
+      "suit": "pentacles",
+      "number": 9,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["luxury", "self-sufficiency", "financial independence", "discipline"],
+        "reversed": ["overinvestment in work", "superficiality", "hustling"]
+      }
+    },
+    {
+      "cardId": "pentacles-10",
+      "name": "Ten of Pentacles",
+      "arcana": "minor",
+      "suit": "pentacles",
+      "number": 10,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["wealth", "inheritance", "family legacy", "long-term success"],
+        "reversed": ["financial failure", "family disputes", "instability"]
+      }
+    },
+    {
+      "cardId": "pentacles-11",
+      "name": "Page of Pentacles",
+      "arcana": "minor",
+      "suit": "pentacles",
+      "number": 11,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["ambition", "desire to learn", "new venture", "opportunity"],
+        "reversed": ["lack of progress", "procrastination", "unfocused"]
+      }
+    },
+    {
+      "cardId": "pentacles-12",
+      "name": "Knight of Pentacles",
+      "arcana": "minor",
+      "suit": "pentacles",
+      "number": 12,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["hard work", "reliability", "routine", "efficiency"],
+        "reversed": ["laziness", "obsessiveness", "boredom"]
+      }
+    },
+    {
+      "cardId": "pentacles-13",
+      "name": "Queen of Pentacles",
+      "arcana": "minor",
+      "suit": "pentacles",
+      "number": 13,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["practicality", "nurturing", "financial security", "warmth"],
+        "reversed": ["self-centeredness", "jealousy", "smothering"]
+      }
+    },
+    {
+      "cardId": "pentacles-14",
+      "name": "King of Pentacles",
+      "arcana": "minor",
+      "suit": "pentacles",
+      "number": 14,
+      "imagePath": "assets/images/placeholder.png",
+      "meanings": {
+        "upright": ["abundance", "prosperity", "security", "discipline"],
+        "reversed": ["greed", "indulgence", "materialism"]
+      }
+    }
+  ]
+}
