@@ -1,5 +1,7 @@
 import 'package:drift/drift.dart';
 
+import '../../features/deck/domain/entities/card_meanings.dart';
+import 'converters/card_meanings_converter.dart';
 import 'tables/decks_table.dart';
 import 'tables/cards_table.dart';
 import 'tables/readings_table.dart';

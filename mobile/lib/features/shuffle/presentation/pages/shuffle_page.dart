@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -26,16 +28,33 @@ class _ShufflePageState extends ConsumerState<ShufflePage>
   ShufflePhase _phase = ShufflePhase.collecting;
   late RiffleAnimationState _animState;
   SpreadType _selectedSpread = SpreadType.single;
+  Timer? _pollTimer;
+  int _lastFedSampleCount = 0;
 
   @override
   void initState() {
     super.initState();
     _animState = RiffleAnimationState(vsync: this);
+    ref.read(entropyPoolProvider).reset();
     ref.read(sensorDataCollectorProvider).startCollecting();
+    // 센서 샘플을 엔트로피 풀에 주기적으로 투입 + UI 갱신
+    _pollTimer = Timer.periodic(const Duration(milliseconds: 500), (_) {
+      if (_phase == ShufflePhase.collecting && mounted) {
+        final collector = ref.read(sensorDataCollectorProvider);
+        final pool = ref.read(entropyPoolProvider);
+        final newSamples = collector.samples.skip(_lastFedSampleCount).toList();
+        if (newSamples.isNotEmpty) {
+          pool.addSamples(newSamples);
+          _lastFedSampleCount = collector.sampleCount;
+        }
+        setState(() {});
+      }
+    });
   }
 
   @override
   void dispose() {
+    _pollTimer?.cancel();
     ref.read(sensorDataCollectorProvider).stopCollecting();
     _animState.dispose();
     super.dispose();
@@ -93,7 +112,7 @@ class _ShufflePageState extends ConsumerState<ShufflePage>
             ),
           ),
           Expanded(
-            child: Padding(
+            child: SingleChildScrollView(
               padding: const EdgeInsets.all(16),
               child: switch (_phase) {
                 ShufflePhase.collecting =>

@@ -48,7 +48,7 @@ ShuffleRepository shuffleRepository(ShuffleRepositoryRef ref) {
   return ShuffleRepositoryImpl();
 }
 
-@riverpod
+@Riverpod(keepAlive: true)
 class ShuffleState extends _$ShuffleState {
   @override
   ShuffleResult? build() => null;

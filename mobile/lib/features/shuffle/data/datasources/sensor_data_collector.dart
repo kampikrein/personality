@@ -25,6 +25,7 @@ class SensorDataCollector {
   AccelerometerEvent? _lastAccel;
   bool _isCollecting = false;
   bool _sensorsAvailable = true;
+  Timer? _fallbackTimer;
 
   int get sampleCount => _samples.length;
   bool get isCollecting => _isCollecting;
@@ -35,6 +36,13 @@ class SensorDataCollector {
     if (_isCollecting) return;
     _isCollecting = true;
     _samples.clear();
+
+    // 3초 내 센서 데이터가 없으면 센서 미가용으로 전환 (에뮬레이터 대응)
+    _fallbackTimer = Timer(const Duration(seconds: 3), () {
+      if (_samples.isEmpty) {
+        _sensorsAvailable = false;
+      }
+    });
 
     try {
       _accelSub = accelerometerEventStream(
@@ -49,6 +57,7 @@ class SensorDataCollector {
       ).listen(
         (event) {
           if (_lastAccel == null) return;
+          _fallbackTimer?.cancel();
           final accel = _lastAccel!;
           _samples.add(SensorSample(
             accelMagnitude: sqrt(
@@ -67,6 +76,7 @@ class SensorDataCollector {
 
   void stopCollecting() {
     _isCollecting = false;
+    _fallbackTimer?.cancel();
     _accelSub?.cancel();
     _gyroSub?.cancel();
     _accelSub = null;
