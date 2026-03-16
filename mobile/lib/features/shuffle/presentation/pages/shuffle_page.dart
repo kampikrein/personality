@@ -125,8 +125,25 @@ class _ShufflePageState extends ConsumerState<ShufflePage>
               child: switch (_phase) {
                 ShufflePhase.collecting =>
                   _buildCollectingUI(theme, entropy, sensor),
-                ShufflePhase.shuffling =>
-                  const Center(child: Text('셔플 중...')),
+                ShufflePhase.shuffling => Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      width: 32,
+                      height: 32,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2,
+                        color: theme.colorScheme.primary,
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    Text(
+                      '카드가 당신의 에너지에 응답하고 있습니다...',
+                      style: theme.textTheme.bodyMedium,
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
                 ShufflePhase.drawing => _buildDrawingUI(theme),
               },
             ),

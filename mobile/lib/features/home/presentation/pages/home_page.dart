@@ -34,58 +34,77 @@ class _HomePageState extends ConsumerState<HomePage> {
     final theme = Theme.of(context);
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Personality Tarot', style: theme.textTheme.headlineLarge),
-        centerTitle: true,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            const SizedBox(height: 24),
-            SizedBox(
-              height: 56,
-              child: ElevatedButton(
-                onPressed: () => context.pushNamed('deck'),
-                child: const Text('셔플 시작', style: TextStyle(fontSize: 18)),
-              ),
-            ),
-            const SizedBox(height: 32),
-            Text('최근 리딩', style: theme.textTheme.bodyLarge),
-            const SizedBox(height: 8),
-            Expanded(
-              child: readingsAsync.when(
-                loading: () =>
-                    const Center(child: CircularProgressIndicator()),
-                error: (err, _) => Center(child: Text('오류: $err')),
-                data: (readings) => readings.isEmpty
-                    ? Center(
-                        child: Text(
-                          '아직 리딩이 없습니다.\n셔플을 시작해보세요.',
-                          textAlign: TextAlign.center,
-                          style: theme.textTheme.bodyMedium,
-                        ),
-                      )
-                    : ListView.builder(
-                        itemCount: readings.length,
-                        itemBuilder: (context, index) {
-                          final reading = readings[index];
-                          return Card(
-                            child: ListTile(
-                              title: Text(reading.spreadType.displayName),
-                              subtitle: Text(reading.question ?? '질문 없음'),
-                              trailing: Text(
-                                _formatDate(reading.createdAt),
-                                style: theme.textTheme.bodyMedium,
-                              ),
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: RadialGradient(
+            center: Alignment(0, -0.3),
+            radius: 1.2,
+            colors: [Color(0xFF2A1B3D), Color(0xFF0D0A14)],
+          ),
+        ),
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                const SizedBox(height: 16),
+                Icon(Icons.nights_stay,
+                    color: theme.colorScheme.primary, size: 40),
+                const SizedBox(height: 8),
+                Text(
+                  'Personality Tarot',
+                  style: theme.textTheme.headlineLarge,
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 24),
+                SizedBox(
+                  height: 56,
+                  child: ElevatedButton(
+                    onPressed: () => context.pushNamed('deck'),
+                    child: const Text('셔플 시작',
+                        style: TextStyle(fontSize: 18)),
+                  ),
+                ),
+                const SizedBox(height: 32),
+                Text('최근 리딩', style: theme.textTheme.bodyLarge),
+                const SizedBox(height: 8),
+                Expanded(
+                  child: readingsAsync.when(
+                    loading: () =>
+                        const Center(child: CircularProgressIndicator()),
+                    error: (err, _) => Center(child: Text('오류: $err')),
+                    data: (readings) => readings.isEmpty
+                        ? Center(
+                            child: Text(
+                              '아직 리딩이 없습니다.\n셔플을 시작해보세요.',
+                              textAlign: TextAlign.center,
+                              style: theme.textTheme.bodyMedium,
                             ),
-                          );
-                        },
-                      ),
-              ),
+                          )
+                        : ListView.builder(
+                            itemCount: readings.length,
+                            itemBuilder: (context, index) {
+                              final reading = readings[index];
+                              return Card(
+                                child: ListTile(
+                                  title:
+                                      Text(reading.spreadType.displayName),
+                                  subtitle:
+                                      Text(reading.question ?? '질문 없음'),
+                                  trailing: Text(
+                                    _formatDate(reading.createdAt),
+                                    style: theme.textTheme.bodyMedium,
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );

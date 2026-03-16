@@ -30,7 +30,7 @@ class DeckSelectionPage extends ConsumerWidget {
                 onTap: () {
                   ref.read(selectedDeckProvider.notifier).select(deck);
                   context.pushNamed(
-                    'shuffle',
+                    'intention',
                     pathParameters: {'deckId': deck.id},
                   );
                 },

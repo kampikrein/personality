@@ -4,6 +4,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../features/home/presentation/pages/home_page.dart';
 import '../../features/deck/presentation/pages/deck_selection_page.dart';
+import '../../features/shuffle/presentation/pages/intention_page.dart';
 import '../../features/shuffle/presentation/pages/shuffle_page.dart';
 import '../../features/reading/presentation/pages/reading_page.dart';
 
@@ -38,6 +39,15 @@ GoRouter appRouter(AppRouterRef ref) {
         name: 'deck',
         pageBuilder: (context, state) =>
             _fadePage(key: state.pageKey, child: const DeckSelectionPage()),
+      ),
+      GoRoute(
+        path: '/intention/:deckId',
+        name: 'intention',
+        pageBuilder: (context, state) {
+          final deckId = state.pathParameters['deckId']!;
+          return _fadePage(
+              key: state.pageKey, child: IntentionPage(deckId: deckId));
+        },
       ),
       GoRoute(
         path: '/shuffle/:deckId',
