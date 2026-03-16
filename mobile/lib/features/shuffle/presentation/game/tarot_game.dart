@@ -1,5 +1,10 @@
+import 'dart:math';
+
 import 'package:flame_forge2d/flame_forge2d.dart';
 
+import 'card_body_component.dart';
+import 'hand_animation_component.dart';
+import 'sensor_gravity_controller.dart';
 import 'tarot_coordinate_utils.dart';
 
 /// 타로 셔플 물리 게임 루프.
@@ -21,9 +26,27 @@ class TarotGame extends Forge2DGame<TarotWorld> {
   @override
   Future<void> onLoad() async {
     await super.onLoad();
-    // TODO(Cycle2): add(SensorGravityController());
-    // TODO(Cycle2): addAll(List.generate(78, (_) => CardBodyComponent()));
-    // TODO(Cycle2): add(HandAnimationComponent());
+
+    // SensorGravityController: 게임 루트 레벨 (physics 없음, 순수 컨트롤러)
+    await add(SensorGravityController());
+
+    // CardBodyComponent: Forge2DWorld에 추가 (BodyComponent 필수)
+    // 화면 중앙(world origin ≈ 0,0) 근처 ±0.25m 랜덤 분산으로 78장 배치
+    final rng = Random();
+    await world.addAll(
+      List.generate(
+        78,
+        (_) => CardBodyComponent(
+          initialPosition: Vector2(
+            (rng.nextDouble() - 0.5) * 0.5, // ±0.25m = ±25px random
+            (rng.nextDouble() - 0.5) * 0.5,
+          ),
+        ),
+      ),
+    );
+
+    // HandAnimationComponent: Forge2DWorld에 추가 (KinematicBody 필요)
+    world.add(HandAnimationComponent());
   }
 }
 
