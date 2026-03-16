@@ -1,3 +1,84 @@
+---
+id: "002"
+type: plan
+title: "pe-op 통합 — 일원체계 전환 구현 플랜"
+created: 2026-03-16
+traces_scope: "001"
+summary: >
+  orchestration.md를 대폭 개편하여 pe 기능을 전부 흡수하고,
+  parallel-execute SKILL.md를 리다이렉트 래퍼로 축소하며,
+  CLAUDE.md의 에이전트 스폰 기본 지침과 트리거를 갱신한다.
+keywords: [orchestration, parallel-execute, unification, agent-protocol]
+auto_run: true
+---
+
+# 002 — pe-op 통합 구현 플랜
+
+## Goal
+
+이원 체계(op + pe)를 op 중심 일원체계로 전환한다.
+모든 에이전트가 점진적 문서작성(skeleton-first)을 내재화하고,
+오케스트레이터가 단일/순차/평가루프/병렬 등 모든 실행 패턴을 통합 판단한다.
+
+## Scope
+
+### Included
+| # | Item | Description |
+|---|------|-------------|
+| 1 | orchestration.md 전면 개편 | pe 기능 흡수 (Pattern E, 산출물 프로토콜, Communication Log, 종합 보고서, 맥락 보전) |
+| 2 | CLAUDE.md 갱신 | 에이전트 스폰 기본 지침에 산출물 프로토콜 추가, 트리거 테이블 갱신 |
+| 3 | parallel-execute SKILL.md 축소 | 515줄 → ~30줄 리다이렉트 래퍼 |
+
+### Excluded
+| Item | Reason |
+|------|--------|
+| 글로벌 `~/.claude/CLAUDE.md` 에이전트 정책 | 프로젝트 외부 파일. 별도 수동 갱신 필요 |
+| 에이전트 정의 파일 수정 | 에이전트 자체 시스템 프롬프트는 변경 불요 — 스폰 프롬프트에서 지침 주입 |
+| 다른 스킬 파일 내 pe 참조 | research 등이 pe를 참조하나, pe 래퍼가 여전히 동작하므로 깨지지 않음 |
+
+## Structural Decisions
+
+> No structural decisions required — 사용자가 "op 중심 일원체계"로 방향 확정.
+
+---
+
+## File Change Summary
+
+### Modified Files
+| # | File Path | Change Description |
+|---|-----------|-------------------|
+| 1 | `.claude/protocols/orchestration.md` | 전면 개편 (191줄 → ~470줄). pe 기능 전체 흡수 |
+| 2 | `CLAUDE.md` | 트리거 테이블 + 위임 판단 갱신 (~10줄 변경) |
+| 3 | `.claude/skills/parallel-execute/SKILL.md` | 전체 교체 (515줄 → ~35줄 리다이렉트) |
+
+---
+
+## Step 1 — orchestration.md 전면 개편
+
+### Approach
+
+현재 파일을 Write로 완전 교체. 아래 섹션 구조로 재구성한다.
+
+### 섹션별 Origin 매핑
+
+| # | 섹션명 | Origin | 처리 |
+|---|--------|--------|------|
+| 1 | 워크플로우 패턴 | op 확장 | A-D 유지 + **E(병렬 실행) 추가** |
+| 2 | 실행 모드 결정 | pe 이식 | 서브에이전트 vs Agent Teams 판단 기준 |
+| 3 | 에이전트 조합 가이드 | op 유지 | 그대로 + 병렬 조합 행 추가 |
+| 4 | 에이전트 스폰 프로토콜 | op+pe 통합 | 기존 5항목 + 산출물 지침 + 패턴E 추가 섹션 |
+| 5 | 에이전트 산출물 프로토콜 | **pe 이식+확장** | 스켈레톤, 점진적 업데이트, Communication Log, 템플릿 |
+| 6 | 평가루프 프로토콜 | op 유지 | 핵심 규칙, YAML 포맷, severity 판정 그대로 |
+| 7 | 검증 기준 | op 유지 | PSY/CODE/UX/TAROT 테이블 + 선택 가이드 그대로 |
+| 8 | 병렬 실행 프로토콜 | **pe 이식** | 작업 분해, 에이전트 매핑, Teams/서브에이전트, 통신, 종합 보고서 |
+| 9 | 맥락 보전 프로토콜 | **pe 이식** | 점진적 보고서, 업데이트 빈도, 리드 역할 |
+| 10 | 오류 처리 | pe 이식 | 에러 상황별 대응표 |
+| 11 | 사용자 개입 트리거 | op 유지 | 4가지 트리거 + 개입 포맷 그대로 |
+| 12 | SOP 워커 스폰 참조 | op 유지 | 릴레이 감쇠 그대로 |
+
+### After Code
+
+```markdown
 # 오케스트레이션 프로토콜 (통합)
 
 이 문서는 에이전트 조율 시에만 로딩한다. 핵심 위임 규칙은 CLAUDE.md에 있다.
@@ -73,7 +154,7 @@
 Agent tool로 워커를 스폰할 때, 프롬프트에 아래 항목을 포함한다.
 워크플로우 패턴에 따라 필수/선택이 다르다.
 
-## 공통 필수 (모든 패턴 D~E)
+## 공통 필수 (모든 패턴 D-E)
 
 | # | 항목 | 설명 |
 |---|------|------|
@@ -620,3 +701,167 @@ Only approve plans that:
 - 수신측 confidence는 원본보다 한 단계 낮게 시작 (high→medium→low)
 - 3단계 이상 릴레이된 정보는 원본 직접 읽기 지시
 - 평가루프 내에서는 감쇠 미적용
+```
+
+---
+
+## Step 2 — CLAUDE.md 갱신
+
+### Approach
+
+3곳 targeted edit.
+
+### Edit 2-1: 오케스트레이션 트리거 테이블에 병렬 실행 추가
+
+#### Current Code
+```markdown
+<!-- CLAUDE.md:41-54 -->
+# 오케스트레이션 트리거
+
+아래 중 **하나라도 해당**하면 `.claude/protocols/orchestration.md`를 Read한 뒤 진행한다.
+
+| 트리거 | 판단 근거 | 예시 |
+|--------|----------|------|
+| **다중 에이전트 조합** | 2개+ 전문 영역이 교차 | "문항 만들고 학술 검증", "콘텐츠 설계 + 구현" |
+| **평가루프 필요** | 생성물의 품질 검증이 작업에 포함 | "바넘 효과 점검 포함", "학술 근거 검증하면서" |
+| **순차 파이프라인** | 여러 단계를 순서대로 연결 | "DB → 서비스 → 뷰", "5개 관점 분석 후 종합" |
+| **확신 없음** | 위 해당 여부가 불명확 | 부실한 오케스트레이션 비용 > 로딩 비용(~2,500토큰) |
+
+해당하지 않는 경우:
+- 직접 처리 (파일 읽기, 설정, 단순 수정)
+- 단일 에이전트 위임 (한 에이전트에게 작업 하나)
+```
+
+#### After Code
+```markdown
+# 오케스트레이션 트리거
+
+아래 중 **하나라도 해당**하면 `.claude/protocols/orchestration.md`를 Read한 뒤 진행한다.
+
+| 트리거 | 판단 근거 | 예시 |
+|--------|----------|------|
+| **다중 에이전트 조합** | 2개+ 전문 영역이 교차 | "문항 만들고 학술 검증", "콘텐츠 설계 + 구현" |
+| **평가루프 필요** | 생성물의 품질 검증이 작업에 포함 | "바넘 효과 점검 포함", "학술 근거 검증하면서" |
+| **순차 파이프라인** | 여러 단계를 순서대로 연결 | "DB → 서비스 → 뷰" |
+| **병렬 실행** | 독립적 작업 2+ 동시 실행 | "5개 관점 분석", "멀티 모듈 동시 리뷰" |
+| **확신 없음** | 위 해당 여부가 불명확 | 부실한 오케스트레이션 비용 > 로딩 비용(~2,500토큰) |
+
+해당하지 않는 경우:
+- 직접 처리 (파일 읽기, 설정, 단순 수정)
+- 단일 에이전트 위임 (한 에이전트에게 작업 하나)
+```
+
+### Edit 2-2: 단일 위임 설명에 산출물 프로토콜 적용 추가
+
+#### Current Code
+```markdown
+<!-- CLAUDE.md:21-23 -->
+  ├─ 단일 도메인 전문성만 필요?
+  │   → 에이전트 1개 위임 (프로토콜 로딩 불필요)
+  │   → 프롬프트에 작업 목표·참조 경로·산출물 위치·완료 기준 포함
+```
+
+#### After Code
+```markdown
+  ├─ 단일 도메인 전문성만 필요?
+  │   → 에이전트 1개 위임 (프로토콜 로딩 불필요)
+  │   → 프롬프트에 작업 목표·참조 경로·산출물 위치·완료 기준 포함
+  │   → 에이전트 산출물 프로토콜 적용 (스켈레톤 즉시 생성 → 점진적 업데이트)
+```
+
+---
+
+## Step 3 — parallel-execute SKILL.md 리다이렉트화
+
+### Approach
+
+전체 내용을 교체. 515줄 → ~35줄 리다이렉트 래퍼.
+
+### After Code
+
+```markdown
+---
+name: parallel-execute
+description: "병렬 실행 요청을 오케스트레이션 프로토콜(Pattern E)로 라우팅하는 래퍼."
+argument-hint: "<goal> [-- <task1> | <task2> | ...]"
+---
+
+# /parallel-execute — Orchestration Pattern E Redirect
+
+이 스킬의 기능은 `.claude/protocols/orchestration.md`에 통합되었습니다.
+
+## 실행 절차
+
+1. `.claude/protocols/orchestration.md`를 Read한다
+2. **패턴 E (병렬 실행)** 섹션의 절차를 따른다
+3. 인자를 패턴 E의 "작업 분해" 입력으로 전달한다
+
+## 인자 형식
+
+```
+/parallel-execute <goal>
+/parallel-execute <goal> -- <task1> | <task2> | ...
+```
+
+- `--` 뒤에 `|`로 구분된 태스크 목록이 있으면 그대로 사용
+- 태스크 목록이 없으면 goal을 분석하여 자동 분해
+
+## 참조
+
+- 오케스트레이션 프로토콜: `.claude/protocols/orchestration.md`
+- 프로젝트 에이전트 목록: `CLAUDE.md` "전문 에이전트" 테이블
+- 에이전트 산출물 프로토콜: orchestration.md "에이전트 산출물 프로토콜" 섹션
+```
+
+---
+
+## Considerations & Trade-offs
+
+### Alternative Approaches
+
+1. **pe 완전 삭제** — `/parallel-execute` 커맨드 자체를 제거
+   - 채택하지 않은 이유: research 스킬 등이 `/parallel-execute`를 참조. 래퍼 유지가 호환성 확보에 유리.
+
+2. **orchestration.md를 분리 파일로 유지** — 산출물 프로토콜을 별도 파일로
+   - 채택하지 않은 이유: 사용자가 "일원체계" 요청. 단일 파일 로딩이 원칙.
+
+### Potential Risks
+
+1. **orchestration.md 크기 증가** (~191→470줄): 토큰 비용 증가 (~2,500→5,000)
+   - 완화: 패턴 A-D만 사용할 때는 패턴 E 섹션을 건너뛰면 인지 부하 없음
+   - 프로토콜은 조건부 로딩이므로 (트리거 해당 시만), 단순 작업에는 영향 없음
+
+2. **글로벌 CLAUDE.md 불일치**: `~/.claude/CLAUDE.md`의 에이전트 정책이 아직 pe 참조
+   - 후속 조치: 사용자가 수동으로 `general-purpose Agent: parallel-execute 스킬을 통해서만 사용` → `orchestration protocol을 통해서만 사용`으로 갱신 필요
+
+### Backward Compatibility
+
+- `/parallel-execute` 래퍼가 동작하므로 기존 호출 방식 유지
+- 다른 스킬의 pe 참조 (research 등)가 깨지지 않음
+- CLAUDE.md의 위임 판단 3단계 구조 유지
+
+## Implementation Checklist
+
+- [x] Step 1: orchestration.md 전면 개편 (Write — 전체 교체)
+- [x] Step 2-1: CLAUDE.md 오케스트레이션 트리거 테이블 갱신 (Edit)
+- [x] Step 2-2: CLAUDE.md 위임 판단 단일 위임 설명 갱신 (Edit)
+- [x] Step 3: parallel-execute SKILL.md 리다이렉트화 (Write — 전체 교체)
+- [x] Final: 변경 파일 3개 내용 검증
+
+## Verification Assertions
+
+| Level | Assertion | Verification Method | Expected Result |
+|-------|-----------|-------------------|-----------------|
+| L1-Build | orchestration.md 구조 완전성 | 섹션 헤딩 12개 존재 확인 | 워크플로우~SOP 전 섹션 포함 |
+| L1-Build | pe SKILL.md 리다이렉트 동작 | orchestration.md 참조 경로 존재 | Read 경로 유효 |
+| L1-Build | CLAUDE.md 트리거 테이블 | 병렬 실행 행 존재 | 5개 트리거 |
+| L4-Trace | Scope 001 요구사항 충족 | 플랜-구현 매핑 | 3파일 모두 변경 |
+
+## References
+
+| Resource | Path | Related Content |
+|----------|------|-----------------|
+| Scope 문서 | docs/13_orchestration_unify/001_Scope_pe-op-unification.md | 작업 목표, 설계 구조안 |
+| 현재 orchestration.md | .claude/protocols/orchestration.md | 원본 op (191줄) |
+| 현재 parallel-execute SKILL.md | .claude/skills/parallel-execute/SKILL.md | 원본 pe (515줄) |
+| 현재 CLAUDE.md | CLAUDE.md | 위임 판단, 트리거, 에이전트 목록 |
