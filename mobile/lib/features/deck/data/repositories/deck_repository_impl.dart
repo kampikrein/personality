@@ -4,7 +4,6 @@ import 'package:drift/drift.dart';
 import 'package:flutter/services.dart';
 
 import '../../../../core/database/app_database.dart';
-import '../../../../core/database/tables/decks_table.dart' show SyncStatus;
 import '../../domain/entities/card_meanings.dart';
 import '../../domain/entities/deck_metadata.dart';
 import '../../domain/entities/tarot_card.dart';

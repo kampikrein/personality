@@ -4,6 +4,8 @@ import 'package:go_router/go_router.dart';
 
 import '../../../deck/presentation/providers/deck_providers.dart';
 import '../../../reading/domain/entities/spread_type.dart';
+import '../../data/datasources/entropy_pool.dart';
+import '../../data/datasources/sensor_data_collector.dart';
 import '../providers/shuffle_providers.dart';
 import '../widgets/card_painter.dart';
 import '../widgets/entropy_progress_indicator.dart';

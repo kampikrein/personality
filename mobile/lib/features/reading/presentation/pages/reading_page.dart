@@ -25,7 +25,6 @@ class _ReadingPageState extends ConsumerState<ReadingPage> {
   @override
   Widget build(BuildContext context) {
     final shuffleResult = ref.watch(shuffleStateProvider);
-    final theme = Theme.of(context);
 
     if (shuffleResult == null) {
       return Scaffold(
