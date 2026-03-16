@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flame/game.dart' show GameWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -8,10 +9,9 @@ import '../../../deck/presentation/providers/deck_providers.dart';
 import '../../../reading/domain/entities/spread_type.dart';
 import '../../data/datasources/entropy_pool.dart';
 import '../../data/datasources/sensor_data_collector.dart';
+import '../game/tarot_game.dart';
 import '../providers/shuffle_providers.dart';
-import '../widgets/card_painter.dart';
 import '../widgets/entropy_progress_indicator.dart';
-import '../widgets/riffle_animation_controller.dart';
 
 enum ShufflePhase { collecting, shuffling, drawing }
 
@@ -23,10 +23,9 @@ class ShufflePage extends ConsumerStatefulWidget {
   ConsumerState<ShufflePage> createState() => _ShufflePageState();
 }
 
-class _ShufflePageState extends ConsumerState<ShufflePage>
-    with TickerProviderStateMixin {
+class _ShufflePageState extends ConsumerState<ShufflePage> {
   ShufflePhase _phase = ShufflePhase.collecting;
-  late RiffleAnimationState _animState;
+  late TarotGame _game;
   SpreadType _selectedSpread = SpreadType.single;
   Timer? _pollTimer;
   int _lastFedSampleCount = 0;
@@ -34,7 +33,7 @@ class _ShufflePageState extends ConsumerState<ShufflePage>
   @override
   void initState() {
     super.initState();
-    _animState = RiffleAnimationState(vsync: this);
+    _game = TarotGame();
     ref.read(entropyPoolProvider).reset();
     ref.read(sensorDataCollectorProvider).startCollecting();
     // 센서 샘플을 엔트로피 풀에 주기적으로 투입 + UI 갱신
@@ -56,7 +55,7 @@ class _ShufflePageState extends ConsumerState<ShufflePage>
   void dispose() {
     _pollTimer?.cancel();
     ref.read(sensorDataCollectorProvider).stopCollecting();
-    _animState.dispose();
+    // GameWidget이 _game의 라이프사이클을 자동 관리 — 수동 dispose 불필요
     super.dispose();
   }
 
@@ -68,10 +67,8 @@ class _ShufflePageState extends ConsumerState<ShufflePage>
       final strategy = ref.read(shuffleStrategyProvider);
       final config = ref.read(shuffleConfigNotifierProvider);
 
-      await _animState.playRiffle(
-        cardCount: cards.length,
-        shuffleCount: config.shuffleCount,
-      );
+      // 물리 엔진이 카드를 움직이는 동안 잠시 대기 (RiffleAnimation 대체)
+      await Future<void>.delayed(const Duration(milliseconds: 1500));
 
       final result = useCase.execute(
         cards: cards,
@@ -112,12 +109,7 @@ class _ShufflePageState extends ConsumerState<ShufflePage>
         children: [
           Expanded(
             flex: 3,
-            child: RepaintBoundary(
-              child: CustomPaint(
-                painter: CardPainter(animationState: _animState),
-                size: Size.infinite,
-              ),
-            ),
+            child: GameWidget<TarotGame>(game: _game),
           ),
           Expanded(
             child: SingleChildScrollView(

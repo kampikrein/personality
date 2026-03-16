@@ -1,4 +1,5 @@
 import 'package:flame_forge2d/flame_forge2d.dart';
+import 'package:flutter/services.dart';
 
 import 'tarot_game.dart';
 
@@ -8,8 +9,10 @@ import 'tarot_game.dart';
 /// 물리 파라미터는 Research 036 확정값 사용.
 ///
 /// render: renderBody=true (기본값) → polygon fixture를 흰색으로 표시.
-/// Cycle 3에서 실제 카드 이미지로 교체 예정.
-class CardBodyComponent extends BodyComponent<TarotGame> {
+///
+/// [ContactCallbacks]: 카드끼리 충돌 시 selectionClick 햅틱 발생.
+/// body.userData = this → WorldContactListener가 beginContact() 자동 라우팅.
+class CardBodyComponent extends BodyComponent<TarotGame> with ContactCallbacks {
   final Vector2 initialPosition;
 
   /// 카드 반폭/반높이 (forge2d meters).
@@ -36,6 +39,16 @@ class CardBodyComponent extends BodyComponent<TarotGame> {
       friction: 0.4,
       restitution: 0.05, // 타로 카드: 낮은 반발계수 (Research 036 확정)
     );
-    return world.createBody(bodyDef)..createFixture(fixtureDef);
+    final body = world.createBody(bodyDef)..createFixture(fixtureDef);
+    body.userData = this; // WorldContactListener 라우팅 활성화
+    return body;
+  }
+
+  @override
+  void beginContact(Object other, Contact contact) {
+    // 카드-카드 충돌에만 햅틱: KinematicBody(손) 충돌은 무시
+    if (other is CardBodyComponent) {
+      HapticFeedback.selectionClick();
+    }
   }
 }
