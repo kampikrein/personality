@@ -497,8 +497,8 @@ class $CardsTable extends Cards with TableInfo<$CardsTable, Card> {
       'deck_id', aliasedName, false,
       type: DriftSqlType.string,
       requiredDuringInsert: true,
-      defaultConstraints:
-          GeneratedColumn.constraintIsAlways('REFERENCES decks (id)'));
+      defaultConstraints: GeneratedColumn.constraintIsAlways(
+          'REFERENCES decks (id) ON DELETE CASCADE'));
   static const VerificationMeta _cardIdMeta = const VerificationMeta('cardId');
   @override
   late final GeneratedColumn<String> cardId = GeneratedColumn<String>(
@@ -1559,16 +1559,16 @@ class $DrawnCardsTable extends DrawnCards
       'reading_id', aliasedName, false,
       type: DriftSqlType.string,
       requiredDuringInsert: true,
-      defaultConstraints:
-          GeneratedColumn.constraintIsAlways('REFERENCES readings (id)'));
+      defaultConstraints: GeneratedColumn.constraintIsAlways(
+          'REFERENCES readings (id) ON DELETE CASCADE'));
   static const VerificationMeta _cardIdMeta = const VerificationMeta('cardId');
   @override
   late final GeneratedColumn<String> cardId = GeneratedColumn<String>(
       'card_id', aliasedName, false,
       type: DriftSqlType.string,
       requiredDuringInsert: true,
-      defaultConstraints:
-          GeneratedColumn.constraintIsAlways('REFERENCES cards (id)'));
+      defaultConstraints: GeneratedColumn.constraintIsAlways(
+          'REFERENCES cards (id) ON DELETE CASCADE'));
   static const VerificationMeta _positionMeta =
       const VerificationMeta('position');
   @override
@@ -1915,6 +1915,32 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   @override
   List<DatabaseSchemaEntity> get allSchemaEntities =>
       [decks, cards, readings, drawnCards];
+  @override
+  StreamQueryUpdateRules get streamUpdateRules => const StreamQueryUpdateRules(
+        [
+          WritePropagation(
+            on: TableUpdateQuery.onTableName('decks',
+                limitUpdateKind: UpdateKind.delete),
+            result: [
+              TableUpdate('cards', kind: UpdateKind.delete),
+            ],
+          ),
+          WritePropagation(
+            on: TableUpdateQuery.onTableName('readings',
+                limitUpdateKind: UpdateKind.delete),
+            result: [
+              TableUpdate('drawn_cards', kind: UpdateKind.delete),
+            ],
+          ),
+          WritePropagation(
+            on: TableUpdateQuery.onTableName('cards',
+                limitUpdateKind: UpdateKind.delete),
+            result: [
+              TableUpdate('drawn_cards', kind: UpdateKind.delete),
+            ],
+          ),
+        ],
+      );
 }
 
 typedef $$DecksTableCreateCompanionBuilder = DecksCompanion Function({

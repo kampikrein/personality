@@ -62,27 +62,35 @@ class _ShufflePageState extends ConsumerState<ShufflePage>
 
   Future<void> _startShuffle() async {
     setState(() => _phase = ShufflePhase.shuffling);
+    try {
+      final cards = await ref.read(deckCardsProvider(widget.deckId).future);
+      final useCase = ref.read(shuffleDeckUseCaseProvider);
+      final strategy = ref.read(shuffleStrategyProvider);
+      final config = ref.read(shuffleConfigNotifierProvider);
 
-    final cards = await ref.read(deckCardsProvider(widget.deckId).future);
-    final useCase = ref.read(shuffleDeckUseCaseProvider);
-    final strategy = ref.read(shuffleStrategyProvider);
-    final config = ref.read(shuffleConfigNotifierProvider);
+      await _animState.playRiffle(
+        cardCount: cards.length,
+        shuffleCount: config.shuffleCount,
+      );
 
-    await _animState.playRiffle(
-      cardCount: cards.length,
-      shuffleCount: config.shuffleCount,
-    );
+      final result = useCase.execute(
+        cards: cards,
+        strategy: strategy,
+        config: config,
+      );
 
-    final result = useCase.execute(
-      cards: cards,
-      strategy: strategy,
-      config: config,
-    );
+      ref.read(shuffleStateProvider.notifier).setResult(result);
+      ref.read(hapticServiceProvider).mediumImpact();
 
-    ref.read(shuffleStateProvider.notifier).setResult(result);
-    ref.read(hapticServiceProvider).mediumImpact();
-
-    setState(() => _phase = ShufflePhase.drawing);
+      setState(() => _phase = ShufflePhase.drawing);
+    } catch (e) {
+      setState(() => _phase = ShufflePhase.collecting);
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('셔플에 실패했습니다: $e')),
+        );
+      }
+    }
   }
 
   void _goToReading() {
@@ -144,7 +152,7 @@ class _ShufflePageState extends ConsumerState<ShufflePage>
         Text(
           sensor.sensorsAvailable
               ? '디바이스를 흔들어 셔플 에너지를 모으세요'
-              : '센서를 사용할 수 없습니다. 시스템 난수로 진행합니다.',
+              : '조용히 호흡을 가다듬으세요.\n우주가 카드를 배열합니다.',
           style: theme.textTheme.bodyMedium,
           textAlign: TextAlign.center,
         ),

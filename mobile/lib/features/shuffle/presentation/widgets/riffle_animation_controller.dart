@@ -39,8 +39,9 @@ class RiffleAnimationState extends ChangeNotifier {
       duration: const Duration(milliseconds: 800),
     );
 
-    _controller!.addListener(() {
-      final t = _controller!.value;
+    final curved = CurvedAnimation(parent: _controller!, curve: Curves.easeInOut);
+    curved.addListener(() {
+      final t = curved.value;
       _cardPositions = _generateRifflePositions(t, round);
       notifyListeners();
     });
@@ -96,8 +97,9 @@ class RiffleAnimationState extends ChangeNotifier {
 
     final startPositions = List<CardPosition>.from(_cardPositions);
 
-    _controller!.addListener(() {
-      final t = _controller!.value;
+    final curved = CurvedAnimation(parent: _controller!, curve: Curves.easeOut);
+    curved.addListener(() {
+      final t = curved.value;
       _cardPositions = List.generate(
         startPositions.length,
         (i) => CardPosition(

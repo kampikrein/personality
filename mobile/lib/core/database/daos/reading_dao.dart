@@ -35,7 +35,9 @@ class ReadingDao extends DatabaseAccessor<AppDatabase> with _$ReadingDaoMixin {
           .get();
 
   Future<int> deleteReading(String id) async {
-    await (delete(drawnCards)..where((dc) => dc.readingId.equals(id))).go();
-    return (delete(readings)..where((r) => r.id.equals(id))).go();
+    return transaction(() async {
+      await (delete(drawnCards)..where((dc) => dc.readingId.equals(id))).go();
+      return (delete(readings)..where((r) => r.id.equals(id))).go();
+    });
   }
 }

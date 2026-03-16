@@ -47,16 +47,34 @@ class _ReadingPageState extends ConsumerState<ReadingPage> {
             ),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: SpreadLayout(
-          spreadType: _spreadType,
-          cards: drawnCards,
-          revealedPositions: _revealedPositions,
-          onCardTap: (position) {
-            setState(() => _revealedPositions.add(position));
-          },
-        ),
+      body: Column(
+        children: [
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: SpreadLayout(
+                spreadType: _spreadType,
+                cards: drawnCards,
+                revealedPositions: _revealedPositions,
+                onCardTap: (position) {
+                  setState(() => _revealedPositions.add(position));
+                },
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+            child: Text(
+              '타로는 자기 성찰의 도구입니다. 결과에 과도한 의미를 부여하지 마세요.\n'
+              '심리적 어려움이 있다면 정신건강 위기상담전화 1577-0199',
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.secondary.withValues(alpha: 0.7),
+                fontSize: 11,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ],
       ),
     );
   }

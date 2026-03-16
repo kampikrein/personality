@@ -130,7 +130,7 @@ class _$ShuffleConfigImpl implements _ShuffleConfig {
   const _$ShuffleConfigImpl(
       {this.shuffleCount = 3,
       this.useReversals = true,
-      this.reversalProbability = 0.5});
+      this.reversalProbability = 0.33});
 
   factory _$ShuffleConfigImpl.fromJson(Map<String, dynamic> json) =>
       _$$ShuffleConfigImplFromJson(json);

@@ -8,7 +8,7 @@ class ShuffleConfig with _$ShuffleConfig {
   const factory ShuffleConfig({
     @Default(3) int shuffleCount,
     @Default(true) bool useReversals,
-    @Default(0.5) double reversalProbability,
+    @Default(0.33) double reversalProbability,
   }) = _ShuffleConfig;
 
   factory ShuffleConfig.fromJson(Map<String, dynamic> json) =>

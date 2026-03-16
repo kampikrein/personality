@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -8,6 +9,19 @@ import '../../features/reading/presentation/pages/reading_page.dart';
 
 part 'app_router.g.dart';
 
+CustomTransitionPage<void> _fadePage({
+  required LocalKey key,
+  required Widget child,
+}) {
+  return CustomTransitionPage(
+    key: key,
+    child: child,
+    transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+        FadeTransition(opacity: animation, child: child),
+    transitionDuration: const Duration(milliseconds: 600),
+  );
+}
+
 @riverpod
 GoRouter appRouter(AppRouterRef ref) {
   return GoRouter(
@@ -16,27 +30,31 @@ GoRouter appRouter(AppRouterRef ref) {
       GoRoute(
         path: '/',
         name: 'home',
-        builder: (context, state) => const HomePage(),
+        pageBuilder: (context, state) =>
+            _fadePage(key: state.pageKey, child: const HomePage()),
       ),
       GoRoute(
         path: '/deck',
         name: 'deck',
-        builder: (context, state) => const DeckSelectionPage(),
+        pageBuilder: (context, state) =>
+            _fadePage(key: state.pageKey, child: const DeckSelectionPage()),
       ),
       GoRoute(
         path: '/shuffle/:deckId',
         name: 'shuffle',
-        builder: (context, state) {
+        pageBuilder: (context, state) {
           final deckId = state.pathParameters['deckId']!;
-          return ShufflePage(deckId: deckId);
+          return _fadePage(
+              key: state.pageKey, child: ShufflePage(deckId: deckId));
         },
       ),
       GoRoute(
         path: '/reading/:deckId',
         name: 'reading',
-        builder: (context, state) {
+        pageBuilder: (context, state) {
           final deckId = state.pathParameters['deckId']!;
-          return ReadingPage(deckId: deckId);
+          return _fadePage(
+              key: state.pageKey, child: ReadingPage(deckId: deckId));
         },
       ),
     ],

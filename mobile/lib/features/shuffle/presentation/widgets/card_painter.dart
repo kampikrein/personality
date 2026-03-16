@@ -15,7 +15,7 @@ class CardPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final cardWidth = size.width * 0.15;
+    final cardWidth = size.width * 0.22;
     final cardHeight = cardWidth / _cardAspectRatio;
     final centerX = size.width / 2;
     final centerY = size.height / 2;
@@ -119,5 +119,5 @@ class CardPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(CardPainter oldDelegate) => true;
+  bool shouldRepaint(CardPainter oldDelegate) => true; // ChangeNotifier repaint handles this via super(repaint:)
 }

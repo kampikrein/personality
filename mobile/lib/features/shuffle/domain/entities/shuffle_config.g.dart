@@ -11,7 +11,7 @@ _$ShuffleConfigImpl _$$ShuffleConfigImplFromJson(Map<String, dynamic> json) =>
       shuffleCount: (json['shuffleCount'] as num?)?.toInt() ?? 3,
       useReversals: json['useReversals'] as bool? ?? true,
       reversalProbability:
-          (json['reversalProbability'] as num?)?.toDouble() ?? 0.5,
+          (json['reversalProbability'] as num?)?.toDouble() ?? 0.33,
     );
 
 Map<String, dynamic> _$$ShuffleConfigImplToJson(_$ShuffleConfigImpl instance) =>

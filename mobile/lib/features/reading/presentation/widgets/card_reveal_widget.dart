@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../../../shuffle/domain/entities/shuffle_result.dart';
 
@@ -63,35 +64,50 @@ class _CardRevealWidgetState extends State<CardRevealWidget>
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    return GestureDetector(
-      onTap: widget.isRevealed ? null : widget.onTap,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(widget.label, style: theme.textTheme.bodyMedium),
-          const SizedBox(height: 8),
-          AnimatedBuilder(
-            animation: _animation,
-            builder: (context, child) {
-              final angle = _animation.value * math.pi;
-              return Transform(
-                alignment: Alignment.center,
-                transform: Matrix4.identity()
-                  ..setEntry(3, 2, 0.001)
-                  ..rotateY(angle),
-                child: _showFront ? _buildFront(theme) : _buildBack(theme),
-              );
-            },
-          ),
-          if (widget.isRevealed && widget.card.isReversed)
-            Padding(
-              padding: const EdgeInsets.only(top: 4),
-              child: Text(
-                '역방향',
-                style: TextStyle(color: theme.colorScheme.secondary),
-              ),
+    return Semantics(
+      label: widget.isRevealed
+          ? '${widget.label} 포지션: ${widget.card.card.name}'
+          : '${widget.label} 포지션: 탭하여 카드를 뒤집으세요',
+      button: !widget.isRevealed,
+      child: GestureDetector(
+        onTap: widget.isRevealed
+            ? null
+            : () {
+                widget.onTap();
+                HapticFeedback.lightImpact();
+              },
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(widget.label, style: theme.textTheme.bodyMedium),
+            const SizedBox(height: 8),
+            AnimatedBuilder(
+              animation: _animation,
+              builder: (context, child) {
+                final angle = _animation.value * math.pi;
+                return Transform(
+                  alignment: Alignment.center,
+                  transform: Matrix4.identity()
+                    ..setEntry(3, 2, 0.002)
+                    ..rotateY(angle),
+                  child: _showFront ? _buildFront(theme) : _buildBack(theme),
+                );
+              },
             ),
-        ],
+            if (widget.isRevealed && widget.card.isReversed)
+              Padding(
+                padding: const EdgeInsets.only(top: 4),
+                child: Text(
+                  '역방향 — 이 카드의 에너지가 내면으로 향합니다',
+                  style: TextStyle(
+                    color: theme.colorScheme.secondary,
+                    fontSize: 12,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+          ],
+        ),
       ),
     );
   }
@@ -107,7 +123,9 @@ class _CardRevealWidgetState extends State<CardRevealWidget>
         ),
         child: Center(
           child: Icon(Icons.auto_awesome,
-              color: theme.colorScheme.primary, size: 32),
+              semanticLabel: '카드 뒷면',
+              color: theme.colorScheme.primary,
+              size: 32),
         ),
       ),
     );

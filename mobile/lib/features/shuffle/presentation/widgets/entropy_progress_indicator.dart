@@ -15,13 +15,14 @@ class EntropyProgressIndicator extends StatelessWidget {
     final theme = Theme.of(context);
 
     if (!sensorsAvailable) {
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+      return Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(Icons.info_outline,
-              color: theme.colorScheme.secondary, size: 20),
-          const SizedBox(width: 8),
-          Text('시스템 난수 사용', style: theme.textTheme.bodyMedium),
+          Icon(Icons.nights_stay,
+              color: theme.colorScheme.primary, size: 24),
+          const SizedBox(height: 4),
+          Text('우주의 에너지로 배열합니다',
+              style: theme.textTheme.bodyMedium),
         ],
       );
     }
@@ -29,8 +30,8 @@ class EntropyProgressIndicator extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        SizedBox(
-          width: 200,
+        ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 280),
           child: LinearProgressIndicator(
             value: progress,
             backgroundColor: theme.colorScheme.surface,

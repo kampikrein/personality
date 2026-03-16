@@ -5,7 +5,7 @@ import 'decks_table.dart';
 
 class Cards extends Table {
   TextColumn get id => text()();
-  TextColumn get deckId => text().references(Decks, #id)();
+  TextColumn get deckId => text().references(Decks, #id, onDelete: KeyAction.cascade)();
   TextColumn get cardId => text()();
   TextColumn get name => text()();
   TextColumn get arcana => text()();
