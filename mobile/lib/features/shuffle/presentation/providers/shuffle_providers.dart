@@ -7,7 +7,7 @@ import '../../data/services/haptic_service.dart';
 import '../../domain/entities/shuffle_config.dart';
 import '../../domain/entities/shuffle_result.dart';
 import '../../domain/repositories/shuffle_repository.dart';
-import '../../domain/strategies/riffle_shuffle_strategy.dart';
+import '../../domain/strategies/fisher_yates_shuffle_strategy.dart';
 import '../../domain/strategies/shuffle_strategy.dart';
 import '../../domain/usecases/shuffle_deck_usecase.dart';
 
@@ -32,7 +32,7 @@ HapticService hapticService(HapticServiceRef ref) {
 
 @riverpod
 ShuffleStrategy shuffleStrategy(ShuffleStrategyRef ref) {
-  return RiffleShuffleStrategy();
+  return FisherYatesShuffleStrategy();
 }
 
 @riverpod

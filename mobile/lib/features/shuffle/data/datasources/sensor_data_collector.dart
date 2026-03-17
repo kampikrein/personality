@@ -14,7 +14,7 @@ class SensorSample {
   final double gyroZ;
   final int timestampMicros;
 
-  double get seedContribution => accelMagnitude * gyroZ;
+  double get seedContribution => accelMagnitude + gyroZ.abs();
 }
 
 class SensorDataCollector {

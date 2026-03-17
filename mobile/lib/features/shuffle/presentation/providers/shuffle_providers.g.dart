@@ -57,7 +57,7 @@ final hapticServiceProvider = Provider<HapticService>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef HapticServiceRef = ProviderRef<HapticService>;
-String _$shuffleStrategyHash() => r'8697ee8ae05a46cf2d759128289b1c4989b2b17c';
+String _$shuffleStrategyHash() => r'2cb0c672ebbe77edf7e94e335b19986dfdb76177';
 
 /// See also [shuffleStrategy].
 @ProviderFor(shuffleStrategy)

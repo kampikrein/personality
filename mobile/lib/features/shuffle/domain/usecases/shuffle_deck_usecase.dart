@@ -1,9 +1,10 @@
+import 'dart:math';
+
 import '../entities/shuffle_config.dart';
 import '../entities/shuffle_result.dart';
 import '../strategies/shuffle_strategy.dart';
 import '../../../deck/domain/entities/tarot_card.dart';
 import '../../data/datasources/entropy_pool.dart';
-import '../../data/datasources/fortuna_random_wrapper.dart';
 import '../../data/datasources/sensor_data_collector.dart';
 
 class ShuffleDeckUseCase {
@@ -24,11 +25,8 @@ class ShuffleDeckUseCase {
 
     final usedSensor =
         sensorCollector.sensorsAvailable && entropyPool.isReady;
-    final seed = usedSensor
-        ? entropyPool.generateSeed()
-        : entropyPool.generateFallbackSeed();
 
-    final random = FortunaRandomWrapper(seed);
+    final random = Random.secure();
 
     final result = strategy.shuffle(
       cards: cards,

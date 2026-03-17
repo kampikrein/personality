@@ -16,13 +16,12 @@ dependencies:
 
   # Sensors & Entropy
   sensors_plus: ^5.0.0
-  pointycastle: ^3.7.0
   crypto: ^3.0.0
 
   # Game Engine — Tarot Shuffle
   flame: ^1.19.0
-  flame_rive: ^1.0.0
-  flame_forge2d: ^0.18.0
+  flame_rive: ^1.1.0
+  flame_forge2d: ^0.19.0
   rive: ^0.13.16
 
   # Database
