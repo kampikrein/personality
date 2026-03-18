@@ -1,9 +1,17 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../../../core/dev_tuner/tunable_var.dart';
+import '../../../../core/dev_tuner/tuner_registry.dart';
+
 part 'intention_page.g.dart';
+
+// ── Dev Tuner 변수 ──
+final intentionIconSizeProvider = StateProvider<double>((ref) => 48);
+final intentionPaddingProvider = StateProvider<double>((ref) => 24);
 
 @Riverpod(keepAlive: true)
 class ReadingQuestion extends _$ReadingQuestion {
@@ -35,16 +43,25 @@ class _IntentionPageState extends ConsumerState<IntentionPage> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
+    if (kDebugMode) {
+      ref.read(devTunerRegistryProvider.notifier).registerIfAbsent('intention', [
+        TunableDouble(label: 'iconSize', provider: intentionIconSizeProvider, min: 32, max: 72, step: 4),
+        TunableDouble(label: 'padding', provider: intentionPaddingProvider, min: 12, max: 48, step: 4),
+      ]);
+    }
+    final iconSize = ref.watch(intentionIconSizeProvider);
+    final contentPadding = ref.watch(intentionPaddingProvider);
+
     return Scaffold(
       appBar: AppBar(title: const Text('의도 설정')),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(24),
+        padding: EdgeInsets.all(contentPadding),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             const SizedBox(height: 24),
             Icon(Icons.self_improvement,
-                color: theme.colorScheme.primary, size: 48),
+                color: theme.colorScheme.primary, size: iconSize),
             const SizedBox(height: 16),
             Text(
               '잠시 눈을 감고\n마음속 질문을 떠올려보세요.',

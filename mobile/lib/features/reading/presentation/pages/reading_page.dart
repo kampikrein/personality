@@ -1,8 +1,11 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:uuid/uuid.dart';
 
+import '../../../../core/dev_tuner/tunable_var.dart';
+import '../../../../core/dev_tuner/tuner_registry.dart';
 import '../../../shuffle/domain/entities/shuffle_result.dart';
 import '../../../shuffle/presentation/pages/intention_page.dart';
 import '../../../shuffle/presentation/providers/shuffle_providers.dart';
@@ -11,6 +14,10 @@ import '../../domain/entities/reflective_prompts.dart';
 import '../../domain/entities/spread_type.dart';
 import '../providers/reading_providers.dart';
 import '../widgets/spread_layout.dart';
+
+// ── Dev Tuner 변수 ──
+final readingCardHeightFactorProvider = StateProvider<double>((ref) => 0.45);
+final readingContentPaddingProvider = StateProvider<double>((ref) => 16);
 
 class ReadingPage extends ConsumerStatefulWidget {
   const ReadingPage({super.key, required this.deckId, this.spreadType = SpreadType.single});
@@ -30,6 +37,15 @@ class _ReadingPageState extends ConsumerState<ReadingPage> {
     final shuffleResult = ref.watch(shuffleStateProvider);
     final question = ref.watch(readingQuestionProvider);
     final theme = Theme.of(context);
+
+    if (kDebugMode) {
+      ref.read(devTunerRegistryProvider.notifier).registerIfAbsent('reading', [
+        TunableDouble(label: 'cardHeight%', provider: readingCardHeightFactorProvider, min: 0.3, max: 0.7, step: 0.05),
+        TunableDouble(label: 'padding', provider: readingContentPaddingProvider, min: 8, max: 32, step: 4),
+      ]);
+    }
+    final cardHeightFactor = ref.watch(readingCardHeightFactorProvider);
+    final contentPadding = ref.watch(readingContentPaddingProvider);
 
     if (shuffleResult == null) {
       return Scaffold(
@@ -54,7 +70,7 @@ class _ReadingPageState extends ConsumerState<ReadingPage> {
         ],
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
+        padding: EdgeInsets.all(contentPadding),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -79,7 +95,7 @@ class _ReadingPageState extends ConsumerState<ReadingPage> {
 
             // 스프레드 레이아웃
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.45,
+              height: MediaQuery.of(context).size.height * cardHeightFactor,
               child: SpreadLayout(
                 spreadType: _spreadType,
                 cards: drawnCards,

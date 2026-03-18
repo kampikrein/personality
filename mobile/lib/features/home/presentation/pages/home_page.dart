@@ -1,11 +1,20 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/dev_tuner/tunable_var.dart';
+import '../../../../core/dev_tuner/tuner_registry.dart';
 import '../../../deck/presentation/providers/deck_providers.dart';
 import '../../../reading/domain/entities/spread_type.dart';
 import '../../../reading/presentation/providers/reading_providers.dart';
 import '../../../shuffle/presentation/providers/shuffle_providers.dart';
+
+// ── Dev Tuner 변수 ──
+final homeGradientCenterYProvider = StateProvider<double>((ref) => -0.3);
+final homeGradientRadiusProvider = StateProvider<double>((ref) => 1.2);
+final homeButtonHeightProvider = StateProvider<double>((ref) => 56);
+final homeTitleIconSizeProvider = StateProvider<double>((ref) => 40);
 
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
@@ -35,13 +44,27 @@ class _HomePageState extends ConsumerState<HomePage> {
     final readingsAsync = ref.watch(watchReadingsProvider);
     final theme = Theme.of(context);
 
+    if (kDebugMode) {
+      ref.read(devTunerRegistryProvider.notifier).registerIfAbsent('home', [
+        TunableDouble(label: 'gradCenterY', provider: homeGradientCenterYProvider, min: -1.0, max: 1.0, step: 0.1),
+        TunableDouble(label: 'gradRadius', provider: homeGradientRadiusProvider, min: 0.5, max: 3.0, step: 0.1),
+        TunableDouble(label: 'btnHeight', provider: homeButtonHeightProvider, min: 40, max: 72, step: 4),
+        TunableDouble(label: 'iconSize', provider: homeTitleIconSizeProvider, min: 24, max: 64, step: 4),
+      ]);
+    }
+
+    final gradCenterY = ref.watch(homeGradientCenterYProvider);
+    final gradRadius = ref.watch(homeGradientRadiusProvider);
+    final btnHeight = ref.watch(homeButtonHeightProvider);
+    final iconSize = ref.watch(homeTitleIconSizeProvider);
+
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: RadialGradient(
-            center: Alignment(0, -0.3),
-            radius: 1.2,
-            colors: [Color(0xFF2A1B3D), Color(0xFF0D0A14)],
+            center: Alignment(0, gradCenterY),
+            radius: gradRadius,
+            colors: const [Color(0xFF2A1B3D), Color(0xFF0D0A14)],
           ),
         ),
         child: SafeArea(
@@ -52,7 +75,7 @@ class _HomePageState extends ConsumerState<HomePage> {
               children: [
                 const SizedBox(height: 16),
                 Icon(Icons.nights_stay,
-                    color: theme.colorScheme.primary, size: 40),
+                    color: theme.colorScheme.primary, size: iconSize),
                 const SizedBox(height: 8),
                 Text(
                   'Personality Tarot',
@@ -61,7 +84,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                 ),
                 const SizedBox(height: 24),
                 SizedBox(
-                  height: 56,
+                  height: btnHeight,
                   child: FilledButton.icon(
                     onPressed: _initialized ? () => _quickDraw(context) : null,
                     icon: const Icon(Icons.style, size: 20),
@@ -71,7 +94,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                 ),
                 const SizedBox(height: 12),
                 SizedBox(
-                  height: 56,
+                  height: btnHeight,
                   child: ElevatedButton(
                     onPressed: () => context.pushNamed(
                       'shuffle',
