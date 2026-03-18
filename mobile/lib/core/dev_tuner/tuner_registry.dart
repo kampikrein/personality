@@ -8,7 +8,12 @@ class DevTunerRegistry
 
   void registerIfAbsent(String route, List<TunableDouble> vars) {
     if (state.containsKey(route)) return;
-    state = {...state, route: vars};
+    // build() 중 state 수정 방지 — 다음 마이크로태스크에서 업데이트
+    Future.microtask(() {
+      if (!state.containsKey(route)) {
+        state = {...state, route: vars};
+      }
+    });
   }
 
   List<TunableDouble> varsFor(String route) {
