@@ -13,10 +13,19 @@
       "arcana": "major",
       "suit": null,
       "number": 0,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/major-00.webp",
       "meanings": {
-        "upright": ["new beginnings", "innocence", "spontaneity", "free spirit"],
-        "reversed": ["recklessness", "naivety", "risk-taking"]
+        "upright": [
+          "new beginnings",
+          "innocence",
+          "spontaneity",
+          "free spirit"
+        ],
+        "reversed": [
+          "recklessness",
+          "naivety",
+          "risk-taking"
+        ]
       }
     },
     {
@@ -25,10 +34,19 @@
       "arcana": "major",
       "suit": null,
       "number": 1,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/major-01.webp",
       "meanings": {
-        "upright": ["willpower", "manifestation", "resourcefulness", "skill"],
-        "reversed": ["manipulation", "trickery", "untapped potential"]
+        "upright": [
+          "willpower",
+          "manifestation",
+          "resourcefulness",
+          "skill"
+        ],
+        "reversed": [
+          "manipulation",
+          "trickery",
+          "untapped potential"
+        ]
       }
     },
     {
@@ -37,10 +55,19 @@
       "arcana": "major",
       "suit": null,
       "number": 2,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/major-02.webp",
       "meanings": {
-        "upright": ["intuition", "mystery", "inner knowledge", "the subconscious"],
-        "reversed": ["secrets", "withdrawal", "silence"]
+        "upright": [
+          "intuition",
+          "mystery",
+          "inner knowledge",
+          "the subconscious"
+        ],
+        "reversed": [
+          "secrets",
+          "withdrawal",
+          "silence"
+        ]
       }
     },
     {
@@ -49,10 +76,19 @@
       "arcana": "major",
       "suit": null,
       "number": 3,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/major-03.webp",
       "meanings": {
-        "upright": ["abundance", "nurturing", "fertility", "nature"],
-        "reversed": ["dependence", "smothering", "creative block"]
+        "upright": [
+          "abundance",
+          "nurturing",
+          "fertility",
+          "nature"
+        ],
+        "reversed": [
+          "dependence",
+          "smothering",
+          "creative block"
+        ]
       }
     },
     {
@@ -61,10 +97,19 @@
       "arcana": "major",
       "suit": null,
       "number": 4,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/major-04.webp",
       "meanings": {
-        "upright": ["authority", "structure", "stability", "leadership"],
-        "reversed": ["tyranny", "rigidity", "lack of discipline"]
+        "upright": [
+          "authority",
+          "structure",
+          "stability",
+          "leadership"
+        ],
+        "reversed": [
+          "tyranny",
+          "rigidity",
+          "lack of discipline"
+        ]
       }
     },
     {
@@ -73,10 +118,19 @@
       "arcana": "major",
       "suit": null,
       "number": 5,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/major-05.webp",
       "meanings": {
-        "upright": ["tradition", "spiritual wisdom", "conformity", "education"],
-        "reversed": ["rebellion", "unconventionality", "new approaches"]
+        "upright": [
+          "tradition",
+          "spiritual wisdom",
+          "conformity",
+          "education"
+        ],
+        "reversed": [
+          "rebellion",
+          "unconventionality",
+          "new approaches"
+        ]
       }
     },
     {
@@ -85,10 +139,19 @@
       "arcana": "major",
       "suit": null,
       "number": 6,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/major-06.webp",
       "meanings": {
-        "upright": ["love", "harmony", "partnership", "choices"],
-        "reversed": ["disharmony", "imbalance", "misalignment"]
+        "upright": [
+          "love",
+          "harmony",
+          "partnership",
+          "choices"
+        ],
+        "reversed": [
+          "disharmony",
+          "imbalance",
+          "misalignment"
+        ]
       }
     },
     {
@@ -97,10 +160,19 @@
       "arcana": "major",
       "suit": null,
       "number": 7,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/major-07.webp",
       "meanings": {
-        "upright": ["determination", "willpower", "triumph", "control"],
-        "reversed": ["lack of direction", "aggression", "powerlessness"]
+        "upright": [
+          "determination",
+          "willpower",
+          "triumph",
+          "control"
+        ],
+        "reversed": [
+          "lack of direction",
+          "aggression",
+          "powerlessness"
+        ]
       }
     },
     {
@@ -109,10 +181,19 @@
       "arcana": "major",
       "suit": null,
       "number": 8,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/major-08.webp",
       "meanings": {
-        "upright": ["courage", "patience", "inner strength", "compassion"],
-        "reversed": ["self-doubt", "weakness", "insecurity"]
+        "upright": [
+          "courage",
+          "patience",
+          "inner strength",
+          "compassion"
+        ],
+        "reversed": [
+          "self-doubt",
+          "weakness",
+          "insecurity"
+        ]
       }
     },
     {
@@ -121,10 +202,19 @@
       "arcana": "major",
       "suit": null,
       "number": 9,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/major-09.webp",
       "meanings": {
-        "upright": ["soul-searching", "introspection", "solitude", "inner guidance"],
-        "reversed": ["isolation", "loneliness", "withdrawal"]
+        "upright": [
+          "soul-searching",
+          "introspection",
+          "solitude",
+          "inner guidance"
+        ],
+        "reversed": [
+          "isolation",
+          "loneliness",
+          "withdrawal"
+        ]
       }
     },
     {
@@ -133,10 +223,19 @@
       "arcana": "major",
       "suit": null,
       "number": 10,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/major-10.webp",
       "meanings": {
-        "upright": ["cycles", "fate", "turning point", "good luck"],
-        "reversed": ["bad luck", "resistance to change", "broken cycles"]
+        "upright": [
+          "cycles",
+          "fate",
+          "turning point",
+          "good luck"
+        ],
+        "reversed": [
+          "bad luck",
+          "resistance to change",
+          "broken cycles"
+        ]
       }
     },
     {
@@ -145,10 +244,19 @@
       "arcana": "major",
       "suit": null,
       "number": 11,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/major-11.webp",
       "meanings": {
-        "upright": ["fairness", "truth", "law", "cause and effect"],
-        "reversed": ["dishonesty", "unfairness", "lack of accountability"]
+        "upright": [
+          "fairness",
+          "truth",
+          "law",
+          "cause and effect"
+        ],
+        "reversed": [
+          "dishonesty",
+          "unfairness",
+          "lack of accountability"
+        ]
       }
     },
     {
@@ -157,10 +265,19 @@
       "arcana": "major",
       "suit": null,
       "number": 12,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/major-12.webp",
       "meanings": {
-        "upright": ["surrender", "new perspective", "pause", "letting go"],
-        "reversed": ["stalling", "resistance", "indecision"]
+        "upright": [
+          "surrender",
+          "new perspective",
+          "pause",
+          "letting go"
+        ],
+        "reversed": [
+          "stalling",
+          "resistance",
+          "indecision"
+        ]
       }
     },
     {
@@ -169,10 +286,19 @@
       "arcana": "major",
       "suit": null,
       "number": 13,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/major-13.webp",
       "meanings": {
-        "upright": ["transformation", "endings", "transition", "release"],
-        "reversed": ["resistance to change", "stagnation", "fear of endings"]
+        "upright": [
+          "transformation",
+          "endings",
+          "transition",
+          "release"
+        ],
+        "reversed": [
+          "resistance to change",
+          "stagnation",
+          "fear of endings"
+        ]
       }
     },
     {
@@ -181,10 +307,19 @@
       "arcana": "major",
       "suit": null,
       "number": 14,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/major-14.webp",
       "meanings": {
-        "upright": ["balance", "moderation", "patience", "harmony"],
-        "reversed": ["imbalance", "excess", "lack of long-term vision"]
+        "upright": [
+          "balance",
+          "moderation",
+          "patience",
+          "harmony"
+        ],
+        "reversed": [
+          "imbalance",
+          "excess",
+          "lack of long-term vision"
+        ]
       }
     },
     {
@@ -193,10 +328,19 @@
       "arcana": "major",
       "suit": null,
       "number": 15,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/major-15.webp",
       "meanings": {
-        "upright": ["bondage", "materialism", "shadow self", "attachment"],
-        "reversed": ["release", "breaking free", "reclaiming power"]
+        "upright": [
+          "bondage",
+          "materialism",
+          "shadow self",
+          "attachment"
+        ],
+        "reversed": [
+          "release",
+          "breaking free",
+          "reclaiming power"
+        ]
       }
     },
     {
@@ -205,10 +349,19 @@
       "arcana": "major",
       "suit": null,
       "number": 16,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/major-16.webp",
       "meanings": {
-        "upright": ["sudden upheaval", "chaos", "revelation", "awakening"],
-        "reversed": ["avoidance of disaster", "fear of change", "delayed destruction"]
+        "upright": [
+          "sudden upheaval",
+          "chaos",
+          "revelation",
+          "awakening"
+        ],
+        "reversed": [
+          "avoidance of disaster",
+          "fear of change",
+          "delayed destruction"
+        ]
       }
     },
     {
@@ -217,10 +370,19 @@
       "arcana": "major",
       "suit": null,
       "number": 17,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/major-17.webp",
       "meanings": {
-        "upright": ["hope", "inspiration", "renewal", "serenity"],
-        "reversed": ["despair", "disconnection", "lack of faith"]
+        "upright": [
+          "hope",
+          "inspiration",
+          "renewal",
+          "serenity"
+        ],
+        "reversed": [
+          "despair",
+          "disconnection",
+          "lack of faith"
+        ]
       }
     },
     {
@@ -229,10 +391,19 @@
       "arcana": "major",
       "suit": null,
       "number": 18,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/major-18.webp",
       "meanings": {
-        "upright": ["illusion", "intuition", "uncertainty", "the unconscious"],
-        "reversed": ["confusion", "fear", "misinterpretation"]
+        "upright": [
+          "illusion",
+          "intuition",
+          "uncertainty",
+          "the unconscious"
+        ],
+        "reversed": [
+          "confusion",
+          "fear",
+          "misinterpretation"
+        ]
       }
     },
     {
@@ -241,10 +412,19 @@
       "arcana": "major",
       "suit": null,
       "number": 19,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/major-19.webp",
       "meanings": {
-        "upright": ["joy", "success", "vitality", "optimism"],
-        "reversed": ["temporary sadness", "lack of clarity", "overly optimistic"]
+        "upright": [
+          "joy",
+          "success",
+          "vitality",
+          "optimism"
+        ],
+        "reversed": [
+          "temporary sadness",
+          "lack of clarity",
+          "overly optimistic"
+        ]
       }
     },
     {
@@ -253,10 +433,19 @@
       "arcana": "major",
       "suit": null,
       "number": 20,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/major-20.webp",
       "meanings": {
-        "upright": ["reflection", "reckoning", "awakening", "rebirth"],
-        "reversed": ["self-doubt", "refusal of self-examination", "stagnation"]
+        "upright": [
+          "reflection",
+          "reckoning",
+          "awakening",
+          "rebirth"
+        ],
+        "reversed": [
+          "self-doubt",
+          "refusal of self-examination",
+          "stagnation"
+        ]
       }
     },
     {
@@ -265,10 +454,19 @@
       "arcana": "major",
       "suit": null,
       "number": 21,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/major-21.webp",
       "meanings": {
-        "upright": ["completion", "accomplishment", "wholeness", "travel"],
-        "reversed": ["incompletion", "shortcuts", "lack of closure"]
+        "upright": [
+          "completion",
+          "accomplishment",
+          "wholeness",
+          "travel"
+        ],
+        "reversed": [
+          "incompletion",
+          "shortcuts",
+          "lack of closure"
+        ]
       }
     },
     {
@@ -277,10 +475,19 @@
       "arcana": "minor",
       "suit": "wands",
       "number": 1,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/wands-01.webp",
       "meanings": {
-        "upright": ["inspiration", "new opportunity", "creative spark", "potential"],
-        "reversed": ["delays", "lack of motivation", "missed opportunity"]
+        "upright": [
+          "inspiration",
+          "new opportunity",
+          "creative spark",
+          "potential"
+        ],
+        "reversed": [
+          "delays",
+          "lack of motivation",
+          "missed opportunity"
+        ]
       }
     },
     {
@@ -289,10 +496,19 @@
       "arcana": "minor",
       "suit": "wands",
       "number": 2,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/wands-02.webp",
       "meanings": {
-        "upright": ["planning", "future vision", "discovery", "progress"],
-        "reversed": ["fear of the unknown", "lack of planning", "playing it safe"]
+        "upright": [
+          "planning",
+          "future vision",
+          "discovery",
+          "progress"
+        ],
+        "reversed": [
+          "fear of the unknown",
+          "lack of planning",
+          "playing it safe"
+        ]
       }
     },
     {
@@ -301,10 +517,19 @@
       "arcana": "minor",
       "suit": "wands",
       "number": 3,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/wands-03.webp",
       "meanings": {
-        "upright": ["expansion", "foresight", "overseas opportunities", "leadership"],
-        "reversed": ["obstacles", "delays", "frustration"]
+        "upright": [
+          "expansion",
+          "foresight",
+          "overseas opportunities",
+          "leadership"
+        ],
+        "reversed": [
+          "obstacles",
+          "delays",
+          "frustration"
+        ]
       }
     },
     {
@@ -313,10 +538,19 @@
       "arcana": "minor",
       "suit": "wands",
       "number": 4,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/wands-04.webp",
       "meanings": {
-        "upright": ["celebration", "harmony", "homecoming", "community"],
-        "reversed": ["conflict at home", "instability", "lack of support"]
+        "upright": [
+          "celebration",
+          "harmony",
+          "homecoming",
+          "community"
+        ],
+        "reversed": [
+          "conflict at home",
+          "instability",
+          "lack of support"
+        ]
       }
     },
     {
@@ -325,10 +559,19 @@
       "arcana": "minor",
       "suit": "wands",
       "number": 5,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/wands-05.webp",
       "meanings": {
-        "upright": ["competition", "conflict", "tension", "diversity"],
-        "reversed": ["avoidance of conflict", "compromise", "agreement"]
+        "upright": [
+          "competition",
+          "conflict",
+          "tension",
+          "diversity"
+        ],
+        "reversed": [
+          "avoidance of conflict",
+          "compromise",
+          "agreement"
+        ]
       }
     },
     {
@@ -337,10 +580,19 @@
       "arcana": "minor",
       "suit": "wands",
       "number": 6,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/wands-06.webp",
       "meanings": {
-        "upright": ["victory", "recognition", "success", "public acclaim"],
-        "reversed": ["ego", "fall from grace", "lack of recognition"]
+        "upright": [
+          "victory",
+          "recognition",
+          "success",
+          "public acclaim"
+        ],
+        "reversed": [
+          "ego",
+          "fall from grace",
+          "lack of recognition"
+        ]
       }
     },
     {
@@ -349,10 +601,19 @@
       "arcana": "minor",
       "suit": "wands",
       "number": 7,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/wands-07.webp",
       "meanings": {
-        "upright": ["perseverance", "defensiveness", "standing your ground", "challenge"],
-        "reversed": ["giving up", "overwhelm", "being overrun"]
+        "upright": [
+          "perseverance",
+          "defensiveness",
+          "standing your ground",
+          "challenge"
+        ],
+        "reversed": [
+          "giving up",
+          "overwhelm",
+          "being overrun"
+        ]
       }
     },
     {
@@ -361,10 +622,19 @@
       "arcana": "minor",
       "suit": "wands",
       "number": 8,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/wands-08.webp",
       "meanings": {
-        "upright": ["swift action", "movement", "quick decisions", "momentum"],
-        "reversed": ["delays", "frustration", "waiting"]
+        "upright": [
+          "swift action",
+          "movement",
+          "quick decisions",
+          "momentum"
+        ],
+        "reversed": [
+          "delays",
+          "frustration",
+          "waiting"
+        ]
       }
     },
     {
@@ -373,10 +643,19 @@
       "arcana": "minor",
       "suit": "wands",
       "number": 9,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/wands-09.webp",
       "meanings": {
-        "upright": ["resilience", "persistence", "last stand", "near completion"],
-        "reversed": ["exhaustion", "giving up", "paranoia"]
+        "upright": [
+          "resilience",
+          "persistence",
+          "last stand",
+          "near completion"
+        ],
+        "reversed": [
+          "exhaustion",
+          "giving up",
+          "paranoia"
+        ]
       }
     },
     {
@@ -385,10 +664,19 @@
       "arcana": "minor",
       "suit": "wands",
       "number": 10,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/wands-10.webp",
       "meanings": {
-        "upright": ["burden", "responsibility", "hard work", "overcommitment"],
-        "reversed": ["release", "delegation", "inability to delegate"]
+        "upright": [
+          "burden",
+          "responsibility",
+          "hard work",
+          "overcommitment"
+        ],
+        "reversed": [
+          "release",
+          "delegation",
+          "inability to delegate"
+        ]
       }
     },
     {
@@ -397,10 +685,19 @@
       "arcana": "minor",
       "suit": "wands",
       "number": 11,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/wands-11.webp",
       "meanings": {
-        "upright": ["enthusiasm", "exploration", "discovery", "free spirit"],
-        "reversed": ["setbacks", "lack of direction", "procrastination"]
+        "upright": [
+          "enthusiasm",
+          "exploration",
+          "discovery",
+          "free spirit"
+        ],
+        "reversed": [
+          "setbacks",
+          "lack of direction",
+          "procrastination"
+        ]
       }
     },
     {
@@ -409,10 +706,19 @@
       "arcana": "minor",
       "suit": "wands",
       "number": 12,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/wands-12.webp",
       "meanings": {
-        "upright": ["energy", "passion", "adventure", "impulsiveness"],
-        "reversed": ["haste", "scattered energy", "frustration"]
+        "upright": [
+          "energy",
+          "passion",
+          "adventure",
+          "impulsiveness"
+        ],
+        "reversed": [
+          "haste",
+          "scattered energy",
+          "frustration"
+        ]
       }
     },
     {
@@ -421,10 +727,19 @@
       "arcana": "minor",
       "suit": "wands",
       "number": 13,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/wands-13.webp",
       "meanings": {
-        "upright": ["confidence", "independence", "warmth", "determination"],
-        "reversed": ["selfishness", "jealousy", "insecurity"]
+        "upright": [
+          "confidence",
+          "independence",
+          "warmth",
+          "determination"
+        ],
+        "reversed": [
+          "selfishness",
+          "jealousy",
+          "insecurity"
+        ]
       }
     },
     {
@@ -433,10 +748,19 @@
       "arcana": "minor",
       "suit": "wands",
       "number": 14,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/wands-14.webp",
       "meanings": {
-        "upright": ["bold leadership", "vision", "entrepreneurship", "honor"],
-        "reversed": ["impulsiveness", "ruthlessness", "high expectations"]
+        "upright": [
+          "bold leadership",
+          "vision",
+          "entrepreneurship",
+          "honor"
+        ],
+        "reversed": [
+          "impulsiveness",
+          "ruthlessness",
+          "high expectations"
+        ]
       }
     },
     {
@@ -445,10 +769,19 @@
       "arcana": "minor",
       "suit": "cups",
       "number": 1,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/cups-01.webp",
       "meanings": {
-        "upright": ["new love", "compassion", "emotional awakening", "creativity"],
-        "reversed": ["emotional loss", "blocked feelings", "emptiness"]
+        "upright": [
+          "new love",
+          "compassion",
+          "emotional awakening",
+          "creativity"
+        ],
+        "reversed": [
+          "emotional loss",
+          "blocked feelings",
+          "emptiness"
+        ]
       }
     },
     {
@@ -457,10 +790,19 @@
       "arcana": "minor",
       "suit": "cups",
       "number": 2,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/cups-02.webp",
       "meanings": {
-        "upright": ["partnership", "unity", "mutual attraction", "connection"],
-        "reversed": ["imbalance", "broken communication", "tension"]
+        "upright": [
+          "partnership",
+          "unity",
+          "mutual attraction",
+          "connection"
+        ],
+        "reversed": [
+          "imbalance",
+          "broken communication",
+          "tension"
+        ]
       }
     },
     {
@@ -469,10 +811,19 @@
       "arcana": "minor",
       "suit": "cups",
       "number": 3,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/cups-03.webp",
       "meanings": {
-        "upright": ["celebration", "friendship", "community", "joy"],
-        "reversed": ["overindulgence", "gossip", "isolation"]
+        "upright": [
+          "celebration",
+          "friendship",
+          "community",
+          "joy"
+        ],
+        "reversed": [
+          "overindulgence",
+          "gossip",
+          "isolation"
+        ]
       }
     },
     {
@@ -481,10 +832,19 @@
       "arcana": "minor",
       "suit": "cups",
       "number": 4,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/cups-04.webp",
       "meanings": {
-        "upright": ["apathy", "contemplation", "disconnection", "re-evaluation"],
-        "reversed": ["awareness", "new perspective", "acceptance"]
+        "upright": [
+          "apathy",
+          "contemplation",
+          "disconnection",
+          "re-evaluation"
+        ],
+        "reversed": [
+          "awareness",
+          "new perspective",
+          "acceptance"
+        ]
       }
     },
     {
@@ -493,10 +853,19 @@
       "arcana": "minor",
       "suit": "cups",
       "number": 5,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/cups-05.webp",
       "meanings": {
-        "upright": ["grief", "loss", "regret", "disappointment"],
-        "reversed": ["acceptance", "moving on", "finding peace"]
+        "upright": [
+          "grief",
+          "loss",
+          "regret",
+          "disappointment"
+        ],
+        "reversed": [
+          "acceptance",
+          "moving on",
+          "finding peace"
+        ]
       }
     },
     {
@@ -505,10 +874,19 @@
       "arcana": "minor",
       "suit": "cups",
       "number": 6,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/cups-06.webp",
       "meanings": {
-        "upright": ["nostalgia", "childhood memories", "innocence", "generosity"],
-        "reversed": ["stuck in the past", "unrealistic ideals", "naivety"]
+        "upright": [
+          "nostalgia",
+          "childhood memories",
+          "innocence",
+          "generosity"
+        ],
+        "reversed": [
+          "stuck in the past",
+          "unrealistic ideals",
+          "naivety"
+        ]
       }
     },
     {
@@ -517,10 +895,19 @@
       "arcana": "minor",
       "suit": "cups",
       "number": 7,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/cups-07.webp",
       "meanings": {
-        "upright": ["fantasy", "illusion", "wishful thinking", "choices"],
-        "reversed": ["clarity", "alignment", "making a choice"]
+        "upright": [
+          "fantasy",
+          "illusion",
+          "wishful thinking",
+          "choices"
+        ],
+        "reversed": [
+          "clarity",
+          "alignment",
+          "making a choice"
+        ]
       }
     },
     {
@@ -529,10 +916,19 @@
       "arcana": "minor",
       "suit": "cups",
       "number": 8,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/cups-08.webp",
       "meanings": {
-        "upright": ["walking away", "disillusionment", "seeking truth", "letting go"],
-        "reversed": ["avoidance", "fear of change", "aimless drifting"]
+        "upright": [
+          "walking away",
+          "disillusionment",
+          "seeking truth",
+          "letting go"
+        ],
+        "reversed": [
+          "avoidance",
+          "fear of change",
+          "aimless drifting"
+        ]
       }
     },
     {
@@ -541,10 +937,19 @@
       "arcana": "minor",
       "suit": "cups",
       "number": 9,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/cups-09.webp",
       "meanings": {
-        "upright": ["contentment", "satisfaction", "wish fulfillment", "gratitude"],
-        "reversed": ["dissatisfaction", "greed", "materialism"]
+        "upright": [
+          "contentment",
+          "satisfaction",
+          "wish fulfillment",
+          "gratitude"
+        ],
+        "reversed": [
+          "dissatisfaction",
+          "greed",
+          "materialism"
+        ]
       }
     },
     {
@@ -553,10 +958,19 @@
       "arcana": "minor",
       "suit": "cups",
       "number": 10,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/cups-10.webp",
       "meanings": {
-        "upright": ["divine love", "harmony", "family happiness", "alignment"],
-        "reversed": ["broken family", "disconnection", "misaligned values"]
+        "upright": [
+          "divine love",
+          "harmony",
+          "family happiness",
+          "alignment"
+        ],
+        "reversed": [
+          "broken family",
+          "disconnection",
+          "misaligned values"
+        ]
       }
     },
     {
@@ -565,10 +979,19 @@
       "arcana": "minor",
       "suit": "cups",
       "number": 11,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/cups-11.webp",
       "meanings": {
-        "upright": ["creative opportunity", "curiosity", "intuitive message", "sensitivity"],
-        "reversed": ["emotional immaturity", "escapism", "insecurity"]
+        "upright": [
+          "creative opportunity",
+          "curiosity",
+          "intuitive message",
+          "sensitivity"
+        ],
+        "reversed": [
+          "emotional immaturity",
+          "escapism",
+          "insecurity"
+        ]
       }
     },
     {
@@ -577,10 +1000,19 @@
       "arcana": "minor",
       "suit": "cups",
       "number": 12,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/cups-12.webp",
       "meanings": {
-        "upright": ["romance", "charm", "imagination", "idealism"],
-        "reversed": ["moodiness", "unrealistic expectations", "jealousy"]
+        "upright": [
+          "romance",
+          "charm",
+          "imagination",
+          "idealism"
+        ],
+        "reversed": [
+          "moodiness",
+          "unrealistic expectations",
+          "jealousy"
+        ]
       }
     },
     {
@@ -589,10 +1021,19 @@
       "arcana": "minor",
       "suit": "cups",
       "number": 13,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/cups-13.webp",
       "meanings": {
-        "upright": ["compassion", "nurturing", "emotional security", "intuition"],
-        "reversed": ["co-dependency", "emotional manipulation", "insecurity"]
+        "upright": [
+          "compassion",
+          "nurturing",
+          "emotional security",
+          "intuition"
+        ],
+        "reversed": [
+          "co-dependency",
+          "emotional manipulation",
+          "insecurity"
+        ]
       }
     },
     {
@@ -601,10 +1042,19 @@
       "arcana": "minor",
       "suit": "cups",
       "number": 14,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/cups-14.webp",
       "meanings": {
-        "upright": ["emotional balance", "diplomacy", "generosity", "wisdom"],
-        "reversed": ["emotional manipulation", "moodiness", "coldness"]
+        "upright": [
+          "emotional balance",
+          "diplomacy",
+          "generosity",
+          "wisdom"
+        ],
+        "reversed": [
+          "emotional manipulation",
+          "moodiness",
+          "coldness"
+        ]
       }
     },
     {
@@ -613,10 +1063,19 @@
       "arcana": "minor",
       "suit": "swords",
       "number": 1,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/swords-01.webp",
       "meanings": {
-        "upright": ["clarity", "breakthrough", "new idea", "truth"],
-        "reversed": ["confusion", "misinformation", "brutality"]
+        "upright": [
+          "clarity",
+          "breakthrough",
+          "new idea",
+          "truth"
+        ],
+        "reversed": [
+          "confusion",
+          "misinformation",
+          "brutality"
+        ]
       }
     },
     {
@@ -625,10 +1084,19 @@
       "arcana": "minor",
       "suit": "swords",
       "number": 2,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/swords-02.webp",
       "meanings": {
-        "upright": ["indecision", "stalemate", "difficult choices", "avoidance"],
-        "reversed": ["information overload", "lesser of two evils", "no right choice"]
+        "upright": [
+          "indecision",
+          "stalemate",
+          "difficult choices",
+          "avoidance"
+        ],
+        "reversed": [
+          "information overload",
+          "lesser of two evils",
+          "no right choice"
+        ]
       }
     },
     {
@@ -637,10 +1105,19 @@
       "arcana": "minor",
       "suit": "swords",
       "number": 3,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/swords-03.webp",
       "meanings": {
-        "upright": ["heartbreak", "sorrow", "grief", "painful truth"],
-        "reversed": ["recovery", "forgiveness", "releasing pain"]
+        "upright": [
+          "heartbreak",
+          "sorrow",
+          "grief",
+          "painful truth"
+        ],
+        "reversed": [
+          "recovery",
+          "forgiveness",
+          "releasing pain"
+        ]
       }
     },
     {
@@ -649,10 +1126,19 @@
       "arcana": "minor",
       "suit": "swords",
       "number": 4,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/swords-04.webp",
       "meanings": {
-        "upright": ["rest", "recovery", "contemplation", "solitude"],
-        "reversed": ["restlessness", "burnout", "stagnation"]
+        "upright": [
+          "rest",
+          "recovery",
+          "contemplation",
+          "solitude"
+        ],
+        "reversed": [
+          "restlessness",
+          "burnout",
+          "stagnation"
+        ]
       }
     },
     {
@@ -661,10 +1147,19 @@
       "arcana": "minor",
       "suit": "swords",
       "number": 5,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/swords-05.webp",
       "meanings": {
-        "upright": ["conflict", "defeat", "winning at all costs", "hostility"],
-        "reversed": ["reconciliation", "making amends", "moving past conflict"]
+        "upright": [
+          "conflict",
+          "defeat",
+          "winning at all costs",
+          "hostility"
+        ],
+        "reversed": [
+          "reconciliation",
+          "making amends",
+          "moving past conflict"
+        ]
       }
     },
     {
@@ -673,10 +1168,19 @@
       "arcana": "minor",
       "suit": "swords",
       "number": 6,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/swords-06.webp",
       "meanings": {
-        "upright": ["transition", "moving on", "leaving behind", "mental clarity"],
-        "reversed": ["emotional baggage", "unresolved issues", "resistance to change"]
+        "upright": [
+          "transition",
+          "moving on",
+          "leaving behind",
+          "mental clarity"
+        ],
+        "reversed": [
+          "emotional baggage",
+          "unresolved issues",
+          "resistance to change"
+        ]
       }
     },
     {
@@ -685,10 +1189,19 @@
       "arcana": "minor",
       "suit": "swords",
       "number": 7,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/swords-07.webp",
       "meanings": {
-        "upright": ["deception", "strategy", "cunning", "stealth"],
-        "reversed": ["coming clean", "conscience", "exposure"]
+        "upright": [
+          "deception",
+          "strategy",
+          "cunning",
+          "stealth"
+        ],
+        "reversed": [
+          "coming clean",
+          "conscience",
+          "exposure"
+        ]
       }
     },
     {
@@ -697,10 +1210,19 @@
       "arcana": "minor",
       "suit": "swords",
       "number": 8,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/swords-08.webp",
       "meanings": {
-        "upright": ["imprisonment", "restriction", "self-limiting beliefs", "helplessness"],
-        "reversed": ["self-acceptance", "new perspective", "freedom"]
+        "upright": [
+          "imprisonment",
+          "restriction",
+          "self-limiting beliefs",
+          "helplessness"
+        ],
+        "reversed": [
+          "self-acceptance",
+          "new perspective",
+          "freedom"
+        ]
       }
     },
     {
@@ -709,10 +1231,19 @@
       "arcana": "minor",
       "suit": "swords",
       "number": 9,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/swords-09.webp",
       "meanings": {
-        "upright": ["anxiety", "nightmares", "worry", "despair"],
-        "reversed": ["hope", "reaching out", "overcoming fear"]
+        "upright": [
+          "anxiety",
+          "nightmares",
+          "worry",
+          "despair"
+        ],
+        "reversed": [
+          "hope",
+          "reaching out",
+          "overcoming fear"
+        ]
       }
     },
     {
@@ -721,10 +1252,19 @@
       "arcana": "minor",
       "suit": "swords",
       "number": 10,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/swords-10.webp",
       "meanings": {
-        "upright": ["painful ending", "rock bottom", "betrayal", "loss"],
-        "reversed": ["recovery", "regeneration", "resisting an inevitable end"]
+        "upright": [
+          "painful ending",
+          "rock bottom",
+          "betrayal",
+          "loss"
+        ],
+        "reversed": [
+          "recovery",
+          "regeneration",
+          "resisting an inevitable end"
+        ]
       }
     },
     {
@@ -733,10 +1273,19 @@
       "arcana": "minor",
       "suit": "swords",
       "number": 11,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/swords-11.webp",
       "meanings": {
-        "upright": ["curiosity", "mental agility", "new ideas", "thirst for knowledge"],
-        "reversed": ["deception", "manipulation", "all talk no action"]
+        "upright": [
+          "curiosity",
+          "mental agility",
+          "new ideas",
+          "thirst for knowledge"
+        ],
+        "reversed": [
+          "deception",
+          "manipulation",
+          "all talk no action"
+        ]
       }
     },
     {
@@ -745,10 +1294,19 @@
       "arcana": "minor",
       "suit": "swords",
       "number": 12,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/swords-12.webp",
       "meanings": {
-        "upright": ["ambition", "determination", "swift action", "intellectual"],
-        "reversed": ["impatience", "recklessness", "unfocused energy"]
+        "upright": [
+          "ambition",
+          "determination",
+          "swift action",
+          "intellectual"
+        ],
+        "reversed": [
+          "impatience",
+          "recklessness",
+          "unfocused energy"
+        ]
       }
     },
     {
@@ -757,10 +1315,19 @@
       "arcana": "minor",
       "suit": "swords",
       "number": 13,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/swords-13.webp",
       "meanings": {
-        "upright": ["clear thinking", "independence", "direct communication", "perceptive"],
-        "reversed": ["coldness", "cruelty", "bitterness"]
+        "upright": [
+          "clear thinking",
+          "independence",
+          "direct communication",
+          "perceptive"
+        ],
+        "reversed": [
+          "coldness",
+          "cruelty",
+          "bitterness"
+        ]
       }
     },
     {
@@ -769,10 +1336,19 @@
       "arcana": "minor",
       "suit": "swords",
       "number": 14,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/swords-14.webp",
       "meanings": {
-        "upright": ["intellectual power", "authority", "truth", "clear judgment"],
-        "reversed": ["manipulation", "tyranny", "abuse of power"]
+        "upright": [
+          "intellectual power",
+          "authority",
+          "truth",
+          "clear judgment"
+        ],
+        "reversed": [
+          "manipulation",
+          "tyranny",
+          "abuse of power"
+        ]
       }
     },
     {
@@ -781,10 +1357,19 @@
       "arcana": "minor",
       "suit": "pentacles",
       "number": 1,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/pentacles-01.webp",
       "meanings": {
-        "upright": ["new financial opportunity", "prosperity", "abundance", "security"],
-        "reversed": ["lost opportunity", "scarcity", "instability"]
+        "upright": [
+          "new financial opportunity",
+          "prosperity",
+          "abundance",
+          "security"
+        ],
+        "reversed": [
+          "lost opportunity",
+          "scarcity",
+          "instability"
+        ]
       }
     },
     {
@@ -793,10 +1378,19 @@
       "arcana": "minor",
       "suit": "pentacles",
       "number": 2,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/pentacles-02.webp",
       "meanings": {
-        "upright": ["balance", "adaptability", "juggling priorities", "flexibility"],
-        "reversed": ["overwhelm", "disorganization", "financial loss"]
+        "upright": [
+          "balance",
+          "adaptability",
+          "juggling priorities",
+          "flexibility"
+        ],
+        "reversed": [
+          "overwhelm",
+          "disorganization",
+          "financial loss"
+        ]
       }
     },
     {
@@ -805,10 +1399,19 @@
       "arcana": "minor",
       "suit": "pentacles",
       "number": 3,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/pentacles-03.webp",
       "meanings": {
-        "upright": ["teamwork", "collaboration", "craftsmanship", "learning"],
-        "reversed": ["lack of teamwork", "poor quality", "misalignment"]
+        "upright": [
+          "teamwork",
+          "collaboration",
+          "craftsmanship",
+          "learning"
+        ],
+        "reversed": [
+          "lack of teamwork",
+          "poor quality",
+          "misalignment"
+        ]
       }
     },
     {
@@ -817,10 +1420,19 @@
       "arcana": "minor",
       "suit": "pentacles",
       "number": 4,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/pentacles-04.webp",
       "meanings": {
-        "upright": ["security", "conservation", "control", "possessiveness"],
-        "reversed": ["greed", "materialism", "self-protection"]
+        "upright": [
+          "security",
+          "conservation",
+          "control",
+          "possessiveness"
+        ],
+        "reversed": [
+          "greed",
+          "materialism",
+          "self-protection"
+        ]
       }
     },
     {
@@ -829,10 +1441,19 @@
       "arcana": "minor",
       "suit": "pentacles",
       "number": 5,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/pentacles-05.webp",
       "meanings": {
-        "upright": ["hardship", "financial loss", "poverty", "isolation"],
-        "reversed": ["recovery", "charity", "improvement"]
+        "upright": [
+          "hardship",
+          "financial loss",
+          "poverty",
+          "isolation"
+        ],
+        "reversed": [
+          "recovery",
+          "charity",
+          "improvement"
+        ]
       }
     },
     {
@@ -841,10 +1462,19 @@
       "arcana": "minor",
       "suit": "pentacles",
       "number": 6,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/pentacles-06.webp",
       "meanings": {
-        "upright": ["generosity", "charity", "giving and receiving", "sharing wealth"],
-        "reversed": ["strings attached", "debt", "selfishness"]
+        "upright": [
+          "generosity",
+          "charity",
+          "giving and receiving",
+          "sharing wealth"
+        ],
+        "reversed": [
+          "strings attached",
+          "debt",
+          "selfishness"
+        ]
       }
     },
     {
@@ -853,10 +1483,19 @@
       "arcana": "minor",
       "suit": "pentacles",
       "number": 7,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/pentacles-07.webp",
       "meanings": {
-        "upright": ["patience", "long-term investment", "perseverance", "reward"],
-        "reversed": ["impatience", "lack of reward", "wasted effort"]
+        "upright": [
+          "patience",
+          "long-term investment",
+          "perseverance",
+          "reward"
+        ],
+        "reversed": [
+          "impatience",
+          "lack of reward",
+          "wasted effort"
+        ]
       }
     },
     {
@@ -865,10 +1504,19 @@
       "arcana": "minor",
       "suit": "pentacles",
       "number": 8,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/pentacles-08.webp",
       "meanings": {
-        "upright": ["diligence", "skill development", "mastery", "dedication"],
-        "reversed": ["perfectionism", "lack of motivation", "misdirected effort"]
+        "upright": [
+          "diligence",
+          "skill development",
+          "mastery",
+          "dedication"
+        ],
+        "reversed": [
+          "perfectionism",
+          "lack of motivation",
+          "misdirected effort"
+        ]
       }
     },
     {
@@ -877,10 +1525,19 @@
       "arcana": "minor",
       "suit": "pentacles",
       "number": 9,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/pentacles-09.webp",
       "meanings": {
-        "upright": ["luxury", "self-sufficiency", "financial independence", "discipline"],
-        "reversed": ["overinvestment in work", "superficiality", "hustling"]
+        "upright": [
+          "luxury",
+          "self-sufficiency",
+          "financial independence",
+          "discipline"
+        ],
+        "reversed": [
+          "overinvestment in work",
+          "superficiality",
+          "hustling"
+        ]
       }
     },
     {
@@ -889,10 +1546,19 @@
       "arcana": "minor",
       "suit": "pentacles",
       "number": 10,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/pentacles-10.webp",
       "meanings": {
-        "upright": ["wealth", "inheritance", "family legacy", "long-term success"],
-        "reversed": ["financial failure", "family disputes", "instability"]
+        "upright": [
+          "wealth",
+          "inheritance",
+          "family legacy",
+          "long-term success"
+        ],
+        "reversed": [
+          "financial failure",
+          "family disputes",
+          "instability"
+        ]
       }
     },
     {
@@ -901,10 +1567,19 @@
       "arcana": "minor",
       "suit": "pentacles",
       "number": 11,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/pentacles-11.webp",
       "meanings": {
-        "upright": ["ambition", "desire to learn", "new venture", "opportunity"],
-        "reversed": ["lack of progress", "procrastination", "unfocused"]
+        "upright": [
+          "ambition",
+          "desire to learn",
+          "new venture",
+          "opportunity"
+        ],
+        "reversed": [
+          "lack of progress",
+          "procrastination",
+          "unfocused"
+        ]
       }
     },
     {
@@ -913,10 +1588,19 @@
       "arcana": "minor",
       "suit": "pentacles",
       "number": 12,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/pentacles-12.webp",
       "meanings": {
-        "upright": ["hard work", "reliability", "routine", "efficiency"],
-        "reversed": ["laziness", "obsessiveness", "boredom"]
+        "upright": [
+          "hard work",
+          "reliability",
+          "routine",
+          "efficiency"
+        ],
+        "reversed": [
+          "laziness",
+          "obsessiveness",
+          "boredom"
+        ]
       }
     },
     {
@@ -925,10 +1609,19 @@
       "arcana": "minor",
       "suit": "pentacles",
       "number": 13,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/pentacles-13.webp",
       "meanings": {
-        "upright": ["practicality", "nurturing", "financial security", "warmth"],
-        "reversed": ["self-centeredness", "jealousy", "smothering"]
+        "upright": [
+          "practicality",
+          "nurturing",
+          "financial security",
+          "warmth"
+        ],
+        "reversed": [
+          "self-centeredness",
+          "jealousy",
+          "smothering"
+        ]
       }
     },
     {
@@ -937,10 +1630,19 @@
       "arcana": "minor",
       "suit": "pentacles",
       "number": 14,
-      "imagePath": "assets/images/placeholder.png",
+      "imagePath": "assets/images/rws/pentacles-14.webp",
       "meanings": {
-        "upright": ["abundance", "prosperity", "security", "discipline"],
-        "reversed": ["greed", "indulgence", "materialism"]
+        "upright": [
+          "abundance",
+          "prosperity",
+          "security",
+          "discipline"
+        ],
+        "reversed": [
+          "greed",
+          "indulgence",
+          "materialism"
+        ]
       }
     }
   ]
