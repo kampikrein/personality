@@ -96,6 +96,19 @@ class PersonalityApp extends ConsumerWidget {
         damping: damping,
       ),
       routerConfig: router,
+      builder: (context, child) {
+        final top = MediaQuery.of(context).padding.top + 8;
+        return Stack(
+          children: [
+            child!,
+            Positioned(
+              right: 8,
+              top: top,
+              child: const SpringDebugPanel(),
+            ),
+          ],
+        );
+      },
     );
   }
 }
