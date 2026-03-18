@@ -21,14 +21,28 @@ Future<void> main() async {
   );
 }
 
+class _FastBouncePhysics extends BouncingScrollPhysics {
+  const _FastBouncePhysics({super.parent})
+      : super(decelerationRate: ScrollDecelerationRate.fast);
+
+  // 기본 spring(stiffness:100, damping:1.1)의 복원 시간을 1/3로 축소.
+  // T ∝ 1/√k 이므로 stiffness 9배 → 시간 1/3.
+  @override
+  SpringDescription get spring =>
+      const SpringDescription(mass: 0.5, stiffness: 900.0, damping: 3.3);
+
+  @override
+  _FastBouncePhysics applyTo(ScrollPhysics? ancestor) {
+    return _FastBouncePhysics(parent: buildParent(ancestor));
+  }
+}
+
 class _SubtleBounceScrollBehavior extends MaterialScrollBehavior {
   const _SubtleBounceScrollBehavior();
 
   @override
   ScrollPhysics getScrollPhysics(BuildContext context) {
-    return const BouncingScrollPhysics(
-      decelerationRate: ScrollDecelerationRate.fast,
-    );
+    return const _FastBouncePhysics();
   }
 }
 
