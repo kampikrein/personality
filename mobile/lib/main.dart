@@ -146,8 +146,8 @@ class _SpringDebugPanelState extends ConsumerState<SpringDebugPanel> {
     }
 
     return Container(
-      width: 280,
-      padding: const EdgeInsets.all(12),
+      width: 260,
+      padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         color: Colors.black87,
         borderRadius: BorderRadius.circular(12),
@@ -189,6 +189,7 @@ class _SpringDebugPanelState extends ConsumerState<SpringDebugPanel> {
     double max,
     StateProvider<double> provider,
   ) {
+    final fraction = ((value - min) / (max - min)).clamp(0.0, 1.0);
     return Row(
       children: [
         SizedBox(
@@ -200,21 +201,46 @@ class _SpringDebugPanelState extends ConsumerState<SpringDebugPanel> {
           ),
         ),
         Expanded(
-          child: SliderTheme(
-            data: SliderThemeData(
-              trackHeight: 2,
-              thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 6),
-              overlayShape: const RoundSliderOverlayShape(overlayRadius: 12),
-              activeTrackColor: Colors.tealAccent.withValues(alpha: 0.7),
-              thumbColor: Colors.tealAccent,
-              inactiveTrackColor: Colors.white24,
-            ),
-            child: Slider(
-              value: value.clamp(min, max),
-              min: min,
-              max: max,
-              onChanged: (v) => ref.read(provider.notifier).state = v,
-            ),
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              final w = constraints.maxWidth;
+              void updateValue(double dx) {
+                final f = (dx / w).clamp(0.0, 1.0);
+                ref.read(provider.notifier).state = min + (max - min) * f;
+              }
+
+              return GestureDetector(
+                onHorizontalDragUpdate: (d) => updateValue(d.localPosition.dx),
+                onTapDown: (d) => updateValue(d.localPosition.dx),
+                child: SizedBox(
+                  height: 24,
+                  child: Stack(
+                    alignment: Alignment.centerLeft,
+                    children: [
+                      Container(height: 2, color: Colors.white24),
+                      FractionallySizedBox(
+                        widthFactor: fraction,
+                        child: Container(
+                          height: 2,
+                          color: Colors.tealAccent.withValues(alpha: 0.7),
+                        ),
+                      ),
+                      Positioned(
+                        left: (fraction * w - 6).clamp(0.0, w - 12),
+                        child: Container(
+                          width: 12,
+                          height: 12,
+                          decoration: const BoxDecoration(
+                            color: Colors.tealAccent,
+                            shape: BoxShape.circle,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
           ),
         ),
       ],
