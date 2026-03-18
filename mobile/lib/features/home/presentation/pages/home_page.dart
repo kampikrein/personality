@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../../deck/presentation/providers/deck_providers.dart';
 import '../../../reading/domain/entities/spread_type.dart';
 import '../../../reading/presentation/providers/reading_providers.dart';
+import '../../../../main.dart';
 import '../../../shuffle/presentation/providers/shuffle_providers.dart';
 
 class HomePage extends ConsumerStatefulWidget {
@@ -36,7 +37,9 @@ class _HomePageState extends ConsumerState<HomePage> {
     final theme = Theme.of(context);
 
     return Scaffold(
-      body: Container(
+      body: Stack(
+        children: [
+          Container(
         decoration: const BoxDecoration(
           gradient: RadialGradient(
             center: Alignment(0, -0.3),
@@ -121,6 +124,13 @@ class _HomePageState extends ConsumerState<HomePage> {
             ),
           ),
         ),
+      ),
+          const Positioned(
+            right: 8,
+            top: 48,
+            child: SpringDebugPanel(),
+          ),
+        ],
       ),
     );
   }
