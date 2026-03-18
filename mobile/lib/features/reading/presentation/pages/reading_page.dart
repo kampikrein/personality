@@ -13,15 +13,16 @@ import '../providers/reading_providers.dart';
 import '../widgets/spread_layout.dart';
 
 class ReadingPage extends ConsumerStatefulWidget {
-  const ReadingPage({super.key, required this.deckId});
+  const ReadingPage({super.key, required this.deckId, this.spreadType = SpreadType.single});
   final String deckId;
+  final SpreadType spreadType;
 
   @override
   ConsumerState<ReadingPage> createState() => _ReadingPageState();
 }
 
 class _ReadingPageState extends ConsumerState<ReadingPage> {
-  final _spreadType = SpreadType.single;
+  late final _spreadType = widget.spreadType;
   final Set<int> _revealedPositions = {};
 
   @override

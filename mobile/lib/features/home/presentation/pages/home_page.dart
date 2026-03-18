@@ -3,7 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../deck/presentation/providers/deck_providers.dart';
+import '../../../reading/domain/entities/spread_type.dart';
 import '../../../reading/presentation/providers/reading_providers.dart';
+import '../../../shuffle/presentation/providers/shuffle_providers.dart';
 
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
@@ -60,8 +62,21 @@ class _HomePageState extends ConsumerState<HomePage> {
                 const SizedBox(height: 24),
                 SizedBox(
                   height: 56,
+                  child: FilledButton.icon(
+                    onPressed: _initialized ? () => _quickDraw(context) : null,
+                    icon: const Icon(Icons.style, size: 20),
+                    label: const Text('바로 뽑기',
+                        style: TextStyle(fontSize: 18)),
+                  ),
+                ),
+                const SizedBox(height: 12),
+                SizedBox(
+                  height: 56,
                   child: ElevatedButton(
-                    onPressed: () => context.pushNamed('deck'),
+                    onPressed: () => context.pushNamed(
+                      'shuffle',
+                      pathParameters: {'deckId': 'rws-standard'},
+                    ),
                     child: const Text('셔플 시작',
                         style: TextStyle(fontSize: 18)),
                   ),
@@ -107,6 +122,24 @@ class _HomePageState extends ConsumerState<HomePage> {
           ),
         ),
       ),
+    );
+  }
+
+  Future<void> _quickDraw(BuildContext context) async {
+    const deckId = 'rws-standard';
+    final cards = await ref.read(deckCardsProvider(deckId).future);
+
+    final useCase = ref.read(shuffleDeckUseCaseProvider);
+    final strategy = ref.read(shuffleStrategyProvider);
+    final result = useCase.execute(cards: cards, strategy: strategy);
+
+    ref.read(shuffleStateProvider.notifier).setResult(result);
+
+    if (!context.mounted) return;
+    await context.pushNamed(
+      'reading',
+      pathParameters: {'deckId': deckId},
+      extra: SpreadType.threeCard,
     );
   }
 

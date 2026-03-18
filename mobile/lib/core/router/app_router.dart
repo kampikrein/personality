@@ -6,6 +6,7 @@ import '../../features/home/presentation/pages/home_page.dart';
 import '../../features/deck/presentation/pages/deck_selection_page.dart';
 import '../../features/shuffle/presentation/pages/intention_page.dart';
 import '../../features/shuffle/presentation/pages/shuffle_page.dart';
+import '../../features/reading/domain/entities/spread_type.dart';
 import '../../features/reading/presentation/pages/reading_page.dart';
 
 part 'app_router.g.dart';
@@ -63,8 +64,11 @@ GoRouter appRouter(AppRouterRef ref) {
         name: 'reading',
         pageBuilder: (context, state) {
           final deckId = state.pathParameters['deckId']!;
+          final spreadType =
+              state.extra as SpreadType? ?? SpreadType.single;
           return _fadePage(
-              key: state.pageKey, child: ReadingPage(deckId: deckId));
+              key: state.pageKey,
+              child: ReadingPage(deckId: deckId, spreadType: spreadType));
         },
       ),
     ],
