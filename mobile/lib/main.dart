@@ -21,6 +21,17 @@ Future<void> main() async {
   );
 }
 
+class _SubtleBounceScrollBehavior extends MaterialScrollBehavior {
+  const _SubtleBounceScrollBehavior();
+
+  @override
+  ScrollPhysics getScrollPhysics(BuildContext context) {
+    return const BouncingScrollPhysics(
+      decelerationRate: ScrollDecelerationRate.fast,
+    );
+  }
+}
+
 class PersonalityApp extends ConsumerWidget {
   const PersonalityApp({super.key});
 
@@ -30,6 +41,7 @@ class PersonalityApp extends ConsumerWidget {
     return MaterialApp.router(
       title: 'Personality Tarot',
       theme: AppTheme.darkTheme,
+      scrollBehavior: const _SubtleBounceScrollBehavior(),
       routerConfig: router,
     );
   }
