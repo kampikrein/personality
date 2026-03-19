@@ -45,7 +45,7 @@ class _HomePageState extends ConsumerState<HomePage> {
     final theme = Theme.of(context);
 
     if (kDebugMode) {
-      ref.read(devTunerRegistryProvider.notifier).registerIfAbsent('home', [
+      ref.read(devTunerRegistryProvider).registerIfAbsent('home', [
         TunableDouble(label: 'gradCenterY', provider: homeGradientCenterYProvider, min: -1.0, max: 1.0, step: 0.1),
         TunableDouble(label: 'gradRadius', provider: homeGradientRadiusProvider, min: 0.5, max: 3.0, step: 0.1),
         TunableDouble(label: 'btnHeight', provider: homeButtonHeightProvider, min: 40, max: 72, step: 4),

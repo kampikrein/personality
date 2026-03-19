@@ -39,7 +39,7 @@ class _ReadingPageState extends ConsumerState<ReadingPage> {
     final theme = Theme.of(context);
 
     if (kDebugMode) {
-      ref.read(devTunerRegistryProvider.notifier).registerIfAbsent('reading', [
+      ref.read(devTunerRegistryProvider).registerIfAbsent('reading', [
         TunableDouble(label: 'cardHeight%', provider: readingCardHeightFactorProvider, min: 0.3, max: 0.7, step: 0.05),
         TunableDouble(label: 'padding', provider: readingContentPaddingProvider, min: 8, max: 32, step: 4),
       ]);

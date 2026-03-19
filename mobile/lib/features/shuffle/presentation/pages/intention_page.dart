@@ -44,7 +44,7 @@ class _IntentionPageState extends ConsumerState<IntentionPage> {
     final theme = Theme.of(context);
 
     if (kDebugMode) {
-      ref.read(devTunerRegistryProvider.notifier).registerIfAbsent('intention', [
+      ref.read(devTunerRegistryProvider).registerIfAbsent('intention', [
         TunableDouble(label: 'iconSize', provider: intentionIconSizeProvider, min: 32, max: 72, step: 4),
         TunableDouble(label: 'padding', provider: intentionPaddingProvider, min: 12, max: 48, step: 4),
       ]);

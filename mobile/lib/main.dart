@@ -94,7 +94,7 @@ class PersonalityApp extends ConsumerWidget {
     // Dev Tuner: 스프링 변수 등록 (debug only)
     if (kDebugMode) {
       ref
-          .read(devTunerRegistryProvider.notifier)
+          .read(devTunerRegistryProvider)
           .registerIfAbsent('global', [
         TunableDouble(
             label: 'mass',

@@ -45,10 +45,7 @@ class _DevTunerOverlayState extends ConsumerState<DevTunerOverlay> {
 
   @override
   Widget build(BuildContext context) {
-    // Watch registry so we rebuild when vars are registered
-    ref.watch(devTunerRegistryProvider);
-    final vars =
-        ref.read(devTunerRegistryProvider.notifier).varsFor(_currentRoute);
+    final vars = ref.read(devTunerRegistryProvider).varsFor(_currentRoute);
     final size = MediaQuery.of(context).size;
     final bottomPadding = MediaQuery.of(context).padding.bottom;
 

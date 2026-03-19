@@ -19,7 +19,7 @@ class DeckSelectionPage extends ConsumerWidget {
     final theme = Theme.of(context);
 
     if (kDebugMode) {
-      ref.read(devTunerRegistryProvider.notifier).registerIfAbsent('deck', [
+      ref.read(devTunerRegistryProvider).registerIfAbsent('deck', [
         TunableDouble(label: 'listPad', provider: deckListPaddingProvider, min: 8, max: 32, step: 4),
       ]);
     }
