@@ -99,6 +99,7 @@ class _ReadingPageState extends ConsumerState<ReadingPage> {
               child: SpreadLayout(
                 spreadType: _spreadType,
                 cards: drawnCards,
+                deckId: widget.deckId,
                 revealedPositions: _revealedPositions,
                 onCardTap: (position) {
                   setState(() => _revealedPositions.add(position));

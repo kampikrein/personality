@@ -9,6 +9,7 @@ class CardRevealWidget extends StatefulWidget {
   const CardRevealWidget({
     super.key,
     required this.card,
+    required this.deckId,
     required this.position,
     required this.label,
     required this.isRevealed,
@@ -16,6 +17,7 @@ class CardRevealWidget extends StatefulWidget {
   });
 
   final ShuffledCard card;
+  final String deckId;
   final int position;
   final String label;
   final bool isRevealed;
@@ -113,21 +115,30 @@ class _CardRevealWidgetState extends State<CardRevealWidget>
   }
 
   Widget _buildBack(ThemeData theme) {
-    return AspectRatio(
-      aspectRatio: 2.5 / 3.5,
-      child: Container(
-        decoration: BoxDecoration(
-          color: const Color(0xFF2D1B4E),
-          borderRadius: BorderRadius.circular(8),
-          border: Border.all(color: theme.colorScheme.primary, width: 1.5),
-        ),
-        child: Center(
-          child: Icon(Icons.auto_awesome,
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final pixelRatio = MediaQuery.of(context).devicePixelRatio;
+        final cacheW = (constraints.maxWidth * pixelRatio).toInt().clamp(1, 1024);
+        return AspectRatio(
+          aspectRatio: 2.5 / 3.5,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: Image.asset(
+              'assets/images/${widget.deckId}/card_back.webp',
+              cacheWidth: cacheW,
+              fit: BoxFit.cover,
               semanticLabel: '카드 뒷면',
-              color: theme.colorScheme.primary,
-              size: 32),
-        ),
-      ),
+              errorBuilder: (_, __, ___) => Container(
+                color: const Color(0xFF2D1B4E),
+                child: Center(
+                  child: Icon(Icons.auto_awesome,
+                      color: theme.colorScheme.primary, size: 32),
+                ),
+              ),
+            ),
+          ),
+        );
+      },
     );
   }
 
@@ -135,35 +146,72 @@ class _CardRevealWidgetState extends State<CardRevealWidget>
     return Transform(
       alignment: Alignment.center,
       transform: Matrix4.identity()..rotateY(math.pi),
-      child: AspectRatio(
-        aspectRatio: 2.5 / 3.5,
-        child: Container(
-          decoration: BoxDecoration(
-            color: const Color(0xFF1A1028),
-            borderRadius: BorderRadius.circular(8),
-            border: Border.all(color: theme.colorScheme.primary, width: 1.5),
-          ),
-          padding: const EdgeInsets.all(8),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                widget.card.card.name,
-                style: theme.textTheme.bodyLarge?.copyWith(
-                  color: theme.colorScheme.primary,
-                  fontWeight: FontWeight.bold,
-                ),
-                textAlign: TextAlign.center,
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final pixelRatio = MediaQuery.of(context).devicePixelRatio;
+          final cacheW = (constraints.maxWidth * pixelRatio).toInt().clamp(1, 1024);
+          return AspectRatio(
+            aspectRatio: 2.5 / 3.5,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Stack(
+                fit: StackFit.expand,
+                children: [
+                  // 카드 앞면 이미지
+                  Image.asset(
+                    widget.card.card.imagePath,
+                    cacheWidth: cacheW,
+                    fit: BoxFit.cover,
+                    semanticLabel: widget.card.card.name,
+                    errorBuilder: (_, __, ___) => Container(
+                      color: const Color(0xFF1A1028),
+                      child: Center(
+                        child: Text(
+                          widget.card.card.name,
+                          style: theme.textTheme.bodyLarge?.copyWith(
+                            color: theme.colorScheme.primary,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                  ),
+                  // 카드 이름 오버레이 (하단)
+                  Positioned(
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 6),
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.bottomCenter,
+                          end: Alignment.topCenter,
+                          colors: [
+                            Colors.black.withValues(alpha: 0.7),
+                            Colors.transparent,
+                          ],
+                        ),
+                      ),
+                      child: Text(
+                        widget.card.card.name,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 11,
+                          fontWeight: FontWeight.w600,
+                        ),
+                        textAlign: TextAlign.center,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                  ),
+                ],
               ),
-              const SizedBox(height: 8),
-              Text(
-                widget.card.card.meanings.upright.take(2).join(', '),
-                style: theme.textTheme.bodyMedium,
-                textAlign: TextAlign.center,
-              ),
-            ],
-          ),
-        ),
+            ),
+          );
+        },
       ),
     );
   }

@@ -49,9 +49,18 @@ class _ShufflePageState extends ConsumerState<ShufflePage> {
     });
   }
 
-  void _goToReading() {
+  Future<void> _goToReading() async {
     ref.read(hapticServiceProvider).mediumImpact();
-    context.pushNamed(
+
+    // 덱 카드 로드 + 셔플 실행
+    final cards = await ref.read(deckCardsProvider(widget.deckId).future);
+    final useCase = ref.read(shuffleDeckUseCaseProvider);
+    final strategy = ref.read(shuffleStrategyProvider);
+    final result = useCase.execute(cards: cards, strategy: strategy);
+    ref.read(shuffleStateProvider.notifier).setResult(result);
+
+    if (!mounted) return;
+    await context.pushNamed(
       'reading',
       pathParameters: {'deckId': widget.deckId},
     );

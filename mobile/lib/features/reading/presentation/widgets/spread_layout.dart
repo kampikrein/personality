@@ -9,12 +9,14 @@ class SpreadLayout extends StatelessWidget {
     super.key,
     required this.spreadType,
     required this.cards,
+    required this.deckId,
     required this.revealedPositions,
     required this.onCardTap,
   });
 
   final SpreadType spreadType;
   final List<ShuffledCard> cards;
+  final String deckId;
   final Set<int> revealedPositions;
   final ValueChanged<int> onCardTap;
 
@@ -30,6 +32,7 @@ class SpreadLayout extends StatelessWidget {
     return Center(
       child: CardRevealWidget(
         card: cards[0],
+        deckId: deckId,
         position: 0,
         label: spreadType.positions[0],
         isRevealed: revealedPositions.contains(0),
@@ -47,6 +50,7 @@ class SpreadLayout extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 8),
             child: CardRevealWidget(
               card: cards[i],
+              deckId: deckId,
               position: i,
               label: spreadType.positions[i],
               isRevealed: revealedPositions.contains(i),
