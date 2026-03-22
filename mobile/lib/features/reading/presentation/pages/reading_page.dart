@@ -54,9 +54,11 @@ class _ReadingPageState extends ConsumerState<ReadingPage> {
       );
     }
 
-    final drawnCards =
-        shuffleResult.cards.take(_spreadType.cardCount).toList();
-    final allRevealed = _revealedPositions.length == _spreadType.cardCount;
+    final cardCount = _spreadType == SpreadType.custom
+        ? shuffleResult.cards.length
+        : _spreadType.cardCount;
+    final drawnCards = shuffleResult.cards.take(cardCount).toList();
+    final allRevealed = _revealedPositions.length == cardCount;
 
     return Scaffold(
       appBar: AppBar(
@@ -118,42 +120,7 @@ class _ReadingPageState extends ConsumerState<ReadingPage> {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 12),
-              for (var i = 0; i < drawnCards.length; i++) ...[
-                Container(
-                  padding: const EdgeInsets.all(12),
-                  margin: const EdgeInsets.only(bottom: 12),
-                  decoration: BoxDecoration(
-                    color: theme.colorScheme.surface,
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        '${_spreadType.positions[i]}: ${drawnCards[i].card.name}',
-                        style: theme.textTheme.bodyMedium?.copyWith(
-                          color: theme.colorScheme.primary,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        _spreadType.guidances[i],
-                        style: TextStyle(
-                          color: theme.colorScheme.secondary,
-                          fontSize: 12,
-                          fontStyle: FontStyle.italic,
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      Text(
-                        ReflectivePrompts.getPrompt(drawnCards[i].card.cardId),
-                        style: theme.textTheme.bodyMedium,
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+              ..._buildReflectionCards(drawnCards, theme),
             ],
 
             // 안전 고지
@@ -171,6 +138,52 @@ class _ReadingPageState extends ConsumerState<ReadingPage> {
         ),
       ),
     );
+  }
+
+  List<Widget> _buildReflectionCards(
+      List<ShuffledCard> drawnCards, ThemeData theme) {
+    final resolvedPositions =
+        _spreadType.resolvePositions(drawnCards.length);
+    final resolvedGuidances =
+        _spreadType.resolveGuidances(drawnCards.length);
+
+    return [
+      for (var i = 0; i < drawnCards.length; i++)
+        Container(
+          padding: const EdgeInsets.all(12),
+          margin: const EdgeInsets.only(bottom: 12),
+          decoration: BoxDecoration(
+            color: theme.colorScheme.surface,
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                '${resolvedPositions[i]}: ${drawnCards[i].card.name}',
+                style: theme.textTheme.bodyMedium?.copyWith(
+                  color: theme.colorScheme.primary,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                resolvedGuidances[i],
+                style: TextStyle(
+                  color: theme.colorScheme.secondary,
+                  fontSize: 12,
+                  fontStyle: FontStyle.italic,
+                ),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                ReflectivePrompts.getPrompt(drawnCards[i].card.cardId),
+                style: theme.textTheme.bodyMedium,
+              ),
+            ],
+          ),
+        ),
+    ];
   }
 
   Future<void> _saveReading(

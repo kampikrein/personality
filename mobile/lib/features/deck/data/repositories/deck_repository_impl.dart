@@ -93,6 +93,9 @@ class DeckRepositoryImpl implements DeckRepository {
         isStandardTarot: row.isStandardTarot,
         totalCards: row.totalCards,
         creator: row.creator,
+        supportedDrawModes: row.isStandardTarot
+            ? [DrawMode.freeform, DrawMode.namedSpread]
+            : [DrawMode.hexagram],
         createdAt: row.createdAt,
         updatedAt: row.updatedAt,
       );

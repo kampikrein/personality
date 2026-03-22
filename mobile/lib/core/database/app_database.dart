@@ -6,24 +6,31 @@ import 'tables/decks_table.dart';
 import 'tables/cards_table.dart';
 import 'tables/readings_table.dart';
 import 'tables/drawn_cards_table.dart';
+import 'tables/user_settings_table.dart';
 import 'daos/deck_dao.dart';
 import 'daos/card_dao.dart';
 import 'daos/reading_dao.dart';
+import 'daos/user_settings_dao.dart';
 
 part 'app_database.g.dart';
 
 @DriftDatabase(
-  tables: [Decks, Cards, Readings, DrawnCards],
-  daos: [DeckDao, CardDao, ReadingDao],
+  tables: [Decks, Cards, Readings, DrawnCards, UserSettingsTable],
+  daos: [DeckDao, CardDao, ReadingDao, UserSettingsDao],
 )
 class AppDatabase extends _$AppDatabase {
   AppDatabase(super.e);
 
   @override
-  int get schemaVersion => 1;
+  int get schemaVersion => 2;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
         onCreate: (Migrator m) => m.createAll(),
+        onUpgrade: (Migrator m, int from, int to) async {
+          if (from < 2) {
+            await m.createTable(userSettingsTable);
+          }
+        },
       );
 }

@@ -25,6 +25,7 @@ class SpreadLayout extends StatelessWidget {
     return switch (spreadType) {
       SpreadType.single => _buildSingleLayout(),
       SpreadType.threeCard => _buildThreeCardLayout(),
+      SpreadType.custom => _buildGenericGridLayout(),
     };
   }
 
@@ -34,7 +35,7 @@ class SpreadLayout extends StatelessWidget {
         card: cards[0],
         deckId: deckId,
         position: 0,
-        label: spreadType.positions[0],
+        label: spreadType.resolvePositions(cards.length)[0],
         isRevealed: revealedPositions.contains(0),
         onTap: () => onCardTap(0),
       ),
@@ -52,13 +53,46 @@ class SpreadLayout extends StatelessWidget {
               card: cards[i],
               deckId: deckId,
               position: i,
-              label: spreadType.positions[i],
+              label: spreadType.resolvePositions(cards.length)[i],
               isRevealed: revealedPositions.contains(i),
               onTap: () => onCardTap(i),
             ),
           ),
         );
       }),
+    );
+  }
+
+  Widget _buildGenericGridLayout() {
+    if (cards.length == 1) return _buildSingleLayout();
+
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        // 3장 이하: 가로 나열, 4장 이상: 2열 그리드
+        final crossAxisCount = cards.length <= 3 ? cards.length : 2;
+
+        return GridView.builder(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: crossAxisCount,
+            crossAxisSpacing: 8,
+            mainAxisSpacing: 8,
+            childAspectRatio: 0.65,
+          ),
+          itemCount: cards.length,
+          itemBuilder: (context, i) {
+            return CardRevealWidget(
+              card: cards[i],
+              deckId: deckId,
+              position: i,
+              label: spreadType.resolvePositions(cards.length)[i],
+              isRevealed: revealedPositions.contains(i),
+              onTap: () => onCardTap(i),
+            );
+          },
+        );
+      },
     );
   }
 }

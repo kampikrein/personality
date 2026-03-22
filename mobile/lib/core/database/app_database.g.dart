@@ -1899,6 +1899,456 @@ class DrawnCardsCompanion extends UpdateCompanion<DrawnCard> {
   }
 }
 
+class $UserSettingsTableTable extends UserSettingsTable
+    with TableInfo<$UserSettingsTableTable, UserSettingsTableData> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $UserSettingsTableTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+      'id', aliasedName, false,
+      hasAutoIncrement: true,
+      type: DriftSqlType.int,
+      requiredDuringInsert: false,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
+  static const VerificationMeta _selectedDeckIdMeta =
+      const VerificationMeta('selectedDeckId');
+  @override
+  late final GeneratedColumn<String> selectedDeckId = GeneratedColumn<String>(
+      'selected_deck_id', aliasedName, false,
+      type: DriftSqlType.string,
+      requiredDuringInsert: false,
+      defaultValue: const Constant('rws-standard'));
+  static const VerificationMeta _experienceLevelMeta =
+      const VerificationMeta('experienceLevel');
+  @override
+  late final GeneratedColumn<int> experienceLevel = GeneratedColumn<int>(
+      'experience_level', aliasedName, false,
+      type: DriftSqlType.int,
+      requiredDuringInsert: false,
+      defaultValue: const Constant(1));
+  static const VerificationMeta _defaultCardCountMeta =
+      const VerificationMeta('defaultCardCount');
+  @override
+  late final GeneratedColumn<int> defaultCardCount = GeneratedColumn<int>(
+      'default_card_count', aliasedName, false,
+      type: DriftSqlType.int,
+      requiredDuringInsert: false,
+      defaultValue: const Constant(3));
+  static const VerificationMeta _showFaceUpMeta =
+      const VerificationMeta('showFaceUp');
+  @override
+  late final GeneratedColumn<bool> showFaceUp = GeneratedColumn<bool>(
+      'show_face_up', aliasedName, false,
+      type: DriftSqlType.bool,
+      requiredDuringInsert: false,
+      defaultConstraints: GeneratedColumn.constraintIsAlways(
+          'CHECK ("show_face_up" IN (0, 1))'),
+      defaultValue: const Constant(false));
+  static const VerificationMeta _quickDrawEnabledMeta =
+      const VerificationMeta('quickDrawEnabled');
+  @override
+  late final GeneratedColumn<bool> quickDrawEnabled = GeneratedColumn<bool>(
+      'quick_draw_enabled', aliasedName, false,
+      type: DriftSqlType.bool,
+      requiredDuringInsert: false,
+      defaultConstraints: GeneratedColumn.constraintIsAlways(
+          'CHECK ("quick_draw_enabled" IN (0, 1))'),
+      defaultValue: const Constant(false));
+  static const VerificationMeta _defaultSpreadTypeMeta =
+      const VerificationMeta('defaultSpreadType');
+  @override
+  late final GeneratedColumn<String> defaultSpreadType =
+      GeneratedColumn<String>('default_spread_type', aliasedName, false,
+          type: DriftSqlType.string,
+          requiredDuringInsert: false,
+          defaultValue: const Constant('threeCard'));
+  static const VerificationMeta _updatedAtMeta =
+      const VerificationMeta('updatedAt');
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+      'updated_at', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
+  @override
+  List<GeneratedColumn> get $columns => [
+        id,
+        selectedDeckId,
+        experienceLevel,
+        defaultCardCount,
+        showFaceUp,
+        quickDrawEnabled,
+        defaultSpreadType,
+        updatedAt
+      ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'user_settings';
+  @override
+  VerificationContext validateIntegrity(
+      Insertable<UserSettingsTableData> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('selected_deck_id')) {
+      context.handle(
+          _selectedDeckIdMeta,
+          selectedDeckId.isAcceptableOrUnknown(
+              data['selected_deck_id']!, _selectedDeckIdMeta));
+    }
+    if (data.containsKey('experience_level')) {
+      context.handle(
+          _experienceLevelMeta,
+          experienceLevel.isAcceptableOrUnknown(
+              data['experience_level']!, _experienceLevelMeta));
+    }
+    if (data.containsKey('default_card_count')) {
+      context.handle(
+          _defaultCardCountMeta,
+          defaultCardCount.isAcceptableOrUnknown(
+              data['default_card_count']!, _defaultCardCountMeta));
+    }
+    if (data.containsKey('show_face_up')) {
+      context.handle(
+          _showFaceUpMeta,
+          showFaceUp.isAcceptableOrUnknown(
+              data['show_face_up']!, _showFaceUpMeta));
+    }
+    if (data.containsKey('quick_draw_enabled')) {
+      context.handle(
+          _quickDrawEnabledMeta,
+          quickDrawEnabled.isAcceptableOrUnknown(
+              data['quick_draw_enabled']!, _quickDrawEnabledMeta));
+    }
+    if (data.containsKey('default_spread_type')) {
+      context.handle(
+          _defaultSpreadTypeMeta,
+          defaultSpreadType.isAcceptableOrUnknown(
+              data['default_spread_type']!, _defaultSpreadTypeMeta));
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(_updatedAtMeta,
+          updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta));
+    } else if (isInserting) {
+      context.missing(_updatedAtMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  UserSettingsTableData map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return UserSettingsTableData(
+      id: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
+      selectedDeckId: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}selected_deck_id'])!,
+      experienceLevel: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}experience_level'])!,
+      defaultCardCount: attachedDatabase.typeMapping.read(
+          DriftSqlType.int, data['${effectivePrefix}default_card_count'])!,
+      showFaceUp: attachedDatabase.typeMapping
+          .read(DriftSqlType.bool, data['${effectivePrefix}show_face_up'])!,
+      quickDrawEnabled: attachedDatabase.typeMapping.read(
+          DriftSqlType.bool, data['${effectivePrefix}quick_draw_enabled'])!,
+      defaultSpreadType: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}default_spread_type'])!,
+      updatedAt: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}updated_at'])!,
+    );
+  }
+
+  @override
+  $UserSettingsTableTable createAlias(String alias) {
+    return $UserSettingsTableTable(attachedDatabase, alias);
+  }
+}
+
+class UserSettingsTableData extends DataClass
+    implements Insertable<UserSettingsTableData> {
+  final int id;
+  final String selectedDeckId;
+  final int experienceLevel;
+  final int defaultCardCount;
+  final bool showFaceUp;
+  final bool quickDrawEnabled;
+  final String defaultSpreadType;
+  final DateTime updatedAt;
+  const UserSettingsTableData(
+      {required this.id,
+      required this.selectedDeckId,
+      required this.experienceLevel,
+      required this.defaultCardCount,
+      required this.showFaceUp,
+      required this.quickDrawEnabled,
+      required this.defaultSpreadType,
+      required this.updatedAt});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<int>(id);
+    map['selected_deck_id'] = Variable<String>(selectedDeckId);
+    map['experience_level'] = Variable<int>(experienceLevel);
+    map['default_card_count'] = Variable<int>(defaultCardCount);
+    map['show_face_up'] = Variable<bool>(showFaceUp);
+    map['quick_draw_enabled'] = Variable<bool>(quickDrawEnabled);
+    map['default_spread_type'] = Variable<String>(defaultSpreadType);
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    return map;
+  }
+
+  UserSettingsTableCompanion toCompanion(bool nullToAbsent) {
+    return UserSettingsTableCompanion(
+      id: Value(id),
+      selectedDeckId: Value(selectedDeckId),
+      experienceLevel: Value(experienceLevel),
+      defaultCardCount: Value(defaultCardCount),
+      showFaceUp: Value(showFaceUp),
+      quickDrawEnabled: Value(quickDrawEnabled),
+      defaultSpreadType: Value(defaultSpreadType),
+      updatedAt: Value(updatedAt),
+    );
+  }
+
+  factory UserSettingsTableData.fromJson(Map<String, dynamic> json,
+      {ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return UserSettingsTableData(
+      id: serializer.fromJson<int>(json['id']),
+      selectedDeckId: serializer.fromJson<String>(json['selectedDeckId']),
+      experienceLevel: serializer.fromJson<int>(json['experienceLevel']),
+      defaultCardCount: serializer.fromJson<int>(json['defaultCardCount']),
+      showFaceUp: serializer.fromJson<bool>(json['showFaceUp']),
+      quickDrawEnabled: serializer.fromJson<bool>(json['quickDrawEnabled']),
+      defaultSpreadType: serializer.fromJson<String>(json['defaultSpreadType']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<int>(id),
+      'selectedDeckId': serializer.toJson<String>(selectedDeckId),
+      'experienceLevel': serializer.toJson<int>(experienceLevel),
+      'defaultCardCount': serializer.toJson<int>(defaultCardCount),
+      'showFaceUp': serializer.toJson<bool>(showFaceUp),
+      'quickDrawEnabled': serializer.toJson<bool>(quickDrawEnabled),
+      'defaultSpreadType': serializer.toJson<String>(defaultSpreadType),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+    };
+  }
+
+  UserSettingsTableData copyWith(
+          {int? id,
+          String? selectedDeckId,
+          int? experienceLevel,
+          int? defaultCardCount,
+          bool? showFaceUp,
+          bool? quickDrawEnabled,
+          String? defaultSpreadType,
+          DateTime? updatedAt}) =>
+      UserSettingsTableData(
+        id: id ?? this.id,
+        selectedDeckId: selectedDeckId ?? this.selectedDeckId,
+        experienceLevel: experienceLevel ?? this.experienceLevel,
+        defaultCardCount: defaultCardCount ?? this.defaultCardCount,
+        showFaceUp: showFaceUp ?? this.showFaceUp,
+        quickDrawEnabled: quickDrawEnabled ?? this.quickDrawEnabled,
+        defaultSpreadType: defaultSpreadType ?? this.defaultSpreadType,
+        updatedAt: updatedAt ?? this.updatedAt,
+      );
+  UserSettingsTableData copyWithCompanion(UserSettingsTableCompanion data) {
+    return UserSettingsTableData(
+      id: data.id.present ? data.id.value : this.id,
+      selectedDeckId: data.selectedDeckId.present
+          ? data.selectedDeckId.value
+          : this.selectedDeckId,
+      experienceLevel: data.experienceLevel.present
+          ? data.experienceLevel.value
+          : this.experienceLevel,
+      defaultCardCount: data.defaultCardCount.present
+          ? data.defaultCardCount.value
+          : this.defaultCardCount,
+      showFaceUp:
+          data.showFaceUp.present ? data.showFaceUp.value : this.showFaceUp,
+      quickDrawEnabled: data.quickDrawEnabled.present
+          ? data.quickDrawEnabled.value
+          : this.quickDrawEnabled,
+      defaultSpreadType: data.defaultSpreadType.present
+          ? data.defaultSpreadType.value
+          : this.defaultSpreadType,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('UserSettingsTableData(')
+          ..write('id: $id, ')
+          ..write('selectedDeckId: $selectedDeckId, ')
+          ..write('experienceLevel: $experienceLevel, ')
+          ..write('defaultCardCount: $defaultCardCount, ')
+          ..write('showFaceUp: $showFaceUp, ')
+          ..write('quickDrawEnabled: $quickDrawEnabled, ')
+          ..write('defaultSpreadType: $defaultSpreadType, ')
+          ..write('updatedAt: $updatedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      id,
+      selectedDeckId,
+      experienceLevel,
+      defaultCardCount,
+      showFaceUp,
+      quickDrawEnabled,
+      defaultSpreadType,
+      updatedAt);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is UserSettingsTableData &&
+          other.id == this.id &&
+          other.selectedDeckId == this.selectedDeckId &&
+          other.experienceLevel == this.experienceLevel &&
+          other.defaultCardCount == this.defaultCardCount &&
+          other.showFaceUp == this.showFaceUp &&
+          other.quickDrawEnabled == this.quickDrawEnabled &&
+          other.defaultSpreadType == this.defaultSpreadType &&
+          other.updatedAt == this.updatedAt);
+}
+
+class UserSettingsTableCompanion
+    extends UpdateCompanion<UserSettingsTableData> {
+  final Value<int> id;
+  final Value<String> selectedDeckId;
+  final Value<int> experienceLevel;
+  final Value<int> defaultCardCount;
+  final Value<bool> showFaceUp;
+  final Value<bool> quickDrawEnabled;
+  final Value<String> defaultSpreadType;
+  final Value<DateTime> updatedAt;
+  const UserSettingsTableCompanion({
+    this.id = const Value.absent(),
+    this.selectedDeckId = const Value.absent(),
+    this.experienceLevel = const Value.absent(),
+    this.defaultCardCount = const Value.absent(),
+    this.showFaceUp = const Value.absent(),
+    this.quickDrawEnabled = const Value.absent(),
+    this.defaultSpreadType = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+  });
+  UserSettingsTableCompanion.insert({
+    this.id = const Value.absent(),
+    this.selectedDeckId = const Value.absent(),
+    this.experienceLevel = const Value.absent(),
+    this.defaultCardCount = const Value.absent(),
+    this.showFaceUp = const Value.absent(),
+    this.quickDrawEnabled = const Value.absent(),
+    this.defaultSpreadType = const Value.absent(),
+    required DateTime updatedAt,
+  }) : updatedAt = Value(updatedAt);
+  static Insertable<UserSettingsTableData> custom({
+    Expression<int>? id,
+    Expression<String>? selectedDeckId,
+    Expression<int>? experienceLevel,
+    Expression<int>? defaultCardCount,
+    Expression<bool>? showFaceUp,
+    Expression<bool>? quickDrawEnabled,
+    Expression<String>? defaultSpreadType,
+    Expression<DateTime>? updatedAt,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (selectedDeckId != null) 'selected_deck_id': selectedDeckId,
+      if (experienceLevel != null) 'experience_level': experienceLevel,
+      if (defaultCardCount != null) 'default_card_count': defaultCardCount,
+      if (showFaceUp != null) 'show_face_up': showFaceUp,
+      if (quickDrawEnabled != null) 'quick_draw_enabled': quickDrawEnabled,
+      if (defaultSpreadType != null) 'default_spread_type': defaultSpreadType,
+      if (updatedAt != null) 'updated_at': updatedAt,
+    });
+  }
+
+  UserSettingsTableCompanion copyWith(
+      {Value<int>? id,
+      Value<String>? selectedDeckId,
+      Value<int>? experienceLevel,
+      Value<int>? defaultCardCount,
+      Value<bool>? showFaceUp,
+      Value<bool>? quickDrawEnabled,
+      Value<String>? defaultSpreadType,
+      Value<DateTime>? updatedAt}) {
+    return UserSettingsTableCompanion(
+      id: id ?? this.id,
+      selectedDeckId: selectedDeckId ?? this.selectedDeckId,
+      experienceLevel: experienceLevel ?? this.experienceLevel,
+      defaultCardCount: defaultCardCount ?? this.defaultCardCount,
+      showFaceUp: showFaceUp ?? this.showFaceUp,
+      quickDrawEnabled: quickDrawEnabled ?? this.quickDrawEnabled,
+      defaultSpreadType: defaultSpreadType ?? this.defaultSpreadType,
+      updatedAt: updatedAt ?? this.updatedAt,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<int>(id.value);
+    }
+    if (selectedDeckId.present) {
+      map['selected_deck_id'] = Variable<String>(selectedDeckId.value);
+    }
+    if (experienceLevel.present) {
+      map['experience_level'] = Variable<int>(experienceLevel.value);
+    }
+    if (defaultCardCount.present) {
+      map['default_card_count'] = Variable<int>(defaultCardCount.value);
+    }
+    if (showFaceUp.present) {
+      map['show_face_up'] = Variable<bool>(showFaceUp.value);
+    }
+    if (quickDrawEnabled.present) {
+      map['quick_draw_enabled'] = Variable<bool>(quickDrawEnabled.value);
+    }
+    if (defaultSpreadType.present) {
+      map['default_spread_type'] = Variable<String>(defaultSpreadType.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('UserSettingsTableCompanion(')
+          ..write('id: $id, ')
+          ..write('selectedDeckId: $selectedDeckId, ')
+          ..write('experienceLevel: $experienceLevel, ')
+          ..write('defaultCardCount: $defaultCardCount, ')
+          ..write('showFaceUp: $showFaceUp, ')
+          ..write('quickDrawEnabled: $quickDrawEnabled, ')
+          ..write('defaultSpreadType: $defaultSpreadType, ')
+          ..write('updatedAt: $updatedAt')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
@@ -1906,15 +2356,19 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $CardsTable cards = $CardsTable(this);
   late final $ReadingsTable readings = $ReadingsTable(this);
   late final $DrawnCardsTable drawnCards = $DrawnCardsTable(this);
+  late final $UserSettingsTableTable userSettingsTable =
+      $UserSettingsTableTable(this);
   late final DeckDao deckDao = DeckDao(this as AppDatabase);
   late final CardDao cardDao = CardDao(this as AppDatabase);
   late final ReadingDao readingDao = ReadingDao(this as AppDatabase);
+  late final UserSettingsDao userSettingsDao =
+      UserSettingsDao(this as AppDatabase);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
   @override
   List<DatabaseSchemaEntity> get allSchemaEntities =>
-      [decks, cards, readings, drawnCards];
+      [decks, cards, readings, drawnCards, userSettingsTable];
   @override
   StreamQueryUpdateRules get streamUpdateRules => const StreamQueryUpdateRules(
         [
@@ -3538,6 +3992,232 @@ typedef $$DrawnCardsTableProcessedTableManager = ProcessedTableManager<
     (DrawnCard, $$DrawnCardsTableReferences),
     DrawnCard,
     PrefetchHooks Function({bool readingId, bool cardId})>;
+typedef $$UserSettingsTableTableCreateCompanionBuilder
+    = UserSettingsTableCompanion Function({
+  Value<int> id,
+  Value<String> selectedDeckId,
+  Value<int> experienceLevel,
+  Value<int> defaultCardCount,
+  Value<bool> showFaceUp,
+  Value<bool> quickDrawEnabled,
+  Value<String> defaultSpreadType,
+  required DateTime updatedAt,
+});
+typedef $$UserSettingsTableTableUpdateCompanionBuilder
+    = UserSettingsTableCompanion Function({
+  Value<int> id,
+  Value<String> selectedDeckId,
+  Value<int> experienceLevel,
+  Value<int> defaultCardCount,
+  Value<bool> showFaceUp,
+  Value<bool> quickDrawEnabled,
+  Value<String> defaultSpreadType,
+  Value<DateTime> updatedAt,
+});
+
+class $$UserSettingsTableTableFilterComposer
+    extends Composer<_$AppDatabase, $UserSettingsTableTable> {
+  $$UserSettingsTableTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get selectedDeckId => $composableBuilder(
+      column: $table.selectedDeckId,
+      builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get experienceLevel => $composableBuilder(
+      column: $table.experienceLevel,
+      builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get defaultCardCount => $composableBuilder(
+      column: $table.defaultCardCount,
+      builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<bool> get showFaceUp => $composableBuilder(
+      column: $table.showFaceUp, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<bool> get quickDrawEnabled => $composableBuilder(
+      column: $table.quickDrawEnabled,
+      builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get defaultSpreadType => $composableBuilder(
+      column: $table.defaultSpreadType,
+      builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+      column: $table.updatedAt, builder: (column) => ColumnFilters(column));
+}
+
+class $$UserSettingsTableTableOrderingComposer
+    extends Composer<_$AppDatabase, $UserSettingsTableTable> {
+  $$UserSettingsTableTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get selectedDeckId => $composableBuilder(
+      column: $table.selectedDeckId,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get experienceLevel => $composableBuilder(
+      column: $table.experienceLevel,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get defaultCardCount => $composableBuilder(
+      column: $table.defaultCardCount,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<bool> get showFaceUp => $composableBuilder(
+      column: $table.showFaceUp, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<bool> get quickDrawEnabled => $composableBuilder(
+      column: $table.quickDrawEnabled,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get defaultSpreadType => $composableBuilder(
+      column: $table.defaultSpreadType,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+      column: $table.updatedAt, builder: (column) => ColumnOrderings(column));
+}
+
+class $$UserSettingsTableTableAnnotationComposer
+    extends Composer<_$AppDatabase, $UserSettingsTableTable> {
+  $$UserSettingsTableTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get selectedDeckId => $composableBuilder(
+      column: $table.selectedDeckId, builder: (column) => column);
+
+  GeneratedColumn<int> get experienceLevel => $composableBuilder(
+      column: $table.experienceLevel, builder: (column) => column);
+
+  GeneratedColumn<int> get defaultCardCount => $composableBuilder(
+      column: $table.defaultCardCount, builder: (column) => column);
+
+  GeneratedColumn<bool> get showFaceUp => $composableBuilder(
+      column: $table.showFaceUp, builder: (column) => column);
+
+  GeneratedColumn<bool> get quickDrawEnabled => $composableBuilder(
+      column: $table.quickDrawEnabled, builder: (column) => column);
+
+  GeneratedColumn<String> get defaultSpreadType => $composableBuilder(
+      column: $table.defaultSpreadType, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+}
+
+class $$UserSettingsTableTableTableManager extends RootTableManager<
+    _$AppDatabase,
+    $UserSettingsTableTable,
+    UserSettingsTableData,
+    $$UserSettingsTableTableFilterComposer,
+    $$UserSettingsTableTableOrderingComposer,
+    $$UserSettingsTableTableAnnotationComposer,
+    $$UserSettingsTableTableCreateCompanionBuilder,
+    $$UserSettingsTableTableUpdateCompanionBuilder,
+    (
+      UserSettingsTableData,
+      BaseReferences<_$AppDatabase, $UserSettingsTableTable,
+          UserSettingsTableData>
+    ),
+    UserSettingsTableData,
+    PrefetchHooks Function()> {
+  $$UserSettingsTableTableTableManager(
+      _$AppDatabase db, $UserSettingsTableTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$UserSettingsTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$UserSettingsTableTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$UserSettingsTableTableAnnotationComposer(
+                  $db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String> selectedDeckId = const Value.absent(),
+            Value<int> experienceLevel = const Value.absent(),
+            Value<int> defaultCardCount = const Value.absent(),
+            Value<bool> showFaceUp = const Value.absent(),
+            Value<bool> quickDrawEnabled = const Value.absent(),
+            Value<String> defaultSpreadType = const Value.absent(),
+            Value<DateTime> updatedAt = const Value.absent(),
+          }) =>
+              UserSettingsTableCompanion(
+            id: id,
+            selectedDeckId: selectedDeckId,
+            experienceLevel: experienceLevel,
+            defaultCardCount: defaultCardCount,
+            showFaceUp: showFaceUp,
+            quickDrawEnabled: quickDrawEnabled,
+            defaultSpreadType: defaultSpreadType,
+            updatedAt: updatedAt,
+          ),
+          createCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String> selectedDeckId = const Value.absent(),
+            Value<int> experienceLevel = const Value.absent(),
+            Value<int> defaultCardCount = const Value.absent(),
+            Value<bool> showFaceUp = const Value.absent(),
+            Value<bool> quickDrawEnabled = const Value.absent(),
+            Value<String> defaultSpreadType = const Value.absent(),
+            required DateTime updatedAt,
+          }) =>
+              UserSettingsTableCompanion.insert(
+            id: id,
+            selectedDeckId: selectedDeckId,
+            experienceLevel: experienceLevel,
+            defaultCardCount: defaultCardCount,
+            showFaceUp: showFaceUp,
+            quickDrawEnabled: quickDrawEnabled,
+            defaultSpreadType: defaultSpreadType,
+            updatedAt: updatedAt,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$UserSettingsTableTableProcessedTableManager = ProcessedTableManager<
+    _$AppDatabase,
+    $UserSettingsTableTable,
+    UserSettingsTableData,
+    $$UserSettingsTableTableFilterComposer,
+    $$UserSettingsTableTableOrderingComposer,
+    $$UserSettingsTableTableAnnotationComposer,
+    $$UserSettingsTableTableCreateCompanionBuilder,
+    $$UserSettingsTableTableUpdateCompanionBuilder,
+    (
+      UserSettingsTableData,
+      BaseReferences<_$AppDatabase, $UserSettingsTableTable,
+          UserSettingsTableData>
+    ),
+    UserSettingsTableData,
+    PrefetchHooks Function()>;
 
 class $AppDatabaseManager {
   final _$AppDatabase _db;
@@ -3550,4 +4230,6 @@ class $AppDatabaseManager {
       $$ReadingsTableTableManager(_db, _db.readings);
   $$DrawnCardsTableTableManager get drawnCards =>
       $$DrawnCardsTableTableManager(_db, _db.drawnCards);
+  $$UserSettingsTableTableTableManager get userSettingsTable =>
+      $$UserSettingsTableTableTableManager(_db, _db.userSettingsTable);
 }

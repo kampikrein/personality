@@ -25,6 +25,7 @@ mixin _$DeckMetadata {
   bool get isStandardTarot => throw _privateConstructorUsedError;
   int get totalCards => throw _privateConstructorUsedError;
   String? get creator => throw _privateConstructorUsedError;
+  List<DrawMode> get supportedDrawModes => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
   DateTime get updatedAt => throw _privateConstructorUsedError;
 
@@ -50,6 +51,7 @@ abstract class $DeckMetadataCopyWith<$Res> {
       bool isStandardTarot,
       int totalCards,
       String? creator,
+      List<DrawMode> supportedDrawModes,
       DateTime createdAt,
       DateTime updatedAt});
 }
@@ -74,6 +76,7 @@ class _$DeckMetadataCopyWithImpl<$Res, $Val extends DeckMetadata>
     Object? isStandardTarot = null,
     Object? totalCards = null,
     Object? creator = freezed,
+    Object? supportedDrawModes = null,
     Object? createdAt = null,
     Object? updatedAt = null,
   }) {
@@ -98,6 +101,10 @@ class _$DeckMetadataCopyWithImpl<$Res, $Val extends DeckMetadata>
           ? _value.creator
           : creator // ignore: cast_nullable_to_non_nullable
               as String?,
+      supportedDrawModes: null == supportedDrawModes
+          ? _value.supportedDrawModes
+          : supportedDrawModes // ignore: cast_nullable_to_non_nullable
+              as List<DrawMode>,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -124,6 +131,7 @@ abstract class _$$DeckMetadataImplCopyWith<$Res>
       bool isStandardTarot,
       int totalCards,
       String? creator,
+      List<DrawMode> supportedDrawModes,
       DateTime createdAt,
       DateTime updatedAt});
 }
@@ -146,6 +154,7 @@ class __$$DeckMetadataImplCopyWithImpl<$Res>
     Object? isStandardTarot = null,
     Object? totalCards = null,
     Object? creator = freezed,
+    Object? supportedDrawModes = null,
     Object? createdAt = null,
     Object? updatedAt = null,
   }) {
@@ -170,6 +179,10 @@ class __$$DeckMetadataImplCopyWithImpl<$Res>
           ? _value.creator
           : creator // ignore: cast_nullable_to_non_nullable
               as String?,
+      supportedDrawModes: null == supportedDrawModes
+          ? _value._supportedDrawModes
+          : supportedDrawModes // ignore: cast_nullable_to_non_nullable
+              as List<DrawMode>,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -191,8 +204,13 @@ class _$DeckMetadataImpl implements _DeckMetadata {
       this.isStandardTarot = true,
       required this.totalCards,
       this.creator,
+      final List<DrawMode> supportedDrawModes = const [
+        DrawMode.freeform,
+        DrawMode.namedSpread
+      ],
       required this.createdAt,
-      required this.updatedAt});
+      required this.updatedAt})
+      : _supportedDrawModes = supportedDrawModes;
 
   factory _$DeckMetadataImpl.fromJson(Map<String, dynamic> json) =>
       _$$DeckMetadataImplFromJson(json);
@@ -208,6 +226,16 @@ class _$DeckMetadataImpl implements _DeckMetadata {
   final int totalCards;
   @override
   final String? creator;
+  final List<DrawMode> _supportedDrawModes;
+  @override
+  @JsonKey()
+  List<DrawMode> get supportedDrawModes {
+    if (_supportedDrawModes is EqualUnmodifiableListView)
+      return _supportedDrawModes;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_supportedDrawModes);
+  }
+
   @override
   final DateTime createdAt;
   @override
@@ -215,7 +243,7 @@ class _$DeckMetadataImpl implements _DeckMetadata {
 
   @override
   String toString() {
-    return 'DeckMetadata(id: $id, name: $name, isStandardTarot: $isStandardTarot, totalCards: $totalCards, creator: $creator, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'DeckMetadata(id: $id, name: $name, isStandardTarot: $isStandardTarot, totalCards: $totalCards, creator: $creator, supportedDrawModes: $supportedDrawModes, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -230,6 +258,8 @@ class _$DeckMetadataImpl implements _DeckMetadata {
             (identical(other.totalCards, totalCards) ||
                 other.totalCards == totalCards) &&
             (identical(other.creator, creator) || other.creator == creator) &&
+            const DeepCollectionEquality()
+                .equals(other._supportedDrawModes, _supportedDrawModes) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
@@ -238,8 +268,16 @@ class _$DeckMetadataImpl implements _DeckMetadata {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, isStandardTarot,
-      totalCards, creator, createdAt, updatedAt);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      name,
+      isStandardTarot,
+      totalCards,
+      creator,
+      const DeepCollectionEquality().hash(_supportedDrawModes),
+      createdAt,
+      updatedAt);
 
   /// Create a copy of DeckMetadata
   /// with the given fields replaced by the non-null parameter values.
@@ -264,6 +302,7 @@ abstract class _DeckMetadata implements DeckMetadata {
       final bool isStandardTarot,
       required final int totalCards,
       final String? creator,
+      final List<DrawMode> supportedDrawModes,
       required final DateTime createdAt,
       required final DateTime updatedAt}) = _$DeckMetadataImpl;
 
@@ -280,6 +319,8 @@ abstract class _DeckMetadata implements DeckMetadata {
   int get totalCards;
   @override
   String? get creator;
+  @override
+  List<DrawMode> get supportedDrawModes;
   @override
   DateTime get createdAt;
   @override

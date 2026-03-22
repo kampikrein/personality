@@ -33,6 +33,7 @@ Map<String, dynamic> _$$ReadingImplToJson(_$ReadingImpl instance) =>
 const _$SpreadTypeEnumMap = {
   SpreadType.single: 'single',
   SpreadType.threeCard: 'threeCard',
+  SpreadType.custom: 'custom',
 };
 
 _$DrawnCardInfoImpl _$$DrawnCardInfoImplFromJson(Map<String, dynamic> json) =>
