@@ -1,19 +1,11 @@
-import 'dart:async';
-
 import 'package:flame/game.dart' show GameWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../deck/presentation/providers/deck_providers.dart';
-import '../../../reading/domain/entities/spread_type.dart';
-import '../../data/datasources/entropy_pool.dart';
-import '../../data/datasources/sensor_data_collector.dart';
 import '../game/tarot_game.dart';
 import '../providers/shuffle_providers.dart';
-import '../widgets/entropy_progress_indicator.dart';
-
-enum ShufflePhase { collecting, shuffling, drawing }
 
 class ShufflePage extends ConsumerStatefulWidget {
   const ShufflePage({super.key, required this.deckId});
@@ -24,73 +16,41 @@ class ShufflePage extends ConsumerStatefulWidget {
 }
 
 class _ShufflePageState extends ConsumerState<ShufflePage> {
-  ShufflePhase _phase = ShufflePhase.collecting;
-  late TarotGame _game;
-  SpreadType _selectedSpread = SpreadType.single;
-  Timer? _pollTimer;
-  int _lastFedSampleCount = 0;
+  TarotGame? _game;
+  int _cardCount = 78;
+
+  // 인터랙티브 카메라 제어
+  double _rotateX = 0.65;   // 상하 기울기 (라디안) — 스크린샷 기준 기본 앵글
+  double _rotateY = 0.0;    // 좌우 회전 (라디안)
+  double _zoom = 0.001;     // 원근 강도
 
   @override
   void initState() {
     super.initState();
-    _game = TarotGame();
-    ref.read(entropyPoolProvider).reset();
-    ref.read(sensorDataCollectorProvider).startCollecting();
-    // 센서 샘플을 엔트로피 풀에 주기적으로 투입 + UI 갱신
-    _pollTimer = Timer.periodic(const Duration(milliseconds: 500), (_) {
-      if (_phase == ShufflePhase.collecting && mounted) {
-        final collector = ref.read(sensorDataCollectorProvider);
-        final pool = ref.read(entropyPoolProvider);
-        final newSamples = collector.samples.skip(_lastFedSampleCount).toList();
-        if (newSamples.isNotEmpty) {
-          pool.addSamples(newSamples);
-          _lastFedSampleCount = collector.sampleCount;
-        }
-        setState(() {});
-      }
+    _loadDeckAndCreateGame();
+  }
+
+  Future<void> _loadDeckAndCreateGame() async {
+    final repo = ref.read(deckRepositoryProvider);
+    final deck = await repo.getDeckById(widget.deckId);
+    if (!mounted) return;
+    setState(() {
+      _cardCount = deck?.totalCards ?? 78;
+      _game = TarotGame(deckId: widget.deckId, cardCount: _cardCount);
     });
   }
 
-  @override
-  void dispose() {
-    _pollTimer?.cancel();
-    ref.read(sensorDataCollectorProvider).stopCollecting();
-    // GameWidget이 _game의 라이프사이클을 자동 관리 — 수동 dispose 불필요
-    super.dispose();
-  }
-
-  Future<void> _startShuffle() async {
-    setState(() => _phase = ShufflePhase.shuffling);
-    try {
-      final cards = await ref.read(deckCardsProvider(widget.deckId).future);
-      final useCase = ref.read(shuffleDeckUseCaseProvider);
-      final strategy = ref.read(shuffleStrategyProvider);
-      final config = ref.read(shuffleConfigNotifierProvider);
-
-      // 물리 엔진이 카드를 움직이는 동안 잠시 대기 (RiffleAnimation 대체)
-      await Future<void>.delayed(const Duration(milliseconds: 1500));
-
-      final result = useCase.execute(
-        cards: cards,
-        strategy: strategy,
-        config: config,
-      );
-
-      ref.read(shuffleStateProvider.notifier).setResult(result);
-      ref.read(hapticServiceProvider).mediumImpact();
-
-      setState(() => _phase = ShufflePhase.drawing);
-    } catch (e) {
-      setState(() => _phase = ShufflePhase.collecting);
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('셔플에 실패했습니다: $e')),
-        );
-      }
-    }
+  void _restartGame() {
+    setState(() {
+      _game = TarotGame(deckId: widget.deckId, cardCount: _cardCount);
+      _rotateX = 0.65;
+      _rotateY = 0.0;
+      _zoom = 0.001;
+    });
   }
 
   void _goToReading() {
+    ref.read(hapticServiceProvider).mediumImpact();
     context.pushNamed(
       'reading',
       pathParameters: {'deckId': widget.deckId},
@@ -100,104 +60,103 @@ class _ShufflePageState extends ConsumerState<ShufflePage> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final entropy = ref.watch(entropyPoolProvider);
-    final sensor = ref.watch(sensorDataCollectorProvider);
 
     return Scaffold(
       appBar: AppBar(title: const Text('셔플')),
-      body: Column(
+      body: Stack(
         children: [
-          Expanded(
-            flex: 3,
-            child: GameWidget<TarotGame>(game: _game),
-          ),
-          Expanded(
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.all(16),
-              child: switch (_phase) {
-                ShufflePhase.collecting =>
-                  _buildCollectingUI(theme, entropy, sensor),
-                ShufflePhase.shuffling => Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: 32,
-                      height: 32,
-                      child: CircularProgressIndicator(
-                        strokeWidth: 2,
-                        color: theme.colorScheme.primary,
+          // ── 게임 뷰 (전체 영역) ──────────────────────────────────────────
+          Positioned.fill(
+            child: GestureDetector(
+              onScaleStart: (_) {},
+              onScaleUpdate: (details) {
+                setState(() {
+                  if (details.pointerCount == 1) {
+                    _rotateX -= details.focalPointDelta.dy * 0.005;
+                    _rotateY += details.focalPointDelta.dx * 0.005;
+                  }
+                  if (details.pointerCount == 2) {
+                    _zoom = (_zoom * (1 / details.scale))
+                        .clamp(0.0003, 0.003);
+                  }
+                });
+              },
+              onDoubleTap: () {
+                setState(() {
+                  _rotateX = 0.65;
+                  _rotateY = 0.0;
+                  _zoom = 0.001;
+                });
+              },
+              child: _game == null
+                  ? const Center(child: CircularProgressIndicator())
+                  : Transform(
+                      transform: Matrix4.identity()
+                        ..setEntry(3, 2, _zoom)
+                        ..rotateX(_rotateX)
+                        ..rotateY(_rotateY),
+                      alignment: Alignment.center,
+                      child: GameWidget<TarotGame>(
+                        key: ValueKey(_game),
+                        game: _game!,
                       ),
                     ),
-                    const SizedBox(height: 12),
-                    Text(
-                      '카드가 당신의 에너지에 응답하고 있습니다...',
-                      style: theme.textTheme.bodyMedium,
-                      textAlign: TextAlign.center,
-                    ),
+            ),
+          ),
+
+          // ── 좌표 정보 (좌측 하단) ──────────────────────────────────────────
+          Positioned(
+            left: 12,
+            bottom: 80,
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+              decoration: BoxDecoration(
+                color: Colors.black54,
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: DefaultTextStyle(
+                style: theme.textTheme.bodySmall!.copyWith(
+                  fontFamily: 'monospace',
+                  color: Colors.white70,
+                  fontSize: 11,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text('rX  ${_rotateX.toStringAsFixed(3)}'),
+                    Text('rY  ${_rotateY.toStringAsFixed(3)}'),
+                    Text('zm  ${_zoom.toStringAsFixed(4)}'),
                   ],
                 ),
-                ShufflePhase.drawing => _buildDrawingUI(theme),
-              },
+              ),
+            ),
+          ),
+
+          // ── 버튼 (하단 중앙) ───────────────────────────────────────────────
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 24,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                FilledButton.tonalIcon(
+                  onPressed: _restartGame,
+                  icon: const Icon(Icons.replay, size: 18),
+                  label: const Text('재시작'),
+                ),
+                const SizedBox(width: 16),
+                FilledButton.icon(
+                  onPressed: _goToReading,
+                  icon: const Icon(Icons.auto_awesome, size: 18),
+                  label: const Text('뽑기'),
+                ),
+              ],
             ),
           ),
         ],
       ),
-    );
-  }
-
-  Widget _buildCollectingUI(
-    ThemeData theme,
-    EntropyPool entropy,
-    SensorDataCollector sensor,
-  ) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        EntropyProgressIndicator(
-          progress: entropy.progress,
-          sensorsAvailable: sensor.sensorsAvailable,
-        ),
-        const SizedBox(height: 8),
-        Text(
-          sensor.sensorsAvailable
-              ? '디바이스를 흔들어 셔플 에너지를 모으세요'
-              : '조용히 호흡을 가다듬으세요.\n우주가 카드를 배열합니다.',
-          style: theme.textTheme.bodyMedium,
-          textAlign: TextAlign.center,
-        ),
-        const SizedBox(height: 12),
-        SegmentedButton<SpreadType>(
-          segments: SpreadType.values.map((s) {
-            return ButtonSegment(value: s, label: Text(s.displayName));
-          }).toList(),
-          selected: {_selectedSpread},
-          onSelectionChanged: (selected) {
-            setState(() => _selectedSpread = selected.first);
-          },
-        ),
-        const SizedBox(height: 12),
-        ElevatedButton(
-          onPressed: (entropy.isReady || !sensor.sensorsAvailable)
-              ? _startShuffle
-              : null,
-          child: const Text('셔플 시작'),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildDrawingUI(ThemeData theme) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text('셔플 완료! 카드를 뽑아보세요.',
-            style: theme.textTheme.bodyLarge),
-        const SizedBox(height: 16),
-        ElevatedButton(
-          onPressed: _goToReading,
-          child: Text('${_selectedSpread.displayName} 리딩'),
-        ),
-      ],
     );
   }
 }
