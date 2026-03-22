@@ -46,6 +46,10 @@ class _CardRevealWidgetState extends State<CardRevealWidget>
         setState(() => _showFront = true);
       }
     });
+    if (widget.isRevealed) {
+      _showFront = true;
+      _controller.value = 1.0;
+    }
   }
 
   @override
