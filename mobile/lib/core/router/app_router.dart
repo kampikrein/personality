@@ -4,6 +4,8 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../features/home/presentation/pages/home_page.dart';
 import '../../features/deck/presentation/pages/deck_selection_page.dart';
+import '../../features/draw/presentation/pages/instant_draw_page.dart';
+import '../../features/draw/presentation/pages/animated_draw_page.dart';
 import '../../features/reading/presentation/pages/reading_detail_page.dart';
 import '../../features/reading/presentation/pages/reading_list_page.dart';
 import '../../features/settings/presentation/pages/settings_page.dart';
@@ -11,6 +13,7 @@ import '../../features/shuffle/presentation/pages/intention_page.dart';
 import '../../features/shuffle/presentation/pages/shuffle_page.dart';
 import '../../features/reading/domain/entities/spread_type.dart';
 import '../../features/reading/presentation/pages/reading_page.dart';
+import '../../features/settings/presentation/providers/settings_providers.dart';
 
 part 'app_router.g.dart';
 
@@ -29,8 +32,26 @@ CustomTransitionPage<void> _fadePage({
 
 @riverpod
 GoRouter appRouter(AppRouterRef ref) {
+  final settings = ref.watch(userSettingsProvider).valueOrNull;
+
   return GoRouter(
     initialLocation: '/',
+    redirect: (context, state) {
+      // 설정 로딩 전이면 홈으로
+      if (settings == null) return null;
+      // 루트 경로 접근 시에만 redirect 판단 (무한 redirect 방지)
+      if (state.matchedLocation != '/') return null;
+
+      if (settings.quickDrawEnabled) {
+        return switch (settings.experienceLevel) {
+          1 => '/draw/instant',
+          2 => '/draw/animated',
+          3 => '/shuffle/${settings.selectedDeckId}',
+          _ => null,
+        };
+      }
+      return null;
+    },
     routes: [
       GoRoute(
         path: '/',
@@ -73,6 +94,20 @@ GoRouter appRouter(AppRouterRef ref) {
               key: state.pageKey,
               child: ReadingPage(deckId: deckId, spreadType: spreadType));
         },
+      ),
+      // ── Level 1: 즉시 뽑기 ──
+      GoRoute(
+        path: '/draw/instant',
+        name: 'draw-instant',
+        pageBuilder: (context, state) =>
+            _fadePage(key: state.pageKey, child: const InstantDrawPage()),
+      ),
+      // ── Level 2: 간단 연출 ──
+      GoRoute(
+        path: '/draw/animated',
+        name: 'draw-animated',
+        pageBuilder: (context, state) =>
+            _fadePage(key: state.pageKey, child: const AnimatedDrawPage()),
       ),
       GoRoute(
         path: '/settings',
