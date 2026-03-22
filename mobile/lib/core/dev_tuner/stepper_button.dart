@@ -41,10 +41,10 @@ class _StepperButtonState extends State<StepperButton> {
         _timer = null;
       },
       child: Container(
-        width: 32,
-        height: 32,
+        width: 44,
+        height: 44,
         alignment: Alignment.center,
-        child: Icon(widget.icon, color: Colors.white70, size: 18),
+        child: Icon(widget.icon, color: Colors.white70, size: 22),
       ),
     );
   }
