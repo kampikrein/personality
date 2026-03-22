@@ -4,6 +4,9 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../features/home/presentation/pages/home_page.dart';
 import '../../features/deck/presentation/pages/deck_selection_page.dart';
+import '../../features/reading/presentation/pages/reading_detail_page.dart';
+import '../../features/reading/presentation/pages/reading_list_page.dart';
+import '../../features/settings/presentation/pages/settings_page.dart';
 import '../../features/shuffle/presentation/pages/intention_page.dart';
 import '../../features/shuffle/presentation/pages/shuffle_page.dart';
 import '../../features/reading/domain/entities/spread_type.dart';
@@ -69,6 +72,28 @@ GoRouter appRouter(AppRouterRef ref) {
           return _fadePage(
               key: state.pageKey,
               child: ReadingPage(deckId: deckId, spreadType: spreadType));
+        },
+      ),
+      GoRoute(
+        path: '/settings',
+        name: 'settings',
+        pageBuilder: (context, state) =>
+            _fadePage(key: state.pageKey, child: const SettingsPage()),
+      ),
+      GoRoute(
+        path: '/readings',
+        name: 'readings',
+        pageBuilder: (context, state) =>
+            _fadePage(key: state.pageKey, child: const ReadingListPage()),
+      ),
+      GoRoute(
+        path: '/readings/:readingId',
+        name: 'reading-detail',
+        pageBuilder: (context, state) {
+          final readingId = state.pathParameters['readingId']!;
+          return _fadePage(
+              key: state.pageKey,
+              child: ReadingDetailPage(readingId: readingId));
         },
       ),
     ],

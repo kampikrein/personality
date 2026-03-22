@@ -54,6 +54,42 @@ class ReadingRepositoryImpl implements ReadingRepository {
     await db.readingDao.deleteReading(id);
   }
 
+  @override
+  Future<void> updateNotes(String readingId, String? notes) async {
+    await db.readingDao.updateNotes(readingId, notes);
+  }
+
+  @override
+  Future<void> addDrawnCard(
+    String readingId, domain.DrawnCardInfo card, DateTime createdAt,
+  ) async {
+    await db.readingDao.addDrawnCard(
+      DrawnCardsCompanion.insert(
+        id: '$readingId-${card.position}',
+        readingId: readingId,
+        cardId: card.cardId,
+        position: card.position,
+        isReversed: card.isReversed,
+        createdAt: createdAt,
+      ),
+    );
+  }
+
+  @override
+  Stream<List<domain.Reading>> watchReadingsBySpreadType(SpreadType spreadType) {
+    return db.readingDao
+        .watchReadingsBySpreadType(spreadType.name)
+        .asyncMap((readings) => Future.wait(readings.map(_toDomainReading)));
+  }
+
+  @override
+  Future<domain.Reading?> getReadingById(String id) async {
+    final rows = await db.readingDao.getAllReadings();
+    final row = rows.where((r) => r.id == id).firstOrNull;
+    if (row == null) return null;
+    return _toDomainReading(row);
+  }
+
   Future<domain.Reading> _toDomainReading(Reading row) async {
     final drawnCards = await db.readingDao.getDrawnCardsForReading(row.id);
     return domain.Reading(

@@ -1,11 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../../core/dev_tuner/tunable_var.dart';
 import '../../../../core/dev_tuner/tuner_registry.dart';
+import '../../../settings/presentation/providers/settings_providers.dart';
 import '../../../shuffle/domain/entities/shuffle_result.dart';
 import '../../../shuffle/presentation/pages/intention_page.dart';
 import '../../../shuffle/presentation/providers/shuffle_providers.dart';
@@ -29,13 +29,84 @@ class ReadingPage extends ConsumerStatefulWidget {
 }
 
 class _ReadingPageState extends ConsumerState<ReadingPage> {
-  late final _spreadType = widget.spreadType;
+  late SpreadType _spreadType;
+  late int _currentCardCount;
   final Set<int> _revealedPositions = {};
+  String? _savedReadingId;
+  bool _autoSaved = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _spreadType = widget.spreadType;
+    // EV-006-A1 대응: custom일 때 cardCount 0 sentinel 대신 UserSettings의 defaultCardCount 사용
+    // named 스프레드는 정적 cardCount 사용
+    _currentCardCount = _spreadType == SpreadType.custom
+        ? ref.read(userSettingsProvider).valueOrNull?.defaultCardCount ?? 3
+        : _spreadType.cardCount;
+  }
+
+  // ── 자동 저장 (allRevealed 시 1회 실행) ──
+  void _autoSave(List<ShuffledCard> drawnCards, String question) {
+    if (_autoSaved) return;
+    _autoSaved = true;
+
+    final readingId = const Uuid().v4();
+    _savedReadingId = readingId;
+
+    final reading = Reading(
+      id: readingId,
+      deckId: widget.deckId,
+      spreadType: _spreadType,
+      question: question.isNotEmpty ? question : null,
+      drawnCards: List.generate(
+        drawnCards.length,
+        (i) => DrawnCardInfo(
+          cardId: drawnCards[i].card.id,
+          position: i,
+          isReversed: drawnCards[i].isReversed,
+        ),
+      ),
+      createdAt: DateTime.now(),
+    );
+
+    ref.read(readingRepositoryProvider).saveReading(reading);
+  }
+
+  // ── "+1 한 장 더" ──
+  void _addOneMore(ShuffleResult shuffleResult) {
+    if (_currentCardCount >= shuffleResult.cards.length) return;
+
+    setState(() => _currentCardCount++);
+
+    // 새 카드가 showFaceUp이면 즉시 reveal
+    final showFaceUp =
+        ref.read(userSettingsProvider).valueOrNull?.showFaceUp ?? false;
+    if (showFaceUp) {
+      _revealedPositions.add(_currentCardCount - 1);
+    }
+
+    // 이미 자동 저장된 Reading에 카드 추가
+    if (_savedReadingId != null) {
+      final newCard = shuffleResult.cards[_currentCardCount - 1];
+      ref.read(readingRepositoryProvider).addDrawnCard(
+            _savedReadingId!,
+            DrawnCardInfo(
+              cardId: newCard.card.id,
+              position: _currentCardCount - 1,
+              isReversed: newCard.isReversed,
+            ),
+            DateTime.now(),
+          );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     final shuffleResult = ref.watch(shuffleStateProvider);
     final question = ref.watch(readingQuestionProvider);
+    final showFaceUp =
+        ref.watch(userSettingsProvider).valueOrNull?.showFaceUp ?? false;
     final theme = Theme.of(context);
 
     if (kDebugMode) {
@@ -54,23 +125,35 @@ class _ReadingPageState extends ConsumerState<ReadingPage> {
       );
     }
 
-    final cardCount = _spreadType == SpreadType.custom
-        ? shuffleResult.cards.length
-        : _spreadType.cardCount;
-    final drawnCards = shuffleResult.cards.take(cardCount).toList();
-    final allRevealed = _revealedPositions.length == cardCount;
+    final drawnCards = shuffleResult.cards.take(_currentCardCount).toList();
+
+    // showFaceUp이면 초기 전부 reveal
+    if (showFaceUp && _revealedPositions.length < _currentCardCount) {
+      for (var i = 0; i < _currentCardCount; i++) {
+        _revealedPositions.add(i);
+      }
+    }
+
+    final allRevealed = _revealedPositions.length >= _currentCardCount;
+
+    // 자동 저장 트리거
+    if (allRevealed) _autoSave(drawnCards, question);
+
+    final hasMoreCards = _currentCardCount < shuffleResult.cards.length;
 
     return Scaffold(
       appBar: AppBar(
         title: Text(_spreadType.displayName),
-        actions: [
-          if (allRevealed)
-            IconButton(
-              icon: const Icon(Icons.save),
-              onPressed: () => _saveReading(drawnCards, question),
-            ),
-        ],
+        // 저장 버튼 제거됨 — 자동 저장
       ),
+      // "+1 한 장 더" FAB
+      floatingActionButton: allRevealed && hasMoreCards
+          ? FloatingActionButton.extended(
+              onPressed: () => _addOneMore(shuffleResult),
+              icon: const Icon(Icons.add),
+              label: Text('+1 한 장 더 (${shuffleResult.cards.length - _currentCardCount}장 남음)'),
+            )
+          : null,
       body: SingleChildScrollView(
         padding: EdgeInsets.all(contentPadding),
         child: Column(
@@ -184,30 +267,5 @@ class _ReadingPageState extends ConsumerState<ReadingPage> {
           ),
         ),
     ];
-  }
-
-  Future<void> _saveReading(
-      List<ShuffledCard> drawnCards, String question) async {
-    final reading = Reading(
-      id: const Uuid().v4(),
-      deckId: widget.deckId,
-      spreadType: _spreadType,
-      question: question.isNotEmpty ? question : null,
-      drawnCards: List.generate(
-        drawnCards.length,
-        (i) => DrawnCardInfo(
-          cardId: drawnCards[i].card.id,
-          position: i,
-          isReversed: drawnCards[i].isReversed,
-        ),
-      ),
-      createdAt: DateTime.now(),
-    );
-
-    await ref.read(readingRepositoryProvider).saveReading(reading);
-    if (mounted) {
-      ref.read(readingQuestionProvider.notifier).clear();
-      context.go('/');
-    }
   }
 }

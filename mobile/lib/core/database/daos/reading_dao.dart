@@ -40,4 +40,30 @@ class ReadingDao extends DatabaseAccessor<AppDatabase> with _$ReadingDaoMixin {
       return (delete(readings)..where((r) => r.id.equals(id))).go();
     });
   }
+
+  /// 리딩의 notes 필드 업데이트.
+  Future<void> updateNotes(String readingId, String? notes) async {
+    await (update(readings)..where((r) => r.id.equals(readingId))).write(
+      ReadingsCompanion(
+        notes: Value(notes),
+        updatedAt: Value(DateTime.now()),
+      ),
+    );
+  }
+
+  /// 리딩에 drawn card 1장 추가. "+1 한 장 더" 기능용.
+  Future<void> addDrawnCard(DrawnCardsCompanion card) async {
+    await into(drawnCards).insert(card);
+    // Reading의 updatedAt도 갱신
+    await (update(readings)..where((r) => r.id.equals(card.readingId.value)))
+        .write(ReadingsCompanion(updatedAt: Value(DateTime.now())));
+  }
+
+  /// spreadType 기준 필터 조회 (리딩 목록 페이지용).
+  Stream<List<Reading>> watchReadingsBySpreadType(String spreadType) {
+    return (select(readings)
+          ..where((r) => r.spreadType.equals(spreadType))
+          ..orderBy([(r) => OrderingTerm.desc(r.createdAt)]))
+        .watch();
+  }
 }
