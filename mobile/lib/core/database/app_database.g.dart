@@ -1929,7 +1929,7 @@ class $UserSettingsTableTable extends UserSettingsTable
       'experience_level', aliasedName, false,
       type: DriftSqlType.int,
       requiredDuringInsert: false,
-      defaultValue: const Constant(1));
+      defaultValue: const Constant(3));
   static const VerificationMeta _defaultCardCountMeta =
       const VerificationMeta('defaultCardCount');
   @override
@@ -1965,7 +1965,7 @@ class $UserSettingsTableTable extends UserSettingsTable
       GeneratedColumn<String>('default_spread_type', aliasedName, false,
           type: DriftSqlType.string,
           requiredDuringInsert: false,
-          defaultValue: const Constant('threeCard'));
+          defaultValue: const Constant('custom'));
   static const VerificationMeta _updatedAtMeta =
       const VerificationMeta('updatedAt');
   @override

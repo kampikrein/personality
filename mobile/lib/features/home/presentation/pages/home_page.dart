@@ -51,7 +51,7 @@ class _HomePageState extends ConsumerState<HomePage> {
     final theme = Theme.of(context);
 
     final settings = settingsAsync.valueOrNull;
-    final experienceLevel = settings?.experienceLevel ?? 1;
+    final experienceLevel = settings?.experienceLevel ?? 3;
     final selectedDeckId = settings?.selectedDeckId ?? 'rws-standard';
     final defaultCardCount = settings?.defaultCardCount ?? 3;
 

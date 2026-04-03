@@ -9,13 +9,13 @@ part of 'user_settings.dart';
 _$UserSettingsImpl _$$UserSettingsImplFromJson(Map<String, dynamic> json) =>
     _$UserSettingsImpl(
       selectedDeckId: json['selectedDeckId'] as String? ?? 'rws-standard',
-      experienceLevel: (json['experienceLevel'] as num?)?.toInt() ?? 1,
+      experienceLevel: (json['experienceLevel'] as num?)?.toInt() ?? 3,
       defaultCardCount: (json['defaultCardCount'] as num?)?.toInt() ?? 3,
       showFaceUp: json['showFaceUp'] as bool? ?? false,
       quickDrawEnabled: json['quickDrawEnabled'] as bool? ?? false,
       defaultSpreadType:
           $enumDecodeNullable(_$SpreadTypeEnumMap, json['defaultSpreadType']) ??
-              SpreadType.threeCard,
+              SpreadType.custom,
       updatedAt: DateTime.parse(json['updatedAt'] as String),
     );
 

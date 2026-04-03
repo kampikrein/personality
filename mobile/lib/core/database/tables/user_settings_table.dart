@@ -5,7 +5,7 @@ class UserSettingsTable extends Table {
   TextColumn get selectedDeckId =>
       text().withDefault(const Constant('rws-standard'))();
   IntColumn get experienceLevel =>
-      integer().withDefault(const Constant(1))();
+      integer().withDefault(const Constant(3))();
   IntColumn get defaultCardCount =>
       integer().withDefault(const Constant(3))();
   BoolColumn get showFaceUp =>
@@ -13,7 +13,7 @@ class UserSettingsTable extends Table {
   BoolColumn get quickDrawEnabled =>
       boolean().withDefault(const Constant(false))();
   TextColumn get defaultSpreadType =>
-      text().withDefault(const Constant('threeCard'))();
+      text().withDefault(const Constant('custom'))();
   DateTimeColumn get updatedAt => dateTime()();
 
   @override

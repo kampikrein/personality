@@ -9,11 +9,11 @@ part 'user_settings.g.dart';
 class UserSettings with _$UserSettings {
   const factory UserSettings({
     @Default('rws-standard') String selectedDeckId,
-    @Default(1) int experienceLevel,
+    @Default(3) int experienceLevel,
     @Default(3) int defaultCardCount,
     @Default(false) bool showFaceUp,
     @Default(false) bool quickDrawEnabled,
-    @Default(SpreadType.threeCard) SpreadType defaultSpreadType,
+    @Default(SpreadType.custom) SpreadType defaultSpreadType,
     required DateTime updatedAt,
   }) = _UserSettings;
 

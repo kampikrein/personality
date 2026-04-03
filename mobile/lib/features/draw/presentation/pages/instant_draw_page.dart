@@ -44,7 +44,7 @@ class _InstantDrawPageState extends ConsumerState<InstantDrawPage> {
 
   void _initSettings() {
     final settings = ref.read(userSettingsProvider).valueOrNull;
-    _spreadType = settings?.defaultSpreadType ?? SpreadType.threeCard;
+    _spreadType = settings?.defaultSpreadType ?? SpreadType.custom;
     _currentCardCount = _spreadType == SpreadType.custom
         ? settings?.defaultCardCount ?? 3
         : _spreadType.cardCount;

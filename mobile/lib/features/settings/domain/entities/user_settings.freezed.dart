@@ -187,11 +187,11 @@ class __$$UserSettingsImplCopyWithImpl<$Res>
 class _$UserSettingsImpl implements _UserSettings {
   const _$UserSettingsImpl(
       {this.selectedDeckId = 'rws-standard',
-      this.experienceLevel = 1,
+      this.experienceLevel = 3,
       this.defaultCardCount = 3,
       this.showFaceUp = false,
       this.quickDrawEnabled = false,
-      this.defaultSpreadType = SpreadType.threeCard,
+      this.defaultSpreadType = SpreadType.custom,
       required this.updatedAt});
 
   factory _$UserSettingsImpl.fromJson(Map<String, dynamic> json) =>

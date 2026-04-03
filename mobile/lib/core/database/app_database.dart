@@ -22,7 +22,7 @@ class AppDatabase extends _$AppDatabase {
   AppDatabase(super.e);
 
   @override
-  int get schemaVersion => 2;
+  int get schemaVersion => 3;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
@@ -30,6 +30,11 @@ class AppDatabase extends _$AppDatabase {
         onUpgrade: (Migrator m, int from, int to) async {
           if (from < 2) {
             await m.createTable(userSettingsTable);
+          }
+          if (from < 3) {
+            await m.database.customStatement(
+              "UPDATE user_settings SET experience_level = 3, default_spread_type = 'custom'",
+            );
           }
         },
       );
