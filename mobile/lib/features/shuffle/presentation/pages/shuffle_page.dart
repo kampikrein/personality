@@ -50,6 +50,10 @@ class _ShufflePageState extends ConsumerState<ShufflePage> {
   }
 
   Future<void> _goToReading() async {
+    // [이전 셔플 상태 초기화] 새 뽑기 전 잔류 방지.
+    // readingQuestionProvider는 IntentionPage.initState에서 이미 초기화됨 — 여기서 clear 금지.
+    ref.read(shuffleStateProvider.notifier).clear();
+
     ref.read(hapticServiceProvider).mediumImpact();
 
     // 덱 카드 로드 + 셔플 실행

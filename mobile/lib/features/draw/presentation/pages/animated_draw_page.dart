@@ -60,6 +60,10 @@ class _AnimatedDrawPageState extends ConsumerState<AnimatedDrawPage>
   }
 
   Future<void> _startDraw() async {
+    // [이전 뽑기 상태 초기화] keepAlive provider 잔류 방지
+    ref.read(shuffleStateProvider.notifier).clear();
+    ref.read(readingQuestionProvider.notifier).clear();
+
     // 덱 시드 보장 (홈을 건너뛴 경우)
     final repo = ref.read(deckRepositoryProvider);
     await repo.seedRwsDeck();
