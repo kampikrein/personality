@@ -86,18 +86,6 @@ class SettingsPage extends ConsumerWidget {
               },
             ),
 
-            // 즉시 뽑기 토글
-            SwitchListTile(
-              title: const Text('앱 시작 시 바로 뽑기'),
-              subtitle: const Text('다음 실행부터 설정된 방식으로 자동 카드 뽑기'),
-              value: settings.quickDrawEnabled,
-              onChanged: (v) {
-                ref.read(userSettingsRepositoryProvider)
-                    .updateQuickDrawEnabled(v);
-              },
-            ),
-            const SizedBox(height: 16),
-
             // 기본 스프레드
             const _SectionTitle('기본 스프레드'),
             DropdownButtonFormField<SpreadType>(
