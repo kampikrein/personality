@@ -5,7 +5,7 @@ class UserSettingsTable extends Table {
   TextColumn get selectedDeckId =>
       text().withDefault(const Constant('rws-standard'))();
   IntColumn get experienceLevel =>
-      integer().withDefault(const Constant(3))();
+      integer().withDefault(const Constant(4))();
   IntColumn get defaultCardCount =>
       integer().withDefault(const Constant(3))();
   BoolColumn get showFaceUp =>
@@ -24,6 +24,8 @@ class UserSettingsTable extends Table {
       real().withDefault(const Constant(70.0))();
   RealColumn get customCardHeightMm =>
       real().withDefault(const Constant(120.0))();
+  IntColumn get cardsPerRow =>
+      integer().nullable().withDefault(const Constant(3))();
   DateTimeColumn get updatedAt => dateTime()();
 
   @override

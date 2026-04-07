@@ -12,13 +12,14 @@ class UserSettings with _$UserSettings {
 
   const factory UserSettings({
     @Default('rws-standard') String selectedDeckId,
-    @Default(3) int experienceLevel,
+    @Default(4) int experienceLevel,
     @Default(3) int defaultCardCount,
     @Default(false) bool showFaceUp,
     @Default(false) bool quickDrawEnabled,
     @Default(SpreadType.custom) SpreadType defaultSpreadType,
     @Default(true) bool showCardName,
     @Default(true) bool allowReversed,
+    @Default(3) int cardsPerRow,
     @Default(CardSizePreset.standardTarot) CardSizePreset cardSizePreset,
     @Default(70.0) double customCardWidthMm,
     @Default(120.0) double customCardHeightMm,

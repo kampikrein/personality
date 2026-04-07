@@ -9,7 +9,7 @@ part of 'user_settings.dart';
 _$UserSettingsImpl _$$UserSettingsImplFromJson(Map<String, dynamic> json) =>
     _$UserSettingsImpl(
       selectedDeckId: json['selectedDeckId'] as String? ?? 'rws-standard',
-      experienceLevel: (json['experienceLevel'] as num?)?.toInt() ?? 3,
+      experienceLevel: (json['experienceLevel'] as num?)?.toInt() ?? 4,
       defaultCardCount: (json['defaultCardCount'] as num?)?.toInt() ?? 3,
       showFaceUp: json['showFaceUp'] as bool? ?? false,
       quickDrawEnabled: json['quickDrawEnabled'] as bool? ?? false,
@@ -18,6 +18,7 @@ _$UserSettingsImpl _$$UserSettingsImplFromJson(Map<String, dynamic> json) =>
               SpreadType.custom,
       showCardName: json['showCardName'] as bool? ?? true,
       allowReversed: json['allowReversed'] as bool? ?? true,
+      cardsPerRow: (json['cardsPerRow'] as num?)?.toInt() ?? 3,
       cardSizePreset: $enumDecodeNullable(
               _$CardSizePresetEnumMap, json['cardSizePreset']) ??
           CardSizePreset.standardTarot,
@@ -38,6 +39,7 @@ Map<String, dynamic> _$$UserSettingsImplToJson(_$UserSettingsImpl instance) =>
       'defaultSpreadType': _$SpreadTypeEnumMap[instance.defaultSpreadType]!,
       'showCardName': instance.showCardName,
       'allowReversed': instance.allowReversed,
+      'cardsPerRow': instance.cardsPerRow,
       'cardSizePreset': _$CardSizePresetEnumMap[instance.cardSizePreset]!,
       'customCardWidthMm': instance.customCardWidthMm,
       'customCardHeightMm': instance.customCardHeightMm,

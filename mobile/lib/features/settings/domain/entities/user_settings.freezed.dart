@@ -28,6 +28,7 @@ mixin _$UserSettings {
   SpreadType get defaultSpreadType => throw _privateConstructorUsedError;
   bool get showCardName => throw _privateConstructorUsedError;
   bool get allowReversed => throw _privateConstructorUsedError;
+  int get cardsPerRow => throw _privateConstructorUsedError;
   CardSizePreset get cardSizePreset => throw _privateConstructorUsedError;
   double get customCardWidthMm => throw _privateConstructorUsedError;
   double get customCardHeightMm => throw _privateConstructorUsedError;
@@ -58,6 +59,7 @@ abstract class $UserSettingsCopyWith<$Res> {
       SpreadType defaultSpreadType,
       bool showCardName,
       bool allowReversed,
+      int cardsPerRow,
       CardSizePreset cardSizePreset,
       double customCardWidthMm,
       double customCardHeightMm,
@@ -87,6 +89,7 @@ class _$UserSettingsCopyWithImpl<$Res, $Val extends UserSettings>
     Object? defaultSpreadType = null,
     Object? showCardName = null,
     Object? allowReversed = null,
+    Object? cardsPerRow = null,
     Object? cardSizePreset = null,
     Object? customCardWidthMm = null,
     Object? customCardHeightMm = null,
@@ -125,6 +128,10 @@ class _$UserSettingsCopyWithImpl<$Res, $Val extends UserSettings>
           ? _value.allowReversed
           : allowReversed // ignore: cast_nullable_to_non_nullable
               as bool,
+      cardsPerRow: null == cardsPerRow
+          ? _value.cardsPerRow
+          : cardsPerRow // ignore: cast_nullable_to_non_nullable
+              as int,
       cardSizePreset: null == cardSizePreset
           ? _value.cardSizePreset
           : cardSizePreset // ignore: cast_nullable_to_non_nullable
@@ -162,6 +169,7 @@ abstract class _$$UserSettingsImplCopyWith<$Res>
       SpreadType defaultSpreadType,
       bool showCardName,
       bool allowReversed,
+      int cardsPerRow,
       CardSizePreset cardSizePreset,
       double customCardWidthMm,
       double customCardHeightMm,
@@ -189,6 +197,7 @@ class __$$UserSettingsImplCopyWithImpl<$Res>
     Object? defaultSpreadType = null,
     Object? showCardName = null,
     Object? allowReversed = null,
+    Object? cardsPerRow = null,
     Object? cardSizePreset = null,
     Object? customCardWidthMm = null,
     Object? customCardHeightMm = null,
@@ -227,6 +236,10 @@ class __$$UserSettingsImplCopyWithImpl<$Res>
           ? _value.allowReversed
           : allowReversed // ignore: cast_nullable_to_non_nullable
               as bool,
+      cardsPerRow: null == cardsPerRow
+          ? _value.cardsPerRow
+          : cardsPerRow // ignore: cast_nullable_to_non_nullable
+              as int,
       cardSizePreset: null == cardSizePreset
           ? _value.cardSizePreset
           : cardSizePreset // ignore: cast_nullable_to_non_nullable
@@ -252,13 +265,14 @@ class __$$UserSettingsImplCopyWithImpl<$Res>
 class _$UserSettingsImpl extends _UserSettings {
   const _$UserSettingsImpl(
       {this.selectedDeckId = 'rws-standard',
-      this.experienceLevel = 3,
+      this.experienceLevel = 4,
       this.defaultCardCount = 3,
       this.showFaceUp = false,
       this.quickDrawEnabled = false,
       this.defaultSpreadType = SpreadType.custom,
       this.showCardName = true,
       this.allowReversed = true,
+      this.cardsPerRow = 3,
       this.cardSizePreset = CardSizePreset.standardTarot,
       this.customCardWidthMm = 70.0,
       this.customCardHeightMm = 120.0,
@@ -294,6 +308,9 @@ class _$UserSettingsImpl extends _UserSettings {
   final bool allowReversed;
   @override
   @JsonKey()
+  final int cardsPerRow;
+  @override
+  @JsonKey()
   final CardSizePreset cardSizePreset;
   @override
   @JsonKey()
@@ -306,7 +323,7 @@ class _$UserSettingsImpl extends _UserSettings {
 
   @override
   String toString() {
-    return 'UserSettings(selectedDeckId: $selectedDeckId, experienceLevel: $experienceLevel, defaultCardCount: $defaultCardCount, showFaceUp: $showFaceUp, quickDrawEnabled: $quickDrawEnabled, defaultSpreadType: $defaultSpreadType, showCardName: $showCardName, allowReversed: $allowReversed, cardSizePreset: $cardSizePreset, customCardWidthMm: $customCardWidthMm, customCardHeightMm: $customCardHeightMm, updatedAt: $updatedAt)';
+    return 'UserSettings(selectedDeckId: $selectedDeckId, experienceLevel: $experienceLevel, defaultCardCount: $defaultCardCount, showFaceUp: $showFaceUp, quickDrawEnabled: $quickDrawEnabled, defaultSpreadType: $defaultSpreadType, showCardName: $showCardName, allowReversed: $allowReversed, cardsPerRow: $cardsPerRow, cardSizePreset: $cardSizePreset, customCardWidthMm: $customCardWidthMm, customCardHeightMm: $customCardHeightMm, updatedAt: $updatedAt)';
   }
 
   @override
@@ -330,6 +347,8 @@ class _$UserSettingsImpl extends _UserSettings {
                 other.showCardName == showCardName) &&
             (identical(other.allowReversed, allowReversed) ||
                 other.allowReversed == allowReversed) &&
+            (identical(other.cardsPerRow, cardsPerRow) ||
+                other.cardsPerRow == cardsPerRow) &&
             (identical(other.cardSizePreset, cardSizePreset) ||
                 other.cardSizePreset == cardSizePreset) &&
             (identical(other.customCardWidthMm, customCardWidthMm) ||
@@ -352,6 +371,7 @@ class _$UserSettingsImpl extends _UserSettings {
       defaultSpreadType,
       showCardName,
       allowReversed,
+      cardsPerRow,
       cardSizePreset,
       customCardWidthMm,
       customCardHeightMm,
@@ -383,6 +403,7 @@ abstract class _UserSettings extends UserSettings {
       final SpreadType defaultSpreadType,
       final bool showCardName,
       final bool allowReversed,
+      final int cardsPerRow,
       final CardSizePreset cardSizePreset,
       final double customCardWidthMm,
       final double customCardHeightMm,
@@ -408,6 +429,8 @@ abstract class _UserSettings extends UserSettings {
   bool get showCardName;
   @override
   bool get allowReversed;
+  @override
+  int get cardsPerRow;
   @override
   CardSizePreset get cardSizePreset;
   @override

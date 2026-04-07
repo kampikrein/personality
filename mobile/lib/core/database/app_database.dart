@@ -22,7 +22,7 @@ class AppDatabase extends _$AppDatabase {
   AppDatabase(super.e);
 
   @override
-  int get schemaVersion => 5;
+  int get schemaVersion => 7;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
@@ -53,6 +53,17 @@ class AppDatabase extends _$AppDatabase {
             );
             await m.database.customStatement(
               'ALTER TABLE user_settings ADD COLUMN custom_card_height_mm REAL DEFAULT 120.0',
+            );
+          }
+          if (from < 6) {
+            await m.database.customStatement(
+              'ALTER TABLE user_settings ADD COLUMN cards_per_row INTEGER DEFAULT 3',
+            );
+          }
+          if (from < 7) {
+            // 기존 풀셔플(3) 사용자를 2.5D(4)로 마이그레이션
+            await m.database.customStatement(
+              'UPDATE user_settings SET experience_level = 4 WHERE experience_level = 3',
             );
           }
         },

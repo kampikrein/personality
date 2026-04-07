@@ -36,8 +36,10 @@ class _HomePageState extends ConsumerState<HomePage> {
         context.push('/draw/instant');
       case 2:
         context.push('/draw/animated');
-      case 3:
-        context.pushNamed('shuffle', pathParameters: {'deckId': deckId});
+      case 3: // 2D 셔플 (TODO: 전용 페이지 구현 후 분기)
+        context.pushNamed('intention', pathParameters: {'deckId': deckId});
+      case 4: // 2.5D 물리 셔플
+        context.pushNamed('intention', pathParameters: {'deckId': deckId});
       default:
         context.push('/draw/instant');
     }
@@ -51,7 +53,7 @@ class _HomePageState extends ConsumerState<HomePage> {
     final theme = Theme.of(context);
 
     final settings = settingsAsync.valueOrNull;
-    final experienceLevel = settings?.experienceLevel ?? 3;
+    final experienceLevel = settings?.experienceLevel ?? 4;
     final selectedDeckId = settings?.selectedDeckId ?? 'rws-standard';
     final defaultCardCount = settings?.defaultCardCount ?? 3;
 
@@ -65,7 +67,8 @@ class _HomePageState extends ConsumerState<HomePage> {
     final levelLabel = switch (experienceLevel) {
       1 => '즉시',
       2 => '연출',
-      3 => '풀셔플',
+      3 => '2D',
+      4 => '2.5D',
       _ => '즉시',
     };
 
@@ -79,112 +82,146 @@ class _HomePageState extends ConsumerState<HomePage> {
           ),
         ),
         child: SafeArea(
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                // ── 헤더 ──
-                const SizedBox(height: 16),
-                Icon(Icons.nights_stay,
-                    color: theme.colorScheme.primary, size: 40),
-                const SizedBox(height: 8),
-                Text(
-                  'Personality Tarot',
-                  style: theme.textTheme.headlineLarge,
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 24),
+          child: Center(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  // ── 헤더 ──
+                  Icon(Icons.nights_stay,
+                      color: theme.colorScheme.primary, size: 48),
+                  const SizedBox(height: 12),
+                  Text(
+                    'Personality Tarot',
+                    style: theme.textTheme.headlineLarge,
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 32),
 
-                // ── 기능 카드 그리드 ──
-                GridView.count(
-                  crossAxisCount: 2,
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  crossAxisSpacing: 12,
-                  mainAxisSpacing: 12,
-                  childAspectRatio: 1.4,
-                  children: [
-                    // 뽑기 시작
-                    _HubCard(
-                      icon: Icons.style,
-                      title: '뽑기 시작',
-                      subtitle: '$levelLabel \u2022 $defaultCardCount장 \u2022 $deckName',
-                      color: theme.colorScheme.primary,
-                      enabled: _initialized,
-                      onTap: () =>
-                          _startDraw(context, experienceLevel, selectedDeckId),
+                  // ── 현재 설정 요약 ──
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 12),
+                    decoration: BoxDecoration(
+                      color: theme.colorScheme.surfaceContainerHigh
+                          .withValues(alpha: 0.5),
+                      borderRadius: BorderRadius.circular(12),
                     ),
-                    // 리딩 기록
-                    _HubCard(
-                      icon: Icons.history,
-                      title: '리딩 기록',
-                      subtitle: readingsAsync.valueOrNull != null
-                          ? '${readingsAsync.valueOrNull!.length}개의 기록'
-                          : '로딩 중...',
-                      color: theme.colorScheme.secondary,
-                      onTap: () => context.pushNamed('readings'),
+                    child: Wrap(
+                      spacing: 16,
+                      runSpacing: 8,
+                      alignment: WrapAlignment.center,
+                      children: [
+                        _InfoChip(label: levelLabel, icon: Icons.speed),
+                        _InfoChip(
+                            label: '$defaultCardCount장',
+                            icon: Icons.style),
+                        _InfoChip(label: deckName, icon: Icons.layers),
+                      ],
                     ),
-                    // 덱 선택
-                    _HubCard(
-                      icon: Icons.layers,
-                      title: '덱 선택',
-                      subtitle: '현재: $deckName',
-                      color: theme.colorScheme.tertiary,
-                      onTap: () => context.pushNamed('deck'),
-                    ),
-                    // 설정
-                    _HubCard(
-                      icon: Icons.tune,
-                      title: '설정',
-                      subtitle: '레벨 $experienceLevel ($levelLabel)',
-                      color: theme.colorScheme.primary.withValues(alpha: 0.7),
-                      onTap: () => context.pushNamed('settings'),
-                    ),
-                  ],
-                ),
+                  ),
+                  const SizedBox(height: 40),
 
-                const SizedBox(height: 24),
-
-                // ── 최근 리딩 미리보기 ──
-                Text('최근 리딩', style: theme.textTheme.bodyLarge),
-                const SizedBox(height: 8),
-                readingsAsync.when(
-                  loading: () =>
-                      const Center(child: CircularProgressIndicator()),
-                  error: (err, _) => Center(child: Text('오류: $err')),
-                  data: (readings) => readings.isEmpty
-                      ? Center(
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 24),
-                            child: Text(
-                              '아직 리딩이 없습니다.\n뽑기를 시작해보세요.',
-                              textAlign: TextAlign.center,
-                              style: theme.textTheme.bodyMedium,
+                  // ── 뽑기 버튼 ──
+                  SizedBox(
+                    width: 200,
+                    height: 200,
+                    child: Material(
+                      color: Colors.transparent,
+                      child: InkWell(
+                        onTap: _initialized
+                            ? () => _startDraw(
+                                context, experienceLevel, selectedDeckId)
+                            : null,
+                        borderRadius: BorderRadius.circular(100),
+                        child: Ink(
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            gradient: RadialGradient(
+                              colors: [
+                                theme.colorScheme.primary,
+                                theme.colorScheme.primary
+                                    .withValues(alpha: 0.6),
+                              ],
                             ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: theme.colorScheme.primary
+                                    .withValues(alpha: 0.3),
+                                blurRadius: 24,
+                                spreadRadius: 4,
+                              ),
+                            ],
                           ),
-                        )
-                      : Column(
-                          children: readings.take(3).map((reading) {
-                            return Card(
-                              child: ListTile(
-                                title: Text(reading.spreadType.displayName),
-                                subtitle:
-                                    Text(reading.question ?? '질문 없음'),
-                                trailing: Text(
-                                  _formatDate(reading.createdAt),
-                                  style: theme.textTheme.bodySmall,
-                                ),
-                                onTap: () => context.pushNamed(
-                                  'reading-detail',
-                                  pathParameters: {'readingId': reading.id},
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(Icons.style,
+                                  size: 48,
+                                  color: theme.colorScheme.onPrimary),
+                              const SizedBox(height: 8),
+                              Text(
+                                '바로 뽑기',
+                                style:
+                                    theme.textTheme.titleLarge?.copyWith(
+                                  color: theme.colorScheme.onPrimary,
+                                  fontWeight: FontWeight.bold,
                                 ),
                               ),
-                            );
-                          }).toList(),
+                            ],
+                          ),
                         ),
-                ),
-              ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 40),
+
+                  // ── 최근 리딩 미리보기 ──
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child:
+                        Text('최근 리딩', style: theme.textTheme.bodyLarge),
+                  ),
+                  const SizedBox(height: 8),
+                  readingsAsync.when(
+                    loading: () =>
+                        const Center(child: CircularProgressIndicator()),
+                    error: (err, _) => Center(child: Text('오류: $err')),
+                    data: (readings) => readings.isEmpty
+                        ? Center(
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 24),
+                              child: Text(
+                                '아직 리딩이 없습니다.\n뽑기를 시작해보세요.',
+                                textAlign: TextAlign.center,
+                                style: theme.textTheme.bodyMedium,
+                              ),
+                            ),
+                          )
+                        : Column(
+                            children: readings.take(3).map((reading) {
+                              return Card(
+                                child: ListTile(
+                                  title:
+                                      Text(reading.spreadType.displayName),
+                                  subtitle:
+                                      Text(reading.question ?? '질문 없음'),
+                                  trailing: Text(
+                                    _formatDate(reading.createdAt),
+                                    style: theme.textTheme.bodySmall,
+                                  ),
+                                  onTap: () => context.push(
+                                    '/readings/${reading.id}',
+                                  ),
+                                ),
+                              );
+                            }).toList(),
+                          ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -197,59 +234,29 @@ class _HomePageState extends ConsumerState<HomePage> {
   }
 }
 
-/// 홈 허브 기능 카드 위젯
-class _HubCard extends StatelessWidget {
-  const _HubCard({
-    required this.icon,
-    required this.title,
-    required this.subtitle,
-    required this.color,
-    required this.onTap,
-    this.enabled = true,
-  });
+/// 설정 정보 칩 위젯
+class _InfoChip extends StatelessWidget {
+  const _InfoChip({required this.label, required this.icon});
 
+  final String label;
   final IconData icon;
-  final String title;
-  final String subtitle;
-  final Color color;
-  final VoidCallback onTap;
-  final bool enabled;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Card(
-      elevation: 2,
-      child: InkWell(
-        onTap: enabled ? onTap : null,
-        borderRadius: BorderRadius.circular(12),
-        child: Padding(
-          padding: const EdgeInsets.all(12),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(icon, color: color, size: 28),
-              const SizedBox(height: 8),
-              Text(
-                title,
-                style: theme.textTheme.titleSmall?.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 4),
-              Text(
-                subtitle,
-                style: theme.textTheme.bodySmall?.copyWith(
-                  color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
-                ),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ),
-            ],
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Icon(icon, size: 14, color: theme.colorScheme.primary),
+        const SizedBox(width: 4),
+        Text(
+          label,
+          style: theme.textTheme.bodySmall?.copyWith(
+            color: theme.colorScheme.onSurface.withValues(alpha: 0.8),
           ),
+          overflow: TextOverflow.ellipsis,
         ),
-      ),
+      ],
     );
   }
 }

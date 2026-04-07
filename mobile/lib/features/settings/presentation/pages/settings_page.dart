@@ -51,7 +51,8 @@ class SettingsPage extends ConsumerWidget {
               segments: const [
                 ButtonSegment(value: 1, label: Text('즉시'), icon: Icon(Icons.flash_on)),
                 ButtonSegment(value: 2, label: Text('연출'), icon: Icon(Icons.animation)),
-                ButtonSegment(value: 3, label: Text('풀셔플'), icon: Icon(Icons.shuffle)),
+                ButtonSegment(value: 3, label: Text('2D'), icon: Icon(Icons.style)),
+                ButtonSegment(value: 4, label: Text('2.5D'), icon: Icon(Icons.view_in_ar)),
               ],
               selected: {settings.experienceLevel},
               onSelectionChanged: (s) {
@@ -108,6 +109,22 @@ class SettingsPage extends ConsumerWidget {
                     .updateAllowReversed(v);
               },
             ),
+
+            // 한 줄 카드 수
+            const _SectionTitle('한 줄 카드 수'),
+            SegmentedButton<int>(
+              segments: const [
+                ButtonSegment(value: 1, label: Text('1장')),
+                ButtonSegment(value: 2, label: Text('2장')),
+                ButtonSegment(value: 3, label: Text('3장')),
+              ],
+              selected: {settings.cardsPerRow},
+              onSelectionChanged: (s) {
+                ref.read(userSettingsRepositoryProvider)
+                    .updateCardsPerRow(s.first);
+              },
+            ),
+            const SizedBox(height: 24),
 
             // 기본 스프레드
             const _SectionTitle('기본 스프레드'),
