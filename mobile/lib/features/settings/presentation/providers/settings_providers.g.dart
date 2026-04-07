@@ -41,5 +41,24 @@ final userSettingsProvider = AutoDisposeStreamProvider<UserSettings>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef UserSettingsRef = AutoDisposeStreamProviderRef<UserSettings>;
+String _$cardAspectRatioHash() => r'9bbcb1a7fd2882797c31507963628f24f4ba21fa';
+
+/// The effective card aspect ratio (width / height), reactive to settings changes.
+///
+/// Copied from [cardAspectRatio].
+@ProviderFor(cardAspectRatio)
+final cardAspectRatioProvider = AutoDisposeProvider<double>.internal(
+  cardAspectRatio,
+  name: r'cardAspectRatioProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$cardAspectRatioHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef CardAspectRatioRef = AutoDisposeProviderRef<double>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -12,6 +12,8 @@ class SpreadLayout extends StatelessWidget {
     required this.deckId,
     required this.revealedPositions,
     required this.onCardTap,
+    this.showCardName = true,
+    this.cardAspectRatio = 70.0 / 120.0,
   });
 
   final SpreadType spreadType;
@@ -19,6 +21,8 @@ class SpreadLayout extends StatelessWidget {
   final String deckId;
   final Set<int> revealedPositions;
   final ValueChanged<int> onCardTap;
+  final bool showCardName;
+  final double cardAspectRatio;
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +41,8 @@ class SpreadLayout extends StatelessWidget {
         position: 0,
         label: spreadType.resolvePositions(cards.length)[0],
         isRevealed: revealedPositions.contains(0),
+        showCardName: showCardName,
+        cardAspectRatio: cardAspectRatio,
         onTap: () => onCardTap(0),
       ),
     );
@@ -55,7 +61,9 @@ class SpreadLayout extends StatelessWidget {
               position: i,
               label: spreadType.resolvePositions(cards.length)[i],
               isRevealed: revealedPositions.contains(i),
-              onTap: () => onCardTap(i),
+              showCardName: showCardName,
+        cardAspectRatio: cardAspectRatio,
+        onTap: () => onCardTap(i),
             ),
           ),
         );
@@ -68,17 +76,15 @@ class SpreadLayout extends StatelessWidget {
 
     return LayoutBuilder(
       builder: (context, constraints) {
-        // 3장 이하: 가로 나열, 4장 이상: 2열 그리드
-        final crossAxisCount = cards.length <= 3 ? cards.length : 2;
+        // 항상 3열 고정
+        const crossAxisCount = 3;
 
         return GridView.builder(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: crossAxisCount,
             crossAxisSpacing: 8,
             mainAxisSpacing: 8,
-            childAspectRatio: 0.65,
+            childAspectRatio: cardAspectRatio * 0.9,
           ),
           itemCount: cards.length,
           itemBuilder: (context, i) {
@@ -88,7 +94,9 @@ class SpreadLayout extends StatelessWidget {
               position: i,
               label: spreadType.resolvePositions(cards.length)[i],
               isRevealed: revealedPositions.contains(i),
-              onTap: () => onCardTap(i),
+              showCardName: showCardName,
+        cardAspectRatio: cardAspectRatio,
+        onTap: () => onCardTap(i),
             );
           },
         );

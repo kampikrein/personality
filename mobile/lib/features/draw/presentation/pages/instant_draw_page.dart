@@ -4,11 +4,11 @@ import 'package:go_router/go_router.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../reading/domain/entities/reading.dart';
-import '../../../reading/domain/entities/reflective_prompts.dart';
 import '../../../reading/domain/entities/spread_type.dart';
 import '../../../reading/presentation/providers/reading_providers.dart';
 import '../../../reading/presentation/widgets/spread_layout.dart';
 import '../../../settings/presentation/providers/settings_providers.dart';
+import '../../../shuffle/domain/entities/shuffle_config.dart';
 import '../../../shuffle/domain/entities/shuffle_result.dart';
 import '../../../shuffle/presentation/providers/shuffle_providers.dart';
 import '../../../deck/presentation/providers/deck_providers.dart';
@@ -26,6 +26,8 @@ class _InstantDrawPageState extends ConsumerState<InstantDrawPage> {
   late int _currentCardCount;
   late SpreadType _spreadType;
   late String _deckId;
+  late bool _allowReversed;
+  late bool _showCardName;
   final Set<int> _revealedPositions = {};
   String? _savedReadingId;
   bool _autoSaved = false;
@@ -39,7 +41,7 @@ class _InstantDrawPageState extends ConsumerState<InstantDrawPage> {
   void initState() {
     super.initState();
     _initSettings();
-    _executeDraw();
+    Future.microtask(() => _executeDraw());
   }
 
   void _initSettings() {
@@ -49,32 +51,44 @@ class _InstantDrawPageState extends ConsumerState<InstantDrawPage> {
         ? settings?.defaultCardCount ?? 3
         : _spreadType.cardCount;
     _deckId = settings?.selectedDeckId ?? 'rws-standard';
+    _allowReversed = settings?.allowReversed ?? true;
+    _showCardName = settings?.showCardName ?? true;
   }
 
   Future<void> _executeDraw() async {
-    // [이전 뽑기 상태 초기화] keepAlive provider 잔류 방지
-    ref.read(shuffleStateProvider.notifier).clear();
-    ref.read(readingQuestionProvider.notifier).clear();
+    try {
+      // [이전 뽑기 상태 초기화] keepAlive provider 잔류 방지
+      ref.read(shuffleStateProvider.notifier).clear();
+      ref.read(readingQuestionProvider.notifier).clear();
 
-    // 덱 시드 보장 (홈을 건너뛴 경우)
-    final repo = ref.read(deckRepositoryProvider);
-    await repo.seedRwsDeck();
+      // 덱 시드 보장 (홈을 건너뛴 경우)
+      final repo = ref.read(deckRepositoryProvider);
+      await repo.seedRwsDeck();
 
-    final cards = await ref.read(deckCardsProvider(_deckId).future);
-    final useCase = ref.read(shuffleDeckUseCaseProvider);
-    final strategy = ref.read(shuffleStrategyProvider);
-    final result = useCase.execute(cards: cards, strategy: strategy);
-    ref.read(shuffleStateProvider.notifier).setResult(result);
+      final cards = await ref.read(deckCardsProvider(_deckId).future);
+      final useCase = ref.read(shuffleDeckUseCaseProvider);
+      final strategy = ref.read(shuffleStrategyProvider);
+      final result = useCase.execute(
+        cards: cards,
+        strategy: strategy,
+        config: ShuffleConfig(useReversals: _allowReversed),
+      );
+      ref.read(shuffleStateProvider.notifier).setResult(result);
 
-    if (!mounted) return;
-    setState(() {
-      _shuffleResult = result;
-      _loading = false;
-      // 즉시 뽑기 — 모든 카드 즉시 reveal
-      for (var i = 0; i < _currentCardCount; i++) {
-        _revealedPositions.add(i);
-      }
-    });
+      if (!mounted) return;
+      setState(() {
+        _shuffleResult = result;
+        _loading = false;
+        // 즉시 뽑기 — 모든 카드 즉시 reveal
+        for (var i = 0; i < _currentCardCount; i++) {
+          _revealedPositions.add(i);
+        }
+      });
+    } catch (e, st) {
+      debugPrint('_executeDraw error: $e\n$st');
+      if (!mounted) return;
+      setState(() => _loading = false);
+    }
   }
 
   void _autoSave() {
@@ -166,11 +180,6 @@ class _InstantDrawPageState extends ConsumerState<InstantDrawPage> {
 
     final hasMoreCards = _currentCardCount < _shuffleResult!.cards.length;
 
-    final resolvedPositions =
-        _spreadType.resolvePositions(drawnCards.length);
-    final resolvedGuidances =
-        _spreadType.resolveGuidances(drawnCards.length);
-
     return Scaffold(
       appBar: AppBar(
         title: Text('${_spreadType.displayName} \u2014 즉시'),
@@ -179,22 +188,14 @@ class _InstantDrawPageState extends ConsumerState<InstantDrawPage> {
           onPressed: () => context.go('/'),
         ),
       ),
-      floatingActionButton: hasMoreCards
-          ? FloatingActionButton.extended(
-              onPressed: _addOneMore,
-              icon: const Icon(Icons.add),
-              label: Text(
-                  '+1 한 장 더 (${_shuffleResult!.cards.length - _currentCardCount}장 남음)'),
-            )
-          : null,
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            // ── 질문 입력 (접힌 상태 / 펼친 상태) ──
-            GestureDetector(
-              onTap: () => setState(() => _questionExpanded = !_questionExpanded),
+      body: Column(
+        children: [
+          // ── 질문 입력 ──
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
+            child: GestureDetector(
+              onTap: () =>
+                  setState(() => _questionExpanded = !_questionExpanded),
               child: Row(
                 children: [
                   Icon(
@@ -212,9 +213,11 @@ class _InstantDrawPageState extends ConsumerState<InstantDrawPage> {
                 ],
               ),
             ),
-            if (_questionExpanded) ...[
-              const SizedBox(height: 8),
-              TextField(
+          ),
+          if (_questionExpanded)
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
+              child: TextField(
                 controller: _questionController,
                 decoration: InputDecoration(
                   hintText: '이 뽑기에 대한 질문...',
@@ -228,80 +231,68 @@ class _InstantDrawPageState extends ConsumerState<InstantDrawPage> {
                 maxLines: 1,
                 onSubmitted: (_) => _updateQuestion(),
               ),
-            ],
-            const SizedBox(height: 16),
+            ),
 
-            // ── 스프레드 레이아웃 ──
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.45,
+          // ── 스프레드 레이아웃 (남은 공간 전체 사용) ──
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(12),
               child: SpreadLayout(
                 spreadType: _spreadType,
                 cards: drawnCards,
                 deckId: _deckId,
                 revealedPositions: _revealedPositions,
-                onCardTap: (_) {}, // 이미 모두 reveal됨
+                showCardName: _showCardName,
+                cardAspectRatio: ref.watch(cardAspectRatioProvider),
+                onCardTap: (_) {},
               ),
             ),
+          ),
 
-            // ── 성찰 카드 ──
-            const SizedBox(height: 24),
-            Text(
-              '성찰의 시간',
-              style: theme.textTheme.bodyLarge?.copyWith(
-                color: theme.colorScheme.primary,
-              ),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 12),
-            for (var i = 0; i < drawnCards.length; i++)
-              Container(
-                padding: const EdgeInsets.all(12),
-                margin: const EdgeInsets.only(bottom: 12),
-                decoration: BoxDecoration(
-                  color: theme.colorScheme.surface,
-                  borderRadius: BorderRadius.circular(8),
+          // ── 하단 버튼 바 ──
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 4, 16, 16),
+            child: Row(
+              children: [
+                // 다시
+                Expanded(
+                  child: FilledButton.tonalIcon(
+                    onPressed: () {
+                      setState(() {
+                        _shuffleResult = null;
+                        _revealedPositions.clear();
+                        _savedReadingId = null;
+                        _autoSaved = false;
+                        _loading = true;
+                      });
+                      _executeDraw();
+                    },
+                    icon: const Icon(Icons.refresh, size: 18),
+                    label: const Text('다시'),
+                  ),
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      '${resolvedPositions[i]}: ${drawnCards[i].card.name}',
-                      style: theme.textTheme.bodyMedium?.copyWith(
-                        color: theme.colorScheme.primary,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      resolvedGuidances[i],
-                      style: TextStyle(
-                        color: theme.colorScheme.secondary,
-                        fontSize: 12,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      ReflectivePrompts.getPrompt(drawnCards[i].card.cardId),
-                      style: theme.textTheme.bodyMedium,
-                    ),
-                  ],
+                const SizedBox(width: 8),
+                // +1
+                Expanded(
+                  child: FilledButton.icon(
+                    onPressed: hasMoreCards ? _addOneMore : null,
+                    icon: const Icon(Icons.add, size: 18),
+                    label: Text('+ ${_currentCardCount}장'),
+                  ),
                 ),
-              ),
-
-            // 안전 고지
-            const SizedBox(height: 16),
-            Text(
-              '타로는 자기 성찰의 도구입니다. 결과에 과도한 의미를 부여하지 마세요.\n'
-              '심리적 어려움이 있다면 정신건강 위기상담전화 1577-0199',
-              style: TextStyle(
-                color: theme.colorScheme.secondary.withValues(alpha: 0.7),
-                fontSize: 11,
-              ),
-              textAlign: TextAlign.center,
+                const SizedBox(width: 8),
+                // 리셋
+                Expanded(
+                  child: OutlinedButton.icon(
+                    onPressed: () => context.go('/'),
+                    icon: const Icon(Icons.home, size: 18),
+                    label: const Text('리셋'),
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

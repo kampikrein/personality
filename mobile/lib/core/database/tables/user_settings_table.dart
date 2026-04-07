@@ -14,6 +14,16 @@ class UserSettingsTable extends Table {
       boolean().withDefault(const Constant(false))();
   TextColumn get defaultSpreadType =>
       text().withDefault(const Constant('custom'))();
+  BoolColumn get showCardName =>
+      boolean().nullable().withDefault(const Constant(true))();
+  BoolColumn get allowReversed =>
+      boolean().nullable().withDefault(const Constant(true))();
+  TextColumn get cardSizePreset =>
+      text().withDefault(const Constant('standardTarot'))();
+  RealColumn get customCardWidthMm =>
+      real().withDefault(const Constant(70.0))();
+  RealColumn get customCardHeightMm =>
+      real().withDefault(const Constant(120.0))();
   DateTimeColumn get updatedAt => dateTime()();
 
   @override

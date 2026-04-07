@@ -186,6 +186,7 @@ class _ReadingPageState extends ConsumerState<ReadingPage> {
                 cards: drawnCards,
                 deckId: widget.deckId,
                 revealedPositions: _revealedPositions,
+                cardAspectRatio: ref.watch(cardAspectRatioProvider),
                 onCardTap: (position) {
                   setState(() => _revealedPositions.add(position));
                 },

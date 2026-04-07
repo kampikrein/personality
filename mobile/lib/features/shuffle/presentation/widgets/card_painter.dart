@@ -3,20 +3,22 @@ import 'package:flutter/material.dart';
 import 'riffle_animation_controller.dart';
 
 class CardPainter extends CustomPainter {
-  CardPainter({required this.animationState})
-      : super(repaint: animationState);
+  CardPainter({
+    required this.animationState,
+    this.cardAspectRatio = 70.0 / 120.0,
+  }) : super(repaint: animationState);
 
   final RiffleAnimationState animationState;
+  final double cardAspectRatio;
 
   static const _cardColor = Color(0xFF2D1B4E);
   static const _cardBorderColor = Color(0xFFD4A84B);
   static const _backPatternColor = Color(0xFF6B5B95);
-  static const _cardAspectRatio = 2.5 / 3.5;
 
   @override
   void paint(Canvas canvas, Size size) {
     final cardWidth = size.width * 0.22;
-    final cardHeight = cardWidth / _cardAspectRatio;
+    final cardHeight = cardWidth / cardAspectRatio;
     final centerX = size.width / 2;
     final centerY = size.height / 2;
 

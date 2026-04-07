@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -6,10 +7,10 @@ import 'package:go_router/go_router.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../reading/domain/entities/reading.dart';
-import '../../../reading/domain/entities/reflective_prompts.dart';
 import '../../../reading/domain/entities/spread_type.dart';
 import '../../../reading/presentation/providers/reading_providers.dart';
 import '../../../settings/presentation/providers/settings_providers.dart';
+import '../../../shuffle/domain/entities/shuffle_config.dart';
 import '../../../shuffle/domain/entities/shuffle_result.dart';
 import '../../../shuffle/presentation/providers/shuffle_providers.dart';
 import '../../../deck/presentation/providers/deck_providers.dart';
@@ -29,6 +30,8 @@ class _AnimatedDrawPageState extends ConsumerState<AnimatedDrawPage>
   late SpreadType _spreadType;
   late String _deckId;
   late bool _showFaceUp;
+  late bool _allowReversed;
+  late bool _showCardName;
   final Set<int> _revealedPositions = {};
   String? _savedReadingId;
   bool _autoSaved = false;
@@ -57,6 +60,8 @@ class _AnimatedDrawPageState extends ConsumerState<AnimatedDrawPage>
         : _spreadType.cardCount;
     _deckId = settings?.selectedDeckId ?? 'rws-standard';
     _showFaceUp = settings?.showFaceUp ?? false;
+    _allowReversed = settings?.allowReversed ?? true;
+    _showCardName = settings?.showCardName ?? true;
   }
 
   Future<void> _startDraw() async {
@@ -72,7 +77,11 @@ class _AnimatedDrawPageState extends ConsumerState<AnimatedDrawPage>
     final cards = await ref.read(deckCardsProvider(_deckId).future);
     final useCase = ref.read(shuffleDeckUseCaseProvider);
     final strategy = ref.read(shuffleStrategyProvider);
-    final result = useCase.execute(cards: cards, strategy: strategy);
+    final result = useCase.execute(
+      cards: cards,
+      strategy: strategy,
+      config: ShuffleConfig(useReversals: _allowReversed),
+    );
     ref.read(shuffleStateProvider.notifier).setResult(result);
 
     // 질문 세팅
@@ -128,26 +137,16 @@ class _AnimatedDrawPageState extends ConsumerState<AnimatedDrawPage>
       await _slideControllers.last.forward();
     }
 
-    // 카드 플립 (showFaceUp이 아닌 경우에만 지연 후 순차 reveal)
-    if (!_showFaceUp) {
-      await Future<void>.delayed(const Duration(milliseconds: 200));
-      for (var i = 0; i < _currentCardCount; i++) {
-        if (!mounted) return;
-        setState(() => _revealedPositions.add(i));
-        await Future<void>.delayed(const Duration(milliseconds: 200));
-      }
-    } else {
-      // showFaceUp이면 슬라이드 완료 후 즉시 전부 reveal
-      if (mounted) {
-        setState(() {
-          for (var i = 0; i < _currentCardCount; i++) {
-            _revealedPositions.add(i);
-          }
-        });
-      }
-    }
-
-    if (mounted) {
+    // showFaceUp이면 즉시 전부 reveal, 아니면 탭 대기
+    if (_showFaceUp && mounted) {
+      setState(() {
+        for (var i = 0; i < _currentCardCount; i++) {
+          _revealedPositions.add(i);
+        }
+        _animationComplete = true;
+      });
+    } else if (mounted) {
+      // 슬라이드 완료 → 카드가 뒷면으로 대기, 탭하면 뒤집힘
       setState(() => _animationComplete = true);
     }
   }
@@ -298,11 +297,6 @@ class _AnimatedDrawPageState extends ConsumerState<AnimatedDrawPage>
     final drawnCards = _shuffleResult!.cards.take(_currentCardCount).toList();
     final hasMoreCards = _currentCardCount < _shuffleResult!.cards.length;
 
-    final resolvedPositions =
-        _spreadType.resolvePositions(drawnCards.length);
-    final resolvedGuidances =
-        _spreadType.resolveGuidances(drawnCards.length);
-
     return Scaffold(
       appBar: AppBar(
         title: Text('${_spreadType.displayName} \u2014 연출'),
@@ -311,26 +305,17 @@ class _AnimatedDrawPageState extends ConsumerState<AnimatedDrawPage>
           onPressed: () => context.go('/'),
         ),
       ),
-      floatingActionButton: _animationComplete && hasMoreCards
-          ? FloatingActionButton.extended(
-              onPressed: _addOneMore,
-              icon: const Icon(Icons.add),
-              label: Text(
-                  '+1 한 장 더 (${_shuffleResult!.cards.length - _currentCardCount}장 남음)'),
-            )
-          : null,
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            // 질문 표시
-            if (_questionController.text.isNotEmpty) ...[
-              Container(
+      body: Column(
+        children: [
+          // 질문 표시
+          if (_questionController.text.isNotEmpty)
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
+              child: Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
                   color: theme.colorScheme.surface,
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(2),
                 ),
                 child: Text(
                   '"${_questionController.text}"',
@@ -340,109 +325,81 @@ class _AnimatedDrawPageState extends ConsumerState<AnimatedDrawPage>
                   textAlign: TextAlign.center,
                 ),
               ),
-              const SizedBox(height: 16),
-            ],
+            ),
 
-            // ── 애니메이션 카드 레이아웃 ──
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.45,
+          // ── 애니메이션 카드 레이아웃 (남은 공간 전체) ──
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(12),
               child: _buildAnimatedCards(drawnCards),
             ),
+          ),
 
-            // 성찰 카드 (애니메이션 완료 후)
-            if (_animationComplete) ...[
-              const SizedBox(height: 24),
-              Text(
-                '성찰의 시간',
-                style: theme.textTheme.bodyLarge?.copyWith(
-                  color: theme.colorScheme.primary,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 12),
-              for (var i = 0; i < drawnCards.length; i++)
-                Container(
-                  padding: const EdgeInsets.all(12),
-                  margin: const EdgeInsets.only(bottom: 12),
-                  decoration: BoxDecoration(
-                    color: theme.colorScheme.surface,
-                    borderRadius: BorderRadius.circular(8),
+          // ── 하단 버튼 바 ──
+          if (_animationComplete)
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16, 4, 16, 16),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: FilledButton.tonalIcon(
+                      onPressed: () {
+                        // 상태 리셋
+                        for (final c in _slideControllers) {
+                          c.dispose();
+                        }
+                        _slideControllers.clear();
+                        _slideAnimations.clear();
+                        _fadeAnimations.clear();
+                        setState(() {
+                          _shuffleResult = null;
+                          _shuffleExecuted = false;
+                          _animationComplete = false;
+                          _revealedPositions.clear();
+                          _savedReadingId = null;
+                          _autoSaved = false;
+                        });
+                      },
+                      icon: const Icon(Icons.refresh, size: 18),
+                      label: const Text('다시'),
+                    ),
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        '${resolvedPositions[i]}: ${drawnCards[i].card.name}',
-                        style: theme.textTheme.bodyMedium?.copyWith(
-                          color: theme.colorScheme.primary,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        resolvedGuidances[i],
-                        style: TextStyle(
-                          color: theme.colorScheme.secondary,
-                          fontSize: 12,
-                          fontStyle: FontStyle.italic,
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      Text(
-                        ReflectivePrompts.getPrompt(drawnCards[i].card.cardId),
-                        style: theme.textTheme.bodyMedium,
-                      ),
-                    ],
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: FilledButton.icon(
+                      onPressed: hasMoreCards ? _addOneMore : null,
+                      icon: const Icon(Icons.add, size: 18),
+                      label: Text('+ ${_currentCardCount}장'),
+                    ),
                   ),
-                ),
-            ],
-
-            // 안전 고지
-            const SizedBox(height: 16),
-            Text(
-              '타로는 자기 성찰의 도구입니다. 결과에 과도한 의미를 부여하지 마세요.\n'
-              '심리적 어려움이 있다면 정신건강 위기상담전화 1577-0199',
-              style: TextStyle(
-                color: theme.colorScheme.secondary.withValues(alpha: 0.7),
-                fontSize: 11,
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: OutlinedButton.icon(
+                      onPressed: () => context.go('/'),
+                      icon: const Icon(Icons.home, size: 18),
+                      label: const Text('리셋'),
+                    ),
+                  ),
+                ],
               ),
-              textAlign: TextAlign.center,
             ),
-          ],
-        ),
+        ],
       ),
     );
   }
 
-  /// 슬라이드+페이드 애니메이션으로 카드를 순차 표시
+  /// 슬라이드+페이드 애니메이션으로 카드를 순차 표시 (3열 고정)
   Widget _buildAnimatedCards(List<ShuffledCard> drawnCards) {
     if (_slideControllers.isEmpty) {
       return const Center(child: CircularProgressIndicator());
     }
 
-    // 3장 이하: 가로 나열, 4장 이상: 2열 그리드
-    if (drawnCards.length <= 3) {
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: List.generate(drawnCards.length, (i) {
-          return Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: _animatedCard(i, drawnCards[i]),
-            ),
-          );
-        }),
-      );
-    }
-
     return GridView.builder(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 3,
         crossAxisSpacing: 8,
         mainAxisSpacing: 8,
-        childAspectRatio: 0.65,
+        childAspectRatio: ref.watch(cardAspectRatioProvider) * 0.85,
       ),
       itemCount: drawnCards.length,
       itemBuilder: (context, i) => _animatedCard(i, drawnCards[i]),
@@ -464,41 +421,67 @@ class _AnimatedDrawPageState extends ConsumerState<AnimatedDrawPage>
     );
   }
 
+  void _revealCard(int index) {
+    if (_revealedPositions.contains(index)) return;
+    setState(() => _revealedPositions.add(index));
+
+    // 모든 카드 공개 시 자동 저장
+    if (_revealedPositions.length >= _currentCardCount) {
+      _autoSave();
+    }
+  }
+
   Widget _buildCardWidget(int index, ShuffledCard card) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Text(
-          _spreadType.resolvePositions(_currentCardCount)[index],
-          style: Theme.of(context).textTheme.bodyMedium,
-        ),
-        const SizedBox(height: 8),
-        Flexible(
-          child: AspectRatio(
-            aspectRatio: 2.5 / 3.5,
-            child: _revealedPositions.contains(index)
-                ? _buildFrontCard(card)
-                : _buildBackCard(),
-          ),
-        ),
-        if (_revealedPositions.contains(index) && card.isReversed)
-          Padding(
-            padding: const EdgeInsets.only(top: 4),
-            child: Text(
-              '역방향',
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.secondary,
-                fontSize: 12,
-              ),
+    final isRevealed = _revealedPositions.contains(index);
+    final theme = Theme.of(context);
+
+    return GestureDetector(
+      onTap: isRevealed ? null : () => _revealCard(index),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          // 역방향: 이름이 카드 위에 뒤집혀 보임
+          if (_showCardName && isRevealed && card.isReversed)
+            Transform(
+              alignment: Alignment.center,
+              transform: Matrix4.rotationZ(math.pi),
+              child: _buildCardName(card, theme),
+            ),
+          Flexible(
+            child: AspectRatio(
+              aspectRatio: ref.watch(cardAspectRatioProvider),
+              child: isRevealed
+                  ? _buildFrontCard(card)
+                  : _buildBackCard(),
             ),
           ),
-      ],
+          // 정방향: 카드 아래에 이름
+          if (_showCardName && isRevealed && !card.isReversed)
+            _buildCardName(card, theme),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildCardName(ShuffledCard card, ThemeData theme) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 2),
+      child: Text(
+        card.card.name,
+        style: theme.textTheme.bodySmall?.copyWith(
+          color: theme.colorScheme.onSurface.withValues(alpha: 0.8),
+          fontWeight: FontWeight.w600,
+        ),
+        textAlign: TextAlign.center,
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+      ),
     );
   }
 
   Widget _buildBackCard() {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(8),
+      borderRadius: BorderRadius.circular(2),
       child: Image.asset(
         'assets/images/$_deckId/card_back.webp',
         fit: BoxFit.cover,
@@ -514,58 +497,28 @@ class _AnimatedDrawPageState extends ConsumerState<AnimatedDrawPage>
   }
 
   Widget _buildFrontCard(ShuffledCard card) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(8),
-      child: Stack(
-        fit: StackFit.expand,
-        children: [
-          Image.asset(
-            card.card.imagePath,
-            fit: BoxFit.cover,
-            errorBuilder: (_, __, ___) => Container(
-              color: const Color(0xFF1A1028),
-              child: Center(
-                child: Text(
-                  card.card.name,
-                  style: TextStyle(
-                    color: Theme.of(context).colorScheme.primary,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-            ),
-          ),
-          Positioned(
-            left: 0,
-            right: 0,
-            bottom: 0,
-            child: Container(
-              padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 6),
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.bottomCenter,
-                  end: Alignment.topCenter,
-                  colors: [
-                    Colors.black.withValues(alpha: 0.7),
-                    Colors.transparent,
-                  ],
-                ),
-              ),
+    return Transform(
+      alignment: Alignment.center,
+      transform: Matrix4.rotationZ(card.isReversed ? math.pi : 0),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(2),
+        child: Image.asset(
+          card.card.imagePath,
+          fit: BoxFit.cover,
+          errorBuilder: (_, __, ___) => Container(
+            color: const Color(0xFF1A1028),
+            child: Center(
               child: Text(
                 card.card.name,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 11,
-                  fontWeight: FontWeight.w600,
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.primary,
+                  fontWeight: FontWeight.bold,
                 ),
                 textAlign: TextAlign.center,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
               ),
             ),
           ),
-        ],
+        ),
       ),
     );
   }

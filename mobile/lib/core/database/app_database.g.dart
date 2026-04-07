@@ -1966,6 +1966,50 @@ class $UserSettingsTableTable extends UserSettingsTable
           type: DriftSqlType.string,
           requiredDuringInsert: false,
           defaultValue: const Constant('custom'));
+  static const VerificationMeta _showCardNameMeta =
+      const VerificationMeta('showCardName');
+  @override
+  late final GeneratedColumn<bool> showCardName = GeneratedColumn<bool>(
+      'show_card_name', aliasedName, true,
+      type: DriftSqlType.bool,
+      requiredDuringInsert: false,
+      defaultConstraints: GeneratedColumn.constraintIsAlways(
+          'CHECK ("show_card_name" IN (0, 1))'),
+      defaultValue: const Constant(true));
+  static const VerificationMeta _allowReversedMeta =
+      const VerificationMeta('allowReversed');
+  @override
+  late final GeneratedColumn<bool> allowReversed = GeneratedColumn<bool>(
+      'allow_reversed', aliasedName, true,
+      type: DriftSqlType.bool,
+      requiredDuringInsert: false,
+      defaultConstraints: GeneratedColumn.constraintIsAlways(
+          'CHECK ("allow_reversed" IN (0, 1))'),
+      defaultValue: const Constant(true));
+  static const VerificationMeta _cardSizePresetMeta =
+      const VerificationMeta('cardSizePreset');
+  @override
+  late final GeneratedColumn<String> cardSizePreset = GeneratedColumn<String>(
+      'card_size_preset', aliasedName, false,
+      type: DriftSqlType.string,
+      requiredDuringInsert: false,
+      defaultValue: const Constant('standardTarot'));
+  static const VerificationMeta _customCardWidthMmMeta =
+      const VerificationMeta('customCardWidthMm');
+  @override
+  late final GeneratedColumn<double> customCardWidthMm =
+      GeneratedColumn<double>('custom_card_width_mm', aliasedName, false,
+          type: DriftSqlType.double,
+          requiredDuringInsert: false,
+          defaultValue: const Constant(70.0));
+  static const VerificationMeta _customCardHeightMmMeta =
+      const VerificationMeta('customCardHeightMm');
+  @override
+  late final GeneratedColumn<double> customCardHeightMm =
+      GeneratedColumn<double>('custom_card_height_mm', aliasedName, false,
+          type: DriftSqlType.double,
+          requiredDuringInsert: false,
+          defaultValue: const Constant(120.0));
   static const VerificationMeta _updatedAtMeta =
       const VerificationMeta('updatedAt');
   @override
@@ -1981,6 +2025,11 @@ class $UserSettingsTableTable extends UserSettingsTable
         showFaceUp,
         quickDrawEnabled,
         defaultSpreadType,
+        showCardName,
+        allowReversed,
+        cardSizePreset,
+        customCardWidthMm,
+        customCardHeightMm,
         updatedAt
       ];
   @override
@@ -2033,6 +2082,36 @@ class $UserSettingsTableTable extends UserSettingsTable
           defaultSpreadType.isAcceptableOrUnknown(
               data['default_spread_type']!, _defaultSpreadTypeMeta));
     }
+    if (data.containsKey('show_card_name')) {
+      context.handle(
+          _showCardNameMeta,
+          showCardName.isAcceptableOrUnknown(
+              data['show_card_name']!, _showCardNameMeta));
+    }
+    if (data.containsKey('allow_reversed')) {
+      context.handle(
+          _allowReversedMeta,
+          allowReversed.isAcceptableOrUnknown(
+              data['allow_reversed']!, _allowReversedMeta));
+    }
+    if (data.containsKey('card_size_preset')) {
+      context.handle(
+          _cardSizePresetMeta,
+          cardSizePreset.isAcceptableOrUnknown(
+              data['card_size_preset']!, _cardSizePresetMeta));
+    }
+    if (data.containsKey('custom_card_width_mm')) {
+      context.handle(
+          _customCardWidthMmMeta,
+          customCardWidthMm.isAcceptableOrUnknown(
+              data['custom_card_width_mm']!, _customCardWidthMmMeta));
+    }
+    if (data.containsKey('custom_card_height_mm')) {
+      context.handle(
+          _customCardHeightMmMeta,
+          customCardHeightMm.isAcceptableOrUnknown(
+              data['custom_card_height_mm']!, _customCardHeightMmMeta));
+    }
     if (data.containsKey('updated_at')) {
       context.handle(_updatedAtMeta,
           updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta));
@@ -2062,6 +2141,16 @@ class $UserSettingsTableTable extends UserSettingsTable
           DriftSqlType.bool, data['${effectivePrefix}quick_draw_enabled'])!,
       defaultSpreadType: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}default_spread_type'])!,
+      showCardName: attachedDatabase.typeMapping
+          .read(DriftSqlType.bool, data['${effectivePrefix}show_card_name']),
+      allowReversed: attachedDatabase.typeMapping
+          .read(DriftSqlType.bool, data['${effectivePrefix}allow_reversed']),
+      cardSizePreset: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}card_size_preset'])!,
+      customCardWidthMm: attachedDatabase.typeMapping.read(
+          DriftSqlType.double, data['${effectivePrefix}custom_card_width_mm'])!,
+      customCardHeightMm: attachedDatabase.typeMapping.read(DriftSqlType.double,
+          data['${effectivePrefix}custom_card_height_mm'])!,
       updatedAt: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}updated_at'])!,
     );
@@ -2082,6 +2171,11 @@ class UserSettingsTableData extends DataClass
   final bool showFaceUp;
   final bool quickDrawEnabled;
   final String defaultSpreadType;
+  final bool? showCardName;
+  final bool? allowReversed;
+  final String cardSizePreset;
+  final double customCardWidthMm;
+  final double customCardHeightMm;
   final DateTime updatedAt;
   const UserSettingsTableData(
       {required this.id,
@@ -2091,6 +2185,11 @@ class UserSettingsTableData extends DataClass
       required this.showFaceUp,
       required this.quickDrawEnabled,
       required this.defaultSpreadType,
+      this.showCardName,
+      this.allowReversed,
+      required this.cardSizePreset,
+      required this.customCardWidthMm,
+      required this.customCardHeightMm,
       required this.updatedAt});
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
@@ -2102,6 +2201,15 @@ class UserSettingsTableData extends DataClass
     map['show_face_up'] = Variable<bool>(showFaceUp);
     map['quick_draw_enabled'] = Variable<bool>(quickDrawEnabled);
     map['default_spread_type'] = Variable<String>(defaultSpreadType);
+    if (!nullToAbsent || showCardName != null) {
+      map['show_card_name'] = Variable<bool>(showCardName);
+    }
+    if (!nullToAbsent || allowReversed != null) {
+      map['allow_reversed'] = Variable<bool>(allowReversed);
+    }
+    map['card_size_preset'] = Variable<String>(cardSizePreset);
+    map['custom_card_width_mm'] = Variable<double>(customCardWidthMm);
+    map['custom_card_height_mm'] = Variable<double>(customCardHeightMm);
     map['updated_at'] = Variable<DateTime>(updatedAt);
     return map;
   }
@@ -2115,6 +2223,15 @@ class UserSettingsTableData extends DataClass
       showFaceUp: Value(showFaceUp),
       quickDrawEnabled: Value(quickDrawEnabled),
       defaultSpreadType: Value(defaultSpreadType),
+      showCardName: showCardName == null && nullToAbsent
+          ? const Value.absent()
+          : Value(showCardName),
+      allowReversed: allowReversed == null && nullToAbsent
+          ? const Value.absent()
+          : Value(allowReversed),
+      cardSizePreset: Value(cardSizePreset),
+      customCardWidthMm: Value(customCardWidthMm),
+      customCardHeightMm: Value(customCardHeightMm),
       updatedAt: Value(updatedAt),
     );
   }
@@ -2130,6 +2247,12 @@ class UserSettingsTableData extends DataClass
       showFaceUp: serializer.fromJson<bool>(json['showFaceUp']),
       quickDrawEnabled: serializer.fromJson<bool>(json['quickDrawEnabled']),
       defaultSpreadType: serializer.fromJson<String>(json['defaultSpreadType']),
+      showCardName: serializer.fromJson<bool?>(json['showCardName']),
+      allowReversed: serializer.fromJson<bool?>(json['allowReversed']),
+      cardSizePreset: serializer.fromJson<String>(json['cardSizePreset']),
+      customCardWidthMm: serializer.fromJson<double>(json['customCardWidthMm']),
+      customCardHeightMm:
+          serializer.fromJson<double>(json['customCardHeightMm']),
       updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
     );
   }
@@ -2144,6 +2267,11 @@ class UserSettingsTableData extends DataClass
       'showFaceUp': serializer.toJson<bool>(showFaceUp),
       'quickDrawEnabled': serializer.toJson<bool>(quickDrawEnabled),
       'defaultSpreadType': serializer.toJson<String>(defaultSpreadType),
+      'showCardName': serializer.toJson<bool?>(showCardName),
+      'allowReversed': serializer.toJson<bool?>(allowReversed),
+      'cardSizePreset': serializer.toJson<String>(cardSizePreset),
+      'customCardWidthMm': serializer.toJson<double>(customCardWidthMm),
+      'customCardHeightMm': serializer.toJson<double>(customCardHeightMm),
       'updatedAt': serializer.toJson<DateTime>(updatedAt),
     };
   }
@@ -2156,6 +2284,11 @@ class UserSettingsTableData extends DataClass
           bool? showFaceUp,
           bool? quickDrawEnabled,
           String? defaultSpreadType,
+          Value<bool?> showCardName = const Value.absent(),
+          Value<bool?> allowReversed = const Value.absent(),
+          String? cardSizePreset,
+          double? customCardWidthMm,
+          double? customCardHeightMm,
           DateTime? updatedAt}) =>
       UserSettingsTableData(
         id: id ?? this.id,
@@ -2165,6 +2298,13 @@ class UserSettingsTableData extends DataClass
         showFaceUp: showFaceUp ?? this.showFaceUp,
         quickDrawEnabled: quickDrawEnabled ?? this.quickDrawEnabled,
         defaultSpreadType: defaultSpreadType ?? this.defaultSpreadType,
+        showCardName:
+            showCardName.present ? showCardName.value : this.showCardName,
+        allowReversed:
+            allowReversed.present ? allowReversed.value : this.allowReversed,
+        cardSizePreset: cardSizePreset ?? this.cardSizePreset,
+        customCardWidthMm: customCardWidthMm ?? this.customCardWidthMm,
+        customCardHeightMm: customCardHeightMm ?? this.customCardHeightMm,
         updatedAt: updatedAt ?? this.updatedAt,
       );
   UserSettingsTableData copyWithCompanion(UserSettingsTableCompanion data) {
@@ -2187,6 +2327,21 @@ class UserSettingsTableData extends DataClass
       defaultSpreadType: data.defaultSpreadType.present
           ? data.defaultSpreadType.value
           : this.defaultSpreadType,
+      showCardName: data.showCardName.present
+          ? data.showCardName.value
+          : this.showCardName,
+      allowReversed: data.allowReversed.present
+          ? data.allowReversed.value
+          : this.allowReversed,
+      cardSizePreset: data.cardSizePreset.present
+          ? data.cardSizePreset.value
+          : this.cardSizePreset,
+      customCardWidthMm: data.customCardWidthMm.present
+          ? data.customCardWidthMm.value
+          : this.customCardWidthMm,
+      customCardHeightMm: data.customCardHeightMm.present
+          ? data.customCardHeightMm.value
+          : this.customCardHeightMm,
       updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
     );
   }
@@ -2201,6 +2356,11 @@ class UserSettingsTableData extends DataClass
           ..write('showFaceUp: $showFaceUp, ')
           ..write('quickDrawEnabled: $quickDrawEnabled, ')
           ..write('defaultSpreadType: $defaultSpreadType, ')
+          ..write('showCardName: $showCardName, ')
+          ..write('allowReversed: $allowReversed, ')
+          ..write('cardSizePreset: $cardSizePreset, ')
+          ..write('customCardWidthMm: $customCardWidthMm, ')
+          ..write('customCardHeightMm: $customCardHeightMm, ')
           ..write('updatedAt: $updatedAt')
           ..write(')'))
         .toString();
@@ -2215,6 +2375,11 @@ class UserSettingsTableData extends DataClass
       showFaceUp,
       quickDrawEnabled,
       defaultSpreadType,
+      showCardName,
+      allowReversed,
+      cardSizePreset,
+      customCardWidthMm,
+      customCardHeightMm,
       updatedAt);
   @override
   bool operator ==(Object other) =>
@@ -2227,6 +2392,11 @@ class UserSettingsTableData extends DataClass
           other.showFaceUp == this.showFaceUp &&
           other.quickDrawEnabled == this.quickDrawEnabled &&
           other.defaultSpreadType == this.defaultSpreadType &&
+          other.showCardName == this.showCardName &&
+          other.allowReversed == this.allowReversed &&
+          other.cardSizePreset == this.cardSizePreset &&
+          other.customCardWidthMm == this.customCardWidthMm &&
+          other.customCardHeightMm == this.customCardHeightMm &&
           other.updatedAt == this.updatedAt);
 }
 
@@ -2239,6 +2409,11 @@ class UserSettingsTableCompanion
   final Value<bool> showFaceUp;
   final Value<bool> quickDrawEnabled;
   final Value<String> defaultSpreadType;
+  final Value<bool?> showCardName;
+  final Value<bool?> allowReversed;
+  final Value<String> cardSizePreset;
+  final Value<double> customCardWidthMm;
+  final Value<double> customCardHeightMm;
   final Value<DateTime> updatedAt;
   const UserSettingsTableCompanion({
     this.id = const Value.absent(),
@@ -2248,6 +2423,11 @@ class UserSettingsTableCompanion
     this.showFaceUp = const Value.absent(),
     this.quickDrawEnabled = const Value.absent(),
     this.defaultSpreadType = const Value.absent(),
+    this.showCardName = const Value.absent(),
+    this.allowReversed = const Value.absent(),
+    this.cardSizePreset = const Value.absent(),
+    this.customCardWidthMm = const Value.absent(),
+    this.customCardHeightMm = const Value.absent(),
     this.updatedAt = const Value.absent(),
   });
   UserSettingsTableCompanion.insert({
@@ -2258,6 +2438,11 @@ class UserSettingsTableCompanion
     this.showFaceUp = const Value.absent(),
     this.quickDrawEnabled = const Value.absent(),
     this.defaultSpreadType = const Value.absent(),
+    this.showCardName = const Value.absent(),
+    this.allowReversed = const Value.absent(),
+    this.cardSizePreset = const Value.absent(),
+    this.customCardWidthMm = const Value.absent(),
+    this.customCardHeightMm = const Value.absent(),
     required DateTime updatedAt,
   }) : updatedAt = Value(updatedAt);
   static Insertable<UserSettingsTableData> custom({
@@ -2268,6 +2453,11 @@ class UserSettingsTableCompanion
     Expression<bool>? showFaceUp,
     Expression<bool>? quickDrawEnabled,
     Expression<String>? defaultSpreadType,
+    Expression<bool>? showCardName,
+    Expression<bool>? allowReversed,
+    Expression<String>? cardSizePreset,
+    Expression<double>? customCardWidthMm,
+    Expression<double>? customCardHeightMm,
     Expression<DateTime>? updatedAt,
   }) {
     return RawValuesInsertable({
@@ -2278,6 +2468,12 @@ class UserSettingsTableCompanion
       if (showFaceUp != null) 'show_face_up': showFaceUp,
       if (quickDrawEnabled != null) 'quick_draw_enabled': quickDrawEnabled,
       if (defaultSpreadType != null) 'default_spread_type': defaultSpreadType,
+      if (showCardName != null) 'show_card_name': showCardName,
+      if (allowReversed != null) 'allow_reversed': allowReversed,
+      if (cardSizePreset != null) 'card_size_preset': cardSizePreset,
+      if (customCardWidthMm != null) 'custom_card_width_mm': customCardWidthMm,
+      if (customCardHeightMm != null)
+        'custom_card_height_mm': customCardHeightMm,
       if (updatedAt != null) 'updated_at': updatedAt,
     });
   }
@@ -2290,6 +2486,11 @@ class UserSettingsTableCompanion
       Value<bool>? showFaceUp,
       Value<bool>? quickDrawEnabled,
       Value<String>? defaultSpreadType,
+      Value<bool?>? showCardName,
+      Value<bool?>? allowReversed,
+      Value<String>? cardSizePreset,
+      Value<double>? customCardWidthMm,
+      Value<double>? customCardHeightMm,
       Value<DateTime>? updatedAt}) {
     return UserSettingsTableCompanion(
       id: id ?? this.id,
@@ -2299,6 +2500,11 @@ class UserSettingsTableCompanion
       showFaceUp: showFaceUp ?? this.showFaceUp,
       quickDrawEnabled: quickDrawEnabled ?? this.quickDrawEnabled,
       defaultSpreadType: defaultSpreadType ?? this.defaultSpreadType,
+      showCardName: showCardName ?? this.showCardName,
+      allowReversed: allowReversed ?? this.allowReversed,
+      cardSizePreset: cardSizePreset ?? this.cardSizePreset,
+      customCardWidthMm: customCardWidthMm ?? this.customCardWidthMm,
+      customCardHeightMm: customCardHeightMm ?? this.customCardHeightMm,
       updatedAt: updatedAt ?? this.updatedAt,
     );
   }
@@ -2327,6 +2533,21 @@ class UserSettingsTableCompanion
     if (defaultSpreadType.present) {
       map['default_spread_type'] = Variable<String>(defaultSpreadType.value);
     }
+    if (showCardName.present) {
+      map['show_card_name'] = Variable<bool>(showCardName.value);
+    }
+    if (allowReversed.present) {
+      map['allow_reversed'] = Variable<bool>(allowReversed.value);
+    }
+    if (cardSizePreset.present) {
+      map['card_size_preset'] = Variable<String>(cardSizePreset.value);
+    }
+    if (customCardWidthMm.present) {
+      map['custom_card_width_mm'] = Variable<double>(customCardWidthMm.value);
+    }
+    if (customCardHeightMm.present) {
+      map['custom_card_height_mm'] = Variable<double>(customCardHeightMm.value);
+    }
     if (updatedAt.present) {
       map['updated_at'] = Variable<DateTime>(updatedAt.value);
     }
@@ -2343,6 +2564,11 @@ class UserSettingsTableCompanion
           ..write('showFaceUp: $showFaceUp, ')
           ..write('quickDrawEnabled: $quickDrawEnabled, ')
           ..write('defaultSpreadType: $defaultSpreadType, ')
+          ..write('showCardName: $showCardName, ')
+          ..write('allowReversed: $allowReversed, ')
+          ..write('cardSizePreset: $cardSizePreset, ')
+          ..write('customCardWidthMm: $customCardWidthMm, ')
+          ..write('customCardHeightMm: $customCardHeightMm, ')
           ..write('updatedAt: $updatedAt')
           ..write(')'))
         .toString();
@@ -4001,6 +4227,11 @@ typedef $$UserSettingsTableTableCreateCompanionBuilder
   Value<bool> showFaceUp,
   Value<bool> quickDrawEnabled,
   Value<String> defaultSpreadType,
+  Value<bool?> showCardName,
+  Value<bool?> allowReversed,
+  Value<String> cardSizePreset,
+  Value<double> customCardWidthMm,
+  Value<double> customCardHeightMm,
   required DateTime updatedAt,
 });
 typedef $$UserSettingsTableTableUpdateCompanionBuilder
@@ -4012,6 +4243,11 @@ typedef $$UserSettingsTableTableUpdateCompanionBuilder
   Value<bool> showFaceUp,
   Value<bool> quickDrawEnabled,
   Value<String> defaultSpreadType,
+  Value<bool?> showCardName,
+  Value<bool?> allowReversed,
+  Value<String> cardSizePreset,
+  Value<double> customCardWidthMm,
+  Value<double> customCardHeightMm,
   Value<DateTime> updatedAt,
 });
 
@@ -4048,6 +4284,24 @@ class $$UserSettingsTableTableFilterComposer
 
   ColumnFilters<String> get defaultSpreadType => $composableBuilder(
       column: $table.defaultSpreadType,
+      builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<bool> get showCardName => $composableBuilder(
+      column: $table.showCardName, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<bool> get allowReversed => $composableBuilder(
+      column: $table.allowReversed, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get cardSizePreset => $composableBuilder(
+      column: $table.cardSizePreset,
+      builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<double> get customCardWidthMm => $composableBuilder(
+      column: $table.customCardWidthMm,
+      builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<double> get customCardHeightMm => $composableBuilder(
+      column: $table.customCardHeightMm,
       builder: (column) => ColumnFilters(column));
 
   ColumnFilters<DateTime> get updatedAt => $composableBuilder(
@@ -4089,6 +4343,26 @@ class $$UserSettingsTableTableOrderingComposer
       column: $table.defaultSpreadType,
       builder: (column) => ColumnOrderings(column));
 
+  ColumnOrderings<bool> get showCardName => $composableBuilder(
+      column: $table.showCardName,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<bool> get allowReversed => $composableBuilder(
+      column: $table.allowReversed,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get cardSizePreset => $composableBuilder(
+      column: $table.cardSizePreset,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<double> get customCardWidthMm => $composableBuilder(
+      column: $table.customCardWidthMm,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<double> get customCardHeightMm => $composableBuilder(
+      column: $table.customCardHeightMm,
+      builder: (column) => ColumnOrderings(column));
+
   ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
       column: $table.updatedAt, builder: (column) => ColumnOrderings(column));
 }
@@ -4122,6 +4396,21 @@ class $$UserSettingsTableTableAnnotationComposer
 
   GeneratedColumn<String> get defaultSpreadType => $composableBuilder(
       column: $table.defaultSpreadType, builder: (column) => column);
+
+  GeneratedColumn<bool> get showCardName => $composableBuilder(
+      column: $table.showCardName, builder: (column) => column);
+
+  GeneratedColumn<bool> get allowReversed => $composableBuilder(
+      column: $table.allowReversed, builder: (column) => column);
+
+  GeneratedColumn<String> get cardSizePreset => $composableBuilder(
+      column: $table.cardSizePreset, builder: (column) => column);
+
+  GeneratedColumn<double> get customCardWidthMm => $composableBuilder(
+      column: $table.customCardWidthMm, builder: (column) => column);
+
+  GeneratedColumn<double> get customCardHeightMm => $composableBuilder(
+      column: $table.customCardHeightMm, builder: (column) => column);
 
   GeneratedColumn<DateTime> get updatedAt =>
       $composableBuilder(column: $table.updatedAt, builder: (column) => column);
@@ -4163,6 +4452,11 @@ class $$UserSettingsTableTableTableManager extends RootTableManager<
             Value<bool> showFaceUp = const Value.absent(),
             Value<bool> quickDrawEnabled = const Value.absent(),
             Value<String> defaultSpreadType = const Value.absent(),
+            Value<bool?> showCardName = const Value.absent(),
+            Value<bool?> allowReversed = const Value.absent(),
+            Value<String> cardSizePreset = const Value.absent(),
+            Value<double> customCardWidthMm = const Value.absent(),
+            Value<double> customCardHeightMm = const Value.absent(),
             Value<DateTime> updatedAt = const Value.absent(),
           }) =>
               UserSettingsTableCompanion(
@@ -4173,6 +4467,11 @@ class $$UserSettingsTableTableTableManager extends RootTableManager<
             showFaceUp: showFaceUp,
             quickDrawEnabled: quickDrawEnabled,
             defaultSpreadType: defaultSpreadType,
+            showCardName: showCardName,
+            allowReversed: allowReversed,
+            cardSizePreset: cardSizePreset,
+            customCardWidthMm: customCardWidthMm,
+            customCardHeightMm: customCardHeightMm,
             updatedAt: updatedAt,
           ),
           createCompanionCallback: ({
@@ -4183,6 +4482,11 @@ class $$UserSettingsTableTableTableManager extends RootTableManager<
             Value<bool> showFaceUp = const Value.absent(),
             Value<bool> quickDrawEnabled = const Value.absent(),
             Value<String> defaultSpreadType = const Value.absent(),
+            Value<bool?> showCardName = const Value.absent(),
+            Value<bool?> allowReversed = const Value.absent(),
+            Value<String> cardSizePreset = const Value.absent(),
+            Value<double> customCardWidthMm = const Value.absent(),
+            Value<double> customCardHeightMm = const Value.absent(),
             required DateTime updatedAt,
           }) =>
               UserSettingsTableCompanion.insert(
@@ -4193,6 +4497,11 @@ class $$UserSettingsTableTableTableManager extends RootTableManager<
             showFaceUp: showFaceUp,
             quickDrawEnabled: quickDrawEnabled,
             defaultSpreadType: defaultSpreadType,
+            showCardName: showCardName,
+            allowReversed: allowReversed,
+            cardSizePreset: cardSizePreset,
+            customCardWidthMm: customCardWidthMm,
+            customCardHeightMm: customCardHeightMm,
             updatedAt: updatedAt,
           ),
           withReferenceMapper: (p0) => p0

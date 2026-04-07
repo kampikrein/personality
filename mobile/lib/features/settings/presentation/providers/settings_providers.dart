@@ -18,3 +18,11 @@ Stream<UserSettings> userSettings(UserSettingsRef ref) {
   final repo = ref.watch(userSettingsRepositoryProvider);
   return repo.watchSettings();
 }
+
+/// The effective card aspect ratio (width / height), reactive to settings changes.
+@riverpod
+double cardAspectRatio(CardAspectRatioRef ref) {
+  final settings = ref.watch(userSettingsProvider).valueOrNull;
+  // Default: standard tarot 70/120
+  return settings?.cardAspectRatio ?? (70.0 / 120.0);
+}

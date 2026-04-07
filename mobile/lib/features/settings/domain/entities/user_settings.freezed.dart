@@ -26,6 +26,11 @@ mixin _$UserSettings {
   bool get showFaceUp => throw _privateConstructorUsedError;
   bool get quickDrawEnabled => throw _privateConstructorUsedError;
   SpreadType get defaultSpreadType => throw _privateConstructorUsedError;
+  bool get showCardName => throw _privateConstructorUsedError;
+  bool get allowReversed => throw _privateConstructorUsedError;
+  CardSizePreset get cardSizePreset => throw _privateConstructorUsedError;
+  double get customCardWidthMm => throw _privateConstructorUsedError;
+  double get customCardHeightMm => throw _privateConstructorUsedError;
   DateTime get updatedAt => throw _privateConstructorUsedError;
 
   /// Serializes this UserSettings to a JSON map.
@@ -51,6 +56,11 @@ abstract class $UserSettingsCopyWith<$Res> {
       bool showFaceUp,
       bool quickDrawEnabled,
       SpreadType defaultSpreadType,
+      bool showCardName,
+      bool allowReversed,
+      CardSizePreset cardSizePreset,
+      double customCardWidthMm,
+      double customCardHeightMm,
       DateTime updatedAt});
 }
 
@@ -75,6 +85,11 @@ class _$UserSettingsCopyWithImpl<$Res, $Val extends UserSettings>
     Object? showFaceUp = null,
     Object? quickDrawEnabled = null,
     Object? defaultSpreadType = null,
+    Object? showCardName = null,
+    Object? allowReversed = null,
+    Object? cardSizePreset = null,
+    Object? customCardWidthMm = null,
+    Object? customCardHeightMm = null,
     Object? updatedAt = null,
   }) {
     return _then(_value.copyWith(
@@ -102,6 +117,26 @@ class _$UserSettingsCopyWithImpl<$Res, $Val extends UserSettings>
           ? _value.defaultSpreadType
           : defaultSpreadType // ignore: cast_nullable_to_non_nullable
               as SpreadType,
+      showCardName: null == showCardName
+          ? _value.showCardName
+          : showCardName // ignore: cast_nullable_to_non_nullable
+              as bool,
+      allowReversed: null == allowReversed
+          ? _value.allowReversed
+          : allowReversed // ignore: cast_nullable_to_non_nullable
+              as bool,
+      cardSizePreset: null == cardSizePreset
+          ? _value.cardSizePreset
+          : cardSizePreset // ignore: cast_nullable_to_non_nullable
+              as CardSizePreset,
+      customCardWidthMm: null == customCardWidthMm
+          ? _value.customCardWidthMm
+          : customCardWidthMm // ignore: cast_nullable_to_non_nullable
+              as double,
+      customCardHeightMm: null == customCardHeightMm
+          ? _value.customCardHeightMm
+          : customCardHeightMm // ignore: cast_nullable_to_non_nullable
+              as double,
       updatedAt: null == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
@@ -125,6 +160,11 @@ abstract class _$$UserSettingsImplCopyWith<$Res>
       bool showFaceUp,
       bool quickDrawEnabled,
       SpreadType defaultSpreadType,
+      bool showCardName,
+      bool allowReversed,
+      CardSizePreset cardSizePreset,
+      double customCardWidthMm,
+      double customCardHeightMm,
       DateTime updatedAt});
 }
 
@@ -147,6 +187,11 @@ class __$$UserSettingsImplCopyWithImpl<$Res>
     Object? showFaceUp = null,
     Object? quickDrawEnabled = null,
     Object? defaultSpreadType = null,
+    Object? showCardName = null,
+    Object? allowReversed = null,
+    Object? cardSizePreset = null,
+    Object? customCardWidthMm = null,
+    Object? customCardHeightMm = null,
     Object? updatedAt = null,
   }) {
     return _then(_$UserSettingsImpl(
@@ -174,6 +219,26 @@ class __$$UserSettingsImplCopyWithImpl<$Res>
           ? _value.defaultSpreadType
           : defaultSpreadType // ignore: cast_nullable_to_non_nullable
               as SpreadType,
+      showCardName: null == showCardName
+          ? _value.showCardName
+          : showCardName // ignore: cast_nullable_to_non_nullable
+              as bool,
+      allowReversed: null == allowReversed
+          ? _value.allowReversed
+          : allowReversed // ignore: cast_nullable_to_non_nullable
+              as bool,
+      cardSizePreset: null == cardSizePreset
+          ? _value.cardSizePreset
+          : cardSizePreset // ignore: cast_nullable_to_non_nullable
+              as CardSizePreset,
+      customCardWidthMm: null == customCardWidthMm
+          ? _value.customCardWidthMm
+          : customCardWidthMm // ignore: cast_nullable_to_non_nullable
+              as double,
+      customCardHeightMm: null == customCardHeightMm
+          ? _value.customCardHeightMm
+          : customCardHeightMm // ignore: cast_nullable_to_non_nullable
+              as double,
       updatedAt: null == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
@@ -184,7 +249,7 @@ class __$$UserSettingsImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$UserSettingsImpl implements _UserSettings {
+class _$UserSettingsImpl extends _UserSettings {
   const _$UserSettingsImpl(
       {this.selectedDeckId = 'rws-standard',
       this.experienceLevel = 3,
@@ -192,7 +257,13 @@ class _$UserSettingsImpl implements _UserSettings {
       this.showFaceUp = false,
       this.quickDrawEnabled = false,
       this.defaultSpreadType = SpreadType.custom,
-      required this.updatedAt});
+      this.showCardName = true,
+      this.allowReversed = true,
+      this.cardSizePreset = CardSizePreset.standardTarot,
+      this.customCardWidthMm = 70.0,
+      this.customCardHeightMm = 120.0,
+      required this.updatedAt})
+      : super._();
 
   factory _$UserSettingsImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserSettingsImplFromJson(json);
@@ -216,11 +287,26 @@ class _$UserSettingsImpl implements _UserSettings {
   @JsonKey()
   final SpreadType defaultSpreadType;
   @override
+  @JsonKey()
+  final bool showCardName;
+  @override
+  @JsonKey()
+  final bool allowReversed;
+  @override
+  @JsonKey()
+  final CardSizePreset cardSizePreset;
+  @override
+  @JsonKey()
+  final double customCardWidthMm;
+  @override
+  @JsonKey()
+  final double customCardHeightMm;
+  @override
   final DateTime updatedAt;
 
   @override
   String toString() {
-    return 'UserSettings(selectedDeckId: $selectedDeckId, experienceLevel: $experienceLevel, defaultCardCount: $defaultCardCount, showFaceUp: $showFaceUp, quickDrawEnabled: $quickDrawEnabled, defaultSpreadType: $defaultSpreadType, updatedAt: $updatedAt)';
+    return 'UserSettings(selectedDeckId: $selectedDeckId, experienceLevel: $experienceLevel, defaultCardCount: $defaultCardCount, showFaceUp: $showFaceUp, quickDrawEnabled: $quickDrawEnabled, defaultSpreadType: $defaultSpreadType, showCardName: $showCardName, allowReversed: $allowReversed, cardSizePreset: $cardSizePreset, customCardWidthMm: $customCardWidthMm, customCardHeightMm: $customCardHeightMm, updatedAt: $updatedAt)';
   }
 
   @override
@@ -240,6 +326,16 @@ class _$UserSettingsImpl implements _UserSettings {
                 other.quickDrawEnabled == quickDrawEnabled) &&
             (identical(other.defaultSpreadType, defaultSpreadType) ||
                 other.defaultSpreadType == defaultSpreadType) &&
+            (identical(other.showCardName, showCardName) ||
+                other.showCardName == showCardName) &&
+            (identical(other.allowReversed, allowReversed) ||
+                other.allowReversed == allowReversed) &&
+            (identical(other.cardSizePreset, cardSizePreset) ||
+                other.cardSizePreset == cardSizePreset) &&
+            (identical(other.customCardWidthMm, customCardWidthMm) ||
+                other.customCardWidthMm == customCardWidthMm) &&
+            (identical(other.customCardHeightMm, customCardHeightMm) ||
+                other.customCardHeightMm == customCardHeightMm) &&
             (identical(other.updatedAt, updatedAt) ||
                 other.updatedAt == updatedAt));
   }
@@ -254,6 +350,11 @@ class _$UserSettingsImpl implements _UserSettings {
       showFaceUp,
       quickDrawEnabled,
       defaultSpreadType,
+      showCardName,
+      allowReversed,
+      cardSizePreset,
+      customCardWidthMm,
+      customCardHeightMm,
       updatedAt);
 
   /// Create a copy of UserSettings
@@ -272,7 +373,7 @@ class _$UserSettingsImpl implements _UserSettings {
   }
 }
 
-abstract class _UserSettings implements UserSettings {
+abstract class _UserSettings extends UserSettings {
   const factory _UserSettings(
       {final String selectedDeckId,
       final int experienceLevel,
@@ -280,7 +381,13 @@ abstract class _UserSettings implements UserSettings {
       final bool showFaceUp,
       final bool quickDrawEnabled,
       final SpreadType defaultSpreadType,
+      final bool showCardName,
+      final bool allowReversed,
+      final CardSizePreset cardSizePreset,
+      final double customCardWidthMm,
+      final double customCardHeightMm,
       required final DateTime updatedAt}) = _$UserSettingsImpl;
+  const _UserSettings._() : super._();
 
   factory _UserSettings.fromJson(Map<String, dynamic> json) =
       _$UserSettingsImpl.fromJson;
@@ -297,6 +404,16 @@ abstract class _UserSettings implements UserSettings {
   bool get quickDrawEnabled;
   @override
   SpreadType get defaultSpreadType;
+  @override
+  bool get showCardName;
+  @override
+  bool get allowReversed;
+  @override
+  CardSizePreset get cardSizePreset;
+  @override
+  double get customCardWidthMm;
+  @override
+  double get customCardHeightMm;
   @override
   DateTime get updatedAt;
 

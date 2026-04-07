@@ -9,4 +9,8 @@ abstract class UserSettingsRepository {
   Future<void> updateShowFaceUp(bool showFaceUp);
   Future<void> updateQuickDrawEnabled(bool enabled);
   Future<void> updateDefaultSpreadType(String spreadTypeName);
+  Future<void> updateShowCardName(bool showCardName);
+  Future<void> updateAllowReversed(bool allowReversed);
+  Future<void> updateCardSizePreset(String presetName);
+  Future<void> updateCustomCardSize(double widthMm, double heightMm);
 }

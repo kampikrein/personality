@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../deck/presentation/providers/deck_providers.dart';
 import '../../../reading/domain/entities/spread_type.dart';
+import '../../domain/entities/card_size_preset.dart';
+import '../../domain/entities/user_settings.dart';
 import '../providers/settings_providers.dart';
 
 class SettingsPage extends ConsumerWidget {
@@ -86,6 +89,28 @@ class SettingsPage extends ConsumerWidget {
               },
             ),
 
+            // 카드 이름 표시
+            SwitchListTile(
+              title: const Text('카드 이름 표시'),
+              subtitle: const Text('카드 아래에 이름을 표시합니다'),
+              value: settings.showCardName,
+              onChanged: (v) {
+                ref.read(userSettingsRepositoryProvider)
+                    .updateShowCardName(v);
+              },
+            ),
+
+            // 역방향 허용
+            SwitchListTile(
+              title: const Text('역방향 카드 허용'),
+              subtitle: const Text('카드가 거꾸로 뽑힐 수 있습니다'),
+              value: settings.allowReversed,
+              onChanged: (v) {
+                ref.read(userSettingsRepositoryProvider)
+                    .updateAllowReversed(v);
+              },
+            ),
+
             // 기본 스프레드
             const _SectionTitle('기본 스프레드'),
             DropdownButtonFormField<SpreadType>(
@@ -103,6 +128,11 @@ class SettingsPage extends ConsumerWidget {
                 }
               },
             ),
+            const SizedBox(height: 24),
+
+            // 카드 크기
+            const _SectionTitle('카드 크기'),
+            _CardSizeSection(settings: settings),
           ],
         ),
       ),
@@ -119,6 +149,168 @@ class _SectionTitle extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8),
       child: Text(title, style: Theme.of(context).textTheme.titleSmall),
+    );
+  }
+}
+
+class _CardSizeSection extends ConsumerStatefulWidget {
+  const _CardSizeSection({required this.settings});
+  final UserSettings settings;
+
+  @override
+  ConsumerState<_CardSizeSection> createState() => _CardSizeSectionState();
+}
+
+class _CardSizeSectionState extends ConsumerState<_CardSizeSection> {
+  late TextEditingController _widthController;
+  late TextEditingController _heightController;
+
+  @override
+  void initState() {
+    super.initState();
+    _widthController = TextEditingController(
+      text: widget.settings.customCardWidthMm.toStringAsFixed(1),
+    );
+    _heightController = TextEditingController(
+      text: widget.settings.customCardHeightMm.toStringAsFixed(1),
+    );
+  }
+
+  @override
+  void dispose() {
+    _widthController.dispose();
+    _heightController.dispose();
+    super.dispose();
+  }
+
+  void _applyCustomSize() {
+    final w = double.tryParse(_widthController.text);
+    final h = double.tryParse(_heightController.text);
+    if (w != null && h != null && w > 0 && h > 0) {
+      ref.read(userSettingsRepositoryProvider).updateCustomCardSize(w, h);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final currentPreset = widget.settings.cardSizePreset;
+    final aspectRatio = widget.settings.cardAspectRatio;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // Preset selector
+        ...CardSizePreset.values.map((preset) {
+          return RadioListTile<CardSizePreset>(
+            title: Text(preset.label),
+            subtitle: Text(
+              preset == CardSizePreset.custom
+                  ? '${_widthController.text} × ${_heightController.text} mm'
+                  : preset.subtitle,
+            ),
+            value: preset,
+            groupValue: currentPreset,
+            dense: true,
+            onChanged: (v) {
+              if (v != null) {
+                ref
+                    .read(userSettingsRepositoryProvider)
+                    .updateCardSizePreset(v.name);
+              }
+            },
+          );
+        }),
+
+        // Custom size inputs (only when custom is selected)
+        if (currentPreset == CardSizePreset.custom) ...[
+          const SizedBox(height: 8),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    controller: _widthController,
+                    decoration: const InputDecoration(
+                      labelText: '가로 (mm)',
+                      isDense: true,
+                    ),
+                    keyboardType:
+                        const TextInputType.numberWithOptions(decimal: true),
+                    inputFormatters: [
+                      FilteringTextInputFormatter.allow(RegExp(r'[\d.]')),
+                    ],
+                    onSubmitted: (_) => _applyCustomSize(),
+                  ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 12),
+                  child: Text('×'),
+                ),
+                Expanded(
+                  child: TextField(
+                    controller: _heightController,
+                    decoration: const InputDecoration(
+                      labelText: '세로 (mm)',
+                      isDense: true,
+                    ),
+                    keyboardType:
+                        const TextInputType.numberWithOptions(decimal: true),
+                    inputFormatters: [
+                      FilteringTextInputFormatter.allow(RegExp(r'[\d.]')),
+                    ],
+                    onSubmitted: (_) => _applyCustomSize(),
+                  ),
+                ),
+                const SizedBox(width: 8),
+                IconButton(
+                  icon: const Icon(Icons.check),
+                  onPressed: _applyCustomSize,
+                  tooltip: '적용',
+                ),
+              ],
+            ),
+          ),
+        ],
+
+        // Preview card
+        const SizedBox(height: 16),
+        Center(
+          child: SizedBox(
+            height: 120,
+            child: AspectRatio(
+              aspectRatio: aspectRatio,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: const Color(0xFF2D1B4E),
+                  border: Border.all(color: const Color(0xFFD4A84B)),
+                  borderRadius: BorderRadius.circular(4),
+                ),
+                child: Center(
+                  child: Text(
+                    '미리보기',
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      color: const Color(0xFFD4A84B),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+        Center(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 4),
+            child: Text(
+              '종횡비: ${aspectRatio.toStringAsFixed(3)}',
+              style: theme.textTheme.bodySmall?.copyWith(
+                color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

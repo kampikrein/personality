@@ -14,6 +14,8 @@ class CardRevealWidget extends StatefulWidget {
     required this.label,
     required this.isRevealed,
     required this.onTap,
+    this.showCardName = true,
+    this.cardAspectRatio = 70.0 / 120.0,
   });
 
   final ShuffledCard card;
@@ -22,6 +24,8 @@ class CardRevealWidget extends StatefulWidget {
   final String label;
   final bool isRevealed;
   final VoidCallback onTap;
+  final bool showCardName;
+  final double cardAspectRatio;
 
   @override
   State<CardRevealWidget> createState() => _CardRevealWidgetState();
@@ -85,33 +89,31 @@ class _CardRevealWidgetState extends State<CardRevealWidget>
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(widget.label, style: theme.textTheme.bodyMedium),
-            const SizedBox(height: 8),
-            AnimatedBuilder(
-              animation: _animation,
-              builder: (context, child) {
-                final angle = _animation.value * math.pi;
-                return Transform(
-                  alignment: Alignment.center,
-                  transform: Matrix4.identity()
-                    ..setEntry(3, 2, 0.002)
-                    ..rotateY(angle),
-                  child: _showFront ? _buildFront(theme) : _buildBack(theme),
-                );
-              },
-            ),
-            if (widget.isRevealed && widget.card.isReversed)
-              Padding(
-                padding: const EdgeInsets.only(top: 4),
-                child: Text(
-                  '역방향 — 이 카드의 에너지가 내면으로 향합니다',
-                  style: TextStyle(
-                    color: theme.colorScheme.secondary,
-                    fontSize: 12,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
+            // 역방향: 이름이 카드 위에 뒤집혀 보임
+            if (widget.showCardName && widget.isRevealed && _showFront && widget.card.isReversed)
+              Transform(
+                alignment: Alignment.center,
+                transform: Matrix4.rotationZ(math.pi),
+                child: _buildCardName(theme),
               ),
+            Flexible(
+              child: AnimatedBuilder(
+                animation: _animation,
+                builder: (context, child) {
+                  final angle = _animation.value * math.pi;
+                  return Transform(
+                    alignment: Alignment.center,
+                    transform: Matrix4.identity()
+                      ..setEntry(3, 2, 0.002)
+                      ..rotateY(angle),
+                    child: _showFront ? _buildFront(theme) : _buildBack(theme),
+                  );
+                },
+              ),
+            ),
+            // 정방향: 카드 아래에 이름
+            if (widget.showCardName && widget.isRevealed && _showFront && !widget.card.isReversed)
+              _buildCardName(theme),
           ],
         ),
       ),
@@ -119,103 +121,84 @@ class _CardRevealWidgetState extends State<CardRevealWidget>
   }
 
   Widget _buildBack(ThemeData theme) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final pixelRatio = MediaQuery.of(context).devicePixelRatio;
-        final cacheW = (constraints.maxWidth * pixelRatio).toInt().clamp(1, 1024);
-        return AspectRatio(
-          aspectRatio: 2.5 / 3.5,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(8),
-            child: Image.asset(
-              'assets/images/${widget.deckId}/card_back.webp',
-              cacheWidth: cacheW,
-              fit: BoxFit.cover,
-              semanticLabel: '카드 뒷면',
-              errorBuilder: (_, __, ___) => Container(
-                color: const Color(0xFF2D1B4E),
-                child: Center(
-                  child: Icon(Icons.auto_awesome,
-                      color: theme.colorScheme.primary, size: 32),
-                ),
-              ),
+    return AspectRatio(
+      aspectRatio: widget.cardAspectRatio,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(2),
+        child: Image.asset(
+          'assets/images/${widget.deckId}/card_back.webp',
+          fit: BoxFit.cover,
+          semanticLabel: '카드 뒷면',
+          errorBuilder: (_, __, ___) => Container(
+            color: const Color(0xFF2D1B4E),
+            child: Center(
+              child: Icon(Icons.auto_awesome,
+                  color: theme.colorScheme.primary, size: 32),
             ),
           ),
-        );
-      },
+        ),
+      ),
+    );
+  }
+
+  Widget _buildCardName(ThemeData theme) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 2),
+      child: Text(
+        widget.card.card.name,
+        style: theme.textTheme.bodySmall?.copyWith(
+          color: theme.colorScheme.onSurface.withValues(alpha: 0.8),
+          fontWeight: FontWeight.w600,
+        ),
+        textAlign: TextAlign.center,
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+      ),
     );
   }
 
   Widget _buildFront(ThemeData theme) {
     return Transform(
       alignment: Alignment.center,
-      transform: Matrix4.identity()..rotateY(math.pi),
-      child: LayoutBuilder(
-        builder: (context, constraints) {
-          final pixelRatio = MediaQuery.of(context).devicePixelRatio;
-          final cacheW = (constraints.maxWidth * pixelRatio).toInt().clamp(1, 1024);
-          return AspectRatio(
-            aspectRatio: 2.5 / 3.5,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: Stack(
-                fit: StackFit.expand,
-                children: [
-                  // 카드 앞면 이미지
-                  Image.asset(
-                    widget.card.card.imagePath,
-                    cacheWidth: cacheW,
-                    fit: BoxFit.cover,
-                    semanticLabel: widget.card.card.name,
-                    errorBuilder: (_, __, ___) => Container(
-                      color: const Color(0xFF1A1028),
-                      child: Center(
-                        child: Text(
-                          widget.card.card.name,
-                          style: theme.textTheme.bodyLarge?.copyWith(
-                            color: theme.colorScheme.primary,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    ),
-                  ),
-                  // 카드 이름 오버레이 (하단)
-                  Positioned(
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 6),
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.bottomCenter,
-                          end: Alignment.topCenter,
-                          colors: [
-                            Colors.black.withValues(alpha: 0.7),
-                            Colors.transparent,
-                          ],
-                        ),
-                      ),
+      transform: Matrix4.identity()
+        ..rotateY(math.pi)
+        // 역방향 카드: 180도 회전 (뒤집어서 표시)
+        ..rotateZ(widget.card.isReversed ? math.pi : 0),
+      child: AspectRatio(
+        aspectRatio: widget.cardAspectRatio,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(2),
+          child: Stack(
+            fit: StackFit.expand,
+            children: [
+              // 카드 앞면 이미지
+              Image.asset(
+                widget.card.card.imagePath,
+                fit: BoxFit.cover,
+                semanticLabel: widget.card.card.name,
+                errorBuilder: (_, error, ___) {
+                  debugPrint(
+                    'CardRevealWidget: image load error for '
+                    '${widget.card.card.imagePath}: $error',
+                  );
+                  return Container(
+                    color: const Color(0xFF1A1028),
+                    child: Center(
                       child: Text(
                         widget.card.card.name,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 11,
-                          fontWeight: FontWeight.w600,
+                        style: theme.textTheme.bodyLarge?.copyWith(
+                          color: theme.colorScheme.primary,
+                          fontWeight: FontWeight.bold,
                         ),
                         textAlign: TextAlign.center,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
-                  ),
-                ],
+                  );
+                },
               ),
-            ),
-          );
-        },
+            ],
+          ),
+        ),
       ),
     );
   }
