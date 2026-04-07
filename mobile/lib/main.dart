@@ -27,15 +27,15 @@ Future<void> main() async {
 
 // ── Spring 튜닝 프로바이더 ─────────────────────────────────────────────
 final springMassProvider = StateProvider<double>((ref) => 0.5);
-final springStiffnessProvider = StateProvider<double>((ref) => 900.0);
-final springDampingProvider = StateProvider<double>((ref) => 1.3);
+final springStiffnessProvider = StateProvider<double>((ref) => 120.0);
+final springDampingProvider = StateProvider<double>((ref) => 14.0);
 
 class _FastBouncePhysics extends BouncingScrollPhysics {
   const _FastBouncePhysics({
     super.parent,
     this.springMass = 0.5,
-    this.springStiffness = 900.0,
-    this.springDamping = 1.3,
+    this.springStiffness = 120.0,
+    this.springDamping = 14.0,
   }) : super(decelerationRate: ScrollDecelerationRate.fast);
 
   final double springMass;
