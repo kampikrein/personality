@@ -166,15 +166,13 @@ GoRouter appRouter(AppRouterRef ref) {
         name: 'settings',
         pageBuilder: (context, state) =>
             _fadePage(key: state.pageKey, child: const SettingsPage()),
-        routes: [
-          GoRoute(
-            path: 'card-size',
-            name: 'card-size-settings',
-            pageBuilder: (context, state) => _fadePage(
-                key: state.pageKey,
-                child: const CardSizeSettingsPage()),
-          ),
-        ],
+      ),
+      GoRoute(
+        path: '/settings/card-size',
+        name: 'card-size-settings',
+        pageBuilder: (context, state) => _fadePage(
+            key: state.pageKey,
+            child: const CardSizeSettingsPage()),
       ),
     ],
   );
