@@ -226,3 +226,43 @@ Firebase 등 확장성 높은 BaaS(Backend as a Service) 환경을 프로덕션 
 또한, 이렇게 생성된 의미 깊은 결과물들을 단순히 개인 기기에만 머물게 하지 않고, '포인트 기반의 바운티(현상금) 시스템'을 통해 사용자들이 서로의 리딩을 돕고 해석을 공유하는 커뮤니티로 확장하는 전략은, 이 앱을 일회성 툴이 아닌 지속 가능한 자생적 생태계로 진화시키는 핵심 동력이 될 것이다.
 
 개발팀은 시스템 아키텍처의 가장 초기 설계 단계에서부터 모듈화 및 확장성을 담보할 수 있도록 유연한 JSON 스키마 엔진과 클린 아키텍처를 구축해야 하며, 장기적으로는 이 기반 위에서 유저들이 자유롭게 소통하고 덱을 교환하며 지식을 나누는 글로벌 C2C 마켓플레이스 및 커뮤니티 플랫폼으로 발전해 나가야 할 것을 강력히 권고한다.
+---
+
+## Session Log (auto-appended)
+
+| # | Type | Duration | Tokens |
+|---|------|----------|--------|
+| 1 | user-ai-exchange | 0s | 0 |
+| 2 | user-ai-exchange | 19s | 76045 |
+| 3 | user-ai-exchange | 11s | 40778 |
+| 4 | user-ai-exchange | 10s | 42195 |
+| 5 | user-ai-exchange | 9s | 44183 |
+| 6 | user-ai-exchange | 14s | 46529 |
+| 7 | user-ai-exchange | 5s | 48356 |
+| 8 | user-ai-exchange | 9s | 50568 |
+| 9 | user-ai-exchange | 13s | 105037 |
+| 10 | user-ai-exchange | 12s | 54453 |
+| 11 | user-ai-exchange | 11s | 55874 |
+| 12 | user-ai-exchange | 12s | 57359 |
+| 13 | user-ai-exchange | 14s | 58996 |
+| 14 | user-ai-exchange | 13s | 60582 |
+| 15 | user-ai-exchange | 8s | 61831 |
+| 16 | user-ai-exchange | 11s | 63033 |
+| 17 | user-ai-exchange | 29s | 202688 |
+| 18 | user-ai-exchange | 11s | 140060 |
+| 19 | user-ai-exchange | 11s | 71985 |
+| 20 | user-ai-exchange | 9s | 147944 |
+| 21 | user-ai-exchange | 14s | 76148 |
+| 22 | user-ai-exchange | 19s | 0 |
+| 23 | user-ai-exchange | 10s | 41780 |
+| 24 | user-ai-exchange | 13s | 45110 |
+### Metrics
+
+| Metric | Value |
+|--------|-------|
+| Duration | 341150s |
+| Total Tokens | 1591534 |
+| Input Tokens | 71 |
+| Output Tokens | 8834 |
+| Cache Read | 1202235 |
+| Cache Creation | 380394 |

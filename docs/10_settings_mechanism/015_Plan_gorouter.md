@@ -4,6 +4,8 @@ type: plan
 title: "GoRouter 정리 — Cycle 1 구현 계획"
 created: 2026-04-01
 status: active
+summary: >
+  GoRouter 라우트 구조 정리 구현 계획. settings_fix Brief의 MA-3, MA-6 항목 대응.
 references:
   - "007_Brief_settings_fix.md (MA-3, MA-6)"
   - "013_Research_impact_final.md"

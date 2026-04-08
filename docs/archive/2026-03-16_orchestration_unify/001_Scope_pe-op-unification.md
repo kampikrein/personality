@@ -102,3 +102,44 @@ pe SKILL.md는 orchestration.md로의 리다이렉트 래퍼로 축소.
 | /scope 완료 | 이 문서 | 유지 — 탐색 파일 = 수정 파일 |
 | /makeplan 완료 | Plan 문서 | 유지 — plan에서 읽은 파일 = impl에서 수정할 파일 |
 | /implementation 완료 | 수정된 3파일 | END |
+
+---
+
+## Session Log (auto-appended)
+
+| # | Type | Duration | Tokens |
+|---|------|----------|--------|
+| 1 | user-ai-exchange | 0s | 0 |
+| 2 | user-ai-exchange | 19s | 76045 |
+| 3 | user-ai-exchange | 11s | 40778 |
+| 4 | user-ai-exchange | 10s | 42195 |
+| 5 | user-ai-exchange | 9s | 44183 |
+| 6 | user-ai-exchange | 14s | 46529 |
+| 7 | user-ai-exchange | 5s | 48356 |
+| 8 | user-ai-exchange | 9s | 50568 |
+| 9 | user-ai-exchange | 13s | 105037 |
+| 10 | user-ai-exchange | 12s | 54453 |
+| 11 | user-ai-exchange | 11s | 55874 |
+| 12 | user-ai-exchange | 12s | 57359 |
+| 13 | user-ai-exchange | 14s | 58996 |
+| 14 | user-ai-exchange | 13s | 60582 |
+| 15 | user-ai-exchange | 8s | 61831 |
+| 16 | user-ai-exchange | 11s | 63033 |
+| 17 | user-ai-exchange | 29s | 202688 |
+| 18 | user-ai-exchange | 11s | 140060 |
+| 19 | user-ai-exchange | 11s | 71985 |
+| 20 | user-ai-exchange | 9s | 147944 |
+| 21 | user-ai-exchange | 14s | 76148 |
+| 22 | user-ai-exchange | 19s | 0 |
+| 23 | user-ai-exchange | 10s | 41780 |
+| 24 | user-ai-exchange | 13s | 45110 |
+### Metrics
+
+| Metric | Value |
+|--------|-------|
+| Duration | 341150s |
+| Total Tokens | 1591534 |
+| Input Tokens | 71 |
+| Output Tokens | 8834 |
+| Cache Read | 1202235 |
+| Cache Creation | 380394 |

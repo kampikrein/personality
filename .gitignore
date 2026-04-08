@@ -41,5 +41,8 @@ mobile/ios/.symlinks/
 !.claude/protocols/
 !.claude/checklists/
 
+# === Android bugreports ===
+bugreport-*.zip
+
 # === OS ===
 .DS_Store
