@@ -6,6 +6,6 @@ abstract class DeckRepository {
   Stream<List<DeckMetadata>> watchAllDecks();
   Future<DeckMetadata?> getDeckById(String id);
   Future<List<TarotCard>> getCardsByDeckId(String deckId);
-  Future<void> seedRwsDeck();
+  Future<void> seedAllDecks();
   Future<bool> hasAnyDecks();
 }

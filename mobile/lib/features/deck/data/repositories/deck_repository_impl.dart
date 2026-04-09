@@ -46,11 +46,16 @@ class DeckRepositoryImpl implements DeckRepository {
   }
 
   @override
-  Future<void> seedRwsDeck() async {
-    final hasDecks = await hasAnyDecks();
-    if (hasDecks) return;
+  Future<void> seedAllDecks() async {
+    await _seedDeckIfAbsent('rws-standard', 'assets/data/rws_deck.json');
+    await _seedDeckIfAbsent('iching-holitzka', 'assets/data/iching_holitzka_deck.json');
+  }
 
-    final jsonStr = await rootBundle.loadString('assets/data/rws_deck.json');
+  Future<void> _seedDeckIfAbsent(String deckId, String assetPath) async {
+    final existing = await db.deckDao.getDeckById(deckId);
+    if (existing != null) return;
+
+    final jsonStr = await rootBundle.loadString(assetPath);
     final data = jsonDecode(jsonStr) as Map<String, dynamic>;
     final deckData = data['deck'] as Map<String, dynamic>;
     final cardsData = data['cards'] as List;

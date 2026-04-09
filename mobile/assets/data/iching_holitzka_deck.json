@@ -1,0 +1,779 @@
+{
+  "deck": {
+    "id": "iching-holitzka",
+    "name": "I Ching Holitzka",
+    "isStandardTarot": false,
+    "totalCards": 64,
+    "creator": "Michael Holitzka"
+  },
+  "cards": [
+    {
+      "cardId": "hexagram-01",
+      "name": "The Creative (乾)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 1,
+      "imagePath": "assets/images/iching_holitzka/hexagram_01.webp",
+      "meanings": {
+        "upright": ["creative force", "strength", "initiative", "heaven"],
+        "reversed": ["arrogance", "excessive force", "rigidity"]
+      }
+    },
+    {
+      "cardId": "hexagram-02",
+      "name": "The Receptive (坤)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 2,
+      "imagePath": "assets/images/iching_holitzka/hexagram_02.webp",
+      "meanings": {
+        "upright": ["receptivity", "yielding", "nurturing", "earth"],
+        "reversed": ["passivity", "submissiveness", "inertia"]
+      }
+    },
+    {
+      "cardId": "hexagram-03",
+      "name": "Difficulty at the Beginning (屯)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 3,
+      "imagePath": "assets/images/iching_holitzka/hexagram_03.webp",
+      "meanings": {
+        "upright": ["new beginnings", "initial chaos", "perseverance", "growth"],
+        "reversed": ["overwhelm", "false start", "stagnation"]
+      }
+    },
+    {
+      "cardId": "hexagram-04",
+      "name": "Youthful Folly (蒙)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 4,
+      "imagePath": "assets/images/iching_holitzka/hexagram_04.webp",
+      "meanings": {
+        "upright": ["learning", "innocence", "seeking guidance", "humility"],
+        "reversed": ["stubbornness", "ignorance", "refusing counsel"]
+      }
+    },
+    {
+      "cardId": "hexagram-05",
+      "name": "Waiting (需)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 5,
+      "imagePath": "assets/images/iching_holitzka/hexagram_05.webp",
+      "meanings": {
+        "upright": ["patience", "nourishment", "timing", "confidence"],
+        "reversed": ["anxiety", "premature action", "impatience"]
+      }
+    },
+    {
+      "cardId": "hexagram-06",
+      "name": "Conflict (訟)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 6,
+      "imagePath": "assets/images/iching_holitzka/hexagram_06.webp",
+      "meanings": {
+        "upright": ["dispute", "caution", "seeking mediation", "truth"],
+        "reversed": ["prolonged conflict", "litigation", "stubbornness"]
+      }
+    },
+    {
+      "cardId": "hexagram-07",
+      "name": "The Army (師)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 7,
+      "imagePath": "assets/images/iching_holitzka/hexagram_07.webp",
+      "meanings": {
+        "upright": ["discipline", "leadership", "collective effort", "strategy"],
+        "reversed": ["power abuse", "disorder", "failed leadership"]
+      }
+    },
+    {
+      "cardId": "hexagram-08",
+      "name": "Holding Together (比)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 8,
+      "imagePath": "assets/images/iching_holitzka/hexagram_08.webp",
+      "meanings": {
+        "upright": ["unity", "alliance", "community", "solidarity"],
+        "reversed": ["isolation", "false unity", "dependency"]
+      }
+    },
+    {
+      "cardId": "hexagram-09",
+      "name": "Small Taming (小畜)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 9,
+      "imagePath": "assets/images/iching_holitzka/hexagram_09.webp",
+      "meanings": {
+        "upright": ["small restraint", "gradual progress", "preparation", "gentleness"],
+        "reversed": ["obstruction", "frustration", "limited resources"]
+      }
+    },
+    {
+      "cardId": "hexagram-10",
+      "name": "Treading (履)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 10,
+      "imagePath": "assets/images/iching_holitzka/hexagram_10.webp",
+      "meanings": {
+        "upright": ["careful conduct", "propriety", "mindfulness", "courage"],
+        "reversed": ["recklessness", "social misstep", "carelessness"]
+      }
+    },
+    {
+      "cardId": "hexagram-11",
+      "name": "Peace (泰)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 11,
+      "imagePath": "assets/images/iching_holitzka/hexagram_11.webp",
+      "meanings": {
+        "upright": ["harmony", "prosperity", "balance", "flourishing"],
+        "reversed": ["complacency", "decline", "stagnation"]
+      }
+    },
+    {
+      "cardId": "hexagram-12",
+      "name": "Standstill (否)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 12,
+      "imagePath": "assets/images/iching_holitzka/hexagram_12.webp",
+      "meanings": {
+        "upright": ["stagnation", "withdrawal", "inner retreat", "discernment"],
+        "reversed": ["isolation", "blocked communication", "decay"]
+      }
+    },
+    {
+      "cardId": "hexagram-13",
+      "name": "Fellowship (同人)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 13,
+      "imagePath": "assets/images/iching_holitzka/hexagram_13.webp",
+      "meanings": {
+        "upright": ["community", "shared vision", "fellowship", "openness"],
+        "reversed": ["cliques", "exclusion", "tribalism"]
+      }
+    },
+    {
+      "cardId": "hexagram-14",
+      "name": "Great Possession (大有)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 14,
+      "imagePath": "assets/images/iching_holitzka/hexagram_14.webp",
+      "meanings": {
+        "upright": ["abundance", "success", "clarity", "generosity"],
+        "reversed": ["pride", "excess", "misuse of power"]
+      }
+    },
+    {
+      "cardId": "hexagram-15",
+      "name": "Modesty (謙)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 15,
+      "imagePath": "assets/images/iching_holitzka/hexagram_15.webp",
+      "meanings": {
+        "upright": ["humility", "moderation", "equilibrium", "respect"],
+        "reversed": ["self-deprecation", "undervaluing", "false modesty"]
+      }
+    },
+    {
+      "cardId": "hexagram-16",
+      "name": "Enthusiasm (豫)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 16,
+      "imagePath": "assets/images/iching_holitzka/hexagram_16.webp",
+      "meanings": {
+        "upright": ["enthusiasm", "inspiration", "momentum", "music"],
+        "reversed": ["complacency", "false excitement", "laziness"]
+      }
+    },
+    {
+      "cardId": "hexagram-17",
+      "name": "Following (隨)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 17,
+      "imagePath": "assets/images/iching_holitzka/hexagram_17.webp",
+      "meanings": {
+        "upright": ["adaptability", "following the moment", "flexibility", "joy"],
+        "reversed": ["blind following", "loss of self", "opportunism"]
+      }
+    },
+    {
+      "cardId": "hexagram-18",
+      "name": "Decay (蠱)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 18,
+      "imagePath": "assets/images/iching_holitzka/hexagram_18.webp",
+      "meanings": {
+        "upright": ["renovation", "healing corruption", "taking responsibility", "renewal"],
+        "reversed": ["denial", "inherited problems", "neglect"]
+      }
+    },
+    {
+      "cardId": "hexagram-19",
+      "name": "Approach (臨)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 19,
+      "imagePath": "assets/images/iching_holitzka/hexagram_19.webp",
+      "meanings": {
+        "upright": ["approaching", "influence", "growth", "supervision"],
+        "reversed": ["overbearing", "missed opportunity", "withdrawal"]
+      }
+    },
+    {
+      "cardId": "hexagram-20",
+      "name": "Contemplation (觀)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 20,
+      "imagePath": "assets/images/iching_holitzka/hexagram_20.webp",
+      "meanings": {
+        "upright": ["observation", "perspective", "inner reflection", "example"],
+        "reversed": ["blind spot", "superficiality", "self-absorption"]
+      }
+    },
+    {
+      "cardId": "hexagram-21",
+      "name": "Biting Through (噬嗑)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 21,
+      "imagePath": "assets/images/iching_holitzka/hexagram_21.webp",
+      "meanings": {
+        "upright": ["decisive action", "justice", "overcoming obstacles", "clarity"],
+        "reversed": ["punishment", "force", "unresolved conflict"]
+      }
+    },
+    {
+      "cardId": "hexagram-22",
+      "name": "Grace (賁)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 22,
+      "imagePath": "assets/images/iching_holitzka/hexagram_22.webp",
+      "meanings": {
+        "upright": ["beauty", "adornment", "elegance", "refinement"],
+        "reversed": ["superficiality", "vanity", "form over substance"]
+      }
+    },
+    {
+      "cardId": "hexagram-23",
+      "name": "Splitting Apart (剝)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 23,
+      "imagePath": "assets/images/iching_holitzka/hexagram_23.webp",
+      "meanings": {
+        "upright": ["dissolution", "letting go", "yielding", "transition"],
+        "reversed": ["collapse", "erosion", "loss"]
+      }
+    },
+    {
+      "cardId": "hexagram-24",
+      "name": "Return (復)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 24,
+      "imagePath": "assets/images/iching_holitzka/hexagram_24.webp",
+      "meanings": {
+        "upright": ["return", "renewal", "turning point", "restoration"],
+        "reversed": ["regression", "missed return", "stubbornness"]
+      }
+    },
+    {
+      "cardId": "hexagram-25",
+      "name": "Innocence (無妄)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 25,
+      "imagePath": "assets/images/iching_holitzka/hexagram_25.webp",
+      "meanings": {
+        "upright": ["spontaneity", "integrity", "naturalness", "truth"],
+        "reversed": ["unexpected misfortune", "deception", "self-deception"]
+      }
+    },
+    {
+      "cardId": "hexagram-26",
+      "name": "Great Taming (大畜)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 26,
+      "imagePath": "assets/images/iching_holitzka/hexagram_26.webp",
+      "meanings": {
+        "upright": ["accumulation", "discipline", "stored energy", "wisdom"],
+        "reversed": ["hoarding", "suppression", "missed potential"]
+      }
+    },
+    {
+      "cardId": "hexagram-27",
+      "name": "Nourishment (頤)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 27,
+      "imagePath": "assets/images/iching_holitzka/hexagram_27.webp",
+      "meanings": {
+        "upright": ["nourishment", "care", "discernment", "sustenance"],
+        "reversed": ["overindulgence", "poor nourishment", "neglect"]
+      }
+    },
+    {
+      "cardId": "hexagram-28",
+      "name": "Great Excess (大過)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 28,
+      "imagePath": "assets/images/iching_holitzka/hexagram_28.webp",
+      "meanings": {
+        "upright": ["critical mass", "exceptional effort", "bold action", "transition"],
+        "reversed": ["collapse", "overload", "recklessness"]
+      }
+    },
+    {
+      "cardId": "hexagram-29",
+      "name": "The Abysmal (坎)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 29,
+      "imagePath": "assets/images/iching_holitzka/hexagram_29.webp",
+      "meanings": {
+        "upright": ["danger", "depth", "perseverance", "flowing through"],
+        "reversed": ["overwhelm", "drowning", "fear"]
+      }
+    },
+    {
+      "cardId": "hexagram-30",
+      "name": "The Clinging (離)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 30,
+      "imagePath": "assets/images/iching_holitzka/hexagram_30.webp",
+      "meanings": {
+        "upright": ["clarity", "fire", "illumination", "dependence"],
+        "reversed": ["attachment", "burning out", "instability"]
+      }
+    },
+    {
+      "cardId": "hexagram-31",
+      "name": "Influence (咸)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 31,
+      "imagePath": "assets/images/iching_holitzka/hexagram_31.webp",
+      "meanings": {
+        "upright": ["attraction", "mutual influence", "feeling", "courtship"],
+        "reversed": ["manipulation", "superficial connection", "selfishness"]
+      }
+    },
+    {
+      "cardId": "hexagram-32",
+      "name": "Duration (恒)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 32,
+      "imagePath": "assets/images/iching_holitzka/hexagram_32.webp",
+      "meanings": {
+        "upright": ["perseverance", "continuity", "commitment", "endurance"],
+        "reversed": ["rigidity", "rut", "stagnation"]
+      }
+    },
+    {
+      "cardId": "hexagram-33",
+      "name": "Retreat (遯)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 33,
+      "imagePath": "assets/images/iching_holitzka/hexagram_33.webp",
+      "meanings": {
+        "upright": ["strategic withdrawal", "retreat", "timing", "conservation"],
+        "reversed": ["flight", "avoidance", "cowardice"]
+      }
+    },
+    {
+      "cardId": "hexagram-34",
+      "name": "Great Power (大壯)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 34,
+      "imagePath": "assets/images/iching_holitzka/hexagram_34.webp",
+      "meanings": {
+        "upright": ["great power", "strength", "righteousness", "momentum"],
+        "reversed": ["force without wisdom", "recklessness", "overconfidence"]
+      }
+    },
+    {
+      "cardId": "hexagram-35",
+      "name": "Progress (晉)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 35,
+      "imagePath": "assets/images/iching_holitzka/hexagram_35.webp",
+      "meanings": {
+        "upright": ["progress", "advancement", "recognition", "clarity"],
+        "reversed": ["setback", "blocked progress", "obscurity"]
+      }
+    },
+    {
+      "cardId": "hexagram-36",
+      "name": "Darkening of the Light (明夷)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 36,
+      "imagePath": "assets/images/iching_holitzka/hexagram_36.webp",
+      "meanings": {
+        "upright": ["inner light", "perseverance in adversity", "concealment", "resilience"],
+        "reversed": ["suppression", "eclipse", "loss of clarity"]
+      }
+    },
+    {
+      "cardId": "hexagram-37",
+      "name": "The Family (家人)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 37,
+      "imagePath": "assets/images/iching_holitzka/hexagram_37.webp",
+      "meanings": {
+        "upright": ["family", "roles", "inner order", "responsibility"],
+        "reversed": ["family conflict", "dysfunction", "rigid roles"]
+      }
+    },
+    {
+      "cardId": "hexagram-38",
+      "name": "Opposition (睽)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 38,
+      "imagePath": "assets/images/iching_holitzka/hexagram_38.webp",
+      "meanings": {
+        "upright": ["contrast", "diversity", "small steps", "polarity"],
+        "reversed": ["alienation", "misunderstanding", "opposition"]
+      }
+    },
+    {
+      "cardId": "hexagram-39",
+      "name": "Obstruction (蹇)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 39,
+      "imagePath": "assets/images/iching_holitzka/hexagram_39.webp",
+      "meanings": {
+        "upright": ["obstacle", "turning inward", "seeking help", "reflection"],
+        "reversed": ["stubbornness", "isolation", "refusal to adapt"]
+      }
+    },
+    {
+      "cardId": "hexagram-40",
+      "name": "Deliverance (解)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 40,
+      "imagePath": "assets/images/iching_holitzka/hexagram_40.webp",
+      "meanings": {
+        "upright": ["release", "liberation", "forgiveness", "resolution"],
+        "reversed": ["prolonging tension", "inability to let go", "delay"]
+      }
+    },
+    {
+      "cardId": "hexagram-41",
+      "name": "Decrease (損)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 41,
+      "imagePath": "assets/images/iching_holitzka/hexagram_41.webp",
+      "meanings": {
+        "upright": ["simplification", "sacrifice", "inner enrichment", "sincerity"],
+        "reversed": ["loss", "depletion", "imbalance"]
+      }
+    },
+    {
+      "cardId": "hexagram-42",
+      "name": "Increase (益)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 42,
+      "imagePath": "assets/images/iching_holitzka/hexagram_42.webp",
+      "meanings": {
+        "upright": ["growth", "benefit", "generosity", "opportunity"],
+        "reversed": ["excess", "greed", "unsustainable growth"]
+      }
+    },
+    {
+      "cardId": "hexagram-43",
+      "name": "Breakthrough (夬)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 43,
+      "imagePath": "assets/images/iching_holitzka/hexagram_43.webp",
+      "meanings": {
+        "upright": ["breakthrough", "resolution", "decisiveness", "clarity"],
+        "reversed": ["confrontation", "aggression", "premature action"]
+      }
+    },
+    {
+      "cardId": "hexagram-44",
+      "name": "Coming to Meet (姤)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 44,
+      "imagePath": "assets/images/iching_holitzka/hexagram_44.webp",
+      "meanings": {
+        "upright": ["unexpected encounter", "temptation", "influence", "awareness"],
+        "reversed": ["seduction", "hidden agendas", "vulnerability"]
+      }
+    },
+    {
+      "cardId": "hexagram-45",
+      "name": "Gathering Together (萃)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 45,
+      "imagePath": "assets/images/iching_holitzka/hexagram_45.webp",
+      "meanings": {
+        "upright": ["gathering", "community", "shared purpose", "abundance"],
+        "reversed": ["dispersal", "disorganization", "conflict"]
+      }
+    },
+    {
+      "cardId": "hexagram-46",
+      "name": "Pushing Upward (升)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 46,
+      "imagePath": "assets/images/iching_holitzka/hexagram_46.webp",
+      "meanings": {
+        "upright": ["rising", "gradual effort", "ambition", "growth"],
+        "reversed": ["overreach", "slow progress", "blocked ascent"]
+      }
+    },
+    {
+      "cardId": "hexagram-47",
+      "name": "Oppression (困)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 47,
+      "imagePath": "assets/images/iching_holitzka/hexagram_47.webp",
+      "meanings": {
+        "upright": ["adversity", "inner strength", "endurance", "resourcefulness"],
+        "reversed": ["exhaustion", "despair", "trapped"]
+      }
+    },
+    {
+      "cardId": "hexagram-48",
+      "name": "The Well (井)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 48,
+      "imagePath": "assets/images/iching_holitzka/hexagram_48.webp",
+      "meanings": {
+        "upright": ["source", "inexhaustible nourishment", "community resource", "depth"],
+        "reversed": ["neglected potential", "inaccessible wisdom", "depletion"]
+      }
+    },
+    {
+      "cardId": "hexagram-49",
+      "name": "Revolution (革)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 49,
+      "imagePath": "assets/images/iching_holitzka/hexagram_49.webp",
+      "meanings": {
+        "upright": ["transformation", "radical change", "renewal", "timing"],
+        "reversed": ["upheaval", "hasty change", "resistance"]
+      }
+    },
+    {
+      "cardId": "hexagram-50",
+      "name": "The Cauldron (鼎)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 50,
+      "imagePath": "assets/images/iching_holitzka/hexagram_50.webp",
+      "meanings": {
+        "upright": ["transformation", "culture", "nourishment", "refinement"],
+        "reversed": ["discord", "poor nourishment", "misalignment"]
+      }
+    },
+    {
+      "cardId": "hexagram-51",
+      "name": "The Arousing (震)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 51,
+      "imagePath": "assets/images/iching_holitzka/hexagram_51.webp",
+      "meanings": {
+        "upright": ["shock", "awakening", "thunder", "renewal through fear"],
+        "reversed": ["paralysis", "panic", "overreaction"]
+      }
+    },
+    {
+      "cardId": "hexagram-52",
+      "name": "Keeping Still (艮)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 52,
+      "imagePath": "assets/images/iching_holitzka/hexagram_52.webp",
+      "meanings": {
+        "upright": ["stillness", "meditation", "stopping", "inner peace"],
+        "reversed": ["restlessness", "forced inaction", "frozen"]
+      }
+    },
+    {
+      "cardId": "hexagram-53",
+      "name": "Development (漸)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 53,
+      "imagePath": "assets/images/iching_holitzka/hexagram_53.webp",
+      "meanings": {
+        "upright": ["gradual progress", "steady development", "patience", "ceremony"],
+        "reversed": ["rushing", "premature action", "disruption"]
+      }
+    },
+    {
+      "cardId": "hexagram-54",
+      "name": "The Marrying Maiden (歸妹)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 54,
+      "imagePath": "assets/images/iching_holitzka/hexagram_54.webp",
+      "meanings": {
+        "upright": ["subordinate role", "desire", "compromise", "relationship dynamics"],
+        "reversed": ["imbalance", "unfulfilled expectations", "misalignment"]
+      }
+    },
+    {
+      "cardId": "hexagram-55",
+      "name": "Abundance (豐)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 55,
+      "imagePath": "assets/images/iching_holitzka/hexagram_55.webp",
+      "meanings": {
+        "upright": ["abundance", "fullness", "peak moment", "clarity"],
+        "reversed": ["decline", "loss", "impermanence"]
+      }
+    },
+    {
+      "cardId": "hexagram-56",
+      "name": "The Wanderer (旅)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 56,
+      "imagePath": "assets/images/iching_holitzka/hexagram_56.webp",
+      "meanings": {
+        "upright": ["journey", "transience", "adaptability", "independence"],
+        "reversed": ["rootlessness", "loneliness", "displacement"]
+      }
+    },
+    {
+      "cardId": "hexagram-57",
+      "name": "The Gentle (巽)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 57,
+      "imagePath": "assets/images/iching_holitzka/hexagram_57.webp",
+      "meanings": {
+        "upright": ["gentleness", "penetration", "wind", "subtle influence"],
+        "reversed": ["indecision", "excessive compliance", "vacillation"]
+      }
+    },
+    {
+      "cardId": "hexagram-58",
+      "name": "The Joyous (兌)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 58,
+      "imagePath": "assets/images/iching_holitzka/hexagram_58.webp",
+      "meanings": {
+        "upright": ["joy", "openness", "exchange", "pleasure"],
+        "reversed": ["empty pleasure", "seduction", "frivolity"]
+      }
+    },
+    {
+      "cardId": "hexagram-59",
+      "name": "Dispersion (渙)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 59,
+      "imagePath": "assets/images/iching_holitzka/hexagram_59.webp",
+      "meanings": {
+        "upright": ["dissolution", "dispersing barriers", "renewal", "flow"],
+        "reversed": ["fragmentation", "loss of center", "disconnection"]
+      }
+    },
+    {
+      "cardId": "hexagram-60",
+      "name": "Limitation (節)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 60,
+      "imagePath": "assets/images/iching_holitzka/hexagram_60.webp",
+      "meanings": {
+        "upright": ["limitation", "structure", "self-regulation", "boundaries"],
+        "reversed": ["excessive restriction", "rigidity", "self-punishment"]
+      }
+    },
+    {
+      "cardId": "hexagram-61",
+      "name": "Inner Truth (中孚)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 61,
+      "imagePath": "assets/images/iching_holitzka/hexagram_61.webp",
+      "meanings": {
+        "upright": ["inner truth", "sincerity", "trust", "influence through integrity"],
+        "reversed": ["dishonesty", "empty words", "mistrust"]
+      }
+    },
+    {
+      "cardId": "hexagram-62",
+      "name": "Small Excess (小過)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 62,
+      "imagePath": "assets/images/iching_holitzka/hexagram_62.webp",
+      "meanings": {
+        "upright": ["small steps", "attention to detail", "caution", "modesty"],
+        "reversed": ["overreaching", "overlooking details", "pride"]
+      }
+    },
+    {
+      "cardId": "hexagram-63",
+      "name": "After Completion (既濟)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 63,
+      "imagePath": "assets/images/iching_holitzka/hexagram_63.webp",
+      "meanings": {
+        "upright": ["completion", "order", "accomplishment", "transition"],
+        "reversed": ["complacency", "reversal", "end of cycle"]
+      }
+    },
+    {
+      "cardId": "hexagram-64",
+      "name": "Before Completion (未濟)",
+      "arcana": "hexagram",
+      "suit": null,
+      "number": 64,
+      "imagePath": "assets/images/iching_holitzka/hexagram_64.webp",
+      "meanings": {
+        "upright": ["potential", "almost there", "transition", "careful final steps"],
+        "reversed": ["premature conclusion", "unfinished work", "impatience"]
+      }
+    }
+  ]
+}

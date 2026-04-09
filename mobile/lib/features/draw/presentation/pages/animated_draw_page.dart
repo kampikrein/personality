@@ -71,7 +71,7 @@ class _AnimatedDrawPageState extends ConsumerState<AnimatedDrawPage>
 
     // 덱 시드 보장 (홈을 건너뛴 경우)
     final repo = ref.read(deckRepositoryProvider);
-    await repo.seedRwsDeck();
+    await repo.seedAllDecks();
 
     // 셔플 실행
     final cards = await ref.read(deckCardsProvider(_deckId).future);

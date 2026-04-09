@@ -63,7 +63,7 @@ class _InstantDrawPageState extends ConsumerState<InstantDrawPage> {
 
       // 덱 시드 보장 (홈을 건너뛴 경우)
       final repo = ref.read(deckRepositoryProvider);
-      await repo.seedRwsDeck();
+      await repo.seedAllDecks();
 
       final cards = await ref.read(deckCardsProvider(_deckId).future);
       final useCase = ref.read(shuffleDeckUseCaseProvider);

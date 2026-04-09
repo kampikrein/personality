@@ -25,7 +25,7 @@ class _HomePageState extends ConsumerState<HomePage> {
   Future<void> _initializeApp() async {
     if (_initialized) return;
     final repo = ref.read(deckRepositoryProvider);
-    await repo.seedRwsDeck();
+    await repo.seedAllDecks();
     if (mounted) setState(() => _initialized = true);
   }
 
