@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a8dee574-0892-4a11-a697-8969e1790898" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.claude/agent-memory/flutter-expert/_index.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.claude/agent-memory/flutter-expert/_index.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.claude/agent-memory/psychology-expert/_index.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.claude/agent-memory/psychology-expert/_index.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.claude/agent-memory/uiux-expert/_index.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.claude/agent-memory/uiux-expert/_index.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/001_gemini_deep_research.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/002_gemini_deep_research.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/003_gemini_deep_research.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-17_external_research/003_gemini_deep_research.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/02_코드점검/001_Agent_모델_DB_분석.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-15_코드점검/001_Agent_모델_DB_분석.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/02_코드점검/002_Agent_컨트롤러_뷰_분석.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-15_코드점검/002_Agent_컨트롤러_뷰_분석.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/02_코드점검/003_Agent_서비스_테스트_분석.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-15_코드점검/003_Agent_서비스_테스트_분석.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/02_코드점검/004_Synthesis_교차검증_종합.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-15_코드점검/004_Synthesis_교차검증_종합.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/02_코드점검/005_Plan_수정계획.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-15_코드점검/005_Plan_수정계획.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/02_코드점검/006_Session_에이전트_코드점검_방법론.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-15_코드점검/006_Session_에이전트_코드점검_방법론.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/03_rails_서버/001_Reference_루비온레일즈_서버_운영_안내서.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-15_rails_서버/001_Reference_루비온레일즈_서버_운영_안내서.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/04_codebase_분석/001_Research_코드베이스_초보자_분석.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-15_codebase_분석/001_Research_코드베이스_초보자_분석.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/04_codebase_분석/002_Agent_구조_아키텍처.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-15_codebase_분석/002_Agent_구조_아키텍처.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/04_codebase_분석/003_Agent_기술스택_의존성.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-15_codebase_분석/003_Agent_기술스택_의존성.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/04_codebase_분석/004_Agent_데이터모델_스키마.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-15_codebase_분석/004_Agent_데이터모델_스키마.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/05_agent_design/001_Research_전문에이전트_구성.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-15_agent_design/001_Research_전문에이전트_구성.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/05_agent_design/002_Agent_시스템최적화.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-15_agent_design/002_Agent_시스템최적화.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/05_agent_design/003_Agent_페르소나설계.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-15_agent_design/003_Agent_페르소나설계.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/05_agent_design/004_Agent_도메인지식.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-15_agent_design/004_Agent_도메인지식.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/05_agent_design/005_Agent_프로젝트정합성.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-15_agent_design/005_Agent_프로젝트정합성.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/05_agent_design/006_Synthesis_전문에이전트구성.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-15_agent_design/006_Synthesis_전문에이전트구성.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/05_agent_design/007_Research_전문에이전트_구성_최종.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-15_agent_design/007_Research_전문에이전트_구성_최종.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/05_agent_design/008_Scope_에이전트_기억체계.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-15_agent_design/008_Scope_에이전트_기억체계.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/05_agent_design/009_Plan_전문에이전트_구현.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-15_agent_design/009_Plan_전문에이전트_구현.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/05_agent_design/010_Scope_조직에이전트_전환.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-15_agent_design/010_Scope_조직에이전트_전환.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/06_에이전트비평/001_Agent_심리학비평.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-15_에이전트비평/001_Agent_심리학비평.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/06_에이전트비평/002_Agent_MBTI비평.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-15_에이전트비평/002_Agent_MBTI비평.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/06_에이전트비평/003_Agent_애니어그램비평.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-15_에이전트비평/003_Agent_애니어그램비평.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/06_에이전트비평/004_Agent_코딩비평.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-15_에이전트비평/004_Agent_코딩비평.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/06_에이전트비평/005_Agent_UIUX비평.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-15_에이전트비평/005_Agent_UIUX비평.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/06_에이전트비평/006_Synthesis_코드베이스비평.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-15_에이전트비평/006_Synthesis_코드베이스비평.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/07_organizational_agents/001_Scope_조직에이전트_전환.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-17_organizational_agents/001_Scope_조직에이전트_전환.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/07_organizational_agents/002_Research_조직아키텍처_오케스트레이터.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-17_organizational_agents/002_Research_조직아키텍처_오케스트레이터.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/07_organizational_agents/003_Agent_프레임워크제약.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-17_organizational_agents/003_Agent_프레임워크제약.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/07_organizational_agents/004_Agent_오케스트레이터패턴.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-17_organizational_agents/004_Agent_오케스트레이터패턴.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/07_organizational_agents/005_Agent_조직화격차.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-17_organizational_agents/005_Agent_조직화격차.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/07_organizational_agents/006_Agent_상태관리컨텍스트.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-17_organizational_agents/006_Agent_상태관리컨텍스트.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/07_organizational_agents/007_Synthesis_조직아키텍처연구.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-17_organizational_agents/007_Synthesis_조직아키텍처연구.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/07_organizational_agents/008_Research_조직아키텍처_오케스트레이터_최종.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-17_organizational_agents/008_Research_조직아키텍처_오케스트레이터_최종.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/07_organizational_agents/009_Plan_오케스트레이터_아키텍처.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-17_organizational_agents/009_Plan_오케스트레이터_아키텍처.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/07_organizational_agents/010_Research_소통프로토콜_SOP.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-17_organizational_agents/010_Research_소통프로토콜_SOP.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/07_organizational_agents/011_Agent_인계포맷설계.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-17_organizational_agents/011_Agent_인계포맷설계.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/07_organizational_agents/012_Agent_SOP행동루프.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-17_organizational_agents/012_Agent_SOP행동루프.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/07_organizational_agents/013_Agent_평가루프HitL.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-17_organizational_agents/013_Agent_평가루프HitL.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/07_organizational_agents/014_Synthesis_소통프로토콜SOP.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-17_organizational_agents/014_Synthesis_소통프로토콜SOP.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/07_organizational_agents/015_Research_소통프로토콜_SOP_최종.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-17_organizational_agents/015_Research_소통프로토콜_SOP_최종.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/07_organizational_agents/016_Plan_소통프로토콜SOP구현.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-17_organizational_agents/016_Plan_소통프로토콜SOP구현.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/07_organizational_agents/017_Plan_페르소나강화_기억체계.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-17_organizational_agents/017_Plan_페르소나강화_기억체계.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/07_organizational_agents/025_Plan_orchestration_audit_fix.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-17_organizational_agents/025_Plan_orchestration_audit_fix.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/07_organizational_agents/033_Plan_gemini_audit_fix.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-17_organizational_agents/033_Plan_gemini_audit_fix.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/08_비전스코핑/000_Reference_워크플로우매니페스트.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/08_비전스코핑/001_Agent_콘텐츠깊이전략.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/08_비전스코핑/002_Agent_동기기반콘텐츠전략.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/08_비전스코핑/003_Agent_학술차별화전략.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/08_비전스코핑/004_Agent_UX리텐션설계.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/08_비전스코핑/005_Agent_기술실현성평가.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/08_비전스코핑/006_Synthesis_종합스코프.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/09_monorepo_setup/001_Scope_hybrid_monorepo.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-15_monorepo_setup/001_Scope_hybrid_monorepo.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/09_monorepo_setup/002_Plan_hybrid_monorepo.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-15_monorepo_setup/002_Plan_hybrid_monorepo.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/10_agent_upgrade/001_Scope_에이전트구성업그레이드.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-15_agent_upgrade/001_Scope_에이전트구성업그레이드.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/10_agent_upgrade/002_Research_에이전트구성_업그레이드.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-15_agent_upgrade/002_Research_에이전트구성_업그레이드.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/10_agent_upgrade/003_Agent_커뮤니티페인포인트.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-15_agent_upgrade/003_Agent_커뮤니티페인포인트.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/10_agent_upgrade/004_Agent_멀티에이전트사례.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-15_agent_upgrade/004_Agent_멀티에이전트사례.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/10_agent_upgrade/005_Agent_Flutter모바일패턴.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-15_agent_upgrade/005_Agent_Flutter모바일패턴.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/10_agent_upgrade/006_Agent_UX평가방법론.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-15_agent_upgrade/006_Agent_UX평가방법론.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/10_agent_upgrade/007_Agent_타로도메인검증.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-15_agent_upgrade/007_Agent_타로도메인검증.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/10_agent_upgrade/008_Synthesis_에이전트구성업그레이드연구.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-15_agent_upgrade/008_Synthesis_에이전트구성업그레이드연구.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/10_agent_upgrade/009_Research_에이전트구성_업그레이드_최종.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-15_agent_upgrade/009_Research_에이전트구성_업그레이드_최종.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/10_agent_upgrade/010_Plan_에이전트구성업그레이드.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-15_agent_upgrade/010_Plan_에이전트구성업그레이드.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/11_tarot_shuffle/001_Scope_platform_strategy.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/11_tarot_shuffle/002_Research_tarot_shuffle_tech.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/11_tarot_shuffle/003_Agent_shuffle_engine.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/11_tarot_shuffle/004_Agent_sensor_rng.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/11_tarot_shuffle/005_Agent_data_offline.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/11_tarot_shuffle/006_Agent_architecture.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/11_tarot_shuffle/007_Synthesis_tarot_shuffle_tech.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/11_tarot_shuffle/008_Research_tarot_shuffle_tech.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/11_tarot_shuffle/009_Plan_flutter_mvp_checkpoint.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/11_tarot_shuffle/010_Plan_foundation_data_layer.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/11_tarot_shuffle/011_Plan_shuffle_engine_core.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/11_tarot_shuffle/012_Plan_presentation_routing.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/11_tarot_shuffle/013_Agent_flutter_critique.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/11_tarot_shuffle/014_Agent_ux_critique.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/11_tarot_shuffle/015_Agent_tarot_critique.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/11_tarot_shuffle/016_Agent_psychology_critique.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/11_tarot_shuffle/017_Synthesis_mvp_critique.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/11_tarot_shuffle/025_Scope_critique_improvements.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/11_tarot_shuffle/026_Plan_quick_fix_ux_polish.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/11_tarot_shuffle/027_Plan_ritual_experience_layer.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/11_tarot_shuffle/044_Plan_shuffle_cycle1_foundation.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/11_tarot_shuffle/045_Plan_shuffle_cycle2_physics.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/11_tarot_shuffle/046_Plan_shuffle_cycle3_ui.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/11_tarot_shuffle/055_Scope_rng_implementation.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/11_tarot_shuffle/056_Plan_rng_implementation.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/11_tarot_shuffle/057_Scope_quick_draw.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/11_tarot_shuffle/058_Plan_quick_draw.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/13_orchestration_unify/001_Scope_pe-op-unification.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-16_orchestration_unify/001_Scope_pe-op-unification.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/13_orchestration_unify/002_Plan_pe-op-unification.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-16_orchestration_unify/002_Plan_pe-op-unification.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/14_global_orchestration_ref/001_Scope_global-orchestration-reference.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-16_global_orchestration_ref/001_Scope_global-orchestration-reference.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/14_global_orchestration_ref/002_Plan_global-orchestration-reference.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/2026-03-16_global_orchestration_ref/002_Plan_global-orchestration-reference.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/15_dev_tuner/008_Plan_tuner_system.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/15_dev_tuner/009_Plan_screen_integration.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/15_dev_tuner/012_Plan_advanced_tuner_upgrade.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/16_iching_holitzka/001_Scope_iching_holitzka_images.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/16_iching_holitzka/002_Research_iching_holitzka_images.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/16_iching_holitzka/003_Plan_iching_holitzka_images.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/17_universal_waite/001_Scope_universal_waite_images.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/17_universal_waite/002_Research_universal_waite_images.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/17_universal_waite/003_Plan_rws_tarot_images.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/INDEX.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/INDEX.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/memo.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/01_성격서비스_기획/014_Memo_비전메모.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/다중AI_사용법_가이드.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/archive/retired/다중AI_사용법_가이드.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/hooks/guard-bash-boundary.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/hooks/guard-file-boundary.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/skills/brainstorming/SKILL.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/skills/frontend-design/LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/skills/frontend-design/SKILL.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/skills/handoff/SKILL.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/skills/parallel-report/SKILL.MD" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/skills/pitfall-report/SKILL.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/skills/project-boundary/SKILL.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/skills/tdd/SKILL.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile/android/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/android/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile/lib/features/shuffle/presentation/game/hand_animation_component.dart" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/lib/features/shuffle/presentation/game/hand_animation_component.dart" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 6
+}]]></component>
+  <component name="ProjectId" id="3Bkim8rCdK7yz047bwkOpvr3QfM" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/kampikrein/A/personality"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a8dee574-0892-4a11-a697-8969e1790898" name="Changes" comment="" />
+      <created>1775039625393</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1775039625393</updated>
+    </task>
+    <servers />
+  </component>
+</project>

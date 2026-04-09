@@ -1,0 +1,2782 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		CA272E8348BAB4CE0B0C804FB7B818C4 /* FlutterMacOS */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 624022EE1C2EAB1C3CC38699E1368C5F /* Build configuration list for PBXAggregateTarget "FlutterMacOS" */;
+			buildPhases = (
+			);
+			dependencies = (
+			);
+			name = FlutterMacOS;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		010C4529A68B7959284638F0F18C2522 /* sqlite3_flutter_libs-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 470D81B8DF267826948783B61AAB2564 /* sqlite3_flutter_libs-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		018D7812700F39DCF041EAF1BFEAA35B /* YGStyle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 60EFB91BCD556120D6C3B4C87DFC5A5C /* YGStyle.cpp */; };
+		03FF65672874530A3E9AE6BAB1764A4A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EE00D34B275026D4656C738BED5A001 /* Cocoa.framework */; };
+		05174A73553B4044D73BAA5A694D86C2 /* hb-subset-cff1.cc in Sources */ = {isa = PBXBuildFile; fileRef = D0B1CDD095779D2DAEEC3AF0D8F0A47F /* hb-subset-cff1.cc */; };
+		054C71C967AE102E38F9CFCBC7B00513 /* sqlite3ext.h in Headers */ = {isa = PBXBuildFile; fileRef = 82EFE0599F2D4F6EBC20BD9350C71B07 /* sqlite3ext.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		0B14FC430EBD3A654D342A0453D9BAD3 /* hb-ot-shaper-default.cc in Sources */ = {isa = PBXBuildFile; fileRef = 82D1AEEFFED9E876A3589B9DF585A8BB /* hb-ot-shaper-default.cc */; };
+		0DAA19C8014443B39F41898FC964CE52 /* hb-subset-plan.cc in Sources */ = {isa = PBXBuildFile; fileRef = 9B82DD196B149FE90831EC57D8D80502 /* hb-subset-plan.cc */; };
+		0FC5249F660D3A371D54507BC424165B /* line_breaker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 957CC43229C190304BF19014B0E2CD8E /* line_breaker.cpp */; };
+		13558B3D816DEA702AD6D58CCB657958 /* rive_common-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D5F9E56D85C3554BB5D872E8402FDFC2 /* rive_common-dummy.m */; };
+		19A3984C145DA4797A4F1CCB7F60629E /* RivePlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6668A0CBEEAC71562A34E335FD3F6077 /* RivePlugin.swift */; };
+		1D63A3FB5D9FBA4EE418FF829D9E3439 /* hb-subset-instancer-solver.cc in Sources */ = {isa = PBXBuildFile; fileRef = 59595146DDC47823816069780AEA7FF6 /* hb-subset-instancer-solver.cc */; };
+		20C4A2B7C87FFE582E427EB1B8FD2AA4 /* raw_path.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 29EF6A3B6EC2B202212FC63DDB9B4F15 /* raw_path.cpp */; };
+		23AD4D06730BE472E9F07EABB2637AB3 /* hb-ot-shaper-hangul.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2C938ECC88CF9BE5312DD1B96E6AB18E /* hb-ot-shaper-hangul.cc */; };
+		24CB92F9E9B4535C3D7B4720934881E8 /* audio_reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E95ABD5F4D1E8D59569FAEF35FCC0E13 /* audio_reader.cpp */; };
+		25459E19FC3C0A08A3C7C83D50B3B9EF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EE00D34B275026D4656C738BED5A001 /* Cocoa.framework */; };
+		2A543938D6A734CE5C38D9B5D220E69C /* hb-ot-tag.cc in Sources */ = {isa = PBXBuildFile; fileRef = 48B24BDD3C2D8B13D057F2641ADF124F /* hb-ot-tag.cc */; };
+		2D8757F3ED3B5AFABE52C5FEC073DD46 /* hb-aat-map.cc in Sources */ = {isa = PBXBuildFile; fileRef = 9BE407343FA544D2588E0892FCA32AEA /* hb-aat-map.cc */; };
+		3893E45868BFD4A69699280A8D559DBD /* YGNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8664A0965F31C09FF9F6B0EED530E528 /* YGNode.cpp */; };
+		39BDC743111843F0454DBA2AFCE9E43A /* YGNodePrint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C7C9149CA4444283855F53C76F600C2 /* YGNodePrint.cpp */; };
+		39CFAD53CEC995AE235CC70DB924ECF7 /* hb-number.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8D04AE8C9908885EC802BF087CC726E6 /* hb-number.cc */; };
+		3A41ECDD18AD03EE018233A36BB69179 /* common.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 794CD1788EB696259C322448E14E31B1 /* common.cpp */; };
+		3A6B4E6D0C14D12B711A28E3ECB39511 /* hb-paint-extents.cc in Sources */ = {isa = PBXBuildFile; fileRef = 3FC30C69226F41B21B8589AE4436390D /* hb-paint-extents.cc */; };
+		3E8A748D29DBA2043A21E77025713896 /* hb-font.cc in Sources */ = {isa = PBXBuildFile; fileRef = ABD3590186828DB5D4ED3387B2498D47 /* hb-font.cc */; };
+		404256B5A342798C4BBE95C7210796C7 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EE00D34B275026D4656C738BED5A001 /* Cocoa.framework */; };
+		41B0CFA6CE937FA6A97939D4C17EFE8C /* renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C4273B470A66A2A089DE5555DC3F15C1 /* renderer.cpp */; };
+		41D6034C66B60E6DB561A7F57B811869 /* Sqlite3FlutterLibsPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D2E0CE3F6FF118522FB8B9F01C822F /* Sqlite3FlutterLibsPlugin.swift */; };
+		4351BCD60F2217DD3826688E149EB172 /* hb-ot-shaper-myanmar.cc in Sources */ = {isa = PBXBuildFile; fileRef = A6B1FC7C6456F6E1412984F7583307BF /* hb-ot-shaper-myanmar.cc */; };
+		45B661FF07B53A42362E22BBF905EDFA /* mat2d.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67589B4FA1A16984BFFB51827E2DA4D6 /* mat2d.cpp */; };
+		4BA9F4CF6F9DEE926170EA938F4F3513 /* hb-draw.cc in Sources */ = {isa = PBXBuildFile; fileRef = DA3C62A964CC94ABE1E2055FFC38E747 /* hb-draw.cc */; };
+		4E352DE83C43A81A9B32AB5205AB508E /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = 65D763295BB7739E13E543D6AEA3EF17 /* sqlite3.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4FD600EA3C4E0D946F32B8DBDAC44A0B /* hb-subset-cff-common.cc in Sources */ = {isa = PBXBuildFile; fileRef = DA9A5C06720BA0D13F54CB15AAB8890F /* hb-subset-cff-common.cc */; };
+		5072261FF5B59F1D1B2EF0324CD73C64 /* Pods-Runner-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 499E3722E8DACDC2AAA6C15AD1796520 /* Pods-Runner-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		52848AFAD686BEBCDB9C1150B964867D /* Yoga.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 53EE67BCA056A68BA43BEA42F355CB47 /* Yoga.cpp */; };
+		52B21CF56A51B3FD6F67E7EAD449A69E /* hb-ot-metrics.cc in Sources */ = {isa = PBXBuildFile; fileRef = 46C2ACB9B3EAE2B9BC584AF5F530F4B5 /* hb-ot-metrics.cc */; };
+		5617064A8AEBF63CE6E4619297559C05 /* hb-ot-math.cc in Sources */ = {isa = PBXBuildFile; fileRef = 3487D8B43D81BEC968EA5A2DFA838F2C /* hb-ot-math.cc */; };
+		5E8CD13D121B3A5238E4446358A36096 /* YGLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5A54A5978A77C9F09C9A0E750FD28E /* YGLayout.cpp */; };
+		67DCF7A4CB7C821B803E94040AF7FC08 /* hb-ot-face.cc in Sources */ = {isa = PBXBuildFile; fileRef = 04EFDD03F892D4ECF62A15EB1B0560B1 /* hb-ot-face.cc */; };
+		6A66342F959979A63CD04372B13DC24F /* hb-ucd.cc in Sources */ = {isa = PBXBuildFile; fileRef = 02ADDDBF2C16416C4648BA1466CE2A7F /* hb-ucd.cc */; };
+		706F46C2888AC8438D8D6DA6E266841B /* hb-ot-shaper-syllabic.cc in Sources */ = {isa = PBXBuildFile; fileRef = 9C48C290BE06138266E384219B1A8D09 /* hb-ot-shaper-syllabic.cc */; };
+		7269E54EAF9AD0201C1F14A51A3C5BC0 /* audio_source.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAD6B0591D104016C3957908D59A7A58 /* audio_source.cpp */; };
+		728F9E11BDC90289C30DF9C26EBD4521 /* sqlite_cfg.h in Headers */ = {isa = PBXBuildFile; fileRef = 97DD0CCD9F7A0B9217B2AD6D1A85894E /* sqlite_cfg.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		74377DA2C9C941BAEAA3DEABF056A45D /* log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CD146D4D4B3D69213BF5F5BA6DD1F52D /* log.cpp */; };
+		76D05BA2F2DC6E6FD96A6E817482CCAC /* audio_engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8966032DEACD15641BD2779AC12CCF16 /* audio_engine.cpp */; };
+		78F552E6F4748704D36CF3ACBD18EF0A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EE00D34B275026D4656C738BED5A001 /* Cocoa.framework */; };
+		794F069BE817F1759251B92E3D40B959 /* rive_text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18893E5611B485F456F498F16B2096D9 /* rive_text.cpp */; };
+		7B48E3E58DF2DAC35E9CF2512F73E1C2 /* audio_sound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD52148A9C65DA12771C7FA161FBC4A2 /* audio_sound.cpp */; };
+		7D5E43C3292CCB203C63A78BA8DE108F /* hb-shape-plan.cc in Sources */ = {isa = PBXBuildFile; fileRef = 919B4E059615222310C82ECD97742099 /* hb-shape-plan.cc */; };
+		7D8886B614D32CA3D6A9DBB6FBEB0B3B /* hb-ot-shaper-vowel-constraints.cc in Sources */ = {isa = PBXBuildFile; fileRef = 2BC54019BF4DC386897BD19A0FDCE1FA /* hb-ot-shaper-vowel-constraints.cc */; };
+		7E8EF568354B8CEB26AAC4D20C5211A5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EE00D34B275026D4656C738BED5A001 /* Cocoa.framework */; };
+		80819777C83B4C0984D21248BD2C94D6 /* hb-blob.cc in Sources */ = {isa = PBXBuildFile; fileRef = D272F8928EAE7EB06BC0C07FB4F2954E /* hb-blob.cc */; };
+		80BC0C5C96BE503AE7CF080B153EE6B9 /* event.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 794D8290D36ED8038063E6E7EB437C70 /* event.cpp */; };
+		82706DAD623A0348851E610EAEACD244 /* hb-ot-layout.cc in Sources */ = {isa = PBXBuildFile; fileRef = 09893FDFB4F38DA731DFD26150096986 /* hb-ot-layout.cc */; };
+		85A7AC84C1EA754C9F2F52C652009F13 /* hb-subset.cc in Sources */ = {isa = PBXBuildFile; fileRef = D61CA7C3AE79166FF030FB32967189D7 /* hb-subset.cc */; };
+		87A5C9364B98B2B48A2D056BE240B380 /* hb-paint.cc in Sources */ = {isa = PBXBuildFile; fileRef = E9FCAB22DF9F7F9B82B96DA78AEE4875 /* hb-paint.cc */; };
+		886EFAD20D4325A4F114C58B76D0F202 /* sqlite3-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A9F4BA5DB3B34B82224D2F78F82B4E6 /* sqlite3-dummy.m */; };
+		8B1522C1042534B3DE7F5661A792BAB1 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 2542E398DBE15E77BED79527885822DE /* PrivacyInfo.xcprivacy */; };
+		9003A9C94E2E29B2ADE220274B5F08F7 /* hb-ot-font.cc in Sources */ = {isa = PBXBuildFile; fileRef = C119FE6E63EA7DB0CBE8A419EEDB46E0 /* hb-ot-font.cc */; };
+		90FBB2927AE865F677323A3AE4212354 /* hb-shaper.cc in Sources */ = {isa = PBXBuildFile; fileRef = 81D46257FC90497D4DE980BA28F637AC /* hb-shaper.cc */; };
+		91710F4DEDACECCC706255A1C9BC4885 /* rive_common-rive_common_privacy in Resources */ = {isa = PBXBuildFile; fileRef = 574A0C3C1D0259ECD7B58F9923D15EF6 /* rive_common-rive_common_privacy */; };
+		9244408012F1AB2677386AC27DBF7BBB /* hb-ot-shape-fallback.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6DAA4808AB73878E5D5BAC57B87D1C3A /* hb-ot-shape-fallback.cc */; };
+		94A429FB0B606785736003F09C4EA62D /* gsubgpos-context.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4DF994080A2FCD8FFF0A47B1625D3748 /* gsubgpos-context.cc */; };
+		96DFA15FDE8AD39C0C3BED68258DA4B9 /* rive_common-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 559AAC9A0C9148E2437179DACDB4DF63 /* rive_common-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9829DF661E6C08338E208EFC2207F9E4 /* hb-subset-cff2.cc in Sources */ = {isa = PBXBuildFile; fileRef = 0503DE69CCE3CD1BD785985AA560CC34 /* hb-subset-cff2.cc */; };
+		9B06CC990DF9E663B321D9A8A5633BEE /* font_hb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0F5623D5BBCA559F00F99FBDF4379927 /* font_hb.cpp */; };
+		9C5174EDC80F7007FA8311B8365E5CF7 /* sqlite3_flutter_libs-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C845B8040566A426B2BA3D0B4523F0E /* sqlite3_flutter_libs-dummy.m */; };
+		9E25C6D04CD1DAD1DE9F82AB88BDEBAB /* hb-unicode.cc in Sources */ = {isa = PBXBuildFile; fileRef = 977D8E97F47ABB15CC37D9B91CC4F7AB /* hb-unicode.cc */; };
+		AB011AB45BD8109EC289ED753E585485 /* hb-ot-shaper-use.cc in Sources */ = {isa = PBXBuildFile; fileRef = C7C57FC4805DFF16B08F228FB800C7CF /* hb-ot-shaper-use.cc */; };
+		ABF1639173893B8DE31F991E8B93F036 /* hb-set.cc in Sources */ = {isa = PBXBuildFile; fileRef = E913FCDC6DF39B6EF1876094674344C8 /* hb-set.cc */; };
+		B34B2C57F1C698679AE9BB21B64ED8D9 /* YGEnums.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D767C632B4D16BCB2BAB0DB294AFE2DF /* YGEnums.cpp */; };
+		B375EA128E6579366091BAA390BBDD34 /* Pods-RunnerTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3DB54C128E3D88C0C9C7DDEA475ED7 /* Pods-RunnerTests-dummy.m */; };
+		B413B0F5DC10F6E17E23C988B6DE2BBE /* hb-subset-input.cc in Sources */ = {isa = PBXBuildFile; fileRef = 58F074B2C29257DCABB99D572EF48879 /* hb-subset-input.cc */; };
+		B6C97C3AAB074391C240A4FE28243DF0 /* hb-outline.cc in Sources */ = {isa = PBXBuildFile; fileRef = CDD31CE1F035C8A3801E25BA04287886 /* hb-outline.cc */; };
+		B74A872CB4BACDBBDE2B2141FA9E3EBE /* YGValue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E83A58E3AC4F29BDB0E3B3D4152127DC /* YGValue.cpp */; };
+		B79E0F5D6135E50255B4B183EE31D08C /* hb-shape.cc in Sources */ = {isa = PBXBuildFile; fileRef = 243188A049550AF94073F0D7CB750243 /* hb-shape.cc */; };
+		BBBDE483B515E8364881D4922497F55B /* hb-ot-map.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4EF1641DE63E9011F465EC476B7B93E4 /* hb-ot-map.cc */; };
+		BD82797D17B255BD710FD58CD6A0B5C3 /* sqlite3session.h in Headers */ = {isa = PBXBuildFile; fileRef = 12361B8568CAA622081EBFF05E13C443 /* sqlite3session.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		C38CE494507EBE820801EE9802111FE5 /* hb-ot-meta.cc in Sources */ = {isa = PBXBuildFile; fileRef = FF5B452BEEF4942D02D03D1A22FC2970 /* hb-ot-meta.cc */; };
+		C9C0C85FE3489E45FA6A4E961643A0F1 /* hb-ot-name.cc in Sources */ = {isa = PBXBuildFile; fileRef = F1123175A86F02B5C7BEC66476F37898 /* hb-ot-name.cc */; };
+		CCADBC5092CCC7BE9300F72E0552A00F /* hb-buffer.cc in Sources */ = {isa = PBXBuildFile; fileRef = F48C501BA7C3226C3B7AF2C902B4006D /* hb-buffer.cc */; };
+		CE594F60210904B0EE0D45D84B9E874D /* hb-common.cc in Sources */ = {isa = PBXBuildFile; fileRef = 36021653DEE476E8CEBD3DC198634168 /* hb-common.cc */; };
+		CF176C9B4A1508F97CC5D0BDCFC59BED /* hb-ot-shaper-indic.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8441243AFB019AA54934C8F5C592408B /* hb-ot-shaper-indic.cc */; };
+		CF1A5EAC4983D78C03621ADF781BEE8D /* hb-ot-shape.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4D0B6A096718452A5F368B82EEB86528 /* hb-ot-shape.cc */; };
+		D49E92E239E60305733AAFAA7AF95D62 /* hb-face.cc in Sources */ = {isa = PBXBuildFile; fileRef = E13F9BFEB0B1F5184698AA5B3442D30F /* hb-face.cc */; };
+		D5C7AD1563002817829DFD719E22EF81 /* hb-map.cc in Sources */ = {isa = PBXBuildFile; fileRef = F5F6C70B78070727D9823FBB626B9D06 /* hb-map.cc */; };
+		D9C3DF06968FD383134E352C64BD4E7D /* hb-ot-color.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8740037A881F03C82C375D4A34B060DB /* hb-ot-color.cc */; };
+		DB079A994B5CD62E53AB7C20E2387E54 /* hb-ot-shape-normalize.cc in Sources */ = {isa = PBXBuildFile; fileRef = 0C0A1977F0EF0B4F85D687EFE44A3C0E /* hb-ot-shape-normalize.cc */; };
+		DD822BE92CF95327522151F3C2511E62 /* hb-buffer-serialize.cc in Sources */ = {isa = PBXBuildFile; fileRef = 481A0042FBBC49C20B07ECB1A8B7B686 /* hb-buffer-serialize.cc */; };
+		DED41B7D6DD9DD7619399613EB872DD0 /* YGConfig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BEB3363613BB8143E5ACAF935A842E4 /* YGConfig.cpp */; };
+		E01AAF0A686BD5CDE85A6E2E95B2CE2B /* hb-ot-shaper-arabic.cc in Sources */ = {isa = PBXBuildFile; fileRef = F50C083D1B1CBE1F92B6E56C046F2F0B /* hb-ot-shaper-arabic.cc */; };
+		E03BDA740234E422FC9EF4B6DF8DE628 /* SheenBidi.c in Sources */ = {isa = PBXBuildFile; fileRef = 5165F37EFA71658AD4EC754E1E3ABAE6 /* SheenBidi.c */; };
+		E3664966EE95640A13D722818586DCEA /* hb-subset-repacker.cc in Sources */ = {isa = PBXBuildFile; fileRef = E0D018C98791E1202CA3D4E0032BC8DB /* hb-subset-repacker.cc */; };
+		E460742EAAC5FFC4CBAC73A3FFB59FB4 /* sqlite3-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C88F6D9D544DD89F816569237C46E3B9 /* sqlite3-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E47388B066B1819FFC93915121785246 /* hb-ot-var.cc in Sources */ = {isa = PBXBuildFile; fileRef = FF9E637048F7BAEC45B2EC4BAE583E7E /* hb-ot-var.cc */; };
+		E90513A5684056F3C96E130725B509A9 /* hb-style.cc in Sources */ = {isa = PBXBuildFile; fileRef = D37C38B4C98E055DEB3456F24319A52F /* hb-style.cc */; };
+		EACE1629F7FB73853797F63A53481CC8 /* hb-static.cc in Sources */ = {isa = PBXBuildFile; fileRef = CB5F90A629CF2E71A8E2AAF57DFE2660 /* hb-static.cc */; };
+		EB00EE125501969E743D73461D044F71 /* hb-face-builder.cc in Sources */ = {isa = PBXBuildFile; fileRef = 379E3FB20BA47957C7DE420F891E69C6 /* hb-face-builder.cc */; };
+		EB2DC96CDCF638AB89007D2DB0F3119A /* Pods-RunnerTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E9B12BCE5540D02A80250C3EC16D399 /* Pods-RunnerTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EC0A8229CAC757E70CEF9125E7EF1947 /* Pods-Runner-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E794494AB90477BA94C681E994ADF341 /* Pods-Runner-dummy.m */; };
+		ED0EDF29E4FD9B0651A3913C202ABE6A /* hb-ot-shaper-hebrew.cc in Sources */ = {isa = PBXBuildFile; fileRef = A802441F30E60A71C2E33E2164332B7F /* hb-ot-shaper-hebrew.cc */; };
+		ED73C560B8FA2FB0681D8664871C3B5B /* sqlite3.h in Headers */ = {isa = PBXBuildFile; fileRef = D43759E3F706CE330AA5C120BE44097E /* sqlite3.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F289B397D3266C4E648B15118263DBAC /* hb-ot-shaper-indic-table.cc in Sources */ = {isa = PBXBuildFile; fileRef = E78556DEFE7B9194595DB7FD23182B8A /* hb-ot-shaper-indic-table.cc */; };
+		F3AFBE5275E481D640889ABBB79B04DE /* hb-aat-layout.cc in Sources */ = {isa = PBXBuildFile; fileRef = 9BDCCDC637C93252AF567BADF9CAA219 /* hb-aat-layout.cc */; };
+		F4D4FB438E763D9A168537B0C8E6B9C7 /* hb-ot-cff1-table.cc in Sources */ = {isa = PBXBuildFile; fileRef = 7720E6153F5CB31ED088DC915A9DB311 /* hb-ot-cff1-table.cc */; };
+		F771D0531AFD33AF1D349DA04107B52F /* hb-ot-shaper-khmer.cc in Sources */ = {isa = PBXBuildFile; fileRef = D17DEC93AD6ED36DB9BB8AF9662A2A9C /* hb-ot-shaper-khmer.cc */; };
+		F97DC16FAA054760ACDC27547CE17A6D /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7BC233C4A666AF7031667F34C8315F3E /* Utils.cpp */; };
+		FA0F4508B0C565150BC8ECC6B6863C05 /* hb-ot-cff2-table.cc in Sources */ = {isa = PBXBuildFile; fileRef = 96DE2F133D39E903AE7E5D0247EB0BAE /* hb-ot-cff2-table.cc */; };
+		FBB5149E31F0219AF427043DCAA37985 /* hb-ot-shaper-thai.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4486EB2958B0EDA9DAA168142F44D2BF /* hb-ot-shaper-thai.cc */; };
+		FE5FCE1144BAC215DA348DB368D48195 /* hb-buffer-verify.cc in Sources */ = {isa = PBXBuildFile; fileRef = 0EDD4D7DD8AD93290A4AC28C1B9FAEB4 /* hb-buffer-verify.cc */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3369F2F3AED4F9BFE855EB5976266763 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CA272E8348BAB4CE0B0C804FB7B818C4;
+			remoteInfo = FlutterMacOS;
+		};
+		347F56E7D3A1C69788011B379F6168AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8B74B458B450D74B75744B87BD747314;
+			remoteInfo = "Pods-Runner";
+		};
+		5317B571CBE4CCE5E048D84981FD8E10 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E9C719E84F67F73FC0C74005C9B0C057;
+			remoteInfo = rive_common;
+		};
+		5A609E5E53660BF67E1132BC7CA6BD08 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0EC4407CC698D348F4275AFAF0318E87;
+			remoteInfo = "rive_common-rive_common_privacy";
+		};
+		833F5AD35A951022DDF367A48039BB2D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CA272E8348BAB4CE0B0C804FB7B818C4;
+			remoteInfo = FlutterMacOS;
+		};
+		8969CA4E63DC9478974A3AFE134DEA19 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CA272E8348BAB4CE0B0C804FB7B818C4;
+			remoteInfo = FlutterMacOS;
+		};
+		8ED1E18B5330AD4CA77013941A3B26FF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1D18E1E2FCABB0D767FB73A4F790F1C7;
+			remoteInfo = sqlite3_flutter_libs;
+		};
+		A71815CE74B558D3301CE5F2FAE61BD6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7578477CA77D98D8282C395822C4A93C;
+			remoteInfo = sqlite3;
+		};
+		D5B5D9D71BD520B9BA1313067EDB3A9F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7578477CA77D98D8282C395822C4A93C;
+			remoteInfo = sqlite3;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		02ADDDBF2C16416C4648BA1466CE2A7F /* hb-ucd.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-ucd.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-ucd.cc"; sourceTree = "<group>"; };
+		03E8AD2E8B75443E12D3D3BD12A9900E /* Pods-RunnerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RunnerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		04EFDD03F892D4ECF62A15EB1B0560B1 /* hb-ot-face.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-ot-face.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-ot-face.cc"; sourceTree = "<group>"; };
+		0503DE69CCE3CD1BD785985AA560CC34 /* hb-subset-cff2.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-subset-cff2.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-subset-cff2.cc"; sourceTree = "<group>"; };
+		09893FDFB4F38DA731DFD26150096986 /* hb-ot-layout.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-ot-layout.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-ot-layout.cc"; sourceTree = "<group>"; };
+		0AFB643DA4919253F749E2836A5AAFDC /* Pods-Runner-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Runner-Info.plist"; sourceTree = "<group>"; };
+		0C0A1977F0EF0B4F85D687EFE44A3C0E /* hb-ot-shape-normalize.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-ot-shape-normalize.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-ot-shape-normalize.cc"; sourceTree = "<group>"; };
+		0EDD4D7DD8AD93290A4AC28C1B9FAEB4 /* hb-buffer-verify.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-buffer-verify.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-buffer-verify.cc"; sourceTree = "<group>"; };
+		0F5623D5BBCA559F00F99FBDF4379927 /* font_hb.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = font_hb.cpp; path = "../../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/rive-cpp/src/text/font_hb.cpp"; sourceTree = "<group>"; };
+		0FCE47D5BA788682679D0F123E0BB4C6 /* sqlite3-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "sqlite3-prefix.pch"; sourceTree = "<group>"; };
+		11AA7018F95317D959D9D2E76CBB2377 /* Pods-RunnerTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RunnerTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		12361B8568CAA622081EBFF05E13C443 /* sqlite3session.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = sqlite3session.h; path = "sqlite-src-3520000/sqlite3session.h"; sourceTree = "<group>"; };
+		18893E5611B485F456F498F16B2096D9 /* rive_text.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = rive_text.cpp; path = "../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/rive_text/rive_text.cpp"; sourceTree = "<group>"; };
+		1B136F41D5B5FAE96EA576E768A5771D /* Pods-Runner-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Runner-acknowledgements.plist"; sourceTree = "<group>"; };
+		231113080D27D320B0C8FA0C12877EE1 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = "../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/LICENSE"; sourceTree = "<group>"; };
+		243188A049550AF94073F0D7CB750243 /* hb-shape.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-shape.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-shape.cc"; sourceTree = "<group>"; };
+		2542E398DBE15E77BED79527885822DE /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = "../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/Resources/PrivacyInfo.xcprivacy"; sourceTree = "<group>"; };
+		29EF6A3B6EC2B202212FC63DDB9B4F15 /* raw_path.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = raw_path.cpp; path = "../../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/rive-cpp/src/math/raw_path.cpp"; sourceTree = "<group>"; };
+		2BC54019BF4DC386897BD19A0FDCE1FA /* hb-ot-shaper-vowel-constraints.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-ot-shaper-vowel-constraints.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-ot-shaper-vowel-constraints.cc"; sourceTree = "<group>"; };
+		2C7C9149CA4444283855F53C76F600C2 /* YGNodePrint.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = YGNodePrint.cpp; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/yoga/yoga/YGNodePrint.cpp"; sourceTree = "<group>"; };
+		2C845B8040566A426B2BA3D0B4523F0E /* sqlite3_flutter_libs-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "sqlite3_flutter_libs-dummy.m"; sourceTree = "<group>"; };
+		2C938ECC88CF9BE5312DD1B96E6AB18E /* hb-ot-shaper-hangul.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-ot-shaper-hangul.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-ot-shaper-hangul.cc"; sourceTree = "<group>"; };
+		3487D8B43D81BEC968EA5A2DFA838F2C /* hb-ot-math.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-ot-math.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-ot-math.cc"; sourceTree = "<group>"; };
+		36021653DEE476E8CEBD3DC198634168 /* hb-common.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-common.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-common.cc"; sourceTree = "<group>"; };
+		3604282F1645FF593E5E7266E6E31743 /* FlutterMacOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FlutterMacOS.release.xcconfig; sourceTree = "<group>"; };
+		36E93077F649FF24BBCC9AAB190644F5 /* sqlite3.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = sqlite3.debug.xcconfig; sourceTree = "<group>"; };
+		379E3FB20BA47957C7DE420F891E69C6 /* hb-face-builder.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-face-builder.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-face-builder.cc"; sourceTree = "<group>"; };
+		3FC30C69226F41B21B8589AE4436390D /* hb-paint-extents.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-paint-extents.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-paint-extents.cc"; sourceTree = "<group>"; };
+		4486EB2958B0EDA9DAA168142F44D2BF /* hb-ot-shaper-thai.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-ot-shaper-thai.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-ot-shaper-thai.cc"; sourceTree = "<group>"; };
+		45D7362A2870C5E2DA8B89CF5F37B713 /* sqlite3_flutter_libs-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "sqlite3_flutter_libs-prefix.pch"; sourceTree = "<group>"; };
+		46C2ACB9B3EAE2B9BC584AF5F530F4B5 /* hb-ot-metrics.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-ot-metrics.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-ot-metrics.cc"; sourceTree = "<group>"; };
+		470D81B8DF267826948783B61AAB2564 /* sqlite3_flutter_libs-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "sqlite3_flutter_libs-umbrella.h"; sourceTree = "<group>"; };
+		481A0042FBBC49C20B07ECB1A8B7B686 /* hb-buffer-serialize.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-buffer-serialize.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-buffer-serialize.cc"; sourceTree = "<group>"; };
+		48B24BDD3C2D8B13D057F2641ADF124F /* hb-ot-tag.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-ot-tag.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-ot-tag.cc"; sourceTree = "<group>"; };
+		490FDAA84BF841B78973A07C1210DC5A /* rive_common-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "rive_common-prefix.pch"; sourceTree = "<group>"; };
+		499E3722E8DACDC2AAA6C15AD1796520 /* Pods-Runner-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Runner-umbrella.h"; sourceTree = "<group>"; };
+		4D0B6A096718452A5F368B82EEB86528 /* hb-ot-shape.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-ot-shape.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-ot-shape.cc"; sourceTree = "<group>"; };
+		4D3DB54C128E3D88C0C9C7DDEA475ED7 /* Pods-RunnerTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RunnerTests-dummy.m"; sourceTree = "<group>"; };
+		4DF994080A2FCD8FFF0A47B1625D3748 /* gsubgpos-context.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "gsubgpos-context.cc"; path = "../../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/graph/gsubgpos-context.cc"; sourceTree = "<group>"; };
+		4EF1641DE63E9011F465EC476B7B93E4 /* hb-ot-map.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-ot-map.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-ot-map.cc"; sourceTree = "<group>"; };
+		5165F37EFA71658AD4EC754E1E3ABAE6 /* SheenBidi.c */ = {isa = PBXFileReference; includeInIndex = 1; name = SheenBidi.c; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/SheenBidi/Source/SheenBidi.c"; sourceTree = "<group>"; };
+		5297E31D8DDDFD11A1E9B11DCC8A8CDE /* sqlite3_flutter_libs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = sqlite3_flutter_libs.debug.xcconfig; sourceTree = "<group>"; };
+		53EE67BCA056A68BA43BEA42F355CB47 /* Yoga.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = Yoga.cpp; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/yoga/yoga/Yoga.cpp"; sourceTree = "<group>"; };
+		559AAC9A0C9148E2437179DACDB4DF63 /* rive_common-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "rive_common-umbrella.h"; sourceTree = "<group>"; };
+		574A0C3C1D0259ECD7B58F9923D15EF6 /* rive_common-rive_common_privacy */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "rive_common-rive_common_privacy"; path = rive_common_privacy.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		58AF96238CF99D97BD35D74B2FF90705 /* rive_common.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = rive_common.debug.xcconfig; sourceTree = "<group>"; };
+		58F074B2C29257DCABB99D572EF48879 /* hb-subset-input.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-subset-input.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-subset-input.cc"; sourceTree = "<group>"; };
+		59595146DDC47823816069780AEA7FF6 /* hb-subset-instancer-solver.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-subset-instancer-solver.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-subset-instancer-solver.cc"; sourceTree = "<group>"; };
+		5B3F4A99493DE8EEF335FA5018E92F12 /* sqlite3_flutter_libs */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = sqlite3_flutter_libs; path = sqlite3_flutter_libs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5BEB3363613BB8143E5ACAF935A842E4 /* YGConfig.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = YGConfig.cpp; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/yoga/yoga/YGConfig.cpp"; sourceTree = "<group>"; };
+		60EFB91BCD556120D6C3B4C87DFC5A5C /* YGStyle.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = YGStyle.cpp; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/yoga/yoga/YGStyle.cpp"; sourceTree = "<group>"; };
+		65D763295BB7739E13E543D6AEA3EF17 /* sqlite3.c */ = {isa = PBXFileReference; includeInIndex = 1; name = sqlite3.c; path = "sqlite-src-3520000/sqlite3.c"; sourceTree = "<group>"; };
+		6668A0CBEEAC71562A34E335FD3F6077 /* RivePlugin.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RivePlugin.swift; path = "../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/Classes/RivePlugin.swift"; sourceTree = "<group>"; };
+		669E8F25E1897672BDB80B7EB784DA24 /* Pods-Runner */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-Runner"; path = Pods_Runner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		67589B4FA1A16984BFFB51827E2DA4D6 /* mat2d.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = mat2d.cpp; path = "../../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/rive-cpp/src/math/mat2d.cpp"; sourceTree = "<group>"; };
+		6A6113C37EE74D32A72C1C65734922DB /* rive_common.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = rive_common.modulemap; sourceTree = "<group>"; };
+		6A9F4BA5DB3B34B82224D2F78F82B4E6 /* sqlite3-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "sqlite3-dummy.m"; sourceTree = "<group>"; };
+		6B8CD1E1EC41321CE987AFFDCC1E448F /* sqlite3.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = sqlite3.modulemap; sourceTree = "<group>"; };
+		6BD1BB175F46872EF3E47A3F20290BE4 /* sqlite3_flutter_libs.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = sqlite3_flutter_libs.modulemap; sourceTree = "<group>"; };
+		6C3345B1B3CAEDF5B03B1F731FDC492E /* Pods-RunnerTests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-RunnerTests"; path = Pods_RunnerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DAA4808AB73878E5D5BAC57B87D1C3A /* hb-ot-shape-fallback.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-ot-shape-fallback.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-ot-shape-fallback.cc"; sourceTree = "<group>"; };
+		728A5ED1DD60BAC8C8F382A87B976F84 /* Pods-Runner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Runner.debug.xcconfig"; sourceTree = "<group>"; };
+		7596C614EE347A2D3FEB1684F5C1459C /* ResourceBundle-rive_common_privacy-rive_common-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-rive_common_privacy-rive_common-Info.plist"; sourceTree = "<group>"; };
+		7720E6153F5CB31ED088DC915A9DB311 /* hb-ot-cff1-table.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-ot-cff1-table.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-ot-cff1-table.cc"; sourceTree = "<group>"; };
+		773BFCE41424EB8EBB72EF3F6A5FB719 /* Pods-Runner-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Runner-frameworks.sh"; sourceTree = "<group>"; };
+		794CD1788EB696259C322448E14E31B1 /* common.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = common.cpp; path = "../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/common.cpp"; sourceTree = "<group>"; };
+		794D8290D36ED8038063E6E7EB437C70 /* event.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = event.cpp; path = "../../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/yoga/yoga/event/event.cpp"; sourceTree = "<group>"; };
+		79F83F4D505FA40C1CD18A8029181D59 /* Pods-RunnerTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RunnerTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		7BC233C4A666AF7031667F34C8315F3E /* Utils.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = Utils.cpp; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/yoga/yoga/Utils.cpp"; sourceTree = "<group>"; };
+		81D46257FC90497D4DE980BA28F637AC /* hb-shaper.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-shaper.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-shaper.cc"; sourceTree = "<group>"; };
+		82D1AEEFFED9E876A3589B9DF585A8BB /* hb-ot-shaper-default.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-ot-shaper-default.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-ot-shaper-default.cc"; sourceTree = "<group>"; };
+		82EFE0599F2D4F6EBC20BD9350C71B07 /* sqlite3ext.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = sqlite3ext.h; path = "sqlite-src-3520000/sqlite3ext.h"; sourceTree = "<group>"; };
+		8441243AFB019AA54934C8F5C592408B /* hb-ot-shaper-indic.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-ot-shaper-indic.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-ot-shaper-indic.cc"; sourceTree = "<group>"; };
+		8664A0965F31C09FF9F6B0EED530E528 /* YGNode.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = YGNode.cpp; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/yoga/yoga/YGNode.cpp"; sourceTree = "<group>"; };
+		8740037A881F03C82C375D4A34B060DB /* hb-ot-color.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-ot-color.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-ot-color.cc"; sourceTree = "<group>"; };
+		8966032DEACD15641BD2779AC12CCF16 /* audio_engine.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = audio_engine.cpp; path = "../../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/rive-cpp/src/audio/audio_engine.cpp"; sourceTree = "<group>"; };
+		897A7C0DD6A28A2C26AF25103DEC97A7 /* rive_common-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "rive_common-Info.plist"; sourceTree = "<group>"; };
+		8D04AE8C9908885EC802BF087CC726E6 /* hb-number.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-number.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-number.cc"; sourceTree = "<group>"; };
+		9183BB48722200400E2959B347262718 /* sqlite3_flutter_libs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = sqlite3_flutter_libs.release.xcconfig; sourceTree = "<group>"; };
+		919B4E059615222310C82ECD97742099 /* hb-shape-plan.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-shape-plan.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-shape-plan.cc"; sourceTree = "<group>"; };
+		957CC43229C190304BF19014B0E2CD8E /* line_breaker.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = line_breaker.cpp; path = "../../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/rive-cpp/src/text/line_breaker.cpp"; sourceTree = "<group>"; };
+		96DE2F133D39E903AE7E5D0247EB0BAE /* hb-ot-cff2-table.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-ot-cff2-table.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-ot-cff2-table.cc"; sourceTree = "<group>"; };
+		977D8E97F47ABB15CC37D9B91CC4F7AB /* hb-unicode.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-unicode.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-unicode.cc"; sourceTree = "<group>"; };
+		97D380F498699FCE443A1460E75CB36C /* rive_common.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = rive_common.release.xcconfig; sourceTree = "<group>"; };
+		97DD0CCD9F7A0B9217B2AD6D1A85894E /* sqlite_cfg.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = sqlite_cfg.h; path = "sqlite-src-3520000/sqlite_cfg.h"; sourceTree = "<group>"; };
+		99D2E0CE3F6FF118522FB8B9F01C822F /* Sqlite3FlutterLibsPlugin.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Sqlite3FlutterLibsPlugin.swift; path = "../../../../../../../../../../../../../.pub-cache/hosted/pub.dev/sqlite3_flutter_libs-0.5.42/darwin/sqlite3_flutter_libs/Sources/sqlite3_flutter_libs/Sqlite3FlutterLibsPlugin.swift"; sourceTree = "<group>"; };
+		9B82DD196B149FE90831EC57D8D80502 /* hb-subset-plan.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-subset-plan.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-subset-plan.cc"; sourceTree = "<group>"; };
+		9BDCCDC637C93252AF567BADF9CAA219 /* hb-aat-layout.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-aat-layout.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-aat-layout.cc"; sourceTree = "<group>"; };
+		9BE407343FA544D2588E0892FCA32AEA /* hb-aat-map.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-aat-map.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-aat-map.cc"; sourceTree = "<group>"; };
+		9C48C290BE06138266E384219B1A8D09 /* hb-ot-shaper-syllabic.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-ot-shaper-syllabic.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-ot-shaper-syllabic.cc"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9E9B12BCE5540D02A80250C3EC16D399 /* Pods-RunnerTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RunnerTests-umbrella.h"; sourceTree = "<group>"; };
+		9EE00D34B275026D4656C738BED5A001 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		A130A3936C8440B46CC503D037D470EC /* sqlite3_flutter_libs.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = sqlite3_flutter_libs.podspec; path = "../../../../../../../../../../.pub-cache/hosted/pub.dev/sqlite3_flutter_libs-0.5.42/darwin/sqlite3_flutter_libs.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A6B1FC7C6456F6E1412984F7583307BF /* hb-ot-shaper-myanmar.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-ot-shaper-myanmar.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-ot-shaper-myanmar.cc"; sourceTree = "<group>"; };
+		A802441F30E60A71C2E33E2164332B7F /* hb-ot-shaper-hebrew.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-ot-shaper-hebrew.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-ot-shaper-hebrew.cc"; sourceTree = "<group>"; };
+		AB092F4387D05DAF29857FD7BDC5E030 /* rive_common.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = rive_common.podspec; path = "../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/rive_common.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		ABD3590186828DB5D4ED3387B2498D47 /* hb-font.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-font.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-font.cc"; sourceTree = "<group>"; };
+		AC24980B2096D71D82DB371B4026A274 /* sqlite3.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = sqlite3.release.xcconfig; sourceTree = "<group>"; };
+		AC8FE152530FBDCE460186B326C1A8FB /* Pods-RunnerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RunnerTests.release.xcconfig"; sourceTree = "<group>"; };
+		B00A5ECAED4CA0C16FF7C65365BC0334 /* Pods-RunnerTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RunnerTests-Info.plist"; sourceTree = "<group>"; };
+		B0BD57AB3672E53828D11C2A3368023A /* Pods-RunnerTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-RunnerTests.modulemap"; sourceTree = "<group>"; };
+		B4507A8AA0AD81E8DFC98020268EFC72 /* sqlite3 */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = sqlite3; path = sqlite3.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B703785507B22BAF0B800737429577EC /* Pods-Runner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Runner.release.xcconfig"; sourceTree = "<group>"; };
+		BAD6B0591D104016C3957908D59A7A58 /* audio_source.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = audio_source.cpp; path = "../../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/rive-cpp/src/audio/audio_source.cpp"; sourceTree = "<group>"; };
+		BC759A8F0AC9309DC77CFB18C0236F46 /* FlutterMacOS.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = FlutterMacOS.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		C119FE6E63EA7DB0CBE8A419EEDB46E0 /* hb-ot-font.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-ot-font.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-ot-font.cc"; sourceTree = "<group>"; };
+		C24C1A035F22D24883C6F1876F274C6F /* Pods-Runner.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Runner.modulemap"; sourceTree = "<group>"; };
+		C4273B470A66A2A089DE5555DC3F15C1 /* renderer.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = renderer.cpp; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/rive-cpp/src/renderer.cpp"; sourceTree = "<group>"; };
+		C50FD10CD19FF6999637BA5ECAF1681B /* Pods-Runner.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Runner.profile.xcconfig"; sourceTree = "<group>"; };
+		C7C57FC4805DFF16B08F228FB800C7CF /* hb-ot-shaper-use.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-ot-shaper-use.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-ot-shaper-use.cc"; sourceTree = "<group>"; };
+		C88F6D9D544DD89F816569237C46E3B9 /* sqlite3-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "sqlite3-umbrella.h"; sourceTree = "<group>"; };
+		CB5F90A629CF2E71A8E2AAF57DFE2660 /* hb-static.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-static.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-static.cc"; sourceTree = "<group>"; };
+		CD146D4D4B3D69213BF5F5BA6DD1F52D /* log.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = log.cpp; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/yoga/yoga/log.cpp"; sourceTree = "<group>"; };
+		CDD31CE1F035C8A3801E25BA04287886 /* hb-outline.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-outline.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-outline.cc"; sourceTree = "<group>"; };
+		CF5A54A5978A77C9F09C9A0E750FD28E /* YGLayout.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = YGLayout.cpp; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/yoga/yoga/YGLayout.cpp"; sourceTree = "<group>"; };
+		D0B1CDD095779D2DAEEC3AF0D8F0A47F /* hb-subset-cff1.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-subset-cff1.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-subset-cff1.cc"; sourceTree = "<group>"; };
+		D17DEC93AD6ED36DB9BB8AF9662A2A9C /* hb-ot-shaper-khmer.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-ot-shaper-khmer.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-ot-shaper-khmer.cc"; sourceTree = "<group>"; };
+		D272F8928EAE7EB06BC0C07FB4F2954E /* hb-blob.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-blob.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-blob.cc"; sourceTree = "<group>"; };
+		D37C38B4C98E055DEB3456F24319A52F /* hb-style.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-style.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-style.cc"; sourceTree = "<group>"; };
+		D43759E3F706CE330AA5C120BE44097E /* sqlite3.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = sqlite3.h; path = "sqlite-src-3520000/sqlite3.h"; sourceTree = "<group>"; };
+		D5F9E56D85C3554BB5D872E8402FDFC2 /* rive_common-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "rive_common-dummy.m"; sourceTree = "<group>"; };
+		D61CA7C3AE79166FF030FB32967189D7 /* hb-subset.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-subset.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-subset.cc"; sourceTree = "<group>"; };
+		D767C632B4D16BCB2BAB0DB294AFE2DF /* YGEnums.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = YGEnums.cpp; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/yoga/yoga/YGEnums.cpp"; sourceTree = "<group>"; };
+		DA3C62A964CC94ABE1E2055FFC38E747 /* hb-draw.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-draw.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-draw.cc"; sourceTree = "<group>"; };
+		DA9A5C06720BA0D13F54CB15AAB8890F /* hb-subset-cff-common.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-subset-cff-common.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-subset-cff-common.cc"; sourceTree = "<group>"; };
+		DE8135CAE607F7824D08D08BDA5968B9 /* rive_common */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = rive_common; path = rive_common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0D018C98791E1202CA3D4E0032BC8DB /* hb-subset-repacker.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-subset-repacker.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-subset-repacker.cc"; sourceTree = "<group>"; };
+		E13F9BFEB0B1F5184698AA5B3442D30F /* hb-face.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-face.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-face.cc"; sourceTree = "<group>"; };
+		E349D233B92D4EF8CDDD64EA07DE3603 /* FlutterMacOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FlutterMacOS.debug.xcconfig; sourceTree = "<group>"; };
+		E736E0C9C5B73D27B8865E363E2108AC /* Pods-RunnerTests.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RunnerTests.profile.xcconfig"; sourceTree = "<group>"; };
+		E78556DEFE7B9194595DB7FD23182B8A /* hb-ot-shaper-indic-table.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-ot-shaper-indic-table.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-ot-shaper-indic-table.cc"; sourceTree = "<group>"; };
+		E794494AB90477BA94C681E994ADF341 /* Pods-Runner-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Runner-dummy.m"; sourceTree = "<group>"; };
+		E83A58E3AC4F29BDB0E3B3D4152127DC /* YGValue.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = YGValue.cpp; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/yoga/yoga/YGValue.cpp"; sourceTree = "<group>"; };
+		E913FCDC6DF39B6EF1876094674344C8 /* hb-set.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-set.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-set.cc"; sourceTree = "<group>"; };
+		E95ABD5F4D1E8D59569FAEF35FCC0E13 /* audio_reader.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = audio_reader.cpp; path = "../../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/rive-cpp/src/audio/audio_reader.cpp"; sourceTree = "<group>"; };
+		E9FCAB22DF9F7F9B82B96DA78AEE4875 /* hb-paint.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-paint.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-paint.cc"; sourceTree = "<group>"; };
+		ECDF6AA713870989438BA93B395DC557 /* Pods-Runner-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Runner-acknowledgements.markdown"; sourceTree = "<group>"; };
+		F1123175A86F02B5C7BEC66476F37898 /* hb-ot-name.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-ot-name.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-ot-name.cc"; sourceTree = "<group>"; };
+		F48C501BA7C3226C3B7AF2C902B4006D /* hb-buffer.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-buffer.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-buffer.cc"; sourceTree = "<group>"; };
+		F50C083D1B1CBE1F92B6E56C046F2F0B /* hb-ot-shaper-arabic.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-ot-shaper-arabic.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-ot-shaper-arabic.cc"; sourceTree = "<group>"; };
+		F5F6C70B78070727D9823FBB626B9D06 /* hb-map.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-map.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-map.cc"; sourceTree = "<group>"; };
+		F61F6C62696E6025C316772C48036489 /* sqlite3_flutter_libs-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "sqlite3_flutter_libs-Info.plist"; sourceTree = "<group>"; };
+		FCD679297D40E066D5956176B18910B7 /* sqlite3-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "sqlite3-Info.plist"; sourceTree = "<group>"; };
+		FD52148A9C65DA12771C7FA161FBC4A2 /* audio_sound.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = audio_sound.cpp; path = "../../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/rive-cpp/src/audio/audio_sound.cpp"; sourceTree = "<group>"; };
+		FF422BD7485D2D890B4359C8AE19D56A /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = "../../../../../../../../../../.pub-cache/hosted/pub.dev/sqlite3_flutter_libs-0.5.42/LICENSE"; sourceTree = "<group>"; };
+		FF5B452BEEF4942D02D03D1A22FC2970 /* hb-ot-meta.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-ot-meta.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-ot-meta.cc"; sourceTree = "<group>"; };
+		FF9E637048F7BAEC45B2EC4BAE583E7E /* hb-ot-var.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = "hb-ot-var.cc"; path = "../../../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15/macos/harfbuzz/src/hb-ot-var.cc"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3D38DDA7C31561D0EEE56CECB0C46938 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				404256B5A342798C4BBE95C7210796C7 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6DCAA4F8F1E026869C4E9334A0CA406C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				78F552E6F4748704D36CF3ACBD18EF0A /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7571AC084392DF6F5D7478C450864F92 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		85A8ECC22B6CF773B2B2BCF679EA7767 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7E8EF568354B8CEB26AAC4D20C5211A5 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C6DD3F6EB5CE2E54B80DD3331EF77F13 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				25459E19FC3C0A08A3C7C83D50B3B9EF /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAC0834F7252D8143E0E41335E53F3B8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03FF65672874530A3E9AE6BAB1764A4A /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		01A5EA3A463B57E2C78FB654F5C026D7 /* ephemeral */ = {
+			isa = PBXGroup;
+			children = (
+				ECEDA8C9A8C8228905EDA732BAC52FDD /* .symlinks */,
+			);
+			name = ephemeral;
+			path = ephemeral;
+			sourceTree = "<group>";
+		};
+		03B4571420C49608DA876CF402F13141 /* macos */ = {
+			isa = PBXGroup;
+			children = (
+				794CD1788EB696259C322448E14E31B1 /* common.cpp */,
+				A3E7E32225B09AA2DFF47F8E20C187E3 /* Classes */,
+				32D606B3DD6FF4238C134C5E2F19C410 /* harfbuzz */,
+				DCCE0E2C61F4C10E86FB5ED29076A71C /* rive-cpp */,
+				9B43588FFDF46C25856776BBB69D732D /* rive_text */,
+				92D55BD1EA45FB05B31F31D1977BFCC3 /* SheenBidi */,
+				2544DEAB2D19663634A92E85643275DF /* yoga */,
+			);
+			name = macos;
+			path = macos;
+			sourceTree = "<group>";
+		};
+		07FC12BAAB25545E363DE0A758063428 /* A */ = {
+			isa = PBXGroup;
+			children = (
+				D3D655F629987020CE34D46C75C913C7 /* personality */,
+			);
+			name = A;
+			path = A;
+			sourceTree = "<group>";
+		};
+		0FF997755855EDE37EA71E417C4AD832 /* Flutter */ = {
+			isa = PBXGroup;
+			children = (
+				01A5EA3A463B57E2C78FB654F5C026D7 /* ephemeral */,
+			);
+			name = Flutter;
+			path = Flutter;
+			sourceTree = "<group>";
+		};
+		1638F164F8F3597B1FBB4F5A7FB3CCEF /* rive_common */ = {
+			isa = PBXGroup;
+			children = (
+				03B4571420C49608DA876CF402F13141 /* macos */,
+			);
+			name = rive_common;
+			path = rive_common;
+			sourceTree = "<group>";
+		};
+		18804C44A7DECE8215EA046ADE56EE6E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2542E398DBE15E77BED79527885822DE /* PrivacyInfo.xcprivacy */,
+			);
+			name = Resources;
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		1934F5141F3659723ADDA4C61149595A /* .. */ = {
+			isa = PBXGroup;
+			children = (
+				ED7DB360B507020186A2C379C7949867 /* .. */,
+			);
+			name = ..;
+			path = "../../../../../../../../../../.pub-cache/hosted/pub.dev/rive_common-0.4.15";
+			sourceTree = "<group>";
+		};
+		1AC62BD94083DCDD50FFC3E7B81B376F /* .. */ = {
+			isa = PBXGroup;
+			children = (
+				7C5A1430B38DDA20B836CC1707E42997 /* .. */,
+			);
+			name = ..;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		1B072000567E6C4928D10D529ADABCDD /* plugins */ = {
+			isa = PBXGroup;
+			children = (
+				30E3938DE2F3309606668D4C5BE74EDB /* rive_common */,
+			);
+			name = plugins;
+			path = plugins;
+			sourceTree = "<group>";
+		};
+		1F3F900E4E8313357481A52CBF96449E /* sqlite3_flutter_libs */ = {
+			isa = PBXGroup;
+			children = (
+				996985D91AFFCDF8143E0A7324622111 /* Sources */,
+			);
+			name = sqlite3_flutter_libs;
+			path = sqlite3_flutter_libs;
+			sourceTree = "<group>";
+		};
+		22A67E3AE58B27B53196F2CE63DCF3BA /* src */ = {
+			isa = PBXGroup;
+			children = (
+				C4273B470A66A2A089DE5555DC3F15C1 /* renderer.cpp */,
+				77A0CCCCE8D7A7AF7AAE225215C8BFBC /* audio */,
+				FE3308DA3D1761BCF6284A894B3CF74B /* math */,
+				44B2755EE8A964401A27DD29FBDBB44E /* text */,
+			);
+			name = src;
+			path = src;
+			sourceTree = "<group>";
+		};
+		2463A570640224D078165C930777F032 /* macos */ = {
+			isa = PBXGroup;
+			children = (
+				7F944D1475D779AD1AEF53EC0C4C83FD /* Flutter */,
+			);
+			name = macos;
+			path = macos;
+			sourceTree = "<group>";
+		};
+		2544DEAB2D19663634A92E85643275DF /* yoga */ = {
+			isa = PBXGroup;
+			children = (
+				539002E847C4CCD3F20CAA124F14D6B1 /* yoga */,
+			);
+			name = yoga;
+			path = yoga;
+			sourceTree = "<group>";
+		};
+		274D7347F6D8F9748575AC8219B1A66E /* personality */ = {
+			isa = PBXGroup;
+			children = (
+				FF6F7B7A0C91EDB5E4525004FE673249 /* mobile */,
+			);
+			name = personality;
+			path = personality;
+			sourceTree = "<group>";
+		};
+		27EA8D712F15E6B03D47939C933BFA90 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				FF422BD7485D2D890B4359C8AE19D56A /* LICENSE */,
+				A130A3936C8440B46CC503D037D470EC /* sqlite3_flutter_libs.podspec */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		2A722872B5720D17DF69F36832F1595E /* event */ = {
+			isa = PBXGroup;
+			children = (
+				794D8290D36ED8038063E6E7EB437C70 /* event.cpp */,
+			);
+			name = event;
+			path = event;
+			sourceTree = "<group>";
+		};
+		2DB8426A477BA92773F00012EBA84D53 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				E806A4F97D48F5FD3B4CA1BC617EA1F5 /* Pods-Runner */,
+				537E840C4F4E30B706FD9D64B15C53A7 /* Pods-RunnerTests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		2DC1506B2624A7F9F39613A570635332 /* A */ = {
+			isa = PBXGroup;
+			children = (
+				274D7347F6D8F9748575AC8219B1A66E /* personality */,
+			);
+			name = A;
+			path = A;
+			sourceTree = "<group>";
+		};
+		2F176EA7AA844ED71A9B4EA1575510DB /* ephemeral */ = {
+			isa = PBXGroup;
+			children = (
+				A58D982ED8EF934EB993C4DD611DF9B7 /* .symlinks */,
+			);
+			name = ephemeral;
+			path = ephemeral;
+			sourceTree = "<group>";
+		};
+		306993459FB7EC370E8D523C354ECA65 /* A */ = {
+			isa = PBXGroup;
+			children = (
+				DBCF628030CA576A8849401E6F5712E6 /* personality */,
+			);
+			name = A;
+			path = A;
+			sourceTree = "<group>";
+		};
+		30A111A40673F5EEC14C986D3A040762 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				9BDCCDC637C93252AF567BADF9CAA219 /* hb-aat-layout.cc */,
+				9BE407343FA544D2588E0892FCA32AEA /* hb-aat-map.cc */,
+				D272F8928EAE7EB06BC0C07FB4F2954E /* hb-blob.cc */,
+				F48C501BA7C3226C3B7AF2C902B4006D /* hb-buffer.cc */,
+				481A0042FBBC49C20B07ECB1A8B7B686 /* hb-buffer-serialize.cc */,
+				0EDD4D7DD8AD93290A4AC28C1B9FAEB4 /* hb-buffer-verify.cc */,
+				36021653DEE476E8CEBD3DC198634168 /* hb-common.cc */,
+				DA3C62A964CC94ABE1E2055FFC38E747 /* hb-draw.cc */,
+				E13F9BFEB0B1F5184698AA5B3442D30F /* hb-face.cc */,
+				379E3FB20BA47957C7DE420F891E69C6 /* hb-face-builder.cc */,
+				ABD3590186828DB5D4ED3387B2498D47 /* hb-font.cc */,
+				F5F6C70B78070727D9823FBB626B9D06 /* hb-map.cc */,
+				8D04AE8C9908885EC802BF087CC726E6 /* hb-number.cc */,
+				7720E6153F5CB31ED088DC915A9DB311 /* hb-ot-cff1-table.cc */,
+				96DE2F133D39E903AE7E5D0247EB0BAE /* hb-ot-cff2-table.cc */,
+				8740037A881F03C82C375D4A34B060DB /* hb-ot-color.cc */,
+				04EFDD03F892D4ECF62A15EB1B0560B1 /* hb-ot-face.cc */,
+				C119FE6E63EA7DB0CBE8A419EEDB46E0 /* hb-ot-font.cc */,
+				09893FDFB4F38DA731DFD26150096986 /* hb-ot-layout.cc */,
+				4EF1641DE63E9011F465EC476B7B93E4 /* hb-ot-map.cc */,
+				3487D8B43D81BEC968EA5A2DFA838F2C /* hb-ot-math.cc */,
+				FF5B452BEEF4942D02D03D1A22FC2970 /* hb-ot-meta.cc */,
+				46C2ACB9B3EAE2B9BC584AF5F530F4B5 /* hb-ot-metrics.cc */,
+				F1123175A86F02B5C7BEC66476F37898 /* hb-ot-name.cc */,
+				4D0B6A096718452A5F368B82EEB86528 /* hb-ot-shape.cc */,
+				6DAA4808AB73878E5D5BAC57B87D1C3A /* hb-ot-shape-fallback.cc */,
+				0C0A1977F0EF0B4F85D687EFE44A3C0E /* hb-ot-shape-normalize.cc */,
+				F50C083D1B1CBE1F92B6E56C046F2F0B /* hb-ot-shaper-arabic.cc */,
+				82D1AEEFFED9E876A3589B9DF585A8BB /* hb-ot-shaper-default.cc */,
+				2C938ECC88CF9BE5312DD1B96E6AB18E /* hb-ot-shaper-hangul.cc */,
+				A802441F30E60A71C2E33E2164332B7F /* hb-ot-shaper-hebrew.cc */,
+				8441243AFB019AA54934C8F5C592408B /* hb-ot-shaper-indic.cc */,
+				E78556DEFE7B9194595DB7FD23182B8A /* hb-ot-shaper-indic-table.cc */,
+				D17DEC93AD6ED36DB9BB8AF9662A2A9C /* hb-ot-shaper-khmer.cc */,
+				A6B1FC7C6456F6E1412984F7583307BF /* hb-ot-shaper-myanmar.cc */,
+				9C48C290BE06138266E384219B1A8D09 /* hb-ot-shaper-syllabic.cc */,
+				4486EB2958B0EDA9DAA168142F44D2BF /* hb-ot-shaper-thai.cc */,
+				C7C57FC4805DFF16B08F228FB800C7CF /* hb-ot-shaper-use.cc */,
+				2BC54019BF4DC386897BD19A0FDCE1FA /* hb-ot-shaper-vowel-constraints.cc */,
+				48B24BDD3C2D8B13D057F2641ADF124F /* hb-ot-tag.cc */,
+				FF9E637048F7BAEC45B2EC4BAE583E7E /* hb-ot-var.cc */,
+				CDD31CE1F035C8A3801E25BA04287886 /* hb-outline.cc */,
+				E9FCAB22DF9F7F9B82B96DA78AEE4875 /* hb-paint.cc */,
+				3FC30C69226F41B21B8589AE4436390D /* hb-paint-extents.cc */,
+				E913FCDC6DF39B6EF1876094674344C8 /* hb-set.cc */,
+				243188A049550AF94073F0D7CB750243 /* hb-shape.cc */,
+				919B4E059615222310C82ECD97742099 /* hb-shape-plan.cc */,
+				81D46257FC90497D4DE980BA28F637AC /* hb-shaper.cc */,
+				CB5F90A629CF2E71A8E2AAF57DFE2660 /* hb-static.cc */,
+				D37C38B4C98E055DEB3456F24319A52F /* hb-style.cc */,
+				D61CA7C3AE79166FF030FB32967189D7 /* hb-subset.cc */,
+				DA9A5C06720BA0D13F54CB15AAB8890F /* hb-subset-cff-common.cc */,
+				D0B1CDD095779D2DAEEC3AF0D8F0A47F /* hb-subset-cff1.cc */,
+				0503DE69CCE3CD1BD785985AA560CC34 /* hb-subset-cff2.cc */,
+				58F074B2C29257DCABB99D572EF48879 /* hb-subset-input.cc */,
+				59595146DDC47823816069780AEA7FF6 /* hb-subset-instancer-solver.cc */,
+				9B82DD196B149FE90831EC57D8D80502 /* hb-subset-plan.cc */,
+				E0D018C98791E1202CA3D4E0032BC8DB /* hb-subset-repacker.cc */,
+				02ADDDBF2C16416C4648BA1466CE2A7F /* hb-ucd.cc */,
+				977D8E97F47ABB15CC37D9B91CC4F7AB /* hb-unicode.cc */,
+				A21EA2E13A3074077EE12A2B03CFC234 /* graph */,
+			);
+			name = src;
+			path = src;
+			sourceTree = "<group>";
+		};
+		30E3938DE2F3309606668D4C5BE74EDB /* rive_common */ = {
+			isa = PBXGroup;
+			children = (
+				BFEEB0CFBF4C150CA6D39625B28EAC84 /* macos */,
+			);
+			name = rive_common;
+			path = rive_common;
+			sourceTree = "<group>";
+		};
+		32D606B3DD6FF4238C134C5E2F19C410 /* harfbuzz */ = {
+			isa = PBXGroup;
+			children = (
+				30A111A40673F5EEC14C986D3A040762 /* src */,
+			);
+			name = harfbuzz;
+			path = harfbuzz;
+			sourceTree = "<group>";
+		};
+		399C01BDF69E0737DF6019BD4D799842 /* sqlite3 */ = {
+			isa = PBXGroup;
+			children = (
+				425AFE285CF69D48CB5FE67013A643BB /* common */,
+				D2D2342D7699DAA4A24383CC0B7BAA2A /* Support Files */,
+			);
+			name = sqlite3;
+			path = sqlite3;
+			sourceTree = "<group>";
+		};
+		40C198B47E2D972740867FF7ACF26F86 /* .symlinks */ = {
+			isa = PBXGroup;
+			children = (
+				AAF6CCF63930115155685854121AD68F /* plugins */,
+			);
+			name = .symlinks;
+			path = .symlinks;
+			sourceTree = "<group>";
+		};
+		425AFE285CF69D48CB5FE67013A643BB /* common */ = {
+			isa = PBXGroup;
+			children = (
+				65D763295BB7739E13E543D6AEA3EF17 /* sqlite3.c */,
+				D43759E3F706CE330AA5C120BE44097E /* sqlite3.h */,
+				82EFE0599F2D4F6EBC20BD9350C71B07 /* sqlite3ext.h */,
+				12361B8568CAA622081EBFF05E13C443 /* sqlite3session.h */,
+				97DD0CCD9F7A0B9217B2AD6D1A85894E /* sqlite_cfg.h */,
+			);
+			name = common;
+			sourceTree = "<group>";
+		};
+		42E57B7BB5C55626C4CC8EAC437964AF /* .. */ = {
+			isa = PBXGroup;
+			children = (
+				99A04FD6107B9263A71BDFC4B89E6D40 /* .. */,
+			);
+			name = ..;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		44B2755EE8A964401A27DD29FBDBB44E /* text */ = {
+			isa = PBXGroup;
+			children = (
+				0F5623D5BBCA559F00F99FBDF4379927 /* font_hb.cpp */,
+				957CC43229C190304BF19014B0E2CD8E /* line_breaker.cpp */,
+			);
+			name = text;
+			path = text;
+			sourceTree = "<group>";
+		};
+		537E840C4F4E30B706FD9D64B15C53A7 /* Pods-RunnerTests */ = {
+			isa = PBXGroup;
+			children = (
+				B0BD57AB3672E53828D11C2A3368023A /* Pods-RunnerTests.modulemap */,
+				11AA7018F95317D959D9D2E76CBB2377 /* Pods-RunnerTests-acknowledgements.markdown */,
+				79F83F4D505FA40C1CD18A8029181D59 /* Pods-RunnerTests-acknowledgements.plist */,
+				4D3DB54C128E3D88C0C9C7DDEA475ED7 /* Pods-RunnerTests-dummy.m */,
+				B00A5ECAED4CA0C16FF7C65365BC0334 /* Pods-RunnerTests-Info.plist */,
+				9E9B12BCE5540D02A80250C3EC16D399 /* Pods-RunnerTests-umbrella.h */,
+				03E8AD2E8B75443E12D3D3BD12A9900E /* Pods-RunnerTests.debug.xcconfig */,
+				E736E0C9C5B73D27B8865E363E2108AC /* Pods-RunnerTests.profile.xcconfig */,
+				AC8FE152530FBDCE460186B326C1A8FB /* Pods-RunnerTests.release.xcconfig */,
+			);
+			name = "Pods-RunnerTests";
+			path = "Target Support Files/Pods-RunnerTests";
+			sourceTree = "<group>";
+		};
+		539002E847C4CCD3F20CAA124F14D6B1 /* yoga */ = {
+			isa = PBXGroup;
+			children = (
+				CD146D4D4B3D69213BF5F5BA6DD1F52D /* log.cpp */,
+				7BC233C4A666AF7031667F34C8315F3E /* Utils.cpp */,
+				5BEB3363613BB8143E5ACAF935A842E4 /* YGConfig.cpp */,
+				D767C632B4D16BCB2BAB0DB294AFE2DF /* YGEnums.cpp */,
+				CF5A54A5978A77C9F09C9A0E750FD28E /* YGLayout.cpp */,
+				8664A0965F31C09FF9F6B0EED530E528 /* YGNode.cpp */,
+				2C7C9149CA4444283855F53C76F600C2 /* YGNodePrint.cpp */,
+				60EFB91BCD556120D6C3B4C87DFC5A5C /* YGStyle.cpp */,
+				E83A58E3AC4F29BDB0E3B3D4152127DC /* YGValue.cpp */,
+				53EE67BCA056A68BA43BEA42F355CB47 /* Yoga.cpp */,
+				2A722872B5720D17DF69F36832F1595E /* event */,
+			);
+			name = yoga;
+			path = yoga;
+			sourceTree = "<group>";
+		};
+		5CD2D8A6CD03C789787C5CBD5D7D0EE5 /* FlutterMacOS */ = {
+			isa = PBXGroup;
+			children = (
+				98CE0E9FA0985E58E9409E0A6FB5AC77 /* Pod */,
+				8354721AD1B67B9EF41FAC2163244278 /* Support Files */,
+			);
+			name = FlutterMacOS;
+			path = ../Flutter/ephemeral;
+			sourceTree = "<group>";
+		};
+		5F86C2F573DAB098FC56770F2EE651F0 /* rive_common */ = {
+			isa = PBXGroup;
+			children = (
+				1934F5141F3659723ADDA4C61149595A /* .. */,
+				CE9C65FF541F0712C55801DCF3DC5B04 /* Pod */,
+				DBF9F0E8B5CF3B71531FDE9EA4367E4B /* Support Files */,
+			);
+			name = rive_common;
+			path = ../Flutter/ephemeral/.symlinks/plugins/rive_common/macos;
+			sourceTree = "<group>";
+		};
+		65162AA6A18B8C00F293541F96FC8A9E /* .. */ = {
+			isa = PBXGroup;
+			children = (
+				9676C69108FF9B890ED39CEF2223487E /* .. */,
+			);
+			name = ..;
+			path = "../../../../../../../../../../.pub-cache/hosted/pub.dev/sqlite3_flutter_libs-0.5.42/darwin/sqlite3_flutter_libs/Sources";
+			sourceTree = "<group>";
+		};
+		6CF8013CA832F8AB5DDAE0156C97FD88 /* OS X */ = {
+			isa = PBXGroup;
+			children = (
+				9EE00D34B275026D4656C738BED5A001 /* Cocoa.framework */,
+			);
+			name = "OS X";
+			sourceTree = "<group>";
+		};
+		77A0CCCCE8D7A7AF7AAE225215C8BFBC /* audio */ = {
+			isa = PBXGroup;
+			children = (
+				8966032DEACD15641BD2779AC12CCF16 /* audio_engine.cpp */,
+				E95ABD5F4D1E8D59569FAEF35FCC0E13 /* audio_reader.cpp */,
+				FD52148A9C65DA12771C7FA161FBC4A2 /* audio_sound.cpp */,
+				BAD6B0591D104016C3957908D59A7A58 /* audio_source.cpp */,
+			);
+			name = audio;
+			path = audio;
+			sourceTree = "<group>";
+		};
+		7C5A1430B38DDA20B836CC1707E42997 /* .. */ = {
+			isa = PBXGroup;
+			children = (
+				AED0E695BAF3D780B2CDDFF8FFC85A33 /* .. */,
+			);
+			name = ..;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		7F944D1475D779AD1AEF53EC0C4C83FD /* Flutter */ = {
+			isa = PBXGroup;
+			children = (
+				866B6DBFF58350DA39EF512C0DB9E994 /* ephemeral */,
+			);
+			name = Flutter;
+			path = Flutter;
+			sourceTree = "<group>";
+		};
+		8354721AD1B67B9EF41FAC2163244278 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				E349D233B92D4EF8CDDD64EA07DE3603 /* FlutterMacOS.debug.xcconfig */,
+				3604282F1645FF593E5E7266E6E31743 /* FlutterMacOS.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../../Pods/Target Support Files/FlutterMacOS";
+			sourceTree = "<group>";
+		};
+		866B6DBFF58350DA39EF512C0DB9E994 /* ephemeral */ = {
+			isa = PBXGroup;
+			children = (
+				40C198B47E2D972740867FF7ACF26F86 /* .symlinks */,
+			);
+			name = ephemeral;
+			path = ephemeral;
+			sourceTree = "<group>";
+		};
+		8823600082B509DED1C717869B52235A /* macos */ = {
+			isa = PBXGroup;
+			children = (
+				BEDEE9CB532B32AD8843984E26ABC935 /* Flutter */,
+			);
+			name = macos;
+			path = macos;
+			sourceTree = "<group>";
+		};
+		8A3171817DE0C9213641C879E51864D2 /* sqlite3_flutter_libs */ = {
+			isa = PBXGroup;
+			children = (
+				65162AA6A18B8C00F293541F96FC8A9E /* .. */,
+				27EA8D712F15E6B03D47939C933BFA90 /* Pod */,
+				C13AD67268AB53B6215C060CD9FA7211 /* Support Files */,
+			);
+			name = sqlite3_flutter_libs;
+			path = ../Flutter/ephemeral/.symlinks/plugins/sqlite3_flutter_libs/darwin;
+			sourceTree = "<group>";
+		};
+		92D55BD1EA45FB05B31F31D1977BFCC3 /* SheenBidi */ = {
+			isa = PBXGroup;
+			children = (
+				94A0D7A47D82E9E9ABAA38BAF0610F81 /* Source */,
+			);
+			name = SheenBidi;
+			path = SheenBidi;
+			sourceTree = "<group>";
+		};
+		94596F022DF7FF61686D92517836FE68 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				399C01BDF69E0737DF6019BD4D799842 /* sqlite3 */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		94A0D7A47D82E9E9ABAA38BAF0610F81 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				5165F37EFA71658AD4EC754E1E3ABAE6 /* SheenBidi.c */,
+			);
+			name = Source;
+			path = Source;
+			sourceTree = "<group>";
+		};
+		94AB323D7D045B2FCAA05988197CBD59 /* plugins */ = {
+			isa = PBXGroup;
+			children = (
+				1638F164F8F3597B1FBB4F5A7FB3CCEF /* rive_common */,
+			);
+			name = plugins;
+			path = plugins;
+			sourceTree = "<group>";
+		};
+		95C8BE11170DE89312508FD2AB5212C3 /* .. */ = {
+			isa = PBXGroup;
+			children = (
+				2DC1506B2624A7F9F39613A570635332 /* A */,
+			);
+			name = ..;
+			path = .;
+			sourceTree = "<group>";
+		};
+		9676C69108FF9B890ED39CEF2223487E /* .. */ = {
+			isa = PBXGroup;
+			children = (
+				42E57B7BB5C55626C4CC8EAC437964AF /* .. */,
+			);
+			name = ..;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		98CE0E9FA0985E58E9409E0A6FB5AC77 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				BC759A8F0AC9309DC77CFB18C0236F46 /* FlutterMacOS.podspec */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		996985D91AFFCDF8143E0A7324622111 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				EC468A65F12C4E3BC380648DE9E40B9D /* sqlite3_flutter_libs */,
+			);
+			name = Sources;
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		99A04FD6107B9263A71BDFC4B89E6D40 /* .. */ = {
+			isa = PBXGroup;
+			children = (
+				C164CAB465A8D56E4276A2B827AD9D6F /* .. */,
+			);
+			name = ..;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		9B43588FFDF46C25856776BBB69D732D /* rive_text */ = {
+			isa = PBXGroup;
+			children = (
+				18893E5611B485F456F498F16B2096D9 /* rive_text.cpp */,
+			);
+			name = rive_text;
+			path = rive_text;
+			sourceTree = "<group>";
+		};
+		A21EA2E13A3074077EE12A2B03CFC234 /* graph */ = {
+			isa = PBXGroup;
+			children = (
+				4DF994080A2FCD8FFF0A47B1625D3748 /* gsubgpos-context.cc */,
+			);
+			name = graph;
+			path = graph;
+			sourceTree = "<group>";
+		};
+		A3E7E32225B09AA2DFF47F8E20C187E3 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				6668A0CBEEAC71562A34E335FD3F6077 /* RivePlugin.swift */,
+			);
+			name = Classes;
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		A58D982ED8EF934EB993C4DD611DF9B7 /* .symlinks */ = {
+			isa = PBXGroup;
+			children = (
+				94AB323D7D045B2FCAA05988197CBD59 /* plugins */,
+			);
+			name = .symlinks;
+			path = .symlinks;
+			sourceTree = "<group>";
+		};
+		AAF6CCF63930115155685854121AD68F /* plugins */ = {
+			isa = PBXGroup;
+			children = (
+				ABA88875D6FE77232556F48CE573BE81 /* sqlite3_flutter_libs */,
+			);
+			name = plugins;
+			path = plugins;
+			sourceTree = "<group>";
+		};
+		ABA88875D6FE77232556F48CE573BE81 /* sqlite3_flutter_libs */ = {
+			isa = PBXGroup;
+			children = (
+				ABA91AD74869180BA69291655ED2AE2F /* darwin */,
+			);
+			name = sqlite3_flutter_libs;
+			path = sqlite3_flutter_libs;
+			sourceTree = "<group>";
+		};
+		ABA91AD74869180BA69291655ED2AE2F /* darwin */ = {
+			isa = PBXGroup;
+			children = (
+				1F3F900E4E8313357481A52CBF96449E /* sqlite3_flutter_libs */,
+			);
+			name = darwin;
+			path = darwin;
+			sourceTree = "<group>";
+		};
+		AE3F7F1B6556DAE35BC2BE9C4349DDB3 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5CD2D8A6CD03C789787C5CBD5D7D0EE5 /* FlutterMacOS */,
+				5F86C2F573DAB098FC56770F2EE651F0 /* rive_common */,
+				8A3171817DE0C9213641C879E51864D2 /* sqlite3_flutter_libs */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		AEC280FF47F4C07629223A7EFF6E8FC7 /* mobile */ = {
+			isa = PBXGroup;
+			children = (
+				8823600082B509DED1C717869B52235A /* macos */,
+			);
+			name = mobile;
+			path = mobile;
+			sourceTree = "<group>";
+		};
+		AED0E695BAF3D780B2CDDFF8FFC85A33 /* .. */ = {
+			isa = PBXGroup;
+			children = (
+				306993459FB7EC370E8D523C354ECA65 /* A */,
+			);
+			name = ..;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		B1D497978FE75A99F09B373C934A0138 /* macos */ = {
+			isa = PBXGroup;
+			children = (
+				0FF997755855EDE37EA71E417C4AD832 /* Flutter */,
+			);
+			name = macos;
+			path = macos;
+			sourceTree = "<group>";
+		};
+		BEDEE9CB532B32AD8843984E26ABC935 /* Flutter */ = {
+			isa = PBXGroup;
+			children = (
+				2F176EA7AA844ED71A9B4EA1575510DB /* ephemeral */,
+			);
+			name = Flutter;
+			path = Flutter;
+			sourceTree = "<group>";
+		};
+		BFEEB0CFBF4C150CA6D39625B28EAC84 /* macos */ = {
+			isa = PBXGroup;
+			children = (
+				18804C44A7DECE8215EA046ADE56EE6E /* Resources */,
+			);
+			name = macos;
+			path = macos;
+			sourceTree = "<group>";
+		};
+		C13AD67268AB53B6215C060CD9FA7211 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				6BD1BB175F46872EF3E47A3F20290BE4 /* sqlite3_flutter_libs.modulemap */,
+				2C845B8040566A426B2BA3D0B4523F0E /* sqlite3_flutter_libs-dummy.m */,
+				F61F6C62696E6025C316772C48036489 /* sqlite3_flutter_libs-Info.plist */,
+				45D7362A2870C5E2DA8B89CF5F37B713 /* sqlite3_flutter_libs-prefix.pch */,
+				470D81B8DF267826948783B61AAB2564 /* sqlite3_flutter_libs-umbrella.h */,
+				5297E31D8DDDFD11A1E9B11DCC8A8CDE /* sqlite3_flutter_libs.debug.xcconfig */,
+				9183BB48722200400E2959B347262718 /* sqlite3_flutter_libs.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../../../../../../Pods/Target Support Files/sqlite3_flutter_libs";
+			sourceTree = "<group>";
+		};
+		C164CAB465A8D56E4276A2B827AD9D6F /* .. */ = {
+			isa = PBXGroup;
+			children = (
+				1AC62BD94083DCDD50FFC3E7B81B376F /* .. */,
+			);
+			name = ..;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		C39C5F6C8BA572F42FCF4A491CC8D323 /* mobile */ = {
+			isa = PBXGroup;
+			children = (
+				2463A570640224D078165C930777F032 /* macos */,
+			);
+			name = mobile;
+			path = mobile;
+			sourceTree = "<group>";
+		};
+		CE9C65FF541F0712C55801DCF3DC5B04 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				231113080D27D320B0C8FA0C12877EE1 /* LICENSE */,
+				AB092F4387D05DAF29857FD7BDC5E030 /* rive_common.podspec */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				AE3F7F1B6556DAE35BC2BE9C4349DDB3 /* Development Pods */,
+				E0A1E60606E0BF6E2E10F1F01350DFE8 /* Frameworks */,
+				94596F022DF7FF61686D92517836FE68 /* Pods */,
+				D465E8EE0ACF444CD2EEE33A8CA6E71E /* Products */,
+				2DB8426A477BA92773F00012EBA84D53 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D2D2342D7699DAA4A24383CC0B7BAA2A /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				6B8CD1E1EC41321CE987AFFDCC1E448F /* sqlite3.modulemap */,
+				6A9F4BA5DB3B34B82224D2F78F82B4E6 /* sqlite3-dummy.m */,
+				FCD679297D40E066D5956176B18910B7 /* sqlite3-Info.plist */,
+				0FCE47D5BA788682679D0F123E0BB4C6 /* sqlite3-prefix.pch */,
+				C88F6D9D544DD89F816569237C46E3B9 /* sqlite3-umbrella.h */,
+				36E93077F649FF24BBCC9AAB190644F5 /* sqlite3.debug.xcconfig */,
+				AC24980B2096D71D82DB371B4026A274 /* sqlite3.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/sqlite3";
+			sourceTree = "<group>";
+		};
+		D3D655F629987020CE34D46C75C913C7 /* personality */ = {
+			isa = PBXGroup;
+			children = (
+				AEC280FF47F4C07629223A7EFF6E8FC7 /* mobile */,
+			);
+			name = personality;
+			path = personality;
+			sourceTree = "<group>";
+		};
+		D43A12F7EF2EA5F194AAA3F253A32CDB /* .. */ = {
+			isa = PBXGroup;
+			children = (
+				EFF4692B5FA08A8228323E7BAD4A9B23 /* .. */,
+			);
+			name = ..;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		D465E8EE0ACF444CD2EEE33A8CA6E71E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				669E8F25E1897672BDB80B7EB784DA24 /* Pods-Runner */,
+				6C3345B1B3CAEDF5B03B1F731FDC492E /* Pods-RunnerTests */,
+				DE8135CAE607F7824D08D08BDA5968B9 /* rive_common */,
+				574A0C3C1D0259ECD7B58F9923D15EF6 /* rive_common-rive_common_privacy */,
+				B4507A8AA0AD81E8DFC98020268EFC72 /* sqlite3 */,
+				5B3F4A99493DE8EEF335FA5018E92F12 /* sqlite3_flutter_libs */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D4A016882592B9EBA56CAFCAE5846095 /* .. */ = {
+			isa = PBXGroup;
+			children = (
+				D43A12F7EF2EA5F194AAA3F253A32CDB /* .. */,
+			);
+			name = ..;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		DBCF628030CA576A8849401E6F5712E6 /* personality */ = {
+			isa = PBXGroup;
+			children = (
+				C39C5F6C8BA572F42FCF4A491CC8D323 /* mobile */,
+			);
+			name = personality;
+			path = personality;
+			sourceTree = "<group>";
+		};
+		DBF9F0E8B5CF3B71531FDE9EA4367E4B /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				7596C614EE347A2D3FEB1684F5C1459C /* ResourceBundle-rive_common_privacy-rive_common-Info.plist */,
+				6A6113C37EE74D32A72C1C65734922DB /* rive_common.modulemap */,
+				D5F9E56D85C3554BB5D872E8402FDFC2 /* rive_common-dummy.m */,
+				897A7C0DD6A28A2C26AF25103DEC97A7 /* rive_common-Info.plist */,
+				490FDAA84BF841B78973A07C1210DC5A /* rive_common-prefix.pch */,
+				559AAC9A0C9148E2437179DACDB4DF63 /* rive_common-umbrella.h */,
+				58AF96238CF99D97BD35D74B2FF90705 /* rive_common.debug.xcconfig */,
+				97D380F498699FCE443A1460E75CB36C /* rive_common.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../../../../../../Pods/Target Support Files/rive_common";
+			sourceTree = "<group>";
+		};
+		DCCE0E2C61F4C10E86FB5ED29076A71C /* rive-cpp */ = {
+			isa = PBXGroup;
+			children = (
+				22A67E3AE58B27B53196F2CE63DCF3BA /* src */,
+			);
+			name = "rive-cpp";
+			path = "rive-cpp";
+			sourceTree = "<group>";
+		};
+		E0A1E60606E0BF6E2E10F1F01350DFE8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6CF8013CA832F8AB5DDAE0156C97FD88 /* OS X */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E806A4F97D48F5FD3B4CA1BC617EA1F5 /* Pods-Runner */ = {
+			isa = PBXGroup;
+			children = (
+				C24C1A035F22D24883C6F1876F274C6F /* Pods-Runner.modulemap */,
+				ECDF6AA713870989438BA93B395DC557 /* Pods-Runner-acknowledgements.markdown */,
+				1B136F41D5B5FAE96EA576E768A5771D /* Pods-Runner-acknowledgements.plist */,
+				E794494AB90477BA94C681E994ADF341 /* Pods-Runner-dummy.m */,
+				773BFCE41424EB8EBB72EF3F6A5FB719 /* Pods-Runner-frameworks.sh */,
+				0AFB643DA4919253F749E2836A5AAFDC /* Pods-Runner-Info.plist */,
+				499E3722E8DACDC2AAA6C15AD1796520 /* Pods-Runner-umbrella.h */,
+				728A5ED1DD60BAC8C8F382A87B976F84 /* Pods-Runner.debug.xcconfig */,
+				C50FD10CD19FF6999637BA5ECAF1681B /* Pods-Runner.profile.xcconfig */,
+				B703785507B22BAF0B800737429577EC /* Pods-Runner.release.xcconfig */,
+			);
+			name = "Pods-Runner";
+			path = "Target Support Files/Pods-Runner";
+			sourceTree = "<group>";
+		};
+		EC468A65F12C4E3BC380648DE9E40B9D /* sqlite3_flutter_libs */ = {
+			isa = PBXGroup;
+			children = (
+				99D2E0CE3F6FF118522FB8B9F01C822F /* Sqlite3FlutterLibsPlugin.swift */,
+			);
+			name = sqlite3_flutter_libs;
+			path = sqlite3_flutter_libs;
+			sourceTree = "<group>";
+		};
+		ECEDA8C9A8C8228905EDA732BAC52FDD /* .symlinks */ = {
+			isa = PBXGroup;
+			children = (
+				1B072000567E6C4928D10D529ADABCDD /* plugins */,
+			);
+			name = .symlinks;
+			path = .symlinks;
+			sourceTree = "<group>";
+		};
+		ED7DB360B507020186A2C379C7949867 /* .. */ = {
+			isa = PBXGroup;
+			children = (
+				D4A016882592B9EBA56CAFCAE5846095 /* .. */,
+			);
+			name = ..;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		EFF4692B5FA08A8228323E7BAD4A9B23 /* .. */ = {
+			isa = PBXGroup;
+			children = (
+				95C8BE11170DE89312508FD2AB5212C3 /* .. */,
+				07FC12BAAB25545E363DE0A758063428 /* A */,
+			);
+			name = ..;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		FE3308DA3D1761BCF6284A894B3CF74B /* math */ = {
+			isa = PBXGroup;
+			children = (
+				67589B4FA1A16984BFFB51827E2DA4D6 /* mat2d.cpp */,
+				29EF6A3B6EC2B202212FC63DDB9B4F15 /* raw_path.cpp */,
+			);
+			name = math;
+			path = math;
+			sourceTree = "<group>";
+		};
+		FF6F7B7A0C91EDB5E4525004FE673249 /* mobile */ = {
+			isa = PBXGroup;
+			children = (
+				B1D497978FE75A99F09B373C934A0138 /* macos */,
+			);
+			name = mobile;
+			path = mobile;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		55E1022645C798B1B5EAC9E15DC028FA /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED73C560B8FA2FB0681D8664871C3B5B /* sqlite3.h in Headers */,
+				E460742EAAC5FFC4CBAC73A3FFB59FB4 /* sqlite3-umbrella.h in Headers */,
+				054C71C967AE102E38F9CFCBC7B00513 /* sqlite3ext.h in Headers */,
+				BD82797D17B255BD710FD58CD6A0B5C3 /* sqlite3session.h in Headers */,
+				728F9E11BDC90289C30DF9C26EBD4521 /* sqlite_cfg.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F7EB6293C02E7BC4F906B433D117DCE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5072261FF5B59F1D1B2EF0324CD73C64 /* Pods-Runner-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E88935AB1C2275FE2D724778036272A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				010C4529A68B7959284638F0F18C2522 /* sqlite3_flutter_libs-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D5CF1CD90F41823BA431A0223BCF33CC /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				96DFA15FDE8AD39C0C3BED68258DA4B9 /* rive_common-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC4DA9BD27A4914E75F803590E4C4B8B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB2DC96CDCF638AB89007D2DB0F3119A /* Pods-RunnerTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		0EC4407CC698D348F4275AFAF0318E87 /* rive_common-rive_common_privacy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0D8092472E4A5A937843A36DCE08C40D /* Build configuration list for PBXNativeTarget "rive_common-rive_common_privacy" */;
+			buildPhases = (
+				43FCE1E0DD153486487E950B6F47E536 /* Sources */,
+				7571AC084392DF6F5D7478C450864F92 /* Frameworks */,
+				0ADE8193E9F06C6B73F65B101D25CAD2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "rive_common-rive_common_privacy";
+			productName = rive_common_privacy;
+			productReference = 574A0C3C1D0259ECD7B58F9923D15EF6 /* rive_common-rive_common_privacy */;
+			productType = "com.apple.product-type.bundle";
+		};
+		1D18E1E2FCABB0D767FB73A4F790F1C7 /* sqlite3_flutter_libs */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D0ED359F08BEBEA3DFF99DDBB4C86D49 /* Build configuration list for PBXNativeTarget "sqlite3_flutter_libs" */;
+			buildPhases = (
+				6E88935AB1C2275FE2D724778036272A /* Headers */,
+				9AC552C26C174137D6AD1909B64D2C67 /* Sources */,
+				3D38DDA7C31561D0EEE56CECB0C46938 /* Frameworks */,
+				3F46CDA90AA40F871D4BDC4B5BDE9466 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B8FA00E49BF5A51938F246C217F11A1D /* PBXTargetDependency */,
+				60487FAE4346A7733BE13D778D77097C /* PBXTargetDependency */,
+			);
+			name = sqlite3_flutter_libs;
+			productName = sqlite3_flutter_libs;
+			productReference = 5B3F4A99493DE8EEF335FA5018E92F12 /* sqlite3_flutter_libs */;
+			productType = "com.apple.product-type.framework";
+		};
+		3232F0C0E7C65B232832393F9ADDD8C3 /* Pods-RunnerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D52099AA1537D0F3745166E1889F6CA3 /* Build configuration list for PBXNativeTarget "Pods-RunnerTests" */;
+			buildPhases = (
+				FC4DA9BD27A4914E75F803590E4C4B8B /* Headers */,
+				001CCB0FEA80CD1C6BF534C6D9C6283A /* Sources */,
+				EAC0834F7252D8143E0E41335E53F3B8 /* Frameworks */,
+				4A765108DEAFDEBF078F71CDDBE3414E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5D934A64BCD35BF074128F2EADC602ED /* PBXTargetDependency */,
+			);
+			name = "Pods-RunnerTests";
+			productName = Pods_RunnerTests;
+			productReference = 6C3345B1B3CAEDF5B03B1F731FDC492E /* Pods-RunnerTests */;
+			productType = "com.apple.product-type.framework";
+		};
+		7578477CA77D98D8282C395822C4A93C /* sqlite3 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1C2390E5B8E701528ABF9CCD70A21F23 /* Build configuration list for PBXNativeTarget "sqlite3" */;
+			buildPhases = (
+				55E1022645C798B1B5EAC9E15DC028FA /* Headers */,
+				BF1255407DDA00AF0655DD6E86C187E6 /* Sources */,
+				85A8ECC22B6CF773B2B2BCF679EA7767 /* Frameworks */,
+				FFE13B2A9E535F1CF340077149BD1C0E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = sqlite3;
+			productName = sqlite3;
+			productReference = B4507A8AA0AD81E8DFC98020268EFC72 /* sqlite3 */;
+			productType = "com.apple.product-type.framework";
+		};
+		8B74B458B450D74B75744B87BD747314 /* Pods-Runner */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 58F0DD20BF091E3E2199FE2A70B4C6DA /* Build configuration list for PBXNativeTarget "Pods-Runner" */;
+			buildPhases = (
+				5F7EB6293C02E7BC4F906B433D117DCE /* Headers */,
+				E30CC552D53344BBDA3EB830CCA7B91B /* Sources */,
+				6DCAA4F8F1E026869C4E9334A0CA406C /* Frameworks */,
+				1FA0290C79718A2FC74C8EDE125FFF6C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0E1C2E81F711113E9F3BB29783A188F8 /* PBXTargetDependency */,
+				E9EB340C060568D3B6D0C9ABC9F64B34 /* PBXTargetDependency */,
+				1D9DF8A0C7A908D487BB53B204F4F5C9 /* PBXTargetDependency */,
+				18AB9D3FA3B64A57683DC26EB502FD7C /* PBXTargetDependency */,
+			);
+			name = "Pods-Runner";
+			productName = Pods_Runner;
+			productReference = 669E8F25E1897672BDB80B7EB784DA24 /* Pods-Runner */;
+			productType = "com.apple.product-type.framework";
+		};
+		E9C719E84F67F73FC0C74005C9B0C057 /* rive_common */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 87B123E78D0D5F1442F07E01CFB8764F /* Build configuration list for PBXNativeTarget "rive_common" */;
+			buildPhases = (
+				D5CF1CD90F41823BA431A0223BCF33CC /* Headers */,
+				DA2363ACC49228B0933E90CC7B560B37 /* Sources */,
+				C6DD3F6EB5CE2E54B80DD3331EF77F13 /* Frameworks */,
+				07775F9A210776F3F0839897228FC536 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F42F1B49DB389CFA6AF5024A5F327967 /* PBXTargetDependency */,
+				D01808A3EC2546FA67F21BD8F5177A9F /* PBXTargetDependency */,
+			);
+			name = rive_common;
+			productName = rive_common;
+			productReference = DE8135CAE607F7824D08D08BDA5968B9 /* rive_common */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 12.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			minimizedProjectReferenceProxies = 0;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = D465E8EE0ACF444CD2EEE33A8CA6E71E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CA272E8348BAB4CE0B0C804FB7B818C4 /* FlutterMacOS */,
+				8B74B458B450D74B75744B87BD747314 /* Pods-Runner */,
+				3232F0C0E7C65B232832393F9ADDD8C3 /* Pods-RunnerTests */,
+				E9C719E84F67F73FC0C74005C9B0C057 /* rive_common */,
+				0EC4407CC698D348F4275AFAF0318E87 /* rive_common-rive_common_privacy */,
+				7578477CA77D98D8282C395822C4A93C /* sqlite3 */,
+				1D18E1E2FCABB0D767FB73A4F790F1C7 /* sqlite3_flutter_libs */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		07775F9A210776F3F0839897228FC536 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91710F4DEDACECCC706255A1C9BC4885 /* rive_common-rive_common_privacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0ADE8193E9F06C6B73F65B101D25CAD2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B1522C1042534B3DE7F5661A792BAB1 /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1FA0290C79718A2FC74C8EDE125FFF6C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F46CDA90AA40F871D4BDC4B5BDE9466 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4A765108DEAFDEBF078F71CDDBE3414E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFE13B2A9E535F1CF340077149BD1C0E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		001CCB0FEA80CD1C6BF534C6D9C6283A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B375EA128E6579366091BAA390BBDD34 /* Pods-RunnerTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43FCE1E0DD153486487E950B6F47E536 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9AC552C26C174137D6AD1909B64D2C67 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C5174EDC80F7007FA8311B8365E5CF7 /* sqlite3_flutter_libs-dummy.m in Sources */,
+				41D6034C66B60E6DB561A7F57B811869 /* Sqlite3FlutterLibsPlugin.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF1255407DDA00AF0655DD6E86C187E6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E352DE83C43A81A9B32AB5205AB508E /* sqlite3.c in Sources */,
+				886EFAD20D4325A4F114C58B76D0F202 /* sqlite3-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA2363ACC49228B0933E90CC7B560B37 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76D05BA2F2DC6E6FD96A6E817482CCAC /* audio_engine.cpp in Sources */,
+				24CB92F9E9B4535C3D7B4720934881E8 /* audio_reader.cpp in Sources */,
+				7B48E3E58DF2DAC35E9CF2512F73E1C2 /* audio_sound.cpp in Sources */,
+				7269E54EAF9AD0201C1F14A51A3C5BC0 /* audio_source.cpp in Sources */,
+				3A41ECDD18AD03EE018233A36BB69179 /* common.cpp in Sources */,
+				80BC0C5C96BE503AE7CF080B153EE6B9 /* event.cpp in Sources */,
+				9B06CC990DF9E663B321D9A8A5633BEE /* font_hb.cpp in Sources */,
+				94A429FB0B606785736003F09C4EA62D /* gsubgpos-context.cc in Sources */,
+				F3AFBE5275E481D640889ABBB79B04DE /* hb-aat-layout.cc in Sources */,
+				2D8757F3ED3B5AFABE52C5FEC073DD46 /* hb-aat-map.cc in Sources */,
+				80819777C83B4C0984D21248BD2C94D6 /* hb-blob.cc in Sources */,
+				CCADBC5092CCC7BE9300F72E0552A00F /* hb-buffer.cc in Sources */,
+				DD822BE92CF95327522151F3C2511E62 /* hb-buffer-serialize.cc in Sources */,
+				FE5FCE1144BAC215DA348DB368D48195 /* hb-buffer-verify.cc in Sources */,
+				CE594F60210904B0EE0D45D84B9E874D /* hb-common.cc in Sources */,
+				4BA9F4CF6F9DEE926170EA938F4F3513 /* hb-draw.cc in Sources */,
+				D49E92E239E60305733AAFAA7AF95D62 /* hb-face.cc in Sources */,
+				EB00EE125501969E743D73461D044F71 /* hb-face-builder.cc in Sources */,
+				3E8A748D29DBA2043A21E77025713896 /* hb-font.cc in Sources */,
+				D5C7AD1563002817829DFD719E22EF81 /* hb-map.cc in Sources */,
+				39CFAD53CEC995AE235CC70DB924ECF7 /* hb-number.cc in Sources */,
+				F4D4FB438E763D9A168537B0C8E6B9C7 /* hb-ot-cff1-table.cc in Sources */,
+				FA0F4508B0C565150BC8ECC6B6863C05 /* hb-ot-cff2-table.cc in Sources */,
+				D9C3DF06968FD383134E352C64BD4E7D /* hb-ot-color.cc in Sources */,
+				67DCF7A4CB7C821B803E94040AF7FC08 /* hb-ot-face.cc in Sources */,
+				9003A9C94E2E29B2ADE220274B5F08F7 /* hb-ot-font.cc in Sources */,
+				82706DAD623A0348851E610EAEACD244 /* hb-ot-layout.cc in Sources */,
+				BBBDE483B515E8364881D4922497F55B /* hb-ot-map.cc in Sources */,
+				5617064A8AEBF63CE6E4619297559C05 /* hb-ot-math.cc in Sources */,
+				C38CE494507EBE820801EE9802111FE5 /* hb-ot-meta.cc in Sources */,
+				52B21CF56A51B3FD6F67E7EAD449A69E /* hb-ot-metrics.cc in Sources */,
+				C9C0C85FE3489E45FA6A4E961643A0F1 /* hb-ot-name.cc in Sources */,
+				CF1A5EAC4983D78C03621ADF781BEE8D /* hb-ot-shape.cc in Sources */,
+				9244408012F1AB2677386AC27DBF7BBB /* hb-ot-shape-fallback.cc in Sources */,
+				DB079A994B5CD62E53AB7C20E2387E54 /* hb-ot-shape-normalize.cc in Sources */,
+				E01AAF0A686BD5CDE85A6E2E95B2CE2B /* hb-ot-shaper-arabic.cc in Sources */,
+				0B14FC430EBD3A654D342A0453D9BAD3 /* hb-ot-shaper-default.cc in Sources */,
+				23AD4D06730BE472E9F07EABB2637AB3 /* hb-ot-shaper-hangul.cc in Sources */,
+				ED0EDF29E4FD9B0651A3913C202ABE6A /* hb-ot-shaper-hebrew.cc in Sources */,
+				CF176C9B4A1508F97CC5D0BDCFC59BED /* hb-ot-shaper-indic.cc in Sources */,
+				F289B397D3266C4E648B15118263DBAC /* hb-ot-shaper-indic-table.cc in Sources */,
+				F771D0531AFD33AF1D349DA04107B52F /* hb-ot-shaper-khmer.cc in Sources */,
+				4351BCD60F2217DD3826688E149EB172 /* hb-ot-shaper-myanmar.cc in Sources */,
+				706F46C2888AC8438D8D6DA6E266841B /* hb-ot-shaper-syllabic.cc in Sources */,
+				FBB5149E31F0219AF427043DCAA37985 /* hb-ot-shaper-thai.cc in Sources */,
+				AB011AB45BD8109EC289ED753E585485 /* hb-ot-shaper-use.cc in Sources */,
+				7D8886B614D32CA3D6A9DBB6FBEB0B3B /* hb-ot-shaper-vowel-constraints.cc in Sources */,
+				2A543938D6A734CE5C38D9B5D220E69C /* hb-ot-tag.cc in Sources */,
+				E47388B066B1819FFC93915121785246 /* hb-ot-var.cc in Sources */,
+				B6C97C3AAB074391C240A4FE28243DF0 /* hb-outline.cc in Sources */,
+				87A5C9364B98B2B48A2D056BE240B380 /* hb-paint.cc in Sources */,
+				3A6B4E6D0C14D12B711A28E3ECB39511 /* hb-paint-extents.cc in Sources */,
+				ABF1639173893B8DE31F991E8B93F036 /* hb-set.cc in Sources */,
+				B79E0F5D6135E50255B4B183EE31D08C /* hb-shape.cc in Sources */,
+				7D5E43C3292CCB203C63A78BA8DE108F /* hb-shape-plan.cc in Sources */,
+				90FBB2927AE865F677323A3AE4212354 /* hb-shaper.cc in Sources */,
+				EACE1629F7FB73853797F63A53481CC8 /* hb-static.cc in Sources */,
+				E90513A5684056F3C96E130725B509A9 /* hb-style.cc in Sources */,
+				85A7AC84C1EA754C9F2F52C652009F13 /* hb-subset.cc in Sources */,
+				4FD600EA3C4E0D946F32B8DBDAC44A0B /* hb-subset-cff-common.cc in Sources */,
+				05174A73553B4044D73BAA5A694D86C2 /* hb-subset-cff1.cc in Sources */,
+				9829DF661E6C08338E208EFC2207F9E4 /* hb-subset-cff2.cc in Sources */,
+				B413B0F5DC10F6E17E23C988B6DE2BBE /* hb-subset-input.cc in Sources */,
+				1D63A3FB5D9FBA4EE418FF829D9E3439 /* hb-subset-instancer-solver.cc in Sources */,
+				0DAA19C8014443B39F41898FC964CE52 /* hb-subset-plan.cc in Sources */,
+				E3664966EE95640A13D722818586DCEA /* hb-subset-repacker.cc in Sources */,
+				6A66342F959979A63CD04372B13DC24F /* hb-ucd.cc in Sources */,
+				9E25C6D04CD1DAD1DE9F82AB88BDEBAB /* hb-unicode.cc in Sources */,
+				0FC5249F660D3A371D54507BC424165B /* line_breaker.cpp in Sources */,
+				74377DA2C9C941BAEAA3DEABF056A45D /* log.cpp in Sources */,
+				45B661FF07B53A42362E22BBF905EDFA /* mat2d.cpp in Sources */,
+				20C4A2B7C87FFE582E427EB1B8FD2AA4 /* raw_path.cpp in Sources */,
+				41B0CFA6CE937FA6A97939D4C17EFE8C /* renderer.cpp in Sources */,
+				13558B3D816DEA702AD6D58CCB657958 /* rive_common-dummy.m in Sources */,
+				794F069BE817F1759251B92E3D40B959 /* rive_text.cpp in Sources */,
+				19A3984C145DA4797A4F1CCB7F60629E /* RivePlugin.swift in Sources */,
+				E03BDA740234E422FC9EF4B6DF8DE628 /* SheenBidi.c in Sources */,
+				F97DC16FAA054760ACDC27547CE17A6D /* Utils.cpp in Sources */,
+				DED41B7D6DD9DD7619399613EB872DD0 /* YGConfig.cpp in Sources */,
+				B34B2C57F1C698679AE9BB21B64ED8D9 /* YGEnums.cpp in Sources */,
+				5E8CD13D121B3A5238E4446358A36096 /* YGLayout.cpp in Sources */,
+				3893E45868BFD4A69699280A8D559DBD /* YGNode.cpp in Sources */,
+				39BDC743111843F0454DBA2AFCE9E43A /* YGNodePrint.cpp in Sources */,
+				018D7812700F39DCF041EAF1BFEAA35B /* YGStyle.cpp in Sources */,
+				B74A872CB4BACDBBDE2B2141FA9E3EBE /* YGValue.cpp in Sources */,
+				52848AFAD686BEBCDB9C1150B964867D /* Yoga.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E30CC552D53344BBDA3EB830CCA7B91B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC0A8229CAC757E70CEF9125E7EF1947 /* Pods-Runner-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0E1C2E81F711113E9F3BB29783A188F8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = FlutterMacOS;
+			target = CA272E8348BAB4CE0B0C804FB7B818C4 /* FlutterMacOS */;
+			targetProxy = 833F5AD35A951022DDF367A48039BB2D /* PBXContainerItemProxy */;
+		};
+		18AB9D3FA3B64A57683DC26EB502FD7C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = sqlite3_flutter_libs;
+			target = 1D18E1E2FCABB0D767FB73A4F790F1C7 /* sqlite3_flutter_libs */;
+			targetProxy = 8ED1E18B5330AD4CA77013941A3B26FF /* PBXContainerItemProxy */;
+		};
+		1D9DF8A0C7A908D487BB53B204F4F5C9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = sqlite3;
+			target = 7578477CA77D98D8282C395822C4A93C /* sqlite3 */;
+			targetProxy = A71815CE74B558D3301CE5F2FAE61BD6 /* PBXContainerItemProxy */;
+		};
+		5D934A64BCD35BF074128F2EADC602ED /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-Runner";
+			target = 8B74B458B450D74B75744B87BD747314 /* Pods-Runner */;
+			targetProxy = 347F56E7D3A1C69788011B379F6168AA /* PBXContainerItemProxy */;
+		};
+		60487FAE4346A7733BE13D778D77097C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = sqlite3;
+			target = 7578477CA77D98D8282C395822C4A93C /* sqlite3 */;
+			targetProxy = D5B5D9D71BD520B9BA1313067EDB3A9F /* PBXContainerItemProxy */;
+		};
+		B8FA00E49BF5A51938F246C217F11A1D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = FlutterMacOS;
+			target = CA272E8348BAB4CE0B0C804FB7B818C4 /* FlutterMacOS */;
+			targetProxy = 8969CA4E63DC9478974A3AFE134DEA19 /* PBXContainerItemProxy */;
+		};
+		D01808A3EC2546FA67F21BD8F5177A9F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "rive_common-rive_common_privacy";
+			target = 0EC4407CC698D348F4275AFAF0318E87 /* rive_common-rive_common_privacy */;
+			targetProxy = 5A609E5E53660BF67E1132BC7CA6BD08 /* PBXContainerItemProxy */;
+		};
+		E9EB340C060568D3B6D0C9ABC9F64B34 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = rive_common;
+			target = E9C719E84F67F73FC0C74005C9B0C057 /* rive_common */;
+			targetProxy = 5317B571CBE4CCE5E048D84981FD8E10 /* PBXContainerItemProxy */;
+		};
+		F42F1B49DB389CFA6AF5024A5F327967 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = FlutterMacOS;
+			target = CA272E8348BAB4CE0B0C804FB7B818C4 /* FlutterMacOS */;
+			targetProxy = 3369F2F3AED4F9BFE855EB5976266763 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		03AF1EA0A6C901028973E7288F3BB137 /* Profile */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 97D380F498699FCE443A1460E75CB36C /* rive_common.release.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"/opt/homebrew/share/flutter/bin/cache/artifacts/engine/darwin-x64-release/FlutterMacOS.xcframework/macos-arm64_x86_64\"",
+					"$(inherited)",
+				);
+				GCC_PREFIX_HEADER = "Target Support Files/rive_common/rive_common-prefix.pch";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Target Support Files/rive_common/rive_common-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/rive_common/rive_common.modulemap";
+				PRODUCT_MODULE_NAME = rive_common;
+				PRODUCT_NAME = rive_common;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Profile;
+		};
+		07AD40A4677FB80E95DF81E94F42B5EE /* Profile */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E736E0C9C5B73D27B8865E363E2108AC /* Pods-RunnerTests.profile.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"/opt/homebrew/share/flutter/bin/cache/artifacts/engine/darwin-x64-release/FlutterMacOS.xcframework/macos-arm64_x86_64\"",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Target Support Files/Pods-RunnerTests/Pods-RunnerTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MODULEMAP_FILE = "Target Support Files/Pods-RunnerTests/Pods-RunnerTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Profile;
+		};
+		080B27FAD2AFA193017007C5674FF49A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 58AF96238CF99D97BD35D74B2FF90705 /* rive_common.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGNING_ALLOWED = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/rive_common";
+				IBSC_MODULE = rive_common;
+				INFOPLIST_FILE = "Target Support Files/rive_common/ResourceBundle-rive_common_privacy-rive_common-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_NAME = rive_common_privacy;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		0938B4ABF3DF2495F2AFB3707981D8C7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B703785507B22BAF0B800737429577EC /* Pods-Runner.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"/opt/homebrew/share/flutter/bin/cache/artifacts/engine/darwin-x64-release/FlutterMacOS.xcframework/macos-arm64_x86_64\"",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Target Support Files/Pods-Runner/Pods-Runner-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MODULEMAP_FILE = "Target Support Files/Pods-Runner/Pods-Runner.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		0AE172D8F2A4843BFACAD21A0ED26541 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		1AD9AF6BD6B52C95F929BC92B0F0C9FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5297E31D8DDDFD11A1E9B11DCC8A8CDE /* sqlite3_flutter_libs.debug.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"/opt/homebrew/share/flutter/bin/cache/artifacts/engine/darwin-x64/FlutterMacOS.xcframework/macos-arm64_x86_64\"",
+					"$(inherited)",
+				);
+				GCC_PREFIX_HEADER = "Target Support Files/sqlite3_flutter_libs/sqlite3_flutter_libs-prefix.pch";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Target Support Files/sqlite3_flutter_libs/sqlite3_flutter_libs-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/sqlite3_flutter_libs/sqlite3_flutter_libs.modulemap";
+				PRODUCT_MODULE_NAME = sqlite3_flutter_libs;
+				PRODUCT_NAME = sqlite3_flutter_libs;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		3BDF5D6169EA4B315E3676350A7F2AB0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9183BB48722200400E2959B347262718 /* sqlite3_flutter_libs.release.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"/opt/homebrew/share/flutter/bin/cache/artifacts/engine/darwin-x64-release/FlutterMacOS.xcframework/macos-arm64_x86_64\"",
+					"$(inherited)",
+				);
+				GCC_PREFIX_HEADER = "Target Support Files/sqlite3_flutter_libs/sqlite3_flutter_libs-prefix.pch";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Target Support Files/sqlite3_flutter_libs/sqlite3_flutter_libs-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/sqlite3_flutter_libs/sqlite3_flutter_libs.modulemap";
+				PRODUCT_MODULE_NAME = sqlite3_flutter_libs;
+				PRODUCT_NAME = sqlite3_flutter_libs;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		672EBA8B91B3CCE9E970A9DAA214091B /* Profile */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AC24980B2096D71D82DB371B4026A274 /* sqlite3.release.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_PREFIX_HEADER = "Target Support Files/sqlite3/sqlite3-prefix.pch";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Target Support Files/sqlite3/sqlite3-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MODULEMAP_FILE = "Target Support Files/sqlite3/sqlite3.modulemap";
+				PRODUCT_MODULE_NAME = sqlite3;
+				PRODUCT_NAME = sqlite3;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Profile;
+		};
+		7240A8579D4E173D4895EA679806EC07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AC8FE152530FBDCE460186B326C1A8FB /* Pods-RunnerTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"/opt/homebrew/share/flutter/bin/cache/artifacts/engine/darwin-x64-release/FlutterMacOS.xcframework/macos-arm64_x86_64\"",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Target Support Files/Pods-RunnerTests/Pods-RunnerTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MODULEMAP_FILE = "Target Support Files/Pods-RunnerTests/Pods-RunnerTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		73A146472CC9628F31295209925776B4 /* Profile */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3604282F1645FF593E5E7266E6E31743 /* FlutterMacOS.release.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				SDKROOT = macosx;
+			};
+			name = Profile;
+		};
+		808E544862838153672EA12FCC127D9A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		81D753D9C22CC84510F2EE28BF83BCCD /* Profile */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C50FD10CD19FF6999637BA5ECAF1681B /* Pods-Runner.profile.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"/opt/homebrew/share/flutter/bin/cache/artifacts/engine/darwin-x64-release/FlutterMacOS.xcframework/macos-arm64_x86_64\"",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Target Support Files/Pods-Runner/Pods-Runner-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MODULEMAP_FILE = "Target Support Files/Pods-Runner/Pods-Runner.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Profile;
+		};
+		86DBC9B398F17EBCB292C673B9126AD2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 97D380F498699FCE443A1460E75CB36C /* rive_common.release.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"/opt/homebrew/share/flutter/bin/cache/artifacts/engine/darwin-x64-release/FlutterMacOS.xcframework/macos-arm64_x86_64\"",
+					"$(inherited)",
+				);
+				GCC_PREFIX_HEADER = "Target Support Files/rive_common/rive_common-prefix.pch";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Target Support Files/rive_common/rive_common-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/rive_common/rive_common.modulemap";
+				PRODUCT_MODULE_NAME = rive_common;
+				PRODUCT_NAME = rive_common;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		8717AE9D98E33F36B7BB74A77DA8AE9E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E349D233B92D4EF8CDDD64EA07DE3603 /* FlutterMacOS.debug.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		8F418C59127131665E8293175CD6BD1C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 36E93077F649FF24BBCC9AAB190644F5 /* sqlite3.debug.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_PREFIX_HEADER = "Target Support Files/sqlite3/sqlite3-prefix.pch";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Target Support Files/sqlite3/sqlite3-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MODULEMAP_FILE = "Target Support Files/sqlite3/sqlite3.modulemap";
+				PRODUCT_MODULE_NAME = sqlite3;
+				PRODUCT_NAME = sqlite3;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A454A824EB2C60A75EF6B9864B248769 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 58AF96238CF99D97BD35D74B2FF90705 /* rive_common.debug.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"/opt/homebrew/share/flutter/bin/cache/artifacts/engine/darwin-x64/FlutterMacOS.xcframework/macos-arm64_x86_64\"",
+					"$(inherited)",
+				);
+				GCC_PREFIX_HEADER = "Target Support Files/rive_common/rive_common-prefix.pch";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Target Support Files/rive_common/rive_common-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/rive_common/rive_common.modulemap";
+				PRODUCT_MODULE_NAME = rive_common;
+				PRODUCT_NAME = rive_common;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		AF5B76B31CAF4546B42C34718BA67232 /* Profile */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_PROFILE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Profile;
+		};
+		B301D19C3DB7F662A470CF67EA113FBC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 728A5ED1DD60BAC8C8F382A87B976F84 /* Pods-Runner.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"/opt/homebrew/share/flutter/bin/cache/artifacts/engine/darwin-x64/FlutterMacOS.xcframework/macos-arm64_x86_64\"",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Target Support Files/Pods-Runner/Pods-Runner-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MODULEMAP_FILE = "Target Support Files/Pods-Runner/Pods-Runner.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B45431E11363DF5978CD863449F08AE8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 97D380F498699FCE443A1460E75CB36C /* rive_common.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGNING_ALLOWED = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/rive_common";
+				IBSC_MODULE = rive_common;
+				INFOPLIST_FILE = "Target Support Files/rive_common/ResourceBundle-rive_common_privacy-rive_common-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_NAME = rive_common_privacy;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		BA61A68FEDB61618703ED416729385B7 /* Profile */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9183BB48722200400E2959B347262718 /* sqlite3_flutter_libs.release.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"/opt/homebrew/share/flutter/bin/cache/artifacts/engine/darwin-x64-release/FlutterMacOS.xcframework/macos-arm64_x86_64\"",
+					"$(inherited)",
+				);
+				GCC_PREFIX_HEADER = "Target Support Files/sqlite3_flutter_libs/sqlite3_flutter_libs-prefix.pch";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Target Support Files/sqlite3_flutter_libs/sqlite3_flutter_libs-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/sqlite3_flutter_libs/sqlite3_flutter_libs.modulemap";
+				PRODUCT_MODULE_NAME = sqlite3_flutter_libs;
+				PRODUCT_NAME = sqlite3_flutter_libs;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Profile;
+		};
+		CA5E62BDC2104AA8D9E2DF0E1C2CC908 /* Profile */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 97D380F498699FCE443A1460E75CB36C /* rive_common.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGNING_ALLOWED = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/rive_common";
+				IBSC_MODULE = rive_common;
+				INFOPLIST_FILE = "Target Support Files/rive_common/ResourceBundle-rive_common_privacy-rive_common-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_NAME = rive_common_privacy;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Profile;
+		};
+		CEAEF0BB86C6BBA81D6E17A5B8618EB0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3604282F1645FF593E5E7266E6E31743 /* FlutterMacOS.release.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		E3492020E6C8FFFAA75EF20124A3E54A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 03E8AD2E8B75443E12D3D3BD12A9900E /* Pods-RunnerTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"/opt/homebrew/share/flutter/bin/cache/artifacts/engine/darwin-x64/FlutterMacOS.xcframework/macos-arm64_x86_64\"",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Target Support Files/Pods-RunnerTests/Pods-RunnerTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MODULEMAP_FILE = "Target Support Files/Pods-RunnerTests/Pods-RunnerTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		F7E665CB59619DA40E475EDD1620E365 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AC24980B2096D71D82DB371B4026A274 /* sqlite3.release.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_PREFIX_HEADER = "Target Support Files/sqlite3/sqlite3-prefix.pch";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Target Support Files/sqlite3/sqlite3-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MODULEMAP_FILE = "Target Support Files/sqlite3/sqlite3.modulemap";
+				PRODUCT_MODULE_NAME = sqlite3;
+				PRODUCT_NAME = sqlite3;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0D8092472E4A5A937843A36DCE08C40D /* Build configuration list for PBXNativeTarget "rive_common-rive_common_privacy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				080B27FAD2AFA193017007C5674FF49A /* Debug */,
+				CA5E62BDC2104AA8D9E2DF0E1C2CC908 /* Profile */,
+				B45431E11363DF5978CD863449F08AE8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1C2390E5B8E701528ABF9CCD70A21F23 /* Build configuration list for PBXNativeTarget "sqlite3" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8F418C59127131665E8293175CD6BD1C /* Debug */,
+				672EBA8B91B3CCE9E970A9DAA214091B /* Profile */,
+				F7E665CB59619DA40E475EDD1620E365 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				808E544862838153672EA12FCC127D9A /* Debug */,
+				AF5B76B31CAF4546B42C34718BA67232 /* Profile */,
+				0AE172D8F2A4843BFACAD21A0ED26541 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		58F0DD20BF091E3E2199FE2A70B4C6DA /* Build configuration list for PBXNativeTarget "Pods-Runner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B301D19C3DB7F662A470CF67EA113FBC /* Debug */,
+				81D753D9C22CC84510F2EE28BF83BCCD /* Profile */,
+				0938B4ABF3DF2495F2AFB3707981D8C7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		624022EE1C2EAB1C3CC38699E1368C5F /* Build configuration list for PBXAggregateTarget "FlutterMacOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8717AE9D98E33F36B7BB74A77DA8AE9E /* Debug */,
+				73A146472CC9628F31295209925776B4 /* Profile */,
+				CEAEF0BB86C6BBA81D6E17A5B8618EB0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		87B123E78D0D5F1442F07E01CFB8764F /* Build configuration list for PBXNativeTarget "rive_common" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A454A824EB2C60A75EF6B9864B248769 /* Debug */,
+				03AF1EA0A6C901028973E7288F3BB137 /* Profile */,
+				86DBC9B398F17EBCB292C673B9126AD2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D0ED359F08BEBEA3DFF99DDBB4C86D49 /* Build configuration list for PBXNativeTarget "sqlite3_flutter_libs" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1AD9AF6BD6B52C95F929BC92B0F0C9FB /* Debug */,
+				BA61A68FEDB61618703ED416729385B7 /* Profile */,
+				3BDF5D6169EA4B315E3676350A7F2AB0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D52099AA1537D0F3745166E1889F6CA3 /* Build configuration list for PBXNativeTarget "Pods-RunnerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E3492020E6C8FFFAA75EF20124A3E54A /* Debug */,
+				07AD40A4677FB80E95DF81E94F42B5EE /* Profile */,
+				7240A8579D4E173D4895EA679806EC07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}
