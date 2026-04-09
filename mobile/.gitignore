@@ -12,3 +12,7 @@ android/.gradle/
 android/local.properties
 ios/Pods/
 ios/.symlinks/
+
+# Bug reports & temp files
+bugreport-*.zip
+tmp/
