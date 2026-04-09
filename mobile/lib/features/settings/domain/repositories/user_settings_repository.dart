@@ -13,4 +13,5 @@ abstract class UserSettingsRepository {
   Future<void> updateAllowReversed(bool allowReversed);
   Future<void> updateCardSizePreset(String presetName);
   Future<void> updateCustomCardSize(double widthMm, double heightMm);
+  Future<void> updateCardsPerRow(int count);
 }

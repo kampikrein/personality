@@ -96,6 +96,13 @@ class UserSettingsRepositoryImpl implements UserSettingsRepository {
     );
   }
 
+  @override
+  Future<void> updateCardsPerRow(int count) async {
+    await db.userSettingsDao.updateSettings(
+      UserSettingsTableCompanion(cardsPerRow: Value(count)),
+    );
+  }
+
   UserSettings _toDomain(UserSettingsTableData row) {
     return UserSettings(
       selectedDeckId: row.selectedDeckId,
