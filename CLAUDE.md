@@ -8,6 +8,67 @@
 - `shared/` — API 계약 (OpenAPI 스키마, placeholder)
 - `docs/` — 공유 문서 (산출물 중앙화)
 
+## Flutter 개발 워크플로우
+
+### 전제 조건
+- **에뮬레이터**: 사용자가 Android Studio / AVD Manager에서 별도 실행. Claude Code는 ADB로 접근.
+  - 디바이스 확인: `$ANDROID_HOME/platform-tools/adb devices`
+  - 연결 디바이스가 없으면 사용자에게 에뮬레이터 실행 요청. 직접 `emulator` 명령 실행 금지.
+- **환경 변수**: `ANDROID_HOME=/Users/kampikrein/Library/Android/sdk`
+- **앱 패키지명**: `com.personality.personality_mobile`
+
+### 빌드 정책
+코드 수정 후 빌드 성공 여부를 반드시 확인한다.
+
+```bash
+cd /Users/kampikrein/A/personality/mobile
+flutter build apk --debug   # 빌드 성공 확인
+```
+
+빌드 실패 시 오류를 해결하고 재빌드. 빌드 성공 확인 없이 완료 보고 금지.
+
+### Hot Reload 표준
+- **표준**: 사용자가 VS Code에서 F5로 `flutter run` 실행 → 저장 시 Dart-Code 확장이 자동 hot reload.
+- **대안**: 터미널에서 `flutter run` 직접 실행 → 수동 `r` 키로 reload.
+- Claude Code는 flutter run 프로세스를 직접 관리하지 않는다 (세션 종속성 방지).
+
+### 스크린샷 검증
+UI 변경 시 ADB 스크린샷으로 결과를 시각적으로 확인한다.
+
+```bash
+# 스크린샷 캡처 및 Pull
+TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+SAVE_PATH="/Users/kampikrein/A/personality/mobile/tmp/screenshots/screenshot_${TIMESTAMP}.png"
+mkdir -p "$(dirname $SAVE_PATH)"
+$ANDROID_HOME/platform-tools/adb exec-out screencap -p > "$SAVE_PATH"
+# 이후 Read tool로 이미지 확인
+```
+
+스크린샷은 `mobile/tmp/screenshots/` 에 저장 (`.gitignore` 처리됨).
+
+### 로그 확인
+
+```bash
+# Flutter 로그만 필터링
+$ANDROID_HOME/platform-tools/adb logcat -s flutter
+
+# 앱 전체 로그 (패키지 필터)
+$ANDROID_HOME/platform-tools/adb logcat | grep -i "personality_mobile"
+
+# 최근 로그만 (이전 로그 무시)
+$ANDROID_HOME/platform-tools/adb logcat -T 1 -s flutter
+```
+
+### 빠른 참조
+
+| 작업 | 명령 |
+|------|------|
+| 디바이스 확인 | `adb devices` |
+| 앱 실행 | `cd mobile && flutter run` |
+| 스크린샷 | `/flutter-dev screenshot` 스킬 사용 |
+| 로그 | `adb logcat -s flutter` |
+| Release 빌드 설치 | `flutter build apk && adb install build/app/outputs/flutter-apk/app-release.apk` |
+
 # 위임 판단
 
 ```

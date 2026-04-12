@@ -31,6 +31,28 @@ flutter pub get
 flutter run
 ```
 
+#### Android SDK 구동
+
+```bash
+# 연결된 기기/에뮬레이터 목록 확인
+flutter devices
+
+# 사용 가능한 에뮬레이터 목록 확인
+flutter emulators
+
+# 에뮬레이터 실행
+flutter emulators --launch <emulator_id>
+
+# Android 기기/에뮬레이터로 실행
+flutter run -d android
+
+# 특정 기기 지정 실행
+flutter run -d <device_id>
+
+# 환경 점검 (Android SDK 경로 등)
+flutter doctor
+```
+
 ### 전체 (Makefile)
 
 ```bash
