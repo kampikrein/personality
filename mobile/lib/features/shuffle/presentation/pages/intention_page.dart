@@ -39,7 +39,8 @@ class _IntentionPageState extends ConsumerState<IntentionPage> {
     // 새 리딩 시작 시 이전 질문 초기화.
     // addPostFrameCallback 사용: initState 내에서 ref.read 호출 가능하나
     // provider 알림이 build 완료 후 안전하게 전파되도록 한다.
-    // shuffleStateProvider.clear()는 여기서 금지 (시나리오 3-A: 스택의 ReadingPage null 재빌드)
+    // shuffleStateProvider.clear()는 여기서 금지 — DrawResultPage가 상류(shuffleStateProvider)의
+    // 결과를 소비하므로 IntentionPage가 결과를 비워선 안 된다 (Brief MA-3).
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
         ref.read(readingQuestionProvider.notifier).clear();
