@@ -10,7 +10,6 @@ import '../../../shuffle/domain/entities/shuffle_result.dart';
 import '../../../shuffle/presentation/pages/intention_page.dart';
 import '../../../shuffle/presentation/providers/shuffle_providers.dart';
 import '../../domain/entities/reading.dart';
-import '../../domain/entities/reflective_prompts.dart';
 import '../../domain/entities/spread_type.dart';
 import '../providers/reading_providers.dart';
 import '../widgets/spread_layout.dart';
@@ -193,20 +192,6 @@ class _ReadingPageState extends ConsumerState<ReadingPage> {
               ),
             ),
 
-            // 반성 질문 (모든 카드 공개 후)
-            if (allRevealed) ...[
-              const SizedBox(height: 24),
-              Text(
-                '성찰의 시간',
-                style: theme.textTheme.bodyLarge?.copyWith(
-                  color: theme.colorScheme.primary,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 12),
-              ..._buildReflectionCards(drawnCards, theme),
-            ],
-
             // 안전 고지
             const SizedBox(height: 16),
             Text(
@@ -224,49 +209,4 @@ class _ReadingPageState extends ConsumerState<ReadingPage> {
     );
   }
 
-  List<Widget> _buildReflectionCards(
-      List<ShuffledCard> drawnCards, ThemeData theme) {
-    final resolvedPositions =
-        _spreadType.resolvePositions(drawnCards.length);
-    final resolvedGuidances =
-        _spreadType.resolveGuidances(drawnCards.length);
-
-    return [
-      for (var i = 0; i < drawnCards.length; i++)
-        Container(
-          padding: const EdgeInsets.all(12),
-          margin: const EdgeInsets.only(bottom: 12),
-          decoration: BoxDecoration(
-            color: theme.colorScheme.surface,
-            borderRadius: BorderRadius.circular(8),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                '${resolvedPositions[i]}: ${drawnCards[i].card.name}',
-                style: theme.textTheme.bodyMedium?.copyWith(
-                  color: theme.colorScheme.primary,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 4),
-              Text(
-                resolvedGuidances[i],
-                style: TextStyle(
-                  color: theme.colorScheme.secondary,
-                  fontSize: 12,
-                  fontStyle: FontStyle.italic,
-                ),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                ReflectivePrompts.getPrompt(drawnCards[i].card.cardId),
-                style: theme.textTheme.bodyMedium,
-              ),
-            ],
-          ),
-        ),
-    ];
-  }
 }
