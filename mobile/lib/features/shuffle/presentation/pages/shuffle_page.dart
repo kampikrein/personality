@@ -49,25 +49,34 @@ class _ShufflePageState extends ConsumerState<ShufflePage> {
     });
   }
 
-  Future<void> _goToReading() async {
+  Future<void> _goToDrawResult() async {
     // [이전 셔플 상태 초기화] 새 뽑기 전 잔류 방지.
     // readingQuestionProvider는 IntentionPage.initState에서 이미 초기화됨 — 여기서 clear 금지.
     ref.read(shuffleStateProvider.notifier).clear();
 
     ref.read(hapticServiceProvider).mediumImpact();
 
-    // 덱 카드 로드 + 셔플 실행
-    final cards = await ref.read(deckCardsProvider(widget.deckId).future);
-    final useCase = ref.read(shuffleDeckUseCaseProvider);
-    final strategy = ref.read(shuffleStrategyProvider);
-    final result = useCase.execute(cards: cards, strategy: strategy);
-    ref.read(shuffleStateProvider.notifier).setResult(result);
+    try {
+      // 덱 카드 로드 + 셔플 실행
+      final cards = await ref.read(deckCardsProvider(widget.deckId).future);
+      final useCase = ref.read(shuffleDeckUseCaseProvider);
+      final strategy = ref.read(shuffleStrategyProvider);
+      final result = useCase.execute(cards: cards, strategy: strategy);
+      ref.read(shuffleStateProvider.notifier).setResult(result);
 
-    if (!mounted) return;
-    context.pushReplacementNamed(
-      'draw-result',
-      pathParameters: {'deckId': widget.deckId},
-    );
+      if (!mounted) return;
+      context.pushReplacementNamed(
+        'draw-result',
+        pathParameters: {'deckId': widget.deckId},
+      );
+    } catch (e) {
+      // [예외 복구] 덱 로드/셔플 실패 시 크래시 대신 안전 이탈 (QG-075-2 P-2).
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('뽑기를 시작할 수 없습니다: $e')),
+      );
+      context.go('/');
+    }
   }
 
   @override
@@ -161,7 +170,7 @@ class _ShufflePageState extends ConsumerState<ShufflePage> {
                 ),
                 const SizedBox(width: 16),
                 FilledButton.icon(
-                  onPressed: _goToReading,
+                  onPressed: _goToDrawResult,
                   icon: const Icon(Icons.auto_awesome, size: 18),
                   label: const Text('뽑기'),
                 ),
