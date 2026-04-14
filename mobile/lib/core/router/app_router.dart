@@ -5,7 +5,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../features/chat/presentation/pages/chat_page.dart';
 import '../../features/deck/presentation/pages/deck_selection_page.dart';
 import '../../features/draw/presentation/pages/animated_draw_page.dart';
-import '../../features/draw/presentation/pages/instant_draw_page.dart';
+import '../../features/draw/presentation/pages/draw_result_page.dart';
 import '../../features/home/presentation/pages/home_page.dart';
 import '../../features/profile/presentation/pages/profile_page.dart';
 import '../../features/reading/domain/entities/spread_type.dart';
@@ -153,7 +153,7 @@ GoRouter appRouter(AppRouterRef ref) {
         path: '/draw/instant',
         name: 'draw-instant',
         pageBuilder: (context, state) =>
-            _fadePage(key: state.pageKey, child: const InstantDrawPage()),
+            _fadePage(key: state.pageKey, child: const DrawResultPage()),
       ),
       GoRoute(
         path: '/draw/animated',

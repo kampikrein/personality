@@ -14,14 +14,22 @@ import '../../../shuffle/presentation/providers/shuffle_providers.dart';
 import '../../../deck/presentation/providers/deck_providers.dart';
 import '../../../shuffle/presentation/pages/intention_page.dart';
 
-class InstantDrawPage extends ConsumerStatefulWidget {
-  const InstantDrawPage({super.key});
+/// Lv1~Lv4 공용 뽑기 결과 페이지.
+///
+/// Cycle 1에서는 기존 `InstantDrawPage`의 행동을 그대로 유지한다
+/// (리네임만 수행). 업스트림(AnimatedDrawPage, ShufflePage)과의
+/// 상태 인계 및 `shuffleStateProvider` 초기값 분기는 Cycle 2에서
+/// 도입된다.
+///
+/// 참조: docs/03_tarot_shuffle/065_Brief_unified_result_page.md (MA-1)
+class DrawResultPage extends ConsumerStatefulWidget {
+  const DrawResultPage({super.key});
 
   @override
-  ConsumerState<InstantDrawPage> createState() => _InstantDrawPageState();
+  ConsumerState<DrawResultPage> createState() => _DrawResultPageState();
 }
 
-class _InstantDrawPageState extends ConsumerState<InstantDrawPage> {
+class _DrawResultPageState extends ConsumerState<DrawResultPage> {
   ShuffleResult? _shuffleResult;
   late int _currentCardCount;
   late SpreadType _spreadType;
