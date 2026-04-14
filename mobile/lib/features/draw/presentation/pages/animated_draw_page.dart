@@ -4,11 +4,8 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:uuid/uuid.dart';
 
-import '../../../reading/domain/entities/reading.dart';
 import '../../../reading/domain/entities/spread_type.dart';
-import '../../../reading/presentation/providers/reading_providers.dart';
 import '../../../settings/presentation/providers/settings_providers.dart';
 import '../../../shuffle/domain/entities/shuffle_config.dart';
 import '../../../shuffle/domain/entities/shuffle_result.dart';
@@ -16,6 +13,12 @@ import '../../../shuffle/presentation/providers/shuffle_providers.dart';
 import '../../../deck/presentation/providers/deck_providers.dart';
 import '../../../shuffle/presentation/pages/intention_page.dart';
 
+/// 연출 단계(Lv2) 페이지. 셔플을 실행하고 슬라이드/페이드 애니메이션으로
+/// 카드를 공개한다. Cycle 2부터 결과 렌더/저장은 담당하지 않으며,
+/// 연출이 끝나면 `pushReplacementNamed('draw-result')`로 통합 결과 페이지에
+/// 상태(shuffleStateProvider)만 인계한다.
+///
+/// 참조: docs/03_tarot_shuffle/065_Brief_unified_result_page.md (MA-4, IC #8, #10)
 class AnimatedDrawPage extends ConsumerStatefulWidget {
   const AnimatedDrawPage({super.key});
 
@@ -33,12 +36,11 @@ class _AnimatedDrawPageState extends ConsumerState<AnimatedDrawPage>
   late bool _allowReversed;
   late bool _showCardName;
   final Set<int> _revealedPositions = {};
-  String? _savedReadingId;
-  bool _autoSaved = false;
 
   // 애니메이션 상태
   bool _shuffleExecuted = false;
   bool _animationComplete = false;
+  bool _navigatedToResult = false;
   final List<AnimationController> _slideControllers = [];
   final List<Animation<Offset>> _slideAnimations = [];
   final List<Animation<double>> _fadeAnimations = [];
@@ -137,7 +139,8 @@ class _AnimatedDrawPageState extends ConsumerState<AnimatedDrawPage>
       await _slideControllers.last.forward();
     }
 
-    // showFaceUp이면 즉시 전부 reveal, 아니면 탭 대기
+    // showFaceUp이면 즉시 전부 reveal → 바로 결과 페이지로 이동
+    // showFaceUp이 아니면 사용자가 모든 카드 탭 완료 시 _revealCard에서 이동
     if (_showFaceUp && mounted) {
       setState(() {
         for (var i = 0; i < _currentCardCount; i++) {
@@ -145,60 +148,23 @@ class _AnimatedDrawPageState extends ConsumerState<AnimatedDrawPage>
         }
         _animationComplete = true;
       });
+      _maybeGoToResult();
     } else if (mounted) {
       // 슬라이드 완료 → 카드가 뒷면으로 대기, 탭하면 뒤집힘
       setState(() => _animationComplete = true);
     }
   }
 
-  void _autoSave() {
-    if (_autoSaved || _shuffleResult == null) return;
-    _autoSaved = true;
+  /// 연출 완료 + 모든 카드 공개 상태가 되면 결과 페이지로 pushReplacement.
+  /// `shuffleStateProvider`에 이미 setResult된 결과를 DrawResultPage가 재사용한다.
+  void _maybeGoToResult() {
+    if (_navigatedToResult) return;
+    if (!_animationComplete) return;
+    if (_revealedPositions.length < _currentCardCount) return;
+    if (!mounted) return;
 
-    final readingId = const Uuid().v4();
-    _savedReadingId = readingId;
-
-    final drawnCards = _shuffleResult!.cards.take(_currentCardCount).toList();
-    final question = _questionController.text;
-
-    final reading = Reading(
-      id: readingId,
-      deckId: _deckId,
-      spreadType: _spreadType,
-      question: question.isNotEmpty ? question : null,
-      drawnCards: List.generate(
-        drawnCards.length,
-        (i) => DrawnCardInfo(
-          cardId: drawnCards[i].card.id,
-          position: i,
-          isReversed: drawnCards[i].isReversed,
-        ),
-      ),
-      createdAt: DateTime.now(),
-    );
-
-    ref.read(readingRepositoryProvider).saveReading(reading);
-  }
-
-  void _addOneMore() {
-    if (_shuffleResult == null) return;
-    if (_currentCardCount >= _shuffleResult!.cards.length) return;
-
-    setState(() => _currentCardCount++);
-    _revealedPositions.add(_currentCardCount - 1);
-
-    if (_savedReadingId != null) {
-      final newCard = _shuffleResult!.cards[_currentCardCount - 1];
-      ref.read(readingRepositoryProvider).addDrawnCard(
-            _savedReadingId!,
-            DrawnCardInfo(
-              cardId: newCard.card.id,
-              position: _currentCardCount - 1,
-              isReversed: newCard.isReversed,
-            ),
-            DateTime.now(),
-          );
-    }
+    _navigatedToResult = true;
+    context.pushReplacementNamed('draw-result');
   }
 
   @override
@@ -213,10 +179,6 @@ class _AnimatedDrawPageState extends ConsumerState<AnimatedDrawPage>
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-
-    // 애니메이션 완료 + 전체 공개 후 자동 저장
-    final allRevealed = _revealedPositions.length >= _currentCardCount;
-    if (allRevealed && _shuffleExecuted) _autoSave();
 
     // ── 셔플 전: 질문 입력 화면 ──
     if (!_shuffleExecuted) {
@@ -286,7 +248,7 @@ class _AnimatedDrawPageState extends ConsumerState<AnimatedDrawPage>
       );
     }
 
-    // ── 셔플 후: 애니메이션 + 결과 ──
+    // ── 셔플 후: 연출 애니메이션 ──
     if (_shuffleResult == null) {
       return Scaffold(
         appBar: AppBar(title: const Text('카드 뽑기')),
@@ -295,7 +257,6 @@ class _AnimatedDrawPageState extends ConsumerState<AnimatedDrawPage>
     }
 
     final drawnCards = _shuffleResult!.cards.take(_currentCardCount).toList();
-    final hasMoreCards = _currentCardCount < _shuffleResult!.cards.length;
 
     return Scaffold(
       appBar: AppBar(
@@ -334,55 +295,6 @@ class _AnimatedDrawPageState extends ConsumerState<AnimatedDrawPage>
               child: _buildAnimatedCards(drawnCards),
             ),
           ),
-
-          // ── 하단 버튼 바 ──
-          if (_animationComplete)
-            Padding(
-              padding: const EdgeInsets.fromLTRB(16, 4, 16, 16),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: FilledButton.tonalIcon(
-                      onPressed: () {
-                        // 상태 리셋
-                        for (final c in _slideControllers) {
-                          c.dispose();
-                        }
-                        _slideControllers.clear();
-                        _slideAnimations.clear();
-                        _fadeAnimations.clear();
-                        setState(() {
-                          _shuffleResult = null;
-                          _shuffleExecuted = false;
-                          _animationComplete = false;
-                          _revealedPositions.clear();
-                          _savedReadingId = null;
-                          _autoSaved = false;
-                        });
-                      },
-                      icon: const Icon(Icons.refresh, size: 18),
-                      label: const Text('다시'),
-                    ),
-                  ),
-                  const SizedBox(width: 8),
-                  Expanded(
-                    child: FilledButton.icon(
-                      onPressed: hasMoreCards ? _addOneMore : null,
-                      icon: const Icon(Icons.add, size: 18),
-                      label: Text('+ ${_currentCardCount}장'),
-                    ),
-                  ),
-                  const SizedBox(width: 8),
-                  Expanded(
-                    child: OutlinedButton.icon(
-                      onPressed: () => context.go('/'),
-                      icon: const Icon(Icons.home, size: 18),
-                      label: const Text('리셋'),
-                    ),
-                  ),
-                ],
-              ),
-            ),
         ],
       ),
     );
@@ -408,7 +320,6 @@ class _AnimatedDrawPageState extends ConsumerState<AnimatedDrawPage>
 
   Widget _animatedCard(int index, ShuffledCard card) {
     if (index >= _slideControllers.length) {
-      // "+1"로 추가된 카드 — 애니메이션 없이 즉시 표시
       return _buildCardWidget(index, card);
     }
 
@@ -425,10 +336,8 @@ class _AnimatedDrawPageState extends ConsumerState<AnimatedDrawPage>
     if (_revealedPositions.contains(index)) return;
     setState(() => _revealedPositions.add(index));
 
-    // 모든 카드 공개 시 자동 저장
-    if (_revealedPositions.length >= _currentCardCount) {
-      _autoSave();
-    }
+    // 모든 카드 공개 + 애니메이션 완료 시 결과 페이지로 이동
+    _maybeGoToResult();
   }
 
   Widget _buildCardWidget(int index, ShuffledCard card) {
