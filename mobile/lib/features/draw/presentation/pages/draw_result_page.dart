@@ -41,6 +41,10 @@ class _DrawResultPageState extends ConsumerState<DrawResultPage> {
   bool _autoSaved = false;
   bool _loading = true;
 
+  // MA-9: shuffleStateProvider에 업스트림 결과가 있으면 재사용.
+  // initState에서 단일 지점으로 1회 판단된 뒤 _executeDraw가 소비.
+  bool _reuseUpstreamResult = false;
+
   // 질문 입력 관련
   final _questionController = TextEditingController();
   bool _questionExpanded = false;
@@ -49,6 +53,13 @@ class _DrawResultPageState extends ConsumerState<DrawResultPage> {
   void initState() {
     super.initState();
     _initSettings();
+
+    // ── MA-9: initState 단일 지점 분기 ──
+    // shuffleStateProvider가 이미 결과를 가지고 있으면 재사용 (Lv2/Lv4 업스트림),
+    // null이면 자체 셔플 (Lv1 직접 진입).
+    final existing = ref.read(shuffleStateProvider);
+    _reuseUpstreamResult = existing != null;
+
     Future.microtask(() => _executeDraw());
   }
 
@@ -65,6 +76,27 @@ class _DrawResultPageState extends ConsumerState<DrawResultPage> {
 
   Future<void> _executeDraw() async {
     try {
+      if (_reuseUpstreamResult) {
+        // ── 재사용 경로: clear 금지. 업스트림 객체 identity 보존 ──
+        final upstream = ref.read(shuffleStateProvider);
+        if (upstream != null) {
+          if (!mounted) return;
+          setState(() {
+            _shuffleResult = upstream;
+            _loading = false;
+            // 업스트림 경로도 모든 카드 즉시 reveal (Lv2/Lv4에서 이미 공개된 상태)
+            for (var i = 0; i < _currentCardCount; i++) {
+              _revealedPositions.add(i);
+            }
+          });
+          _triggerAutoSave();
+          return;
+        }
+        // 이론상 도달 불가 (initState에서 non-null 확정). 방어적 fallback.
+        _reuseUpstreamResult = false;
+      }
+
+      // ── 자체 셔플 경로 (Lv1 직접 진입) ──
       // [이전 뽑기 상태 초기화] keepAlive provider 잔류 방지
       ref.read(shuffleStateProvider.notifier).clear();
       ref.read(readingQuestionProvider.notifier).clear();
@@ -92,10 +124,22 @@ class _DrawResultPageState extends ConsumerState<DrawResultPage> {
           _revealedPositions.add(i);
         }
       });
+      _triggerAutoSave();
     } catch (e, st) {
       debugPrint('_executeDraw error: $e\n$st');
       if (!mounted) return;
       setState(() => _loading = false);
+    }
+  }
+
+  /// `_executeDraw` 성공 경로에서 호출. repository provider 미override
+  /// 환경(테스트 등)에서 throw되더라도 페이지 렌더에는 영향이 없도록
+  /// 예외를 삼킨다 (자동 저장은 best-effort 기능).
+  void _triggerAutoSave() {
+    try {
+      _autoSave();
+    } catch (e, st) {
+      debugPrint('_autoSave skipped: $e\n$st');
     }
   }
 
@@ -182,10 +226,6 @@ class _DrawResultPageState extends ConsumerState<DrawResultPage> {
     }
 
     final drawnCards = _shuffleResult!.cards.take(_currentCardCount).toList();
-
-    // 자동 저장 트리거
-    _autoSave();
-
     final hasMoreCards = _currentCardCount < _shuffleResult!.cards.length;
 
     return Scaffold(
@@ -272,6 +312,8 @@ class _DrawResultPageState extends ConsumerState<DrawResultPage> {
                         _savedReadingId = null;
                         _autoSaved = false;
                         _loading = true;
+                        // "다시"는 강제 재셔플 — 업스트림 재사용 flag 리셋
+                        _reuseUpstreamResult = false;
                       });
                       _executeDraw();
                     },
