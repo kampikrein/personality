@@ -150,8 +150,8 @@ GoRouter appRouter(AppRouterRef ref) {
         },
       ),
       GoRoute(
-        path: '/draw/instant',
-        name: 'draw-instant',
+        path: '/draw/result',
+        name: 'draw-result',
         pageBuilder: (context, state) =>
             _fadePage(key: state.pageKey, child: const DrawResultPage()),
       ),

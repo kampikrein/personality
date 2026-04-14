@@ -33,7 +33,7 @@ class _HomePageState extends ConsumerState<HomePage> {
   void _startDraw(BuildContext context, int experienceLevel, String deckId) {
     switch (experienceLevel) {
       case 1:
-        context.push('/draw/instant');
+        context.push('/draw/result');
       case 2:
         context.push('/draw/animated');
       case 3: // 2D 셔플 (TODO: 전용 페이지 구현 후 분기)
@@ -41,7 +41,7 @@ class _HomePageState extends ConsumerState<HomePage> {
       case 4: // 2.5D 물리 셔플
         context.pushNamed('intention', pathParameters: {'deckId': deckId});
       default:
-        context.push('/draw/instant');
+        context.push('/draw/result');
     }
   }
 

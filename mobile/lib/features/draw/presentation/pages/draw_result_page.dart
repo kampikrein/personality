@@ -16,8 +16,8 @@ import '../../../shuffle/presentation/pages/intention_page.dart';
 
 /// Lv1~Lv4 공용 뽑기 결과 페이지.
 ///
-/// Cycle 1에서는 기존 `InstantDrawPage`의 행동을 그대로 유지한다
-/// (리네임만 수행). 업스트림(AnimatedDrawPage, ShufflePage)과의
+/// Cycle 1에서는 리네임만 수행하여 기존 Lv1 결과 페이지의 행동을
+/// 그대로 유지한다. 업스트림(AnimatedDrawPage, ShufflePage)과의
 /// 상태 인계 및 `shuffleStateProvider` 초기값 분기는 Cycle 2에서
 /// 도입된다.
 ///
