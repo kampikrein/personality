@@ -64,8 +64,8 @@ class _ShufflePageState extends ConsumerState<ShufflePage> {
     ref.read(shuffleStateProvider.notifier).setResult(result);
 
     if (!mounted) return;
-    await context.pushNamed(
-      'reading',
+    context.pushReplacementNamed(
+      'draw-result',
       pathParameters: {'deckId': widget.deckId},
     );
   }
