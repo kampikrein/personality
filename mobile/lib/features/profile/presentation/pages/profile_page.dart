@@ -67,7 +67,7 @@ class ProfilePage extends ConsumerWidget {
           ListTile(
             leading: const Icon(Icons.info_outline),
             title: const Text('앱 정보'),
-            subtitle: const Text('Personality Tarot v0.1'),
+            subtitle: const Text('Personality Tarot v0.1.1'),
           ),
         ],
       ),
