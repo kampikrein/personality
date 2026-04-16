@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/widgets/mystical_scaffold.dart';
 import '../../../deck/presentation/providers/deck_providers.dart';
 import '../game/tarot_game.dart';
 import '../providers/shuffle_providers.dart';
@@ -19,10 +20,9 @@ class _ShufflePageState extends ConsumerState<ShufflePage> {
   TarotGame? _game;
   int _cardCount = 78;
 
-  // 인터랙티브 카메라 제어
-  double _rotateX = 0.65;   // 상하 기울기 (라디안) — 스크린샷 기준 기본 앵글
-  double _rotateY = 0.0;    // 좌우 회전 (라디안)
-  double _zoom = 0.001;     // 원근 강도
+  double _rotateX = 0.65;
+  double _rotateY = 0.0;
+  double _zoom = 0.001;
 
   @override
   void initState() {
@@ -50,14 +50,10 @@ class _ShufflePageState extends ConsumerState<ShufflePage> {
   }
 
   Future<void> _goToDrawResult() async {
-    // [이전 셔플 상태 초기화] 새 뽑기 전 잔류 방지.
-    // readingQuestionProvider는 IntentionPage.initState에서 이미 초기화됨 — 여기서 clear 금지.
     ref.read(shuffleStateProvider.notifier).clear();
-
     ref.read(hapticServiceProvider).mediumImpact();
 
     try {
-      // 덱 카드 로드 + 셔플 실행
       final cards = await ref.read(deckCardsProvider(widget.deckId).future);
       final useCase = ref.read(shuffleDeckUseCaseProvider);
       final strategy = ref.read(shuffleStrategyProvider);
@@ -70,10 +66,12 @@ class _ShufflePageState extends ConsumerState<ShufflePage> {
         pathParameters: {'deckId': widget.deckId},
       );
     } catch (e) {
-      // [예외 복구] 덱 로드/셔플 실패 시 크래시 대신 안전 이탈 (QG-075-2 P-2).
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('뽑기를 시작할 수 없습니다: $e')),
+        SnackBar(
+          content: Text('뽑기를 시작할 수 없습니다: $e'),
+          backgroundColor: kDeepPurple,
+        ),
       );
       context.go('/');
     }
@@ -81,13 +79,17 @@ class _ShufflePageState extends ConsumerState<ShufflePage> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
     return Scaffold(
-      appBar: AppBar(title: const Text('셔플')),
+      backgroundColor: kDarkSurface,
+      appBar: AppBar(
+        title: const Text('셔플', style: TextStyle(color: kTextPrimary, letterSpacing: 0.5)),
+        backgroundColor: kDarkSurface.withValues(alpha: 0.9),
+        elevation: 0,
+        iconTheme: const IconThemeData(color: kTextPrimary),
+      ),
       body: Stack(
         children: [
-          // ── 게임 뷰 (전체 영역) ──────────────────────────────────────────
+          // ── 게임 뷰 (전체 영역) ──
           Positioned.fill(
             child: GestureDetector(
               onScaleStart: (_) {},
@@ -98,20 +100,17 @@ class _ShufflePageState extends ConsumerState<ShufflePage> {
                     _rotateY += details.focalPointDelta.dx * 0.005;
                   }
                   if (details.pointerCount == 2) {
-                    _zoom = (_zoom * (1 / details.scale))
-                        .clamp(0.0003, 0.003);
+                    _zoom = (_zoom * (1 / details.scale)).clamp(0.0003, 0.003);
                   }
                 });
               },
-              onDoubleTap: () {
-                setState(() {
-                  _rotateX = 0.65;
-                  _rotateY = 0.0;
-                  _zoom = 0.001;
-                });
-              },
+              onDoubleTap: () => setState(() {
+                _rotateX = 0.65;
+                _rotateY = 0.0;
+                _zoom = 0.001;
+              }),
               child: _game == null
-                  ? const Center(child: CircularProgressIndicator())
+                  ? const Center(child: CircularProgressIndicator(color: kGold))
                   : Transform(
                       transform: Matrix4.identity()
                         ..setEntry(3, 2, _zoom)
@@ -126,21 +125,22 @@ class _ShufflePageState extends ConsumerState<ShufflePage> {
             ),
           ),
 
-          // ── 좌표 정보 (좌측 하단) ──────────────────────────────────────────
+          // ── 좌표 정보 (좌측 하단) ──
           Positioned(
             left: 12,
-            bottom: 80,
+            bottom: 88,
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
               decoration: BoxDecoration(
-                color: Colors.black54,
+                color: kDarkSurface.withValues(alpha: 0.7),
                 borderRadius: BorderRadius.circular(8),
+                border: Border.all(color: kGold.withValues(alpha: 0.15), width: 0.5),
               ),
               child: DefaultTextStyle(
-                style: theme.textTheme.bodySmall!.copyWith(
+                style: const TextStyle(
                   fontFamily: 'monospace',
-                  color: Colors.white70,
-                  fontSize: 11,
+                  color: kTextSecondary,
+                  fontSize: 10,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -155,7 +155,7 @@ class _ShufflePageState extends ConsumerState<ShufflePage> {
             ),
           ),
 
-          // ── 버튼 (하단 중앙) ───────────────────────────────────────────────
+          // ── 버튼 (하단 중앙) ──
           Positioned(
             left: 0,
             right: 0,
@@ -163,21 +163,73 @@ class _ShufflePageState extends ConsumerState<ShufflePage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                FilledButton.tonalIcon(
+                _ShuffleBtn(
                   onPressed: _restartGame,
-                  icon: const Icon(Icons.replay, size: 18),
-                  label: const Text('재시작'),
+                  icon: Icons.replay_rounded,
+                  label: '재시작',
+                  outlined: true,
                 ),
-                const SizedBox(width: 16),
-                FilledButton.icon(
+                const SizedBox(width: 12),
+                _ShuffleBtn(
                   onPressed: _goToDrawResult,
-                  icon: const Icon(Icons.auto_awesome, size: 18),
-                  label: const Text('뽑기'),
+                  icon: Icons.auto_awesome,
+                  label: '뽑기',
+                  outlined: false,
                 ),
               ],
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _ShuffleBtn extends StatelessWidget {
+  const _ShuffleBtn({
+    required this.onPressed,
+    required this.icon,
+    required this.label,
+    required this.outlined,
+  });
+  final VoidCallback onPressed;
+  final IconData icon;
+  final String label;
+  final bool outlined;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onPressed,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 12),
+        decoration: BoxDecoration(
+          color: outlined ? kDarkSurface.withValues(alpha: 0.8) : kGold.withValues(alpha: 0.9),
+          borderRadius: BorderRadius.circular(24),
+          border: Border.all(
+            color: outlined ? kGold.withValues(alpha: 0.45) : Colors.transparent,
+            width: 0.8,
+          ),
+          boxShadow: outlined
+              ? []
+              : [BoxShadow(color: kGold.withValues(alpha: 0.3), blurRadius: 12, spreadRadius: 2)],
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(icon, size: 16, color: outlined ? kGold : kDarkSurface),
+            const SizedBox(width: 6),
+            Text(
+              label,
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w700,
+                color: outlined ? kGold : kDarkSurface,
+                letterSpacing: 0.5,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

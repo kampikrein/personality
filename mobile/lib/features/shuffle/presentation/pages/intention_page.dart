@@ -6,6 +6,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../core/dev_tuner/tunable_var.dart';
 import '../../../../core/dev_tuner/tuner_registry.dart';
+import '../../../../core/widgets/mystical_scaffold.dart';
 
 part 'intention_page.g.dart';
 
@@ -36,11 +37,6 @@ class _IntentionPageState extends ConsumerState<IntentionPage> {
   @override
   void initState() {
     super.initState();
-    // 새 리딩 시작 시 이전 질문 초기화.
-    // addPostFrameCallback 사용: initState 내에서 ref.read 호출 가능하나
-    // provider 알림이 build 완료 후 안전하게 전파되도록 한다.
-    // shuffleStateProvider.clear()는 여기서 금지 — DrawResultPage가 상류(shuffleStateProvider)의
-    // 결과를 소비하므로 IntentionPage가 결과를 비워선 안 된다 (Brief MA-3).
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
         ref.read(readingQuestionProvider.notifier).clear();
@@ -56,8 +52,6 @@ class _IntentionPageState extends ConsumerState<IntentionPage> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
     if (kDebugMode) {
       ref.read(devTunerRegistryProvider).registerIfAbsent('intention', [
         TunableDouble(label: 'iconSize', provider: intentionIconSizeProvider, min: 32, max: 72, step: 4),
@@ -67,68 +61,117 @@ class _IntentionPageState extends ConsumerState<IntentionPage> {
     final iconSize = ref.watch(intentionIconSizeProvider);
     final contentPadding = ref.watch(intentionPaddingProvider);
 
-    return Scaffold(
-      appBar: AppBar(title: const Text('의도 설정')),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.all(contentPadding),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            const SizedBox(height: 24),
-            Icon(Icons.self_improvement,
-                color: theme.colorScheme.primary, size: iconSize),
-            const SizedBox(height: 16),
-            Text(
-              '잠시 눈을 감고\n마음속 질문을 떠올려보세요.',
-              style: theme.textTheme.bodyLarge,
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 32),
-            TextField(
-              controller: _controller,
-              decoration: InputDecoration(
-                hintText: '질문이나 의도를 적어보세요 (선택)',
-                hintStyle: TextStyle(color: theme.colorScheme.secondary),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                  borderSide: BorderSide(color: theme.colorScheme.secondary),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                  borderSide: BorderSide(color: theme.colorScheme.secondary),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                  borderSide: BorderSide(color: theme.colorScheme.primary),
+    return MysticalScaffold(
+      title: '의도 설정',
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: EdgeInsets.all(contentPadding),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              const SizedBox(height: 24),
+
+              // ── 미스틱 아이콘 ──
+              Center(
+                child: Container(
+                  width: 80,
+                  height: 80,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: kDeepPurple.withValues(alpha: 0.8),
+                    border: Border.all(color: kGold.withValues(alpha: 0.4), width: 0.8),
+                    boxShadow: [
+                      BoxShadow(
+                        color: kGold.withValues(alpha: 0.15),
+                        blurRadius: 20,
+                        spreadRadius: 4,
+                      ),
+                    ],
+                  ),
+                  child: Icon(
+                    Icons.self_improvement,
+                    color: kGold,
+                    size: iconSize,
+                  ),
                 ),
               ),
-              style: theme.textTheme.bodyLarge,
-              maxLines: 3,
-            ),
-            const SizedBox(height: 8),
-            Text(
-              '질문 없이 진행해도 괜찮습니다.\n열린 마음으로 카드를 만나보세요.',
-              style: theme.textTheme.bodyMedium,
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 32),
-            SizedBox(
-              height: 56,
-              child: ElevatedButton(
-                onPressed: () {
-                  ref
-                      .read(readingQuestionProvider.notifier)
-                      .set(_controller.text);
-                  context.pushNamed(
-                    'shuffle',
-                    pathParameters: {'deckId': widget.deckId},
-                  );
-                },
-                child:
-                    const Text('셔플로 이동', style: TextStyle(fontSize: 18)),
+              const SizedBox(height: 20),
+
+              // ── 안내 텍스트 ──
+              const Text(
+                '잠시 눈을 감고\n마음속 질문을 떠올려보세요.',
+                style: TextStyle(
+                  color: kTextPrimary,
+                  fontSize: 16,
+                  height: 1.6,
+                  letterSpacing: 0.3,
+                ),
+                textAlign: TextAlign.center,
               ),
-            ),
-          ],
+              const SizedBox(height: 32),
+
+              // ── 질문 입력 ──
+              MysticalCard(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const GoldSectionTitle('질문 / 의도', icon: Icons.edit_outlined),
+                    TextField(
+                      controller: _controller,
+                      decoration: mysticalInputDecoration(
+                        hintText: '질문이나 의도를 적어보세요 (선택)',
+                      ),
+                      style: const TextStyle(color: kTextPrimary, fontSize: 15),
+                      maxLines: 3,
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 10),
+
+              Text(
+                '질문 없이 진행해도 괜찮습니다.\n열린 마음으로 카드를 만나보세요.',
+                style: TextStyle(
+                  color: kTextSecondary.withValues(alpha: 0.8),
+                  fontSize: 13,
+                  height: 1.5,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 32),
+
+              // ── 셔플 이동 버튼 ──
+              SizedBox(
+                height: 56,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: kGold,
+                    foregroundColor: kDarkSurface,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    elevation: 0,
+                  ),
+                  onPressed: () {
+                    ref.read(readingQuestionProvider.notifier).set(_controller.text);
+                    context.pushNamed(
+                      'shuffle',
+                      pathParameters: {'deckId': widget.deckId},
+                    );
+                  },
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.shuffle_rounded, size: 20),
+                      SizedBox(width: 8),
+                      Text('셔플로 이동', style: TextStyle(fontSize: 17, fontWeight: FontWeight.w700, letterSpacing: 0.5)),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

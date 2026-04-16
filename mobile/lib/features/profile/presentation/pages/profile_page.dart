@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/widgets/mystical_scaffold.dart';
 import '../../../settings/presentation/providers/settings_providers.dart';
 
 class ProfilePage extends ConsumerWidget {
@@ -10,9 +11,8 @@ class ProfilePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final settingsAsync = ref.watch(userSettingsProvider);
-    final theme = Theme.of(context);
-
     final settings = settingsAsync.valueOrNull;
+
     final levelLabel = switch (settings?.experienceLevel ?? 1) {
       1 => '즉시',
       2 => '연출',
@@ -21,55 +21,146 @@ class ProfilePage extends ConsumerWidget {
       _ => '즉시',
     };
 
-    return Scaffold(
-      appBar: AppBar(title: const Text('유저메뉴')),
+    return MysticalScaffold(
+      title: '유저메뉴',
       body: ListView(
+        padding: const EdgeInsets.fromLTRB(16, 24, 16, 32),
         children: [
-          const SizedBox(height: 24),
-          // 프로필 아이콘
-          CircleAvatar(
-            radius: 40,
-            backgroundColor: theme.colorScheme.primaryContainer,
-            child: Icon(Icons.person, size: 40, color: theme.colorScheme.onPrimaryContainer),
-          ),
-          const SizedBox(height: 12),
-          Text(
-            '탐험가',
-            style: theme.textTheme.titleLarge,
-            textAlign: TextAlign.center,
-          ),
-          Text(
-            '레벨 ${settings?.experienceLevel ?? 1} ($levelLabel)',
-            style: theme.textTheme.bodyMedium?.copyWith(
-              color: theme.colorScheme.onSurfaceVariant,
+          // ── 프로필 헤더 ──
+          Center(
+            child: Column(
+              children: [
+                Container(
+                  width: 84,
+                  height: 84,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: kDeepPurple,
+                    border: Border.all(color: kGold.withValues(alpha: 0.5), width: 1.2),
+                    boxShadow: [
+                      BoxShadow(
+                        color: kGold.withValues(alpha: 0.15),
+                        blurRadius: 20,
+                        spreadRadius: 4,
+                      ),
+                    ],
+                  ),
+                  child: const Icon(Icons.person_outline, size: 40, color: kGold),
+                ),
+                const SizedBox(height: 14),
+                const Text(
+                  '탐험가',
+                  style: TextStyle(
+                    color: kTextPrimary,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 0.5,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                  decoration: BoxDecoration(
+                    color: kGold.withValues(alpha: 0.12),
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(color: kGold.withValues(alpha: 0.35), width: 0.7),
+                  ),
+                  child: Text(
+                    'Lv.${settings?.experienceLevel ?? 1} · $levelLabel',
+                    style: const TextStyle(color: kGold, fontSize: 12, fontWeight: FontWeight.w500, letterSpacing: 0.5),
+                  ),
+                ),
+              ],
             ),
-            textAlign: TextAlign.center,
           ),
-          const SizedBox(height: 32),
-          const Divider(),
-          // 설정
-          ListTile(
-            leading: const Icon(Icons.tune),
-            title: const Text('설정'),
-            subtitle: const Text('체험 레벨, 카드 수, 스프레드'),
-            trailing: const Icon(Icons.chevron_right),
-            onTap: () => context.pushNamed('settings'),
-          ),
-          // 덱 관리
-          ListTile(
-            leading: const Icon(Icons.layers),
-            title: const Text('덱 관리'),
-            subtitle: const Text('덱 선택 및 탐색'),
-            trailing: const Icon(Icons.chevron_right),
-            onTap: () => context.pushNamed('deck'),
-          ),
-          // 앱 정보
-          ListTile(
-            leading: const Icon(Icons.info_outline),
-            title: const Text('앱 정보'),
-            subtitle: const Text('Personality Tarot v0.1.1'),
+          const SizedBox(height: 28),
+
+          GoldHairline(opacity: 0.3),
+          const SizedBox(height: 20),
+
+          // ── 메뉴 목록 ──
+          MysticalCard(
+            padding: EdgeInsets.zero,
+            child: Column(
+              children: [
+                _MenuTile(
+                  icon: Icons.tune_rounded,
+                  title: '설정',
+                  subtitle: '체험 레벨, 카드 수, 스프레드',
+                  onTap: () => context.pushNamed('settings'),
+                ),
+                GoldHairline(opacity: 0.1),
+                _MenuTile(
+                  icon: Icons.layers_outlined,
+                  title: '덱 관리',
+                  subtitle: '덱 선택 및 탐색',
+                  onTap: () => context.pushNamed('deck'),
+                ),
+                GoldHairline(opacity: 0.1),
+                _MenuTile(
+                  icon: Icons.info_outline,
+                  title: '앱 정보',
+                  subtitle: 'Personality Tarot v0.1.1',
+                  onTap: null,
+                ),
+              ],
+            ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _MenuTile extends StatelessWidget {
+  const _MenuTile({
+    required this.icon,
+    required this.title,
+    required this.subtitle,
+    required this.onTap,
+  });
+  final IconData icon;
+  final String title;
+  final String subtitle;
+  final VoidCallback? onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onTap,
+        splashColor: kGold.withValues(alpha: 0.06),
+        highlightColor: Colors.transparent,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 13),
+          child: Row(
+            children: [
+              Container(
+                width: 36,
+                height: 36,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: kGold.withValues(alpha: 0.1),
+                  border: Border.all(color: kGold.withValues(alpha: 0.3), width: 0.7),
+                ),
+                child: Icon(icon, color: kGold, size: 17),
+              ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(title, style: const TextStyle(color: kTextPrimary, fontSize: 14, fontWeight: FontWeight.w500)),
+                    Text(subtitle, style: const TextStyle(color: kTextSecondary, fontSize: 12)),
+                  ],
+                ),
+              ),
+              if (onTap != null)
+                Icon(Icons.chevron_right, color: kGold.withValues(alpha: 0.5), size: 18),
+            ],
+          ),
+        ),
       ),
     );
   }
