@@ -13,7 +13,7 @@
       "arcana": "major",
       "suit": null,
       "number": 0,
-      "imagePath": "assets/images/rws/major-00.webp",
+      "imagePath": "assets/images/rws-standard/major-00.webp",
       "meanings": {
         "upright": [
           "new beginnings",
@@ -34,7 +34,7 @@
       "arcana": "major",
       "suit": null,
       "number": 1,
-      "imagePath": "assets/images/rws/major-01.webp",
+      "imagePath": "assets/images/rws-standard/major-01.webp",
       "meanings": {
         "upright": [
           "willpower",
@@ -55,7 +55,7 @@
       "arcana": "major",
       "suit": null,
       "number": 2,
-      "imagePath": "assets/images/rws/major-02.webp",
+      "imagePath": "assets/images/rws-standard/major-02.webp",
       "meanings": {
         "upright": [
           "intuition",
@@ -76,7 +76,7 @@
       "arcana": "major",
       "suit": null,
       "number": 3,
-      "imagePath": "assets/images/rws/major-03.webp",
+      "imagePath": "assets/images/rws-standard/major-03.webp",
       "meanings": {
         "upright": [
           "abundance",
@@ -97,7 +97,7 @@
       "arcana": "major",
       "suit": null,
       "number": 4,
-      "imagePath": "assets/images/rws/major-04.webp",
+      "imagePath": "assets/images/rws-standard/major-04.webp",
       "meanings": {
         "upright": [
           "authority",
@@ -118,7 +118,7 @@
       "arcana": "major",
       "suit": null,
       "number": 5,
-      "imagePath": "assets/images/rws/major-05.webp",
+      "imagePath": "assets/images/rws-standard/major-05.webp",
       "meanings": {
         "upright": [
           "tradition",
@@ -139,7 +139,7 @@
       "arcana": "major",
       "suit": null,
       "number": 6,
-      "imagePath": "assets/images/rws/major-06.webp",
+      "imagePath": "assets/images/rws-standard/major-06.webp",
       "meanings": {
         "upright": [
           "love",
@@ -160,7 +160,7 @@
       "arcana": "major",
       "suit": null,
       "number": 7,
-      "imagePath": "assets/images/rws/major-07.webp",
+      "imagePath": "assets/images/rws-standard/major-07.webp",
       "meanings": {
         "upright": [
           "determination",
@@ -181,7 +181,7 @@
       "arcana": "major",
       "suit": null,
       "number": 8,
-      "imagePath": "assets/images/rws/major-08.webp",
+      "imagePath": "assets/images/rws-standard/major-08.webp",
       "meanings": {
         "upright": [
           "courage",
@@ -202,7 +202,7 @@
       "arcana": "major",
       "suit": null,
       "number": 9,
-      "imagePath": "assets/images/rws/major-09.webp",
+      "imagePath": "assets/images/rws-standard/major-09.webp",
       "meanings": {
         "upright": [
           "soul-searching",
@@ -223,7 +223,7 @@
       "arcana": "major",
       "suit": null,
       "number": 10,
-      "imagePath": "assets/images/rws/major-10.webp",
+      "imagePath": "assets/images/rws-standard/major-10.webp",
       "meanings": {
         "upright": [
           "cycles",
@@ -244,7 +244,7 @@
       "arcana": "major",
       "suit": null,
       "number": 11,
-      "imagePath": "assets/images/rws/major-11.webp",
+      "imagePath": "assets/images/rws-standard/major-11.webp",
       "meanings": {
         "upright": [
           "fairness",
@@ -265,7 +265,7 @@
       "arcana": "major",
       "suit": null,
       "number": 12,
-      "imagePath": "assets/images/rws/major-12.webp",
+      "imagePath": "assets/images/rws-standard/major-12.webp",
       "meanings": {
         "upright": [
           "surrender",
@@ -286,7 +286,7 @@
       "arcana": "major",
       "suit": null,
       "number": 13,
-      "imagePath": "assets/images/rws/major-13.webp",
+      "imagePath": "assets/images/rws-standard/major-13.webp",
       "meanings": {
         "upright": [
           "transformation",
@@ -307,7 +307,7 @@
       "arcana": "major",
       "suit": null,
       "number": 14,
-      "imagePath": "assets/images/rws/major-14.webp",
+      "imagePath": "assets/images/rws-standard/major-14.webp",
       "meanings": {
         "upright": [
           "balance",
@@ -328,7 +328,7 @@
       "arcana": "major",
       "suit": null,
       "number": 15,
-      "imagePath": "assets/images/rws/major-15.webp",
+      "imagePath": "assets/images/rws-standard/major-15.webp",
       "meanings": {
         "upright": [
           "bondage",
@@ -349,7 +349,7 @@
       "arcana": "major",
       "suit": null,
       "number": 16,
-      "imagePath": "assets/images/rws/major-16.webp",
+      "imagePath": "assets/images/rws-standard/major-16.webp",
       "meanings": {
         "upright": [
           "sudden upheaval",
@@ -370,7 +370,7 @@
       "arcana": "major",
       "suit": null,
       "number": 17,
-      "imagePath": "assets/images/rws/major-17.webp",
+      "imagePath": "assets/images/rws-standard/major-17.webp",
       "meanings": {
         "upright": [
           "hope",
@@ -391,7 +391,7 @@
       "arcana": "major",
       "suit": null,
       "number": 18,
-      "imagePath": "assets/images/rws/major-18.webp",
+      "imagePath": "assets/images/rws-standard/major-18.webp",
       "meanings": {
         "upright": [
           "illusion",
@@ -412,7 +412,7 @@
       "arcana": "major",
       "suit": null,
       "number": 19,
-      "imagePath": "assets/images/rws/major-19.webp",
+      "imagePath": "assets/images/rws-standard/major-19.webp",
       "meanings": {
         "upright": [
           "joy",
@@ -433,7 +433,7 @@
       "arcana": "major",
       "suit": null,
       "number": 20,
-      "imagePath": "assets/images/rws/major-20.webp",
+      "imagePath": "assets/images/rws-standard/major-20.webp",
       "meanings": {
         "upright": [
           "reflection",
@@ -454,7 +454,7 @@
       "arcana": "major",
       "suit": null,
       "number": 21,
-      "imagePath": "assets/images/rws/major-21.webp",
+      "imagePath": "assets/images/rws-standard/major-21.webp",
       "meanings": {
         "upright": [
           "completion",
@@ -475,7 +475,7 @@
       "arcana": "minor",
       "suit": "wands",
       "number": 1,
-      "imagePath": "assets/images/rws/wands-01.webp",
+      "imagePath": "assets/images/rws-standard/wands-01.webp",
       "meanings": {
         "upright": [
           "inspiration",
@@ -496,7 +496,7 @@
       "arcana": "minor",
       "suit": "wands",
       "number": 2,
-      "imagePath": "assets/images/rws/wands-02.webp",
+      "imagePath": "assets/images/rws-standard/wands-02.webp",
       "meanings": {
         "upright": [
           "planning",
@@ -517,7 +517,7 @@
       "arcana": "minor",
       "suit": "wands",
       "number": 3,
-      "imagePath": "assets/images/rws/wands-03.webp",
+      "imagePath": "assets/images/rws-standard/wands-03.webp",
       "meanings": {
         "upright": [
           "expansion",
@@ -538,7 +538,7 @@
       "arcana": "minor",
       "suit": "wands",
       "number": 4,
-      "imagePath": "assets/images/rws/wands-04.webp",
+      "imagePath": "assets/images/rws-standard/wands-04.webp",
       "meanings": {
         "upright": [
           "celebration",
@@ -559,7 +559,7 @@
       "arcana": "minor",
       "suit": "wands",
       "number": 5,
-      "imagePath": "assets/images/rws/wands-05.webp",
+      "imagePath": "assets/images/rws-standard/wands-05.webp",
       "meanings": {
         "upright": [
           "competition",
@@ -580,7 +580,7 @@
       "arcana": "minor",
       "suit": "wands",
       "number": 6,
-      "imagePath": "assets/images/rws/wands-06.webp",
+      "imagePath": "assets/images/rws-standard/wands-06.webp",
       "meanings": {
         "upright": [
           "victory",
@@ -601,7 +601,7 @@
       "arcana": "minor",
       "suit": "wands",
       "number": 7,
-      "imagePath": "assets/images/rws/wands-07.webp",
+      "imagePath": "assets/images/rws-standard/wands-07.webp",
       "meanings": {
         "upright": [
           "perseverance",
@@ -622,7 +622,7 @@
       "arcana": "minor",
       "suit": "wands",
       "number": 8,
-      "imagePath": "assets/images/rws/wands-08.webp",
+      "imagePath": "assets/images/rws-standard/wands-08.webp",
       "meanings": {
         "upright": [
           "swift action",
@@ -643,7 +643,7 @@
       "arcana": "minor",
       "suit": "wands",
       "number": 9,
-      "imagePath": "assets/images/rws/wands-09.webp",
+      "imagePath": "assets/images/rws-standard/wands-09.webp",
       "meanings": {
         "upright": [
           "resilience",
@@ -664,7 +664,7 @@
       "arcana": "minor",
       "suit": "wands",
       "number": 10,
-      "imagePath": "assets/images/rws/wands-10.webp",
+      "imagePath": "assets/images/rws-standard/wands-10.webp",
       "meanings": {
         "upright": [
           "burden",
@@ -685,7 +685,7 @@
       "arcana": "minor",
       "suit": "wands",
       "number": 11,
-      "imagePath": "assets/images/rws/wands-11.webp",
+      "imagePath": "assets/images/rws-standard/wands-11.webp",
       "meanings": {
         "upright": [
           "enthusiasm",
@@ -706,7 +706,7 @@
       "arcana": "minor",
       "suit": "wands",
       "number": 12,
-      "imagePath": "assets/images/rws/wands-12.webp",
+      "imagePath": "assets/images/rws-standard/wands-12.webp",
       "meanings": {
         "upright": [
           "energy",
@@ -727,7 +727,7 @@
       "arcana": "minor",
       "suit": "wands",
       "number": 13,
-      "imagePath": "assets/images/rws/wands-13.webp",
+      "imagePath": "assets/images/rws-standard/wands-13.webp",
       "meanings": {
         "upright": [
           "confidence",
@@ -748,7 +748,7 @@
       "arcana": "minor",
       "suit": "wands",
       "number": 14,
-      "imagePath": "assets/images/rws/wands-14.webp",
+      "imagePath": "assets/images/rws-standard/wands-14.webp",
       "meanings": {
         "upright": [
           "bold leadership",
@@ -769,7 +769,7 @@
       "arcana": "minor",
       "suit": "cups",
       "number": 1,
-      "imagePath": "assets/images/rws/cups-01.webp",
+      "imagePath": "assets/images/rws-standard/cups-01.webp",
       "meanings": {
         "upright": [
           "new love",
@@ -790,7 +790,7 @@
       "arcana": "minor",
       "suit": "cups",
       "number": 2,
-      "imagePath": "assets/images/rws/cups-02.webp",
+      "imagePath": "assets/images/rws-standard/cups-02.webp",
       "meanings": {
         "upright": [
           "partnership",
@@ -811,7 +811,7 @@
       "arcana": "minor",
       "suit": "cups",
       "number": 3,
-      "imagePath": "assets/images/rws/cups-03.webp",
+      "imagePath": "assets/images/rws-standard/cups-03.webp",
       "meanings": {
         "upright": [
           "celebration",
@@ -832,7 +832,7 @@
       "arcana": "minor",
       "suit": "cups",
       "number": 4,
-      "imagePath": "assets/images/rws/cups-04.webp",
+      "imagePath": "assets/images/rws-standard/cups-04.webp",
       "meanings": {
         "upright": [
           "apathy",
@@ -853,7 +853,7 @@
       "arcana": "minor",
       "suit": "cups",
       "number": 5,
-      "imagePath": "assets/images/rws/cups-05.webp",
+      "imagePath": "assets/images/rws-standard/cups-05.webp",
       "meanings": {
         "upright": [
           "grief",
@@ -874,7 +874,7 @@
       "arcana": "minor",
       "suit": "cups",
       "number": 6,
-      "imagePath": "assets/images/rws/cups-06.webp",
+      "imagePath": "assets/images/rws-standard/cups-06.webp",
       "meanings": {
         "upright": [
           "nostalgia",
@@ -895,7 +895,7 @@
       "arcana": "minor",
       "suit": "cups",
       "number": 7,
-      "imagePath": "assets/images/rws/cups-07.webp",
+      "imagePath": "assets/images/rws-standard/cups-07.webp",
       "meanings": {
         "upright": [
           "fantasy",
@@ -916,7 +916,7 @@
       "arcana": "minor",
       "suit": "cups",
       "number": 8,
-      "imagePath": "assets/images/rws/cups-08.webp",
+      "imagePath": "assets/images/rws-standard/cups-08.webp",
       "meanings": {
         "upright": [
           "walking away",
@@ -937,7 +937,7 @@
       "arcana": "minor",
       "suit": "cups",
       "number": 9,
-      "imagePath": "assets/images/rws/cups-09.webp",
+      "imagePath": "assets/images/rws-standard/cups-09.webp",
       "meanings": {
         "upright": [
           "contentment",
@@ -958,7 +958,7 @@
       "arcana": "minor",
       "suit": "cups",
       "number": 10,
-      "imagePath": "assets/images/rws/cups-10.webp",
+      "imagePath": "assets/images/rws-standard/cups-10.webp",
       "meanings": {
         "upright": [
           "divine love",
@@ -979,7 +979,7 @@
       "arcana": "minor",
       "suit": "cups",
       "number": 11,
-      "imagePath": "assets/images/rws/cups-11.webp",
+      "imagePath": "assets/images/rws-standard/cups-11.webp",
       "meanings": {
         "upright": [
           "creative opportunity",
@@ -1000,7 +1000,7 @@
       "arcana": "minor",
       "suit": "cups",
       "number": 12,
-      "imagePath": "assets/images/rws/cups-12.webp",
+      "imagePath": "assets/images/rws-standard/cups-12.webp",
       "meanings": {
         "upright": [
           "romance",
@@ -1021,7 +1021,7 @@
       "arcana": "minor",
       "suit": "cups",
       "number": 13,
-      "imagePath": "assets/images/rws/cups-13.webp",
+      "imagePath": "assets/images/rws-standard/cups-13.webp",
       "meanings": {
         "upright": [
           "compassion",
@@ -1042,7 +1042,7 @@
       "arcana": "minor",
       "suit": "cups",
       "number": 14,
-      "imagePath": "assets/images/rws/cups-14.webp",
+      "imagePath": "assets/images/rws-standard/cups-14.webp",
       "meanings": {
         "upright": [
           "emotional balance",
@@ -1063,7 +1063,7 @@
       "arcana": "minor",
       "suit": "swords",
       "number": 1,
-      "imagePath": "assets/images/rws/swords-01.webp",
+      "imagePath": "assets/images/rws-standard/swords-01.webp",
       "meanings": {
         "upright": [
           "clarity",
@@ -1084,7 +1084,7 @@
       "arcana": "minor",
       "suit": "swords",
       "number": 2,
-      "imagePath": "assets/images/rws/swords-02.webp",
+      "imagePath": "assets/images/rws-standard/swords-02.webp",
       "meanings": {
         "upright": [
           "indecision",
@@ -1105,7 +1105,7 @@
       "arcana": "minor",
       "suit": "swords",
       "number": 3,
-      "imagePath": "assets/images/rws/swords-03.webp",
+      "imagePath": "assets/images/rws-standard/swords-03.webp",
       "meanings": {
         "upright": [
           "heartbreak",
@@ -1126,7 +1126,7 @@
       "arcana": "minor",
       "suit": "swords",
       "number": 4,
-      "imagePath": "assets/images/rws/swords-04.webp",
+      "imagePath": "assets/images/rws-standard/swords-04.webp",
       "meanings": {
         "upright": [
           "rest",
@@ -1147,7 +1147,7 @@
       "arcana": "minor",
       "suit": "swords",
       "number": 5,
-      "imagePath": "assets/images/rws/swords-05.webp",
+      "imagePath": "assets/images/rws-standard/swords-05.webp",
       "meanings": {
         "upright": [
           "conflict",
@@ -1168,7 +1168,7 @@
       "arcana": "minor",
       "suit": "swords",
       "number": 6,
-      "imagePath": "assets/images/rws/swords-06.webp",
+      "imagePath": "assets/images/rws-standard/swords-06.webp",
       "meanings": {
         "upright": [
           "transition",
@@ -1189,7 +1189,7 @@
       "arcana": "minor",
       "suit": "swords",
       "number": 7,
-      "imagePath": "assets/images/rws/swords-07.webp",
+      "imagePath": "assets/images/rws-standard/swords-07.webp",
       "meanings": {
         "upright": [
           "deception",
@@ -1210,7 +1210,7 @@
       "arcana": "minor",
       "suit": "swords",
       "number": 8,
-      "imagePath": "assets/images/rws/swords-08.webp",
+      "imagePath": "assets/images/rws-standard/swords-08.webp",
       "meanings": {
         "upright": [
           "imprisonment",
@@ -1231,7 +1231,7 @@
       "arcana": "minor",
       "suit": "swords",
       "number": 9,
-      "imagePath": "assets/images/rws/swords-09.webp",
+      "imagePath": "assets/images/rws-standard/swords-09.webp",
       "meanings": {
         "upright": [
           "anxiety",
@@ -1252,7 +1252,7 @@
       "arcana": "minor",
       "suit": "swords",
       "number": 10,
-      "imagePath": "assets/images/rws/swords-10.webp",
+      "imagePath": "assets/images/rws-standard/swords-10.webp",
       "meanings": {
         "upright": [
           "painful ending",
@@ -1273,7 +1273,7 @@
       "arcana": "minor",
       "suit": "swords",
       "number": 11,
-      "imagePath": "assets/images/rws/swords-11.webp",
+      "imagePath": "assets/images/rws-standard/swords-11.webp",
       "meanings": {
         "upright": [
           "curiosity",
@@ -1294,7 +1294,7 @@
       "arcana": "minor",
       "suit": "swords",
       "number": 12,
-      "imagePath": "assets/images/rws/swords-12.webp",
+      "imagePath": "assets/images/rws-standard/swords-12.webp",
       "meanings": {
         "upright": [
           "ambition",
@@ -1315,7 +1315,7 @@
       "arcana": "minor",
       "suit": "swords",
       "number": 13,
-      "imagePath": "assets/images/rws/swords-13.webp",
+      "imagePath": "assets/images/rws-standard/swords-13.webp",
       "meanings": {
         "upright": [
           "clear thinking",
@@ -1336,7 +1336,7 @@
       "arcana": "minor",
       "suit": "swords",
       "number": 14,
-      "imagePath": "assets/images/rws/swords-14.webp",
+      "imagePath": "assets/images/rws-standard/swords-14.webp",
       "meanings": {
         "upright": [
           "intellectual power",
@@ -1357,7 +1357,7 @@
       "arcana": "minor",
       "suit": "pentacles",
       "number": 1,
-      "imagePath": "assets/images/rws/pentacles-01.webp",
+      "imagePath": "assets/images/rws-standard/pentacles-01.webp",
       "meanings": {
         "upright": [
           "new financial opportunity",
@@ -1378,7 +1378,7 @@
       "arcana": "minor",
       "suit": "pentacles",
       "number": 2,
-      "imagePath": "assets/images/rws/pentacles-02.webp",
+      "imagePath": "assets/images/rws-standard/pentacles-02.webp",
       "meanings": {
         "upright": [
           "balance",
@@ -1399,7 +1399,7 @@
       "arcana": "minor",
       "suit": "pentacles",
       "number": 3,
-      "imagePath": "assets/images/rws/pentacles-03.webp",
+      "imagePath": "assets/images/rws-standard/pentacles-03.webp",
       "meanings": {
         "upright": [
           "teamwork",
@@ -1420,7 +1420,7 @@
       "arcana": "minor",
       "suit": "pentacles",
       "number": 4,
-      "imagePath": "assets/images/rws/pentacles-04.webp",
+      "imagePath": "assets/images/rws-standard/pentacles-04.webp",
       "meanings": {
         "upright": [
           "security",
@@ -1441,7 +1441,7 @@
       "arcana": "minor",
       "suit": "pentacles",
       "number": 5,
-      "imagePath": "assets/images/rws/pentacles-05.webp",
+      "imagePath": "assets/images/rws-standard/pentacles-05.webp",
       "meanings": {
         "upright": [
           "hardship",
@@ -1462,7 +1462,7 @@
       "arcana": "minor",
       "suit": "pentacles",
       "number": 6,
-      "imagePath": "assets/images/rws/pentacles-06.webp",
+      "imagePath": "assets/images/rws-standard/pentacles-06.webp",
       "meanings": {
         "upright": [
           "generosity",
@@ -1483,7 +1483,7 @@
       "arcana": "minor",
       "suit": "pentacles",
       "number": 7,
-      "imagePath": "assets/images/rws/pentacles-07.webp",
+      "imagePath": "assets/images/rws-standard/pentacles-07.webp",
       "meanings": {
         "upright": [
           "patience",
@@ -1504,7 +1504,7 @@
       "arcana": "minor",
       "suit": "pentacles",
       "number": 8,
-      "imagePath": "assets/images/rws/pentacles-08.webp",
+      "imagePath": "assets/images/rws-standard/pentacles-08.webp",
       "meanings": {
         "upright": [
           "diligence",
@@ -1525,7 +1525,7 @@
       "arcana": "minor",
       "suit": "pentacles",
       "number": 9,
-      "imagePath": "assets/images/rws/pentacles-09.webp",
+      "imagePath": "assets/images/rws-standard/pentacles-09.webp",
       "meanings": {
         "upright": [
           "luxury",
@@ -1546,7 +1546,7 @@
       "arcana": "minor",
       "suit": "pentacles",
       "number": 10,
-      "imagePath": "assets/images/rws/pentacles-10.webp",
+      "imagePath": "assets/images/rws-standard/pentacles-10.webp",
       "meanings": {
         "upright": [
           "wealth",
@@ -1567,7 +1567,7 @@
       "arcana": "minor",
       "suit": "pentacles",
       "number": 11,
-      "imagePath": "assets/images/rws/pentacles-11.webp",
+      "imagePath": "assets/images/rws-standard/pentacles-11.webp",
       "meanings": {
         "upright": [
           "ambition",
@@ -1588,7 +1588,7 @@
       "arcana": "minor",
       "suit": "pentacles",
       "number": 12,
-      "imagePath": "assets/images/rws/pentacles-12.webp",
+      "imagePath": "assets/images/rws-standard/pentacles-12.webp",
       "meanings": {
         "upright": [
           "hard work",
@@ -1609,7 +1609,7 @@
       "arcana": "minor",
       "suit": "pentacles",
       "number": 13,
-      "imagePath": "assets/images/rws/pentacles-13.webp",
+      "imagePath": "assets/images/rws-standard/pentacles-13.webp",
       "meanings": {
         "upright": [
           "practicality",
@@ -1630,7 +1630,7 @@
       "arcana": "minor",
       "suit": "pentacles",
       "number": 14,
-      "imagePath": "assets/images/rws/pentacles-14.webp",
+      "imagePath": "assets/images/rws-standard/pentacles-14.webp",
       "meanings": {
         "upright": [
           "abundance",

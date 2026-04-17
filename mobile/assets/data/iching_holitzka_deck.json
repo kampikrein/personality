@@ -13,7 +13,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 1,
-      "imagePath": "assets/images/iching_holitzka/hexagram_01.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_01.webp",
       "meanings": {
         "upright": ["creative force", "strength", "initiative", "heaven"],
         "reversed": ["arrogance", "excessive force", "rigidity"]
@@ -25,7 +25,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 2,
-      "imagePath": "assets/images/iching_holitzka/hexagram_02.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_02.webp",
       "meanings": {
         "upright": ["receptivity", "yielding", "nurturing", "earth"],
         "reversed": ["passivity", "submissiveness", "inertia"]
@@ -37,7 +37,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 3,
-      "imagePath": "assets/images/iching_holitzka/hexagram_03.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_03.webp",
       "meanings": {
         "upright": ["new beginnings", "initial chaos", "perseverance", "growth"],
         "reversed": ["overwhelm", "false start", "stagnation"]
@@ -49,7 +49,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 4,
-      "imagePath": "assets/images/iching_holitzka/hexagram_04.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_04.webp",
       "meanings": {
         "upright": ["learning", "innocence", "seeking guidance", "humility"],
         "reversed": ["stubbornness", "ignorance", "refusing counsel"]
@@ -61,7 +61,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 5,
-      "imagePath": "assets/images/iching_holitzka/hexagram_05.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_05.webp",
       "meanings": {
         "upright": ["patience", "nourishment", "timing", "confidence"],
         "reversed": ["anxiety", "premature action", "impatience"]
@@ -73,7 +73,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 6,
-      "imagePath": "assets/images/iching_holitzka/hexagram_06.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_06.webp",
       "meanings": {
         "upright": ["dispute", "caution", "seeking mediation", "truth"],
         "reversed": ["prolonged conflict", "litigation", "stubbornness"]
@@ -85,7 +85,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 7,
-      "imagePath": "assets/images/iching_holitzka/hexagram_07.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_07.webp",
       "meanings": {
         "upright": ["discipline", "leadership", "collective effort", "strategy"],
         "reversed": ["power abuse", "disorder", "failed leadership"]
@@ -97,7 +97,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 8,
-      "imagePath": "assets/images/iching_holitzka/hexagram_08.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_08.webp",
       "meanings": {
         "upright": ["unity", "alliance", "community", "solidarity"],
         "reversed": ["isolation", "false unity", "dependency"]
@@ -109,7 +109,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 9,
-      "imagePath": "assets/images/iching_holitzka/hexagram_09.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_09.webp",
       "meanings": {
         "upright": ["small restraint", "gradual progress", "preparation", "gentleness"],
         "reversed": ["obstruction", "frustration", "limited resources"]
@@ -121,7 +121,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 10,
-      "imagePath": "assets/images/iching_holitzka/hexagram_10.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_10.webp",
       "meanings": {
         "upright": ["careful conduct", "propriety", "mindfulness", "courage"],
         "reversed": ["recklessness", "social misstep", "carelessness"]
@@ -133,7 +133,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 11,
-      "imagePath": "assets/images/iching_holitzka/hexagram_11.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_11.webp",
       "meanings": {
         "upright": ["harmony", "prosperity", "balance", "flourishing"],
         "reversed": ["complacency", "decline", "stagnation"]
@@ -145,7 +145,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 12,
-      "imagePath": "assets/images/iching_holitzka/hexagram_12.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_12.webp",
       "meanings": {
         "upright": ["stagnation", "withdrawal", "inner retreat", "discernment"],
         "reversed": ["isolation", "blocked communication", "decay"]
@@ -157,7 +157,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 13,
-      "imagePath": "assets/images/iching_holitzka/hexagram_13.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_13.webp",
       "meanings": {
         "upright": ["community", "shared vision", "fellowship", "openness"],
         "reversed": ["cliques", "exclusion", "tribalism"]
@@ -169,7 +169,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 14,
-      "imagePath": "assets/images/iching_holitzka/hexagram_14.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_14.webp",
       "meanings": {
         "upright": ["abundance", "success", "clarity", "generosity"],
         "reversed": ["pride", "excess", "misuse of power"]
@@ -181,7 +181,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 15,
-      "imagePath": "assets/images/iching_holitzka/hexagram_15.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_15.webp",
       "meanings": {
         "upright": ["humility", "moderation", "equilibrium", "respect"],
         "reversed": ["self-deprecation", "undervaluing", "false modesty"]
@@ -193,7 +193,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 16,
-      "imagePath": "assets/images/iching_holitzka/hexagram_16.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_16.webp",
       "meanings": {
         "upright": ["enthusiasm", "inspiration", "momentum", "music"],
         "reversed": ["complacency", "false excitement", "laziness"]
@@ -205,7 +205,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 17,
-      "imagePath": "assets/images/iching_holitzka/hexagram_17.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_17.webp",
       "meanings": {
         "upright": ["adaptability", "following the moment", "flexibility", "joy"],
         "reversed": ["blind following", "loss of self", "opportunism"]
@@ -217,7 +217,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 18,
-      "imagePath": "assets/images/iching_holitzka/hexagram_18.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_18.webp",
       "meanings": {
         "upright": ["renovation", "healing corruption", "taking responsibility", "renewal"],
         "reversed": ["denial", "inherited problems", "neglect"]
@@ -229,7 +229,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 19,
-      "imagePath": "assets/images/iching_holitzka/hexagram_19.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_19.webp",
       "meanings": {
         "upright": ["approaching", "influence", "growth", "supervision"],
         "reversed": ["overbearing", "missed opportunity", "withdrawal"]
@@ -241,7 +241,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 20,
-      "imagePath": "assets/images/iching_holitzka/hexagram_20.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_20.webp",
       "meanings": {
         "upright": ["observation", "perspective", "inner reflection", "example"],
         "reversed": ["blind spot", "superficiality", "self-absorption"]
@@ -253,7 +253,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 21,
-      "imagePath": "assets/images/iching_holitzka/hexagram_21.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_21.webp",
       "meanings": {
         "upright": ["decisive action", "justice", "overcoming obstacles", "clarity"],
         "reversed": ["punishment", "force", "unresolved conflict"]
@@ -265,7 +265,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 22,
-      "imagePath": "assets/images/iching_holitzka/hexagram_22.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_22.webp",
       "meanings": {
         "upright": ["beauty", "adornment", "elegance", "refinement"],
         "reversed": ["superficiality", "vanity", "form over substance"]
@@ -277,7 +277,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 23,
-      "imagePath": "assets/images/iching_holitzka/hexagram_23.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_23.webp",
       "meanings": {
         "upright": ["dissolution", "letting go", "yielding", "transition"],
         "reversed": ["collapse", "erosion", "loss"]
@@ -289,7 +289,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 24,
-      "imagePath": "assets/images/iching_holitzka/hexagram_24.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_24.webp",
       "meanings": {
         "upright": ["return", "renewal", "turning point", "restoration"],
         "reversed": ["regression", "missed return", "stubbornness"]
@@ -301,7 +301,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 25,
-      "imagePath": "assets/images/iching_holitzka/hexagram_25.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_25.webp",
       "meanings": {
         "upright": ["spontaneity", "integrity", "naturalness", "truth"],
         "reversed": ["unexpected misfortune", "deception", "self-deception"]
@@ -313,7 +313,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 26,
-      "imagePath": "assets/images/iching_holitzka/hexagram_26.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_26.webp",
       "meanings": {
         "upright": ["accumulation", "discipline", "stored energy", "wisdom"],
         "reversed": ["hoarding", "suppression", "missed potential"]
@@ -325,7 +325,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 27,
-      "imagePath": "assets/images/iching_holitzka/hexagram_27.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_27.webp",
       "meanings": {
         "upright": ["nourishment", "care", "discernment", "sustenance"],
         "reversed": ["overindulgence", "poor nourishment", "neglect"]
@@ -337,7 +337,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 28,
-      "imagePath": "assets/images/iching_holitzka/hexagram_28.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_28.webp",
       "meanings": {
         "upright": ["critical mass", "exceptional effort", "bold action", "transition"],
         "reversed": ["collapse", "overload", "recklessness"]
@@ -349,7 +349,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 29,
-      "imagePath": "assets/images/iching_holitzka/hexagram_29.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_29.webp",
       "meanings": {
         "upright": ["danger", "depth", "perseverance", "flowing through"],
         "reversed": ["overwhelm", "drowning", "fear"]
@@ -361,7 +361,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 30,
-      "imagePath": "assets/images/iching_holitzka/hexagram_30.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_30.webp",
       "meanings": {
         "upright": ["clarity", "fire", "illumination", "dependence"],
         "reversed": ["attachment", "burning out", "instability"]
@@ -373,7 +373,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 31,
-      "imagePath": "assets/images/iching_holitzka/hexagram_31.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_31.webp",
       "meanings": {
         "upright": ["attraction", "mutual influence", "feeling", "courtship"],
         "reversed": ["manipulation", "superficial connection", "selfishness"]
@@ -385,7 +385,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 32,
-      "imagePath": "assets/images/iching_holitzka/hexagram_32.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_32.webp",
       "meanings": {
         "upright": ["perseverance", "continuity", "commitment", "endurance"],
         "reversed": ["rigidity", "rut", "stagnation"]
@@ -397,7 +397,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 33,
-      "imagePath": "assets/images/iching_holitzka/hexagram_33.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_33.webp",
       "meanings": {
         "upright": ["strategic withdrawal", "retreat", "timing", "conservation"],
         "reversed": ["flight", "avoidance", "cowardice"]
@@ -409,7 +409,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 34,
-      "imagePath": "assets/images/iching_holitzka/hexagram_34.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_34.webp",
       "meanings": {
         "upright": ["great power", "strength", "righteousness", "momentum"],
         "reversed": ["force without wisdom", "recklessness", "overconfidence"]
@@ -421,7 +421,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 35,
-      "imagePath": "assets/images/iching_holitzka/hexagram_35.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_35.webp",
       "meanings": {
         "upright": ["progress", "advancement", "recognition", "clarity"],
         "reversed": ["setback", "blocked progress", "obscurity"]
@@ -433,7 +433,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 36,
-      "imagePath": "assets/images/iching_holitzka/hexagram_36.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_36.webp",
       "meanings": {
         "upright": ["inner light", "perseverance in adversity", "concealment", "resilience"],
         "reversed": ["suppression", "eclipse", "loss of clarity"]
@@ -445,7 +445,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 37,
-      "imagePath": "assets/images/iching_holitzka/hexagram_37.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_37.webp",
       "meanings": {
         "upright": ["family", "roles", "inner order", "responsibility"],
         "reversed": ["family conflict", "dysfunction", "rigid roles"]
@@ -457,7 +457,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 38,
-      "imagePath": "assets/images/iching_holitzka/hexagram_38.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_38.webp",
       "meanings": {
         "upright": ["contrast", "diversity", "small steps", "polarity"],
         "reversed": ["alienation", "misunderstanding", "opposition"]
@@ -469,7 +469,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 39,
-      "imagePath": "assets/images/iching_holitzka/hexagram_39.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_39.webp",
       "meanings": {
         "upright": ["obstacle", "turning inward", "seeking help", "reflection"],
         "reversed": ["stubbornness", "isolation", "refusal to adapt"]
@@ -481,7 +481,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 40,
-      "imagePath": "assets/images/iching_holitzka/hexagram_40.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_40.webp",
       "meanings": {
         "upright": ["release", "liberation", "forgiveness", "resolution"],
         "reversed": ["prolonging tension", "inability to let go", "delay"]
@@ -493,7 +493,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 41,
-      "imagePath": "assets/images/iching_holitzka/hexagram_41.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_41.webp",
       "meanings": {
         "upright": ["simplification", "sacrifice", "inner enrichment", "sincerity"],
         "reversed": ["loss", "depletion", "imbalance"]
@@ -505,7 +505,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 42,
-      "imagePath": "assets/images/iching_holitzka/hexagram_42.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_42.webp",
       "meanings": {
         "upright": ["growth", "benefit", "generosity", "opportunity"],
         "reversed": ["excess", "greed", "unsustainable growth"]
@@ -517,7 +517,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 43,
-      "imagePath": "assets/images/iching_holitzka/hexagram_43.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_43.webp",
       "meanings": {
         "upright": ["breakthrough", "resolution", "decisiveness", "clarity"],
         "reversed": ["confrontation", "aggression", "premature action"]
@@ -529,7 +529,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 44,
-      "imagePath": "assets/images/iching_holitzka/hexagram_44.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_44.webp",
       "meanings": {
         "upright": ["unexpected encounter", "temptation", "influence", "awareness"],
         "reversed": ["seduction", "hidden agendas", "vulnerability"]
@@ -541,7 +541,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 45,
-      "imagePath": "assets/images/iching_holitzka/hexagram_45.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_45.webp",
       "meanings": {
         "upright": ["gathering", "community", "shared purpose", "abundance"],
         "reversed": ["dispersal", "disorganization", "conflict"]
@@ -553,7 +553,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 46,
-      "imagePath": "assets/images/iching_holitzka/hexagram_46.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_46.webp",
       "meanings": {
         "upright": ["rising", "gradual effort", "ambition", "growth"],
         "reversed": ["overreach", "slow progress", "blocked ascent"]
@@ -565,7 +565,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 47,
-      "imagePath": "assets/images/iching_holitzka/hexagram_47.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_47.webp",
       "meanings": {
         "upright": ["adversity", "inner strength", "endurance", "resourcefulness"],
         "reversed": ["exhaustion", "despair", "trapped"]
@@ -577,7 +577,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 48,
-      "imagePath": "assets/images/iching_holitzka/hexagram_48.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_48.webp",
       "meanings": {
         "upright": ["source", "inexhaustible nourishment", "community resource", "depth"],
         "reversed": ["neglected potential", "inaccessible wisdom", "depletion"]
@@ -589,7 +589,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 49,
-      "imagePath": "assets/images/iching_holitzka/hexagram_49.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_49.webp",
       "meanings": {
         "upright": ["transformation", "radical change", "renewal", "timing"],
         "reversed": ["upheaval", "hasty change", "resistance"]
@@ -601,7 +601,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 50,
-      "imagePath": "assets/images/iching_holitzka/hexagram_50.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_50.webp",
       "meanings": {
         "upright": ["transformation", "culture", "nourishment", "refinement"],
         "reversed": ["discord", "poor nourishment", "misalignment"]
@@ -613,7 +613,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 51,
-      "imagePath": "assets/images/iching_holitzka/hexagram_51.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_51.webp",
       "meanings": {
         "upright": ["shock", "awakening", "thunder", "renewal through fear"],
         "reversed": ["paralysis", "panic", "overreaction"]
@@ -625,7 +625,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 52,
-      "imagePath": "assets/images/iching_holitzka/hexagram_52.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_52.webp",
       "meanings": {
         "upright": ["stillness", "meditation", "stopping", "inner peace"],
         "reversed": ["restlessness", "forced inaction", "frozen"]
@@ -637,7 +637,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 53,
-      "imagePath": "assets/images/iching_holitzka/hexagram_53.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_53.webp",
       "meanings": {
         "upright": ["gradual progress", "steady development", "patience", "ceremony"],
         "reversed": ["rushing", "premature action", "disruption"]
@@ -649,7 +649,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 54,
-      "imagePath": "assets/images/iching_holitzka/hexagram_54.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_54.webp",
       "meanings": {
         "upright": ["subordinate role", "desire", "compromise", "relationship dynamics"],
         "reversed": ["imbalance", "unfulfilled expectations", "misalignment"]
@@ -661,7 +661,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 55,
-      "imagePath": "assets/images/iching_holitzka/hexagram_55.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_55.webp",
       "meanings": {
         "upright": ["abundance", "fullness", "peak moment", "clarity"],
         "reversed": ["decline", "loss", "impermanence"]
@@ -673,7 +673,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 56,
-      "imagePath": "assets/images/iching_holitzka/hexagram_56.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_56.webp",
       "meanings": {
         "upright": ["journey", "transience", "adaptability", "independence"],
         "reversed": ["rootlessness", "loneliness", "displacement"]
@@ -685,7 +685,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 57,
-      "imagePath": "assets/images/iching_holitzka/hexagram_57.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_57.webp",
       "meanings": {
         "upright": ["gentleness", "penetration", "wind", "subtle influence"],
         "reversed": ["indecision", "excessive compliance", "vacillation"]
@@ -697,7 +697,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 58,
-      "imagePath": "assets/images/iching_holitzka/hexagram_58.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_58.webp",
       "meanings": {
         "upright": ["joy", "openness", "exchange", "pleasure"],
         "reversed": ["empty pleasure", "seduction", "frivolity"]
@@ -709,7 +709,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 59,
-      "imagePath": "assets/images/iching_holitzka/hexagram_59.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_59.webp",
       "meanings": {
         "upright": ["dissolution", "dispersing barriers", "renewal", "flow"],
         "reversed": ["fragmentation", "loss of center", "disconnection"]
@@ -721,7 +721,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 60,
-      "imagePath": "assets/images/iching_holitzka/hexagram_60.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_60.webp",
       "meanings": {
         "upright": ["limitation", "structure", "self-regulation", "boundaries"],
         "reversed": ["excessive restriction", "rigidity", "self-punishment"]
@@ -733,7 +733,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 61,
-      "imagePath": "assets/images/iching_holitzka/hexagram_61.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_61.webp",
       "meanings": {
         "upright": ["inner truth", "sincerity", "trust", "influence through integrity"],
         "reversed": ["dishonesty", "empty words", "mistrust"]
@@ -745,7 +745,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 62,
-      "imagePath": "assets/images/iching_holitzka/hexagram_62.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_62.webp",
       "meanings": {
         "upright": ["small steps", "attention to detail", "caution", "modesty"],
         "reversed": ["overreaching", "overlooking details", "pride"]
@@ -757,7 +757,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 63,
-      "imagePath": "assets/images/iching_holitzka/hexagram_63.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_63.webp",
       "meanings": {
         "upright": ["completion", "order", "accomplishment", "transition"],
         "reversed": ["complacency", "reversal", "end of cycle"]
@@ -769,7 +769,7 @@
       "arcana": "hexagram",
       "suit": null,
       "number": 64,
-      "imagePath": "assets/images/iching_holitzka/hexagram_64.webp",
+      "imagePath": "assets/images/iching-holitzka/hexagram_64.webp",
       "meanings": {
         "upright": ["potential", "almost there", "transition", "careful final steps"],
         "reversed": ["premature conclusion", "unfinished work", "impatience"]

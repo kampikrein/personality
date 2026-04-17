@@ -60,5 +60,5 @@ flutter:
   uses-material-design: true
   assets:
     - assets/data/
-    - assets/images/iching_holitzka/
-    - assets/images/rws/
+    - assets/images/iching-holitzka/
+    - assets/images/rws-standard/
