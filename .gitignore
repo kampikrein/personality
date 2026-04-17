@@ -46,3 +46,4 @@ bugreport-*.zip
 
 # === OS ===
 .DS_Store
+.tmp/
