@@ -10,6 +10,7 @@ import '../../../reading/presentation/providers/reading_providers.dart';
 import '../../../settings/domain/entities/user_settings.dart';
 import '../../../settings/domain/repositories/user_settings_repository.dart';
 import '../../../settings/presentation/providers/settings_providers.dart';
+import '../../../shuffle/domain/entities/shuffle_mode.dart';
 
 // ── 색상 상수 (AppTheme 미러) ──────────────────────────────────
 const _gold = Color(0xFFD4A84B);
@@ -77,9 +78,17 @@ class _HomePageState extends ConsumerState<HomePage>
       case 2:
         context.push('/draw/animated');
       case 3:
-        context.pushNamed('intention', pathParameters: {'deckId': deckId});
+        context.pushNamed(
+          'intention',
+          pathParameters: {'deckId': deckId},
+          queryParameters: {'mode': ShuffleMode.flat.code},
+        );
       case 4:
-        context.pushNamed('intention', pathParameters: {'deckId': deckId});
+        context.pushNamed(
+          'intention',
+          pathParameters: {'deckId': deckId},
+          queryParameters: {'mode': ShuffleMode.perspective.code},
+        );
       default:
         context.push('/draw/result');
     }

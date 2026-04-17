@@ -12,6 +12,7 @@ import '../../features/reading/presentation/pages/reading_detail_page.dart';
 import '../../features/reading/presentation/pages/reading_list_page.dart';
 import '../../features/settings/presentation/pages/card_size_settings_page.dart';
 import '../../features/settings/presentation/pages/settings_page.dart';
+import '../../features/shuffle/domain/entities/shuffle_mode.dart';
 import '../../features/shuffle/presentation/pages/intention_page.dart';
 import '../../features/shuffle/presentation/pages/shuffle_page.dart';
 import 'main_shell.dart';
@@ -122,8 +123,11 @@ GoRouter appRouter(AppRouterRef ref) {
         name: 'intention',
         pageBuilder: (context, state) {
           final deckId = state.pathParameters['deckId']!;
+          final mode =
+              ShuffleMode.fromCode(state.uri.queryParameters['mode']);
           return _fadePage(
-              key: state.pageKey, child: IntentionPage(deckId: deckId));
+              key: state.pageKey,
+              child: IntentionPage(deckId: deckId, mode: mode));
         },
       ),
       GoRoute(
@@ -131,8 +135,11 @@ GoRouter appRouter(AppRouterRef ref) {
         name: 'shuffle',
         pageBuilder: (context, state) {
           final deckId = state.pathParameters['deckId']!;
+          final mode =
+              ShuffleMode.fromCode(state.uri.queryParameters['mode']);
           return _fadePage(
-              key: state.pageKey, child: ShufflePage(deckId: deckId));
+              key: state.pageKey,
+              child: ShufflePage(deckId: deckId, mode: mode));
         },
       ),
       GoRoute(

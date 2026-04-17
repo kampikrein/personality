@@ -7,6 +7,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../../core/dev_tuner/tunable_var.dart';
 import '../../../../core/dev_tuner/tuner_registry.dart';
 import '../../../../core/widgets/mystical_scaffold.dart';
+import '../../domain/entities/shuffle_mode.dart';
 
 part 'intention_page.g.dart';
 
@@ -24,8 +25,13 @@ class ReadingQuestion extends _$ReadingQuestion {
 }
 
 class IntentionPage extends ConsumerStatefulWidget {
-  const IntentionPage({super.key, required this.deckId});
+  const IntentionPage({
+    super.key,
+    required this.deckId,
+    this.mode = ShuffleMode.perspective,
+  });
   final String deckId;
+  final ShuffleMode mode;
 
   @override
   ConsumerState<IntentionPage> createState() => _IntentionPageState();
@@ -158,6 +164,7 @@ class _IntentionPageState extends ConsumerState<IntentionPage> {
                     context.pushNamed(
                       'shuffle',
                       pathParameters: {'deckId': widget.deckId},
+                      queryParameters: {'mode': widget.mode.code},
                     );
                   },
                   child: const Row(
