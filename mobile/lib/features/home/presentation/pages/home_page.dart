@@ -99,7 +99,6 @@ class _HomePageState extends ConsumerState<HomePage>
     final settingsAsync = ref.watch(userSettingsProvider);
     final readingsAsync = ref.watch(watchReadingsProvider);
     final decksAsync = ref.watch(watchDecksProvider);
-    final size = MediaQuery.sizeOf(context);
 
     final settings = settingsAsync.valueOrNull;
     final experienceLevel = settings?.experienceLevel ?? 4;
@@ -112,43 +111,31 @@ class _HomePageState extends ConsumerState<HomePage>
           // ── 레이어 0: 별이 있는 미스틱 배경 ──
           const _StarfieldBackground(),
 
-          // ── 레이어 1: 콘텐츠 ──
+          // ── 레이어 1: 단일 스크롤 콘텐츠 ──
           SafeArea(
-            child: Column(
-              children: [
-                // 히어로 영역 — 항상 폴드 위에 표시
-                SizedBox(
-                  height: size.height * 0.44,
-                  child: _HeroSection(
+            child: SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  _HeroSection(
                     initialized: _initialized,
                     glowAnim: _glowAnim,
                     onTap: _initialized
                         ? () => _startDraw(experienceLevel, selectedDeckId)
                         : null,
                   ),
-                ),
-
-                // 스크롤 가능한 설정 + 최근 리딩
-                Expanded(
-                  child: SingleChildScrollView(
-                    physics: const BouncingScrollPhysics(),
-                    padding: const EdgeInsets.fromLTRB(16, 4, 16, 32),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        _GoldHairline(opacity: 0.35),
-                        const SizedBox(height: 16),
-                        _DrawSettingsPanel(
-                          settings: settings,
-                          decksAsync: decksAsync,
-                        ),
-                        const SizedBox(height: 20),
-                        _RecentReadingsSection(readingsAsync: readingsAsync),
-                      ],
-                    ),
+                  _GoldHairline(opacity: 0.35),
+                  const SizedBox(height: 16),
+                  _DrawSettingsPanel(
+                    settings: settings,
+                    decksAsync: decksAsync,
                   ),
-                ),
-              ],
+                  const SizedBox(height: 20),
+                  _RecentReadingsSection(readingsAsync: readingsAsync),
+                ],
+              ),
             ),
           ),
         ],
@@ -216,24 +203,27 @@ class _HeroSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        // 앱 이름
-        const _AppTitle(),
-        const SizedBox(height: 24),
-        // 황금 오브 버튼
-        _GlowOrb(glowAnim: glowAnim, onTap: onTap),
-        const SizedBox(height: 10),
-        AnimatedOpacity(
-          opacity: initialized ? 0.0 : 1.0,
-          duration: const Duration(milliseconds: 600),
-          child: const Text(
-            '초기화 중...',
-            style: TextStyle(color: _textSecondary, fontSize: 11, letterSpacing: 1),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 48),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          // 앱 이름
+          const _AppTitle(),
+          const SizedBox(height: 24),
+          // 황금 오브 버튼
+          _GlowOrb(glowAnim: glowAnim, onTap: onTap),
+          const SizedBox(height: 10),
+          AnimatedOpacity(
+            opacity: initialized ? 0.0 : 1.0,
+            duration: const Duration(milliseconds: 600),
+            child: const Text(
+              '초기화 중...',
+              style: TextStyle(color: _textSecondary, fontSize: 11, letterSpacing: 1),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
