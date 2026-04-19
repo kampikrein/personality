@@ -6,7 +6,6 @@ import 'package:go_router/go_router.dart';
 
 import '../../../deck/presentation/providers/deck_providers.dart';
 import '../../../reading/domain/entities/spread_type.dart';
-import '../../../reading/presentation/providers/reading_providers.dart';
 import '../../../settings/domain/entities/user_settings.dart';
 import '../../../settings/domain/repositories/user_settings_repository.dart';
 import '../../../settings/presentation/providers/settings_providers.dart';
@@ -97,7 +96,6 @@ class _HomePageState extends ConsumerState<HomePage>
   @override
   Widget build(BuildContext context) {
     final settingsAsync = ref.watch(userSettingsProvider);
-    final readingsAsync = ref.watch(watchReadingsProvider);
     final decksAsync = ref.watch(watchDecksProvider);
 
     final settings = settingsAsync.valueOrNull;
@@ -132,8 +130,6 @@ class _HomePageState extends ConsumerState<HomePage>
                     settings: settings,
                     decksAsync: decksAsync,
                   ),
-                  const SizedBox(height: 20),
-                  _RecentReadingsSection(readingsAsync: readingsAsync),
                 ],
               ),
             ),
@@ -800,154 +796,6 @@ class _GoldSwitch extends StatelessWidget {
           }
           return _softPurple.withValues(alpha: 0.25);
         }),
-      ),
-    );
-  }
-}
-
-// ═══════════════════════════════════════════════════════════════
-//  최근 리딩 섹션
-// ═══════════════════════════════════════════════════════════════
-class _RecentReadingsSection extends StatelessWidget {
-  const _RecentReadingsSection({required this.readingsAsync});
-
-  final AsyncValue readingsAsync;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          children: [
-            Icon(Icons.history, size: 13, color: _textSecondary.withValues(alpha: 0.7)),
-            const SizedBox(width: 6),
-            const Text(
-              '최근 리딩',
-              style: TextStyle(
-                color: _textSecondary,
-                fontSize: 11,
-                fontWeight: FontWeight.w600,
-                letterSpacing: 1.5,
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(height: 10),
-        readingsAsync.when(
-          loading: () => const Center(
-            child: SizedBox(
-              height: 40,
-              child: LinearProgressIndicator(color: _gold, backgroundColor: _deepPurple),
-            ),
-          ),
-          error: (err, _) => Text(
-            '오류: $err',
-            style: const TextStyle(color: _textSecondary, fontSize: 12),
-          ),
-          data: (readings) {
-            final list = readings as List;
-            if (list.isEmpty) {
-              return Container(
-                padding: const EdgeInsets.symmetric(vertical: 20),
-                decoration: BoxDecoration(
-                  color: _deepPurple.withValues(alpha: 0.5),
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(
-                      color: _softPurple.withValues(alpha: 0.15), width: 0.7),
-                ),
-                child: const Center(
-                  child: Text(
-                    '아직 리딩이 없습니다',
-                    style: TextStyle(color: _textSecondary, fontSize: 12, letterSpacing: 0.5),
-                  ),
-                ),
-              );
-            }
-            return Column(
-              children: list.take(3).map((reading) {
-                return Builder(builder: (context) {
-                  return _ReadingCard(
-                    reading: reading,
-                    onTap: () => context.push('/readings/${reading.id}'),
-                  );
-                });
-              }).toList(),
-            );
-          },
-        ),
-      ],
-    );
-  }
-}
-
-class _ReadingCard extends StatelessWidget {
-  const _ReadingCard({required this.reading, required this.onTap});
-
-  final dynamic reading;
-  final VoidCallback onTap;
-
-  String _formatDate(DateTime dt) =>
-      '${dt.month}/${dt.day}  ${dt.hour}:${dt.minute.toString().padLeft(2, '0')}';
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        margin: const EdgeInsets.only(bottom: 8),
-        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 11),
-        decoration: BoxDecoration(
-          color: _deepPurple.withValues(alpha: 0.7),
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: _gold.withValues(alpha: 0.12), width: 0.7),
-        ),
-        child: Row(
-          children: [
-            Container(
-              width: 6,
-              height: 6,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: _gold.withValues(alpha: 0.6),
-              ),
-            ),
-            const SizedBox(width: 10),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    (reading.spreadType as SpreadType).displayName,
-                    style: const TextStyle(
-                      color: _textPrimary,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  if ((reading.question as String?) != null &&
-                      (reading.question as String).isNotEmpty)
-                    Text(
-                      reading.question as String,
-                      style: const TextStyle(color: _textSecondary, fontSize: 11),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                ],
-              ),
-            ),
-            Text(
-              _formatDate(reading.createdAt as DateTime),
-              style: const TextStyle(
-                color: _textSecondary,
-                fontSize: 10,
-                letterSpacing: 0.3,
-              ),
-            ),
-            const SizedBox(width: 4),
-            Icon(Icons.chevron_right, size: 14, color: _textSecondary.withValues(alpha: 0.5)),
-          ],
-        ),
       ),
     );
   }
