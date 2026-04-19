@@ -401,6 +401,9 @@ class _DrawSettingsPanel extends ConsumerWidget {
           ),
           _GoldHairline(opacity: 0.2),
 
+          // ── [기본 설정] 그룹 헤더 ──
+          const _PanelSubheader(title: '기본 설정'),
+
           // ── 덱 선택 ──
           _SettingRow(
             label: '덱',
@@ -483,6 +486,87 @@ class _DrawSettingsPanel extends ConsumerWidget {
             child: _GoldSwitch(
               value: settings?.allowReversed ?? true,
               onChanged: (v) => repo.updateAllowReversed(v),
+            ),
+          ),
+
+          // ── 그룹 구분선 (강한) ──
+          _GoldHairline(opacity: 0.3),
+
+          // ── [표시 옵션] 그룹 헤더 ──
+          const _PanelSubheader(title: '표시 옵션'),
+
+          // ── 앞면으로 시작 ──
+          _SettingRow(
+            label: '앞면으로 시작',
+            icon: Icons.flip_outlined,
+            child: _GoldSwitch(
+              value: settings?.showFaceUp ?? false,
+              onChanged: (v) => repo.updateShowFaceUp(v),
+            ),
+          ),
+          _GoldHairline(opacity: 0.1),
+
+          // ── 카드 이름 표시 ──
+          _SettingRow(
+            label: '카드 이름',
+            icon: Icons.label_outline,
+            child: _GoldSwitch(
+              value: settings?.showCardName ?? true,
+              onChanged: (v) => repo.updateShowCardName(v),
+            ),
+          ),
+          _GoldHairline(opacity: 0.1),
+
+          // ── 한 줄 카드 수 ──
+          _SettingRow(
+            label: '한 줄 카드 수',
+            icon: Icons.view_column_outlined,
+            child: _PillSelector<int>(
+              options: const [
+                (value: 1, label: '1장'),
+                (value: 2, label: '2장'),
+                (value: 3, label: '3장'),
+              ],
+              selected: settings?.cardsPerRow ?? 3,
+              onSelect: (v) => repo.updateCardsPerRow(v),
+            ),
+          ),
+          _GoldHairline(opacity: 0.1),
+
+          // ── 카드 크기 (별도 페이지 진입) ──
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: GestureDetector(
+              onTap: () => context.push('/settings/card-size'),
+              child: Row(
+                children: [
+                  Icon(Icons.aspect_ratio, size: 14, color: _textSecondary),
+                  const SizedBox(width: 8),
+                  const Text(
+                    '카드 크기',
+                    style: TextStyle(
+                      color: _textSecondary,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w500,
+                      letterSpacing: 0.5,
+                    ),
+                  ),
+                  const Spacer(),
+                  Text(
+                    settings?.cardSizePreset.label ?? '표준 타로',
+                    style: const TextStyle(
+                      color: _textSecondary,
+                      fontSize: 12,
+                    ),
+                  ),
+                  const SizedBox(width: 4),
+                  Icon(
+                    Icons.chevron_right,
+                    size: 16,
+                    color: _textSecondary.withValues(alpha: 0.5),
+                  ),
+                ],
+              ),
             ),
           ),
         ],
@@ -882,6 +966,28 @@ class _ReadingCard extends StatelessWidget {
 // ═══════════════════════════════════════════════════════════════
 //  공통 유틸 위젯
 // ═══════════════════════════════════════════════════════════════
+// ── 패널 서브헤더 ─────────────────────────────────────────────
+class _PanelSubheader extends StatelessWidget {
+  const _PanelSubheader({required this.title});
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 10, 16, 4),
+      child: Text(
+        title,
+        style: const TextStyle(
+          color: _textSecondary,
+          fontSize: 10,
+          fontWeight: FontWeight.w600,
+          letterSpacing: 1.8,
+        ),
+      ),
+    );
+  }
+}
+
 class _GoldHairline extends StatelessWidget {
   const _GoldHairline({required this.opacity});
   final double opacity;

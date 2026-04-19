@@ -84,9 +84,9 @@ class ProfilePage extends ConsumerWidget {
             child: Column(
               children: [
                 _MenuTile(
-                  icon: Icons.tune_rounded,
-                  title: '설정',
-                  subtitle: '체험 레벨, 카드 수, 스프레드',
+                  icon: Icons.settings_outlined,
+                  title: '앱 설정',
+                  subtitle: '환경설정',
                   onTap: () => context.pushNamed('settings'),
                 ),
                 GoldHairline(opacity: 0.1),
