@@ -22,7 +22,7 @@ class AppDatabase extends _$AppDatabase {
   AppDatabase(super.e);
 
   @override
-  int get schemaVersion => 7;
+  int get schemaVersion => 8;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
@@ -65,6 +65,44 @@ class AppDatabase extends _$AppDatabase {
             await m.database.customStatement(
               'UPDATE user_settings SET experience_level = 4 WHERE experience_level = 3',
             );
+          }
+          if (from < 8) {
+            await m.database.customStatement('PRAGMA foreign_keys = OFF');
+            try {
+              await m.database.transaction(() async {
+                // [A] readings 값 변환 — 멱등 (legacy 값 매칭 0행이면 no-op)
+                await m.database.customStatement(
+                  "UPDATE readings SET spread_type = 'linear' "
+                  "WHERE spread_type IN ('single', 'threeCard', 'custom')",
+                );
+                // Phantom v7.5 재진입 가드: 이전 마이그레이션이 rename 까지 수행 후
+                // user_version bump 전에 크래시한 경우 default_spread_type 이
+                // 이미 존재하지 않는다. [B] UPDATE + [C] ALTER 모두 이 컬럼을
+                // 참조하므로 하나의 존재 검사로 묶는다.
+                final cols = await m.database.customSelect(
+                  "SELECT name FROM pragma_table_info('user_settings')",
+                ).get();
+                final hasOldCol = cols.any(
+                  (r) => r.data['name'] == 'default_spread_type',
+                );
+                if (hasOldCol) {
+                  // [B] user_settings 값 변환 — 멱등. [C] 보다 먼저 실행되어야 함
+                  await m.database.customStatement(
+                    "UPDATE user_settings SET default_spread_type = 'linear' "
+                    "WHERE default_spread_type IN ('single', 'threeCard', 'custom')",
+                  );
+                  // [C] user_settings 컬럼 rename
+                  await m.database.customStatement(
+                    'ALTER TABLE user_settings RENAME COLUMN default_spread_type '
+                    'TO default_layout_type',
+                  );
+                }
+                // Decision 5 — phantom v7.5 방지: user_version 도 트랜잭션 내부 commit
+                await m.database.customStatement('PRAGMA user_version = 8');
+              });
+            } finally {
+              await m.database.customStatement('PRAGMA foreign_keys = ON');
+            }
           }
         },
       );

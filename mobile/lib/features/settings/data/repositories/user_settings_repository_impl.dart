@@ -60,7 +60,7 @@ class UserSettingsRepositoryImpl implements UserSettingsRepository {
   @override
   Future<void> updateDefaultLayoutType(String layoutTypeName) async {
     await db.userSettingsDao.updateSettings(
-      UserSettingsTableCompanion(defaultSpreadType: Value(layoutTypeName)),
+      UserSettingsTableCompanion(defaultLayoutType: Value(layoutTypeName)),
     );
   }
 
@@ -111,7 +111,7 @@ class UserSettingsRepositoryImpl implements UserSettingsRepository {
       showFaceUp: row.showFaceUp,
       quickDrawEnabled: row.quickDrawEnabled,
       defaultLayoutType: LayoutType.values.firstWhere(
-        (e) => e.name == row.defaultSpreadType,
+        (e) => e.name == row.defaultLayoutType,
         orElse: () => LayoutType.linear,
       ),
       showCardName: row.showCardName ?? true,

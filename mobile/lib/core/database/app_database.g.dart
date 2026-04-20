@@ -1958,11 +1958,11 @@ class $UserSettingsTableTable extends UserSettingsTable
       defaultConstraints: GeneratedColumn.constraintIsAlways(
           'CHECK ("quick_draw_enabled" IN (0, 1))'),
       defaultValue: const Constant(false));
-  static const VerificationMeta _defaultSpreadTypeMeta =
-      const VerificationMeta('defaultSpreadType');
+  static const VerificationMeta _defaultLayoutTypeMeta =
+      const VerificationMeta('defaultLayoutType');
   @override
-  late final GeneratedColumn<String> defaultSpreadType =
-      GeneratedColumn<String>('default_spread_type', aliasedName, false,
+  late final GeneratedColumn<String> defaultLayoutType =
+      GeneratedColumn<String>('default_layout_type', aliasedName, false,
           type: DriftSqlType.string,
           requiredDuringInsert: false,
           defaultValue: const Constant('custom'));
@@ -2032,7 +2032,7 @@ class $UserSettingsTableTable extends UserSettingsTable
         defaultCardCount,
         showFaceUp,
         quickDrawEnabled,
-        defaultSpreadType,
+        defaultLayoutType,
         showCardName,
         allowReversed,
         cardSizePreset,
@@ -2085,11 +2085,11 @@ class $UserSettingsTableTable extends UserSettingsTable
           quickDrawEnabled.isAcceptableOrUnknown(
               data['quick_draw_enabled']!, _quickDrawEnabledMeta));
     }
-    if (data.containsKey('default_spread_type')) {
+    if (data.containsKey('default_layout_type')) {
       context.handle(
-          _defaultSpreadTypeMeta,
-          defaultSpreadType.isAcceptableOrUnknown(
-              data['default_spread_type']!, _defaultSpreadTypeMeta));
+          _defaultLayoutTypeMeta,
+          defaultLayoutType.isAcceptableOrUnknown(
+              data['default_layout_type']!, _defaultLayoutTypeMeta));
     }
     if (data.containsKey('show_card_name')) {
       context.handle(
@@ -2154,8 +2154,8 @@ class $UserSettingsTableTable extends UserSettingsTable
           .read(DriftSqlType.bool, data['${effectivePrefix}show_face_up'])!,
       quickDrawEnabled: attachedDatabase.typeMapping.read(
           DriftSqlType.bool, data['${effectivePrefix}quick_draw_enabled'])!,
-      defaultSpreadType: attachedDatabase.typeMapping.read(
-          DriftSqlType.string, data['${effectivePrefix}default_spread_type'])!,
+      defaultLayoutType: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}default_layout_type'])!,
       showCardName: attachedDatabase.typeMapping
           .read(DriftSqlType.bool, data['${effectivePrefix}show_card_name']),
       allowReversed: attachedDatabase.typeMapping
@@ -2187,7 +2187,7 @@ class UserSettingsTableData extends DataClass
   final int defaultCardCount;
   final bool showFaceUp;
   final bool quickDrawEnabled;
-  final String defaultSpreadType;
+  final String defaultLayoutType;
   final bool? showCardName;
   final bool? allowReversed;
   final String cardSizePreset;
@@ -2202,7 +2202,7 @@ class UserSettingsTableData extends DataClass
       required this.defaultCardCount,
       required this.showFaceUp,
       required this.quickDrawEnabled,
-      required this.defaultSpreadType,
+      required this.defaultLayoutType,
       this.showCardName,
       this.allowReversed,
       required this.cardSizePreset,
@@ -2219,7 +2219,7 @@ class UserSettingsTableData extends DataClass
     map['default_card_count'] = Variable<int>(defaultCardCount);
     map['show_face_up'] = Variable<bool>(showFaceUp);
     map['quick_draw_enabled'] = Variable<bool>(quickDrawEnabled);
-    map['default_spread_type'] = Variable<String>(defaultSpreadType);
+    map['default_layout_type'] = Variable<String>(defaultLayoutType);
     if (!nullToAbsent || showCardName != null) {
       map['show_card_name'] = Variable<bool>(showCardName);
     }
@@ -2244,7 +2244,7 @@ class UserSettingsTableData extends DataClass
       defaultCardCount: Value(defaultCardCount),
       showFaceUp: Value(showFaceUp),
       quickDrawEnabled: Value(quickDrawEnabled),
-      defaultSpreadType: Value(defaultSpreadType),
+      defaultLayoutType: Value(defaultLayoutType),
       showCardName: showCardName == null && nullToAbsent
           ? const Value.absent()
           : Value(showCardName),
@@ -2271,7 +2271,7 @@ class UserSettingsTableData extends DataClass
       defaultCardCount: serializer.fromJson<int>(json['defaultCardCount']),
       showFaceUp: serializer.fromJson<bool>(json['showFaceUp']),
       quickDrawEnabled: serializer.fromJson<bool>(json['quickDrawEnabled']),
-      defaultSpreadType: serializer.fromJson<String>(json['defaultSpreadType']),
+      defaultLayoutType: serializer.fromJson<String>(json['defaultLayoutType']),
       showCardName: serializer.fromJson<bool?>(json['showCardName']),
       allowReversed: serializer.fromJson<bool?>(json['allowReversed']),
       cardSizePreset: serializer.fromJson<String>(json['cardSizePreset']),
@@ -2292,7 +2292,7 @@ class UserSettingsTableData extends DataClass
       'defaultCardCount': serializer.toJson<int>(defaultCardCount),
       'showFaceUp': serializer.toJson<bool>(showFaceUp),
       'quickDrawEnabled': serializer.toJson<bool>(quickDrawEnabled),
-      'defaultSpreadType': serializer.toJson<String>(defaultSpreadType),
+      'defaultLayoutType': serializer.toJson<String>(defaultLayoutType),
       'showCardName': serializer.toJson<bool?>(showCardName),
       'allowReversed': serializer.toJson<bool?>(allowReversed),
       'cardSizePreset': serializer.toJson<String>(cardSizePreset),
@@ -2310,7 +2310,7 @@ class UserSettingsTableData extends DataClass
           int? defaultCardCount,
           bool? showFaceUp,
           bool? quickDrawEnabled,
-          String? defaultSpreadType,
+          String? defaultLayoutType,
           Value<bool?> showCardName = const Value.absent(),
           Value<bool?> allowReversed = const Value.absent(),
           String? cardSizePreset,
@@ -2325,7 +2325,7 @@ class UserSettingsTableData extends DataClass
         defaultCardCount: defaultCardCount ?? this.defaultCardCount,
         showFaceUp: showFaceUp ?? this.showFaceUp,
         quickDrawEnabled: quickDrawEnabled ?? this.quickDrawEnabled,
-        defaultSpreadType: defaultSpreadType ?? this.defaultSpreadType,
+        defaultLayoutType: defaultLayoutType ?? this.defaultLayoutType,
         showCardName:
             showCardName.present ? showCardName.value : this.showCardName,
         allowReversed:
@@ -2353,9 +2353,9 @@ class UserSettingsTableData extends DataClass
       quickDrawEnabled: data.quickDrawEnabled.present
           ? data.quickDrawEnabled.value
           : this.quickDrawEnabled,
-      defaultSpreadType: data.defaultSpreadType.present
-          ? data.defaultSpreadType.value
-          : this.defaultSpreadType,
+      defaultLayoutType: data.defaultLayoutType.present
+          ? data.defaultLayoutType.value
+          : this.defaultLayoutType,
       showCardName: data.showCardName.present
           ? data.showCardName.value
           : this.showCardName,
@@ -2386,7 +2386,7 @@ class UserSettingsTableData extends DataClass
           ..write('defaultCardCount: $defaultCardCount, ')
           ..write('showFaceUp: $showFaceUp, ')
           ..write('quickDrawEnabled: $quickDrawEnabled, ')
-          ..write('defaultSpreadType: $defaultSpreadType, ')
+          ..write('defaultLayoutType: $defaultLayoutType, ')
           ..write('showCardName: $showCardName, ')
           ..write('allowReversed: $allowReversed, ')
           ..write('cardSizePreset: $cardSizePreset, ')
@@ -2406,7 +2406,7 @@ class UserSettingsTableData extends DataClass
       defaultCardCount,
       showFaceUp,
       quickDrawEnabled,
-      defaultSpreadType,
+      defaultLayoutType,
       showCardName,
       allowReversed,
       cardSizePreset,
@@ -2424,7 +2424,7 @@ class UserSettingsTableData extends DataClass
           other.defaultCardCount == this.defaultCardCount &&
           other.showFaceUp == this.showFaceUp &&
           other.quickDrawEnabled == this.quickDrawEnabled &&
-          other.defaultSpreadType == this.defaultSpreadType &&
+          other.defaultLayoutType == this.defaultLayoutType &&
           other.showCardName == this.showCardName &&
           other.allowReversed == this.allowReversed &&
           other.cardSizePreset == this.cardSizePreset &&
@@ -2442,7 +2442,7 @@ class UserSettingsTableCompanion
   final Value<int> defaultCardCount;
   final Value<bool> showFaceUp;
   final Value<bool> quickDrawEnabled;
-  final Value<String> defaultSpreadType;
+  final Value<String> defaultLayoutType;
   final Value<bool?> showCardName;
   final Value<bool?> allowReversed;
   final Value<String> cardSizePreset;
@@ -2457,7 +2457,7 @@ class UserSettingsTableCompanion
     this.defaultCardCount = const Value.absent(),
     this.showFaceUp = const Value.absent(),
     this.quickDrawEnabled = const Value.absent(),
-    this.defaultSpreadType = const Value.absent(),
+    this.defaultLayoutType = const Value.absent(),
     this.showCardName = const Value.absent(),
     this.allowReversed = const Value.absent(),
     this.cardSizePreset = const Value.absent(),
@@ -2473,7 +2473,7 @@ class UserSettingsTableCompanion
     this.defaultCardCount = const Value.absent(),
     this.showFaceUp = const Value.absent(),
     this.quickDrawEnabled = const Value.absent(),
-    this.defaultSpreadType = const Value.absent(),
+    this.defaultLayoutType = const Value.absent(),
     this.showCardName = const Value.absent(),
     this.allowReversed = const Value.absent(),
     this.cardSizePreset = const Value.absent(),
@@ -2489,7 +2489,7 @@ class UserSettingsTableCompanion
     Expression<int>? defaultCardCount,
     Expression<bool>? showFaceUp,
     Expression<bool>? quickDrawEnabled,
-    Expression<String>? defaultSpreadType,
+    Expression<String>? defaultLayoutType,
     Expression<bool>? showCardName,
     Expression<bool>? allowReversed,
     Expression<String>? cardSizePreset,
@@ -2505,7 +2505,7 @@ class UserSettingsTableCompanion
       if (defaultCardCount != null) 'default_card_count': defaultCardCount,
       if (showFaceUp != null) 'show_face_up': showFaceUp,
       if (quickDrawEnabled != null) 'quick_draw_enabled': quickDrawEnabled,
-      if (defaultSpreadType != null) 'default_spread_type': defaultSpreadType,
+      if (defaultLayoutType != null) 'default_layout_type': defaultLayoutType,
       if (showCardName != null) 'show_card_name': showCardName,
       if (allowReversed != null) 'allow_reversed': allowReversed,
       if (cardSizePreset != null) 'card_size_preset': cardSizePreset,
@@ -2524,7 +2524,7 @@ class UserSettingsTableCompanion
       Value<int>? defaultCardCount,
       Value<bool>? showFaceUp,
       Value<bool>? quickDrawEnabled,
-      Value<String>? defaultSpreadType,
+      Value<String>? defaultLayoutType,
       Value<bool?>? showCardName,
       Value<bool?>? allowReversed,
       Value<String>? cardSizePreset,
@@ -2539,7 +2539,7 @@ class UserSettingsTableCompanion
       defaultCardCount: defaultCardCount ?? this.defaultCardCount,
       showFaceUp: showFaceUp ?? this.showFaceUp,
       quickDrawEnabled: quickDrawEnabled ?? this.quickDrawEnabled,
-      defaultSpreadType: defaultSpreadType ?? this.defaultSpreadType,
+      defaultLayoutType: defaultLayoutType ?? this.defaultLayoutType,
       showCardName: showCardName ?? this.showCardName,
       allowReversed: allowReversed ?? this.allowReversed,
       cardSizePreset: cardSizePreset ?? this.cardSizePreset,
@@ -2571,8 +2571,8 @@ class UserSettingsTableCompanion
     if (quickDrawEnabled.present) {
       map['quick_draw_enabled'] = Variable<bool>(quickDrawEnabled.value);
     }
-    if (defaultSpreadType.present) {
-      map['default_spread_type'] = Variable<String>(defaultSpreadType.value);
+    if (defaultLayoutType.present) {
+      map['default_layout_type'] = Variable<String>(defaultLayoutType.value);
     }
     if (showCardName.present) {
       map['show_card_name'] = Variable<bool>(showCardName.value);
@@ -2607,7 +2607,7 @@ class UserSettingsTableCompanion
           ..write('defaultCardCount: $defaultCardCount, ')
           ..write('showFaceUp: $showFaceUp, ')
           ..write('quickDrawEnabled: $quickDrawEnabled, ')
-          ..write('defaultSpreadType: $defaultSpreadType, ')
+          ..write('defaultLayoutType: $defaultLayoutType, ')
           ..write('showCardName: $showCardName, ')
           ..write('allowReversed: $allowReversed, ')
           ..write('cardSizePreset: $cardSizePreset, ')
@@ -4271,7 +4271,7 @@ typedef $$UserSettingsTableTableCreateCompanionBuilder
   Value<int> defaultCardCount,
   Value<bool> showFaceUp,
   Value<bool> quickDrawEnabled,
-  Value<String> defaultSpreadType,
+  Value<String> defaultLayoutType,
   Value<bool?> showCardName,
   Value<bool?> allowReversed,
   Value<String> cardSizePreset,
@@ -4288,7 +4288,7 @@ typedef $$UserSettingsTableTableUpdateCompanionBuilder
   Value<int> defaultCardCount,
   Value<bool> showFaceUp,
   Value<bool> quickDrawEnabled,
-  Value<String> defaultSpreadType,
+  Value<String> defaultLayoutType,
   Value<bool?> showCardName,
   Value<bool?> allowReversed,
   Value<String> cardSizePreset,
@@ -4329,8 +4329,8 @@ class $$UserSettingsTableTableFilterComposer
       column: $table.quickDrawEnabled,
       builder: (column) => ColumnFilters(column));
 
-  ColumnFilters<String> get defaultSpreadType => $composableBuilder(
-      column: $table.defaultSpreadType,
+  ColumnFilters<String> get defaultLayoutType => $composableBuilder(
+      column: $table.defaultLayoutType,
       builder: (column) => ColumnFilters(column));
 
   ColumnFilters<bool> get showCardName => $composableBuilder(
@@ -4389,8 +4389,8 @@ class $$UserSettingsTableTableOrderingComposer
       column: $table.quickDrawEnabled,
       builder: (column) => ColumnOrderings(column));
 
-  ColumnOrderings<String> get defaultSpreadType => $composableBuilder(
-      column: $table.defaultSpreadType,
+  ColumnOrderings<String> get defaultLayoutType => $composableBuilder(
+      column: $table.defaultLayoutType,
       builder: (column) => ColumnOrderings(column));
 
   ColumnOrderings<bool> get showCardName => $composableBuilder(
@@ -4447,8 +4447,8 @@ class $$UserSettingsTableTableAnnotationComposer
   GeneratedColumn<bool> get quickDrawEnabled => $composableBuilder(
       column: $table.quickDrawEnabled, builder: (column) => column);
 
-  GeneratedColumn<String> get defaultSpreadType => $composableBuilder(
-      column: $table.defaultSpreadType, builder: (column) => column);
+  GeneratedColumn<String> get defaultLayoutType => $composableBuilder(
+      column: $table.defaultLayoutType, builder: (column) => column);
 
   GeneratedColumn<bool> get showCardName => $composableBuilder(
       column: $table.showCardName, builder: (column) => column);
@@ -4507,7 +4507,7 @@ class $$UserSettingsTableTableTableManager extends RootTableManager<
             Value<int> defaultCardCount = const Value.absent(),
             Value<bool> showFaceUp = const Value.absent(),
             Value<bool> quickDrawEnabled = const Value.absent(),
-            Value<String> defaultSpreadType = const Value.absent(),
+            Value<String> defaultLayoutType = const Value.absent(),
             Value<bool?> showCardName = const Value.absent(),
             Value<bool?> allowReversed = const Value.absent(),
             Value<String> cardSizePreset = const Value.absent(),
@@ -4523,7 +4523,7 @@ class $$UserSettingsTableTableTableManager extends RootTableManager<
             defaultCardCount: defaultCardCount,
             showFaceUp: showFaceUp,
             quickDrawEnabled: quickDrawEnabled,
-            defaultSpreadType: defaultSpreadType,
+            defaultLayoutType: defaultLayoutType,
             showCardName: showCardName,
             allowReversed: allowReversed,
             cardSizePreset: cardSizePreset,
@@ -4539,7 +4539,7 @@ class $$UserSettingsTableTableTableManager extends RootTableManager<
             Value<int> defaultCardCount = const Value.absent(),
             Value<bool> showFaceUp = const Value.absent(),
             Value<bool> quickDrawEnabled = const Value.absent(),
-            Value<String> defaultSpreadType = const Value.absent(),
+            Value<String> defaultLayoutType = const Value.absent(),
             Value<bool?> showCardName = const Value.absent(),
             Value<bool?> allowReversed = const Value.absent(),
             Value<String> cardSizePreset = const Value.absent(),
@@ -4555,7 +4555,7 @@ class $$UserSettingsTableTableTableManager extends RootTableManager<
             defaultCardCount: defaultCardCount,
             showFaceUp: showFaceUp,
             quickDrawEnabled: quickDrawEnabled,
-            defaultSpreadType: defaultSpreadType,
+            defaultLayoutType: defaultLayoutType,
             showCardName: showCardName,
             allowReversed: allowReversed,
             cardSizePreset: cardSizePreset,

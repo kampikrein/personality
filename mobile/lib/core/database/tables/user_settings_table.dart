@@ -12,7 +12,7 @@ class UserSettingsTable extends Table {
       boolean().withDefault(const Constant(false))();
   BoolColumn get quickDrawEnabled =>
       boolean().withDefault(const Constant(false))();
-  TextColumn get defaultSpreadType =>
+  TextColumn get defaultLayoutType =>
       text().withDefault(const Constant('custom'))();
   BoolColumn get showCardName =>
       boolean().nullable().withDefault(const Constant(true))();
