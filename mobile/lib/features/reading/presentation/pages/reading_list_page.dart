@@ -15,7 +15,7 @@ class ReadingListPage extends ConsumerStatefulWidget {
 }
 
 class _ReadingListPageState extends ConsumerState<ReadingListPage> {
-  SpreadType? _filterType;
+  LayoutType? _filterType;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,7 @@ class _ReadingListPageState extends ConsumerState<ReadingListPage> {
                   onSelected: (_) => setState(() => _filterType = null),
                 ),
                 const SizedBox(width: 8),
-                for (final type in SpreadType.values)
+                for (final type in LayoutType.values)
                   Padding(
                     padding: const EdgeInsets.only(right: 8),
                     child: _GoldFilterChip(
@@ -168,7 +168,7 @@ class _ReadingListTile extends StatelessWidget {
                     border: Border.all(color: kGold.withValues(alpha: 0.35), width: 0.7),
                   ),
                   child: Icon(
-                    _spreadTypeIcon(reading.spreadType),
+                    _layoutTypeIcon(reading.spreadType),
                     color: kGold,
                     size: 17,
                   ),
@@ -207,11 +207,11 @@ class _ReadingListTile extends StatelessWidget {
     );
   }
 
-  IconData _spreadTypeIcon(SpreadType type) {
+  IconData _layoutTypeIcon(LayoutType type) {
     return switch (type) {
-      SpreadType.single => Icons.looks_one,
-      SpreadType.threeCard => Icons.looks_3,
-      SpreadType.custom => Icons.grid_view,
+      LayoutType.linear => Icons.view_stream,
+      LayoutType.tShape => Icons.view_quilt,
+      LayoutType.grid3x3 => Icons.grid_view,
     };
   }
 

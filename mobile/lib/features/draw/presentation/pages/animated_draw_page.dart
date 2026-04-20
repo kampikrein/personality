@@ -7,7 +7,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../core/widgets/mystical_scaffold.dart';
 import '../../../deck/presentation/providers/deck_providers.dart';
-import '../../../reading/domain/entities/spread_type.dart';
+import '../../../reading/domain/entities/layout_type.dart';
 import '../../../settings/presentation/providers/settings_providers.dart';
 import '../../../shuffle/domain/entities/shuffle_config.dart';
 import '../../../shuffle/domain/entities/shuffle_result.dart';
@@ -26,7 +26,7 @@ class _AnimatedDrawPageState extends ConsumerState<AnimatedDrawPage>
     with TickerProviderStateMixin {
   ShuffleResult? _shuffleResult;
   late int _currentCardCount;
-  late SpreadType _spreadType;
+  late LayoutType _layoutType;
   late String _deckId;
   late bool _showFaceUp;
   late bool _allowReversed;
@@ -50,10 +50,9 @@ class _AnimatedDrawPageState extends ConsumerState<AnimatedDrawPage>
 
   void _initSettings() {
     final settings = ref.read(userSettingsProvider).valueOrNull;
-    _spreadType = settings?.defaultSpreadType ?? SpreadType.custom;
-    _currentCardCount = _spreadType == SpreadType.custom
-        ? settings?.defaultCardCount ?? 3
-        : _spreadType.cardCount;
+    _layoutType = settings?.defaultLayoutType ?? LayoutType.linear;
+    _currentCardCount =
+        settings?.defaultCardCount ?? _layoutType.defaultCardCount;
     _deckId = settings?.selectedDeckId ?? 'rws-standard';
     _showFaceUp = settings?.showFaceUp ?? false;
     _allowReversed = settings?.allowReversed ?? true;
@@ -238,7 +237,7 @@ class _AnimatedDrawPageState extends ConsumerState<AnimatedDrawPage>
 
     return MysticalScaffold(
       appBar: AppBar(
-        title: Text('${_spreadType.displayName} \u2014 연출',
+        title: Text('${_layoutType.displayName} \u2014 연출',
             style: const TextStyle(color: kTextPrimary, letterSpacing: 0.3)),
         backgroundColor: kDarkSurface.withValues(alpha: 0.85),
         elevation: 0,

@@ -5,7 +5,7 @@ import 'package:uuid/uuid.dart';
 
 import '../../../../core/widgets/mystical_scaffold.dart';
 import '../../../reading/domain/entities/reading.dart';
-import '../../../reading/domain/entities/spread_type.dart';
+import '../../../reading/domain/entities/layout_type.dart';
 import '../../../reading/presentation/providers/reading_providers.dart';
 import '../../../reading/presentation/widgets/spread_layout.dart';
 import '../../../settings/presentation/providers/settings_providers.dart';
@@ -26,7 +26,7 @@ class DrawResultPage extends ConsumerStatefulWidget {
 class _DrawResultPageState extends ConsumerState<DrawResultPage> {
   ShuffleResult? _shuffleResult;
   late int _currentCardCount;
-  late SpreadType _spreadType;
+  late LayoutType _layoutType;
   late String _deckId;
   late bool _allowReversed;
   late bool _showCardName;
@@ -50,10 +50,9 @@ class _DrawResultPageState extends ConsumerState<DrawResultPage> {
 
   void _initSettings() {
     final settings = ref.read(userSettingsProvider).valueOrNull;
-    _spreadType = settings?.defaultSpreadType ?? SpreadType.custom;
-    _currentCardCount = _spreadType == SpreadType.custom
-        ? settings?.defaultCardCount ?? 3
-        : _spreadType.cardCount;
+    _layoutType = settings?.defaultLayoutType ?? LayoutType.linear;
+    _currentCardCount =
+        settings?.defaultCardCount ?? _layoutType.defaultCardCount;
     _deckId = settings?.selectedDeckId ?? 'rws-standard';
     _allowReversed = settings?.allowReversed ?? true;
     _showCardName = settings?.showCardName ?? true;
@@ -120,7 +119,7 @@ class _DrawResultPageState extends ConsumerState<DrawResultPage> {
     final reading = Reading(
       id: readingId,
       deckId: _deckId,
-      spreadType: _spreadType,
+      spreadType: _layoutType,
       question: question.isNotEmpty ? question : null,
       drawnCards: List.generate(drawnCards.length, (i) => DrawnCardInfo(
         cardId: drawnCards[i].card.id, position: i, isReversed: drawnCards[i].isReversed,
@@ -128,21 +127,6 @@ class _DrawResultPageState extends ConsumerState<DrawResultPage> {
       createdAt: DateTime.now(),
     );
     ref.read(readingRepositoryProvider).saveReading(reading);
-  }
-
-  void _addOneMore() {
-    if (_shuffleResult == null) return;
-    if (_currentCardCount >= _shuffleResult!.cards.length) return;
-    setState(() => _currentCardCount++);
-    _revealedPositions.add(_currentCardCount - 1);
-    if (_savedReadingId != null) {
-      final newCard = _shuffleResult!.cards[_currentCardCount - 1];
-      ref.read(readingRepositoryProvider).addDrawnCard(
-        _savedReadingId!,
-        DrawnCardInfo(cardId: newCard.card.id, position: _currentCardCount - 1, isReversed: newCard.isReversed),
-        DateTime.now(),
-      );
-    }
   }
 
   void _updateQuestion() {
@@ -173,11 +157,10 @@ class _DrawResultPageState extends ConsumerState<DrawResultPage> {
     }
 
     final drawnCards = _shuffleResult!.cards.take(_currentCardCount).toList();
-    final hasMoreCards = _currentCardCount < _shuffleResult!.cards.length;
 
     return MysticalScaffold(
       appBar: AppBar(
-        title: Text('${_spreadType.displayName} \u2014 즉시',
+        title: Text('${_layoutType.displayName} \u2014 즉시',
             style: const TextStyle(color: kTextPrimary, letterSpacing: 0.3)),
         backgroundColor: kDarkSurface.withValues(alpha: 0.85),
         elevation: 0,
@@ -227,7 +210,7 @@ class _DrawResultPageState extends ConsumerState<DrawResultPage> {
             child: Padding(
               padding: const EdgeInsets.all(12),
               child: SpreadLayout(
-                spreadType: _spreadType,
+                layoutType: _layoutType,
                 cards: drawnCards,
                 deckId: _deckId,
                 revealedPositions: _revealedPositions,
@@ -263,15 +246,6 @@ class _DrawResultPageState extends ConsumerState<DrawResultPage> {
                     icon: Icons.refresh_rounded,
                     label: '다시',
                     outlined: true,
-                  ),
-                ),
-                const SizedBox(width: 8),
-                Expanded(
-                  child: _ResultBtn(
-                    onPressed: hasMoreCards ? _addOneMore : null,
-                    icon: Icons.add,
-                    label: '+${_currentCardCount}장',
-                    outlined: false,
                   ),
                 ),
                 const SizedBox(width: 8),
