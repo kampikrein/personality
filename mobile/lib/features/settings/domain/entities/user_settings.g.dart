@@ -13,9 +13,9 @@ _$UserSettingsImpl _$$UserSettingsImplFromJson(Map<String, dynamic> json) =>
       defaultCardCount: (json['defaultCardCount'] as num?)?.toInt() ?? 3,
       showFaceUp: json['showFaceUp'] as bool? ?? false,
       quickDrawEnabled: json['quickDrawEnabled'] as bool? ?? false,
-      defaultSpreadType:
-          $enumDecodeNullable(_$SpreadTypeEnumMap, json['defaultSpreadType']) ??
-              SpreadType.custom,
+      defaultLayoutType:
+          $enumDecodeNullable(_$LayoutTypeEnumMap, json['defaultLayoutType']) ??
+              LayoutType.linear,
       showCardName: json['showCardName'] as bool? ?? true,
       allowReversed: json['allowReversed'] as bool? ?? true,
       cardsPerRow: (json['cardsPerRow'] as num?)?.toInt() ?? 3,
@@ -36,7 +36,7 @@ Map<String, dynamic> _$$UserSettingsImplToJson(_$UserSettingsImpl instance) =>
       'defaultCardCount': instance.defaultCardCount,
       'showFaceUp': instance.showFaceUp,
       'quickDrawEnabled': instance.quickDrawEnabled,
-      'defaultSpreadType': _$SpreadTypeEnumMap[instance.defaultSpreadType]!,
+      'defaultLayoutType': _$LayoutTypeEnumMap[instance.defaultLayoutType]!,
       'showCardName': instance.showCardName,
       'allowReversed': instance.allowReversed,
       'cardsPerRow': instance.cardsPerRow,
@@ -46,10 +46,10 @@ Map<String, dynamic> _$$UserSettingsImplToJson(_$UserSettingsImpl instance) =>
       'updatedAt': instance.updatedAt.toIso8601String(),
     };
 
-const _$SpreadTypeEnumMap = {
-  SpreadType.single: 'single',
-  SpreadType.threeCard: 'threeCard',
-  SpreadType.custom: 'custom',
+const _$LayoutTypeEnumMap = {
+  LayoutType.linear: 'linear',
+  LayoutType.tShape: 'tShape',
+  LayoutType.grid3x3: 'grid3x3',
 };
 
 const _$CardSizePresetEnumMap = {

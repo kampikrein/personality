@@ -22,7 +22,7 @@ Reading _$ReadingFromJson(Map<String, dynamic> json) {
 mixin _$Reading {
   String get id => throw _privateConstructorUsedError;
   String get deckId => throw _privateConstructorUsedError;
-  SpreadType get spreadType => throw _privateConstructorUsedError;
+  LayoutType get spreadType => throw _privateConstructorUsedError;
   String? get question => throw _privateConstructorUsedError;
   String? get notes => throw _privateConstructorUsedError;
   List<DrawnCardInfo> get drawnCards => throw _privateConstructorUsedError;
@@ -45,7 +45,7 @@ abstract class $ReadingCopyWith<$Res> {
   $Res call(
       {String id,
       String deckId,
-      SpreadType spreadType,
+      LayoutType spreadType,
       String? question,
       String? notes,
       List<DrawnCardInfo> drawnCards,
@@ -87,7 +87,7 @@ class _$ReadingCopyWithImpl<$Res, $Val extends Reading>
       spreadType: null == spreadType
           ? _value.spreadType
           : spreadType // ignore: cast_nullable_to_non_nullable
-              as SpreadType,
+              as LayoutType,
       question: freezed == question
           ? _value.question
           : question // ignore: cast_nullable_to_non_nullable
@@ -118,7 +118,7 @@ abstract class _$$ReadingImplCopyWith<$Res> implements $ReadingCopyWith<$Res> {
   $Res call(
       {String id,
       String deckId,
-      SpreadType spreadType,
+      LayoutType spreadType,
       String? question,
       String? notes,
       List<DrawnCardInfo> drawnCards,
@@ -158,7 +158,7 @@ class __$$ReadingImplCopyWithImpl<$Res>
       spreadType: null == spreadType
           ? _value.spreadType
           : spreadType // ignore: cast_nullable_to_non_nullable
-              as SpreadType,
+              as LayoutType,
       question: freezed == question
           ? _value.question
           : question // ignore: cast_nullable_to_non_nullable
@@ -200,7 +200,7 @@ class _$ReadingImpl implements _Reading {
   @override
   final String deckId;
   @override
-  final SpreadType spreadType;
+  final LayoutType spreadType;
   @override
   final String? question;
   @override
@@ -264,7 +264,7 @@ abstract class _Reading implements Reading {
   const factory _Reading(
       {required final String id,
       required final String deckId,
-      required final SpreadType spreadType,
+      required final LayoutType spreadType,
       final String? question,
       final String? notes,
       required final List<DrawnCardInfo> drawnCards,
@@ -277,7 +277,7 @@ abstract class _Reading implements Reading {
   @override
   String get deckId;
   @override
-  SpreadType get spreadType;
+  LayoutType get spreadType;
   @override
   String? get question;
   @override

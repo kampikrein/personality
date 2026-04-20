@@ -10,7 +10,7 @@ _$ReadingImpl _$$ReadingImplFromJson(Map<String, dynamic> json) =>
     _$ReadingImpl(
       id: json['id'] as String,
       deckId: json['deckId'] as String,
-      spreadType: $enumDecode(_$SpreadTypeEnumMap, json['spreadType']),
+      spreadType: $enumDecode(_$LayoutTypeEnumMap, json['spreadType']),
       question: json['question'] as String?,
       notes: json['notes'] as String?,
       drawnCards: (json['drawnCards'] as List<dynamic>)
@@ -23,17 +23,17 @@ Map<String, dynamic> _$$ReadingImplToJson(_$ReadingImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'deckId': instance.deckId,
-      'spreadType': _$SpreadTypeEnumMap[instance.spreadType]!,
+      'spreadType': _$LayoutTypeEnumMap[instance.spreadType]!,
       'question': instance.question,
       'notes': instance.notes,
       'drawnCards': instance.drawnCards,
       'createdAt': instance.createdAt.toIso8601String(),
     };
 
-const _$SpreadTypeEnumMap = {
-  SpreadType.single: 'single',
-  SpreadType.threeCard: 'threeCard',
-  SpreadType.custom: 'custom',
+const _$LayoutTypeEnumMap = {
+  LayoutType.linear: 'linear',
+  LayoutType.tShape: 'tShape',
+  LayoutType.grid3x3: 'grid3x3',
 };
 
 _$DrawnCardInfoImpl _$$DrawnCardInfoImplFromJson(Map<String, dynamic> json) =>

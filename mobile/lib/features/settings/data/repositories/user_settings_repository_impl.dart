@@ -1,7 +1,7 @@
 import 'package:drift/drift.dart';
 
 import '../../../../core/database/app_database.dart';
-import '../../../reading/domain/entities/spread_type.dart';
+import '../../../reading/domain/entities/layout_type.dart';
 import '../../domain/entities/card_size_preset.dart';
 import '../../domain/entities/user_settings.dart';
 import '../../domain/repositories/user_settings_repository.dart';
@@ -58,9 +58,9 @@ class UserSettingsRepositoryImpl implements UserSettingsRepository {
   }
 
   @override
-  Future<void> updateDefaultSpreadType(String spreadTypeName) async {
+  Future<void> updateDefaultLayoutType(String layoutTypeName) async {
     await db.userSettingsDao.updateSettings(
-      UserSettingsTableCompanion(defaultSpreadType: Value(spreadTypeName)),
+      UserSettingsTableCompanion(defaultSpreadType: Value(layoutTypeName)),
     );
   }
 
@@ -110,7 +110,10 @@ class UserSettingsRepositoryImpl implements UserSettingsRepository {
       defaultCardCount: row.defaultCardCount,
       showFaceUp: row.showFaceUp,
       quickDrawEnabled: row.quickDrawEnabled,
-      defaultSpreadType: SpreadType.values.byName(row.defaultSpreadType),
+      defaultLayoutType: LayoutType.values.firstWhere(
+        (e) => e.name == row.defaultSpreadType,
+        orElse: () => LayoutType.linear,
+      ),
       showCardName: row.showCardName ?? true,
       allowReversed: row.allowReversed ?? true,
       cardSizePreset: CardSizePreset.values.firstWhere(

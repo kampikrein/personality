@@ -8,7 +8,7 @@ abstract class UserSettingsRepository {
   Future<void> updateDefaultCardCount(int count);
   Future<void> updateShowFaceUp(bool showFaceUp);
   Future<void> updateQuickDrawEnabled(bool enabled);
-  Future<void> updateDefaultSpreadType(String spreadTypeName);
+  Future<void> updateDefaultLayoutType(String layoutTypeName);
   Future<void> updateShowCardName(bool showCardName);
   Future<void> updateAllowReversed(bool allowReversed);
   Future<void> updateCardSizePreset(String presetName);

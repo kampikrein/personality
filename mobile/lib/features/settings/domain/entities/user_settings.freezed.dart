@@ -25,7 +25,7 @@ mixin _$UserSettings {
   int get defaultCardCount => throw _privateConstructorUsedError;
   bool get showFaceUp => throw _privateConstructorUsedError;
   bool get quickDrawEnabled => throw _privateConstructorUsedError;
-  SpreadType get defaultSpreadType => throw _privateConstructorUsedError;
+  LayoutType get defaultLayoutType => throw _privateConstructorUsedError;
   bool get showCardName => throw _privateConstructorUsedError;
   bool get allowReversed => throw _privateConstructorUsedError;
   int get cardsPerRow => throw _privateConstructorUsedError;
@@ -56,7 +56,7 @@ abstract class $UserSettingsCopyWith<$Res> {
       int defaultCardCount,
       bool showFaceUp,
       bool quickDrawEnabled,
-      SpreadType defaultSpreadType,
+      LayoutType defaultLayoutType,
       bool showCardName,
       bool allowReversed,
       int cardsPerRow,
@@ -86,7 +86,7 @@ class _$UserSettingsCopyWithImpl<$Res, $Val extends UserSettings>
     Object? defaultCardCount = null,
     Object? showFaceUp = null,
     Object? quickDrawEnabled = null,
-    Object? defaultSpreadType = null,
+    Object? defaultLayoutType = null,
     Object? showCardName = null,
     Object? allowReversed = null,
     Object? cardsPerRow = null,
@@ -116,10 +116,10 @@ class _$UserSettingsCopyWithImpl<$Res, $Val extends UserSettings>
           ? _value.quickDrawEnabled
           : quickDrawEnabled // ignore: cast_nullable_to_non_nullable
               as bool,
-      defaultSpreadType: null == defaultSpreadType
-          ? _value.defaultSpreadType
-          : defaultSpreadType // ignore: cast_nullable_to_non_nullable
-              as SpreadType,
+      defaultLayoutType: null == defaultLayoutType
+          ? _value.defaultLayoutType
+          : defaultLayoutType // ignore: cast_nullable_to_non_nullable
+              as LayoutType,
       showCardName: null == showCardName
           ? _value.showCardName
           : showCardName // ignore: cast_nullable_to_non_nullable
@@ -166,7 +166,7 @@ abstract class _$$UserSettingsImplCopyWith<$Res>
       int defaultCardCount,
       bool showFaceUp,
       bool quickDrawEnabled,
-      SpreadType defaultSpreadType,
+      LayoutType defaultLayoutType,
       bool showCardName,
       bool allowReversed,
       int cardsPerRow,
@@ -194,7 +194,7 @@ class __$$UserSettingsImplCopyWithImpl<$Res>
     Object? defaultCardCount = null,
     Object? showFaceUp = null,
     Object? quickDrawEnabled = null,
-    Object? defaultSpreadType = null,
+    Object? defaultLayoutType = null,
     Object? showCardName = null,
     Object? allowReversed = null,
     Object? cardsPerRow = null,
@@ -224,10 +224,10 @@ class __$$UserSettingsImplCopyWithImpl<$Res>
           ? _value.quickDrawEnabled
           : quickDrawEnabled // ignore: cast_nullable_to_non_nullable
               as bool,
-      defaultSpreadType: null == defaultSpreadType
-          ? _value.defaultSpreadType
-          : defaultSpreadType // ignore: cast_nullable_to_non_nullable
-              as SpreadType,
+      defaultLayoutType: null == defaultLayoutType
+          ? _value.defaultLayoutType
+          : defaultLayoutType // ignore: cast_nullable_to_non_nullable
+              as LayoutType,
       showCardName: null == showCardName
           ? _value.showCardName
           : showCardName // ignore: cast_nullable_to_non_nullable
@@ -269,7 +269,7 @@ class _$UserSettingsImpl extends _UserSettings {
       this.defaultCardCount = 3,
       this.showFaceUp = false,
       this.quickDrawEnabled = false,
-      this.defaultSpreadType = SpreadType.custom,
+      this.defaultLayoutType = LayoutType.linear,
       this.showCardName = true,
       this.allowReversed = true,
       this.cardsPerRow = 3,
@@ -299,7 +299,7 @@ class _$UserSettingsImpl extends _UserSettings {
   final bool quickDrawEnabled;
   @override
   @JsonKey()
-  final SpreadType defaultSpreadType;
+  final LayoutType defaultLayoutType;
   @override
   @JsonKey()
   final bool showCardName;
@@ -323,7 +323,7 @@ class _$UserSettingsImpl extends _UserSettings {
 
   @override
   String toString() {
-    return 'UserSettings(selectedDeckId: $selectedDeckId, experienceLevel: $experienceLevel, defaultCardCount: $defaultCardCount, showFaceUp: $showFaceUp, quickDrawEnabled: $quickDrawEnabled, defaultSpreadType: $defaultSpreadType, showCardName: $showCardName, allowReversed: $allowReversed, cardsPerRow: $cardsPerRow, cardSizePreset: $cardSizePreset, customCardWidthMm: $customCardWidthMm, customCardHeightMm: $customCardHeightMm, updatedAt: $updatedAt)';
+    return 'UserSettings(selectedDeckId: $selectedDeckId, experienceLevel: $experienceLevel, defaultCardCount: $defaultCardCount, showFaceUp: $showFaceUp, quickDrawEnabled: $quickDrawEnabled, defaultLayoutType: $defaultLayoutType, showCardName: $showCardName, allowReversed: $allowReversed, cardsPerRow: $cardsPerRow, cardSizePreset: $cardSizePreset, customCardWidthMm: $customCardWidthMm, customCardHeightMm: $customCardHeightMm, updatedAt: $updatedAt)';
   }
 
   @override
@@ -341,8 +341,8 @@ class _$UserSettingsImpl extends _UserSettings {
                 other.showFaceUp == showFaceUp) &&
             (identical(other.quickDrawEnabled, quickDrawEnabled) ||
                 other.quickDrawEnabled == quickDrawEnabled) &&
-            (identical(other.defaultSpreadType, defaultSpreadType) ||
-                other.defaultSpreadType == defaultSpreadType) &&
+            (identical(other.defaultLayoutType, defaultLayoutType) ||
+                other.defaultLayoutType == defaultLayoutType) &&
             (identical(other.showCardName, showCardName) ||
                 other.showCardName == showCardName) &&
             (identical(other.allowReversed, allowReversed) ||
@@ -368,7 +368,7 @@ class _$UserSettingsImpl extends _UserSettings {
       defaultCardCount,
       showFaceUp,
       quickDrawEnabled,
-      defaultSpreadType,
+      defaultLayoutType,
       showCardName,
       allowReversed,
       cardsPerRow,
@@ -400,7 +400,7 @@ abstract class _UserSettings extends UserSettings {
       final int defaultCardCount,
       final bool showFaceUp,
       final bool quickDrawEnabled,
-      final SpreadType defaultSpreadType,
+      final LayoutType defaultLayoutType,
       final bool showCardName,
       final bool allowReversed,
       final int cardsPerRow,
@@ -424,7 +424,7 @@ abstract class _UserSettings extends UserSettings {
   @override
   bool get quickDrawEnabled;
   @override
-  SpreadType get defaultSpreadType;
+  LayoutType get defaultLayoutType;
   @override
   bool get showCardName;
   @override

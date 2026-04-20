@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../reading/domain/entities/spread_type.dart';
+import '../../../reading/domain/entities/layout_type.dart';
 import 'card_size_preset.dart';
 
 part 'user_settings.freezed.dart';
@@ -16,7 +16,7 @@ class UserSettings with _$UserSettings {
     @Default(3) int defaultCardCount,
     @Default(false) bool showFaceUp,
     @Default(false) bool quickDrawEnabled,
-    @Default(SpreadType.custom) SpreadType defaultSpreadType,
+    @Default(LayoutType.linear) LayoutType defaultLayoutType,
     @Default(true) bool showCardName,
     @Default(true) bool allowReversed,
     @Default(3) int cardsPerRow,

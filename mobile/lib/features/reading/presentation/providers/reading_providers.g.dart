@@ -41,7 +41,7 @@ final watchReadingsProvider = AutoDisposeStreamProvider<List<Reading>>.internal(
 // ignore: unused_element
 typedef WatchReadingsRef = AutoDisposeStreamProviderRef<List<Reading>>;
 String _$watchReadingsBySpreadTypeHash() =>
-    r'ac5aeb8cf77af7004cb05a9bb75e59acc0e97869';
+    r'dfad44a1c97c8a919e6546c048392fe2dc52e5e8';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -76,7 +76,7 @@ class WatchReadingsBySpreadTypeFamily
 
   /// See also [watchReadingsBySpreadType].
   WatchReadingsBySpreadTypeProvider call(
-    SpreadType spreadType,
+    LayoutType spreadType,
   ) {
     return WatchReadingsBySpreadTypeProvider(
       spreadType,
@@ -112,7 +112,7 @@ class WatchReadingsBySpreadTypeProvider
     extends AutoDisposeStreamProvider<List<Reading>> {
   /// See also [watchReadingsBySpreadType].
   WatchReadingsBySpreadTypeProvider(
-    SpreadType spreadType,
+    LayoutType spreadType,
   ) : this._internal(
           (ref) => watchReadingsBySpreadType(
             ref as WatchReadingsBySpreadTypeRef,
@@ -140,7 +140,7 @@ class WatchReadingsBySpreadTypeProvider
     required this.spreadType,
   }) : super.internal();
 
-  final SpreadType spreadType;
+  final LayoutType spreadType;
 
   @override
   Override overrideWith(
@@ -186,7 +186,7 @@ class WatchReadingsBySpreadTypeProvider
 mixin WatchReadingsBySpreadTypeRef
     on AutoDisposeStreamProviderRef<List<Reading>> {
   /// The parameter `spreadType` of this provider.
-  SpreadType get spreadType;
+  LayoutType get spreadType;
 }
 
 class _WatchReadingsBySpreadTypeProviderElement
@@ -195,7 +195,7 @@ class _WatchReadingsBySpreadTypeProviderElement
   _WatchReadingsBySpreadTypeProviderElement(super.provider);
 
   @override
-  SpreadType get spreadType =>
+  LayoutType get spreadType =>
       (origin as WatchReadingsBySpreadTypeProvider).spreadType;
 }
 // ignore_for_file: type=lint
