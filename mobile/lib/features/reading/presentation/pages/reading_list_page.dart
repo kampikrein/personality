@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../core/widgets/mystical_scaffold.dart';
 import '../../domain/entities/reading.dart';
-import '../../domain/entities/spread_type.dart';
+import '../../domain/entities/layout_type.dart';
 import '../providers/reading_providers.dart';
 
 class ReadingListPage extends ConsumerStatefulWidget {
