@@ -5,11 +5,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../deck/presentation/providers/deck_providers.dart';
-import '../../../reading/domain/entities/spread_type.dart';
+import '../../../reading/domain/entities/layout_type.dart';
 import '../../../settings/domain/entities/user_settings.dart';
 import '../../../settings/domain/repositories/user_settings_repository.dart';
 import '../../../settings/presentation/providers/settings_providers.dart';
 import '../../../shuffle/domain/entities/shuffle_mode.dart';
+import '../../../shuffle/presentation/providers/shuffle_providers.dart';
 
 // ── 색상 상수 (AppTheme 미러) ──────────────────────────────────
 const _gold = Color(0xFFD4A84B);
@@ -337,7 +338,7 @@ class _GlowOrb extends StatelessWidget {
 // ═══════════════════════════════════════════════════════════════
 //  뽑기 설정 패널
 // ═══════════════════════════════════════════════════════════════
-class _DrawSettingsPanel extends ConsumerWidget {
+class _DrawSettingsPanel extends ConsumerStatefulWidget {
   const _DrawSettingsPanel({
     required this.settings,
     required this.decksAsync,
@@ -347,8 +348,77 @@ class _DrawSettingsPanel extends ConsumerWidget {
   final AsyncValue decksAsync;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<_DrawSettingsPanel> createState() => _DrawSettingsPanelState();
+}
+
+class _DrawSettingsPanelState extends ConsumerState<_DrawSettingsPanel> {
+  /// LayoutType 변경 시 호출 — Brief Decision 4 자동 조정 원칙 + SnackBar undo.
+  ///
+  /// 1) 새 LayoutType 저장
+  /// 2) cardCount 가 새 범위를 벗어나면 defaultCardCount 로 auto-reset
+  /// 3) cardsPerRowOverride 가 있으면 cardsPerRow 를 강제 적용
+  /// 4) shuffleStateProvider.clear() — 014 Critique R4 (레이아웃/카드수 변경 시 셔플 결과 무효화)
+  /// 5) 10초 SnackBar "이전 값 복원" — 탭 시 이전 상태 전체 복원
+  Future<void> _onLayoutChanged(
+    LayoutType next,
+    UserSettings? current,
+    UserSettingsRepository repo,
+  ) async {
+    if (current == null || current.defaultLayoutType == next) return;
+
+    // Snapshot 이전 상태 (SnackBar undo 용, 지역 변수로 클로저 캡쳐)
+    final snapshot = (
+      layoutType: current.defaultLayoutType,
+      cardCount: current.defaultCardCount,
+      cardsPerRow: current.cardsPerRow,
+    );
+
+    // (1) LayoutType 갱신
+    await repo.updateDefaultLayoutType(next.name);
+    ref.read(shuffleStateProvider.notifier).clear();
+
+    // (2) cardCount auto-reset (범위 밖이면 defaultCardCount 로)
+    final currentCount = current.defaultCardCount;
+    if (currentCount < next.cardCountMin || currentCount > next.cardCountMax) {
+      await repo.updateDefaultCardCount(next.defaultCardCount);
+    }
+
+    // (3) cardsPerRow 강제 적용 (override 있으면)
+    final override = next.cardsPerRowOverride;
+    if (override != null && current.cardsPerRow != override) {
+      await repo.updateCardsPerRow(override);
+    }
+
+    // (4) SnackBar "이전 값 복원" 10초
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: const Text('배치 변경에 따라 설정이 조정되었어요'),
+        duration: const Duration(seconds: 10),
+        action: SnackBarAction(
+          label: '이전 값 복원',
+          onPressed: () async {
+            await repo.updateDefaultLayoutType(snapshot.layoutType.name);
+            await repo.updateDefaultCardCount(snapshot.cardCount);
+            await repo.updateCardsPerRow(snapshot.cardsPerRow);
+            if (!mounted) return;
+            ref.read(shuffleStateProvider.notifier).clear();
+          },
+        ),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final settings = widget.settings;
+    final decksAsync = widget.decksAsync;
     final repo = ref.read(userSettingsRepositoryProvider);
+
+    final selectedLayout = settings?.defaultLayoutType ?? LayoutType.linear;
+    final cardsPerRowDisabled = selectedLayout.cardsPerRowOverride != null;
+    final effectiveCardsPerRow =
+        selectedLayout.cardsPerRowOverride ?? (settings?.cardsPerRow ?? 3);
 
     return Container(
       decoration: BoxDecoration(
@@ -387,7 +457,9 @@ class _DrawSettingsPanel extends ConsumerWidget {
           ),
           _GoldHairline(opacity: 0.2),
 
-          // ── [기본 설정] 그룹 헤더 ──
+          // ══════════════════════════════════════════════════════════
+          //  [기본 설정] 그룹 — 덱 / 레벨 / 역방향
+          // ══════════════════════════════════════════════════════════
           const _PanelSubheader(title: '기본 설정'),
 
           // ── 덱 선택 ──
@@ -436,35 +508,6 @@ class _DrawSettingsPanel extends ConsumerWidget {
           ),
           _GoldHairline(opacity: 0.1),
 
-          // ── 기본 카드 수 ──
-          _SettingRow(
-            label: '카드 수',
-            icon: Icons.style_outlined,
-            child: _CountStepper(
-              value: settings?.defaultCardCount ?? 3,
-              min: 1,
-              max: 10,
-              onChanged: (v) => repo.updateDefaultCardCount(v),
-            ),
-          ),
-          _GoldHairline(opacity: 0.1),
-
-          // ── 기본 스프레드 ──
-          _SettingRow(
-            label: '스프레드',
-            icon: Icons.grid_view_outlined,
-            child: _PillSelector<SpreadType>(
-              options: const [
-                (value: SpreadType.single, label: '1장'),
-                (value: SpreadType.threeCard, label: '3장'),
-                (value: SpreadType.custom, label: '자유'),
-              ],
-              selected: settings?.defaultSpreadType ?? SpreadType.custom,
-              onSelect: (v) => repo.updateDefaultSpreadType(v.name),
-            ),
-          ),
-          _GoldHairline(opacity: 0.1),
-
           // ── 역방향 허용 ──
           _SettingRow(
             label: '역방향',
@@ -478,7 +521,89 @@ class _DrawSettingsPanel extends ConsumerWidget {
           // ── 그룹 구분선 (강한) ──
           _GoldHairline(opacity: 0.3),
 
-          // ── [표시 옵션] 그룹 헤더 ──
+          // ══════════════════════════════════════════════════════════
+          //  [모양] 그룹 — 배치 / 카드 수 / 한 줄 카드 수 / (grid3x3) 드로우 순서
+          // ══════════════════════════════════════════════════════════
+          const _PanelSubheader(title: '모양'),
+
+          // ── 배치 (LayoutType) ──
+          _SettingRow(
+            label: '배치',
+            icon: Icons.grid_view_outlined,
+            child: _PillSelector<LayoutType>(
+              options: [
+                (value: LayoutType.linear, label: LayoutType.linear.displayName),
+                (value: LayoutType.tShape, label: LayoutType.tShape.displayName),
+                (value: LayoutType.grid3x3, label: LayoutType.grid3x3.displayName),
+              ],
+              selected: selectedLayout,
+              onSelect: (v) => _onLayoutChanged(v, settings, repo),
+            ),
+          ),
+          _GoldHairline(opacity: 0.1),
+
+          // ── 기본 카드 수 (동적 min/max) ──
+          _SettingRow(
+            label: '카드 수',
+            icon: Icons.style_outlined,
+            child: _CountStepper(
+              value: settings?.defaultCardCount ?? selectedLayout.defaultCardCount,
+              min: selectedLayout.cardCountMin,
+              max: selectedLayout.cardCountMax,
+              onChanged: (v) {
+                repo.updateDefaultCardCount(v);
+                ref.read(shuffleStateProvider.notifier).clear();
+              },
+            ),
+          ),
+          _GoldHairline(opacity: 0.1),
+
+          // ── 한 줄 카드 수 (tShape/grid3x3 일 때 비활성) ──
+          _SettingRow(
+            label: '한 줄 카드 수',
+            icon: Icons.view_column_outlined,
+            child: IgnorePointer(
+              ignoring: cardsPerRowDisabled,
+              child: Opacity(
+                opacity: cardsPerRowDisabled ? 0.4 : 1.0,
+                child: _PillSelector<int>(
+                  options: const [
+                    (value: 1, label: '1장'),
+                    (value: 2, label: '2장'),
+                    (value: 3, label: '3장'),
+                  ],
+                  selected: effectiveCardsPerRow,
+                  onSelect: (v) => repo.updateCardsPerRow(v),
+                ),
+              ),
+            ),
+          ),
+
+          // ── (조건) 드로우 순서 — grid3x3 전용 (Decision 12) ──
+          if (selectedLayout == LayoutType.grid3x3) ...[
+            _GoldHairline(opacity: 0.1),
+            _SettingRow(
+              label: '드로우 순서',
+              icon: Icons.swap_horiz_outlined,
+              child: _PillSelector<String>(
+                options: const [
+                  (value: 'default', label: '기본'),
+                  (value: 'other', label: '다른 순서 (준비 중)'),
+                ],
+                selected: 'default',
+                onSelect: (v) {
+                  // "다른 순서 (준비 중)" 은 비활성 placeholder — no-op.
+                },
+              ),
+            ),
+          ],
+
+          // ── 그룹 구분선 (강한) ──
+          _GoldHairline(opacity: 0.3),
+
+          // ══════════════════════════════════════════════════════════
+          //  [표시 옵션] 그룹 — 앞면 / 카드 이름 / 카드 크기
+          // ══════════════════════════════════════════════════════════
           const _PanelSubheader(title: '표시 옵션'),
 
           // ── 앞면으로 시작 ──
@@ -499,22 +624,6 @@ class _DrawSettingsPanel extends ConsumerWidget {
             child: _GoldSwitch(
               value: settings?.showCardName ?? true,
               onChanged: (v) => repo.updateShowCardName(v),
-            ),
-          ),
-          _GoldHairline(opacity: 0.1),
-
-          // ── 한 줄 카드 수 ──
-          _SettingRow(
-            label: '한 줄 카드 수',
-            icon: Icons.view_column_outlined,
-            child: _PillSelector<int>(
-              options: const [
-                (value: 1, label: '1장'),
-                (value: 2, label: '2장'),
-                (value: 3, label: '3장'),
-              ],
-              selected: settings?.cardsPerRow ?? 3,
-              onSelect: (v) => repo.updateCardsPerRow(v),
             ),
           ),
           _GoldHairline(opacity: 0.1),
