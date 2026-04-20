@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'spread_type.dart';
+import 'layout_type.dart';
 
 part 'reading.freezed.dart';
 part 'reading.g.dart';
@@ -10,7 +10,7 @@ class Reading with _$Reading {
   const factory Reading({
     required String id,
     required String deckId,
-    required SpreadType spreadType,
+    required LayoutType spreadType,
     String? question,
     String? notes,
     required List<DrawnCardInfo> drawnCards,

@@ -1,5 +1,5 @@
 import '../entities/reading.dart';
-import '../entities/spread_type.dart';
+import '../entities/layout_type.dart';
 
 abstract class ReadingRepository {
   Future<List<Reading>> getAllReadings();
@@ -8,6 +8,6 @@ abstract class ReadingRepository {
   Future<void> deleteReading(String id);
   Future<void> updateNotes(String readingId, String? notes);
   Future<void> addDrawnCard(String readingId, DrawnCardInfo card, DateTime createdAt);
-  Stream<List<Reading>> watchReadingsBySpreadType(SpreadType spreadType);
+  Stream<List<Reading>> watchReadingsBySpreadType(LayoutType spreadType);
   Future<Reading?> getReadingById(String id);
 }

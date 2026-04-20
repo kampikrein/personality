@@ -2,7 +2,7 @@ import 'package:drift/drift.dart';
 
 import '../../../../core/database/app_database.dart';
 import '../../domain/entities/reading.dart' as domain;
-import '../../domain/entities/spread_type.dart';
+import '../../domain/entities/layout_type.dart';
 import '../../domain/repositories/reading_repository.dart';
 
 class ReadingRepositoryImpl implements ReadingRepository {
@@ -76,7 +76,7 @@ class ReadingRepositoryImpl implements ReadingRepository {
   }
 
   @override
-  Stream<List<domain.Reading>> watchReadingsBySpreadType(SpreadType spreadType) {
+  Stream<List<domain.Reading>> watchReadingsBySpreadType(LayoutType spreadType) {
     return db.readingDao
         .watchReadingsBySpreadType(spreadType.name)
         .asyncMap((readings) => Future.wait(readings.map(_toDomainReading)));
@@ -95,7 +95,10 @@ class ReadingRepositoryImpl implements ReadingRepository {
     return domain.Reading(
       id: row.id,
       deckId: row.deckId,
-      spreadType: SpreadType.values.byName(row.spreadType),
+      spreadType: LayoutType.values.firstWhere(
+        (e) => e.name == row.spreadType,
+        orElse: () => LayoutType.linear,
+      ),
       question: row.question,
       notes: row.notes,
       drawnCards: drawnCards

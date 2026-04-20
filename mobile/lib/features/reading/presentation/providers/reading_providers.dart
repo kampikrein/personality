@@ -3,7 +3,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../../core/database/database_provider.dart';
 import '../../data/repositories/reading_repository_impl.dart';
 import '../../domain/entities/reading.dart';
-import '../../domain/entities/spread_type.dart';
+import '../../domain/entities/layout_type.dart';
 import '../../domain/repositories/reading_repository.dart';
 
 part 'reading_providers.g.dart';
@@ -23,7 +23,7 @@ Stream<List<Reading>> watchReadings(WatchReadingsRef ref) {
 @riverpod
 Stream<List<Reading>> watchReadingsBySpreadType(
   WatchReadingsBySpreadTypeRef ref,
-  SpreadType spreadType,
+  LayoutType spreadType,
 ) {
   final repo = ref.watch(readingRepositoryProvider);
   return repo.watchReadingsBySpreadType(spreadType);
