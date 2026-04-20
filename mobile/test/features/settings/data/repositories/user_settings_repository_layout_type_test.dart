@@ -40,7 +40,6 @@
 // Dart-side decoder (`firstWhere + orElse`), which is agnostic to the
 // physical column name.
 
-import 'package:drift/drift.dart';
 import 'package:drift/native.dart';
 import 'package:flutter_test/flutter_test.dart';
 

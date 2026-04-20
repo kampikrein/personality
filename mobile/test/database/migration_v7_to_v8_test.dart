@@ -13,7 +13,6 @@
 //   → SchemaVerifier.migrateAndValidate(db, 8) throws / mismatches.
 
 import 'package:drift/drift.dart';
-import 'package:drift/native.dart';
 import 'package:drift_dev/api/migrations_native.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:personality_mobile/core/database/app_database.dart';
