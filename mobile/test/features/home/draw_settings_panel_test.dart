@@ -182,12 +182,14 @@ Widget _hostHomePage({
 
 Future<void> _pumpAndSettle(WidgetTester tester) async {
   // Home page animates a glow controller indefinitely — avoid
-  // pumpAndSettle (would hang). Four pumps with small gaps let async*
-  // stream override drain and provider rebuild propagate.
+  // pumpAndSettle (would hang). Use runAsync to drain real microtasks so
+  // StreamProvider first-value emission actually lands before we assert.
+  await tester.pump();
+  await tester.runAsync(() async {
+    await Future<void>.delayed(const Duration(milliseconds: 10));
+  });
   await tester.pump();
   await tester.pump(const Duration(milliseconds: 50));
-  await tester.pump(const Duration(milliseconds: 100));
-  await tester.pump(const Duration(milliseconds: 100));
 }
 
 void main() {
