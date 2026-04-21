@@ -352,13 +352,10 @@ class _DrawSettingsPanel extends ConsumerStatefulWidget {
 }
 
 class _DrawSettingsPanelState extends ConsumerState<_DrawSettingsPanel> {
-  /// LayoutType 변경 시 호출 — Brief Decision 4 자동 조정 원칙 + SnackBar undo.
-  ///
-  /// 1) 새 LayoutType 저장
-  /// 2) cardCount 가 새 범위를 벗어나면 defaultCardCount 로 auto-reset
-  /// 3) cardsPerRowOverride 가 있으면 cardsPerRow 를 강제 적용
-  /// 4) shuffleStateProvider.clear() — 014 Critique R4 (레이아웃/카드수 변경 시 셔플 결과 무효화)
-  /// 5) 10초 SnackBar "이전 값 복원" — 탭 시 이전 상태 전체 복원
+  // 이전 배치 상태 스냅샷 — 배치 라벨 옆 ↩ 아이콘으로 복원
+  ({LayoutType layoutType, int cardCount, int cardsPerRow})? _undoSnapshot;
+
+  /// LayoutType 변경 시 호출 — 자동 조정 + 배치 라벨 옆 ↩ 아이콘 표시.
   Future<void> _onLayoutChanged(
     LayoutType next,
     UserSettings? current,
@@ -366,12 +363,14 @@ class _DrawSettingsPanelState extends ConsumerState<_DrawSettingsPanel> {
   ) async {
     if (current == null || current.defaultLayoutType == next) return;
 
-    // Snapshot 이전 상태 (SnackBar undo 용, 지역 변수로 클로저 캡쳐)
-    final snapshot = (
-      layoutType: current.defaultLayoutType,
-      cardCount: current.defaultCardCount,
-      cardsPerRow: current.cardsPerRow,
-    );
+    // 이전 상태 스냅샷 저장 → 배치 라벨 옆 ↩ 아이콘 표시
+    setState(() {
+      _undoSnapshot = (
+        layoutType: current.defaultLayoutType,
+        cardCount: current.defaultCardCount,
+        cardsPerRow: current.cardsPerRow,
+      );
+    });
 
     // (1) LayoutType 갱신
     await repo.updateDefaultLayoutType(next.name);
@@ -388,25 +387,18 @@ class _DrawSettingsPanelState extends ConsumerState<_DrawSettingsPanel> {
     if (override != null && current.cardsPerRow != override) {
       await repo.updateCardsPerRow(override);
     }
+  }
 
-    // (4) SnackBar "이전 값 복원" 10초
+  /// ↩ 아이콘 탭 시 이전 배치 상태 복원
+  Future<void> _restoreSnapshot(UserSettingsRepository repo) async {
+    final snap = _undoSnapshot;
+    if (snap == null) return;
+    setState(() => _undoSnapshot = null);
+    await repo.updateDefaultLayoutType(snap.layoutType.name);
+    await repo.updateDefaultCardCount(snap.cardCount);
+    await repo.updateCardsPerRow(snap.cardsPerRow);
     if (!mounted) return;
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: const Text('배치 변경에 따라 설정이 조정되었어요'),
-        duration: const Duration(seconds: 10),
-        action: SnackBarAction(
-          label: '이전 값 복원',
-          onPressed: () async {
-            await repo.updateDefaultLayoutType(snapshot.layoutType.name);
-            await repo.updateDefaultCardCount(snapshot.cardCount);
-            await repo.updateCardsPerRow(snapshot.cardsPerRow);
-            if (!mounted) return;
-            ref.read(shuffleStateProvider.notifier).clear();
-          },
-        ),
-      ),
-    );
+    ref.read(shuffleStateProvider.notifier).clear();
   }
 
   @override
@@ -530,6 +522,16 @@ class _DrawSettingsPanelState extends ConsumerState<_DrawSettingsPanel> {
           _SettingRow(
             label: '배치',
             icon: Icons.grid_view_outlined,
+            labelTrailing: _undoSnapshot != null
+                ? IconButton(
+                    padding: EdgeInsets.zero,
+                    constraints: const BoxConstraints(minWidth: 24, minHeight: 24),
+                    iconSize: 16,
+                    icon: const Icon(Icons.undo, color: _gold),
+                    tooltip: '이전 값 복원',
+                    onPressed: () => _restoreSnapshot(repo),
+                  )
+                : null,
             child: _PillSelector<LayoutType>(
               options: [
                 (value: LayoutType.linear, label: LayoutType.linear.displayName),
@@ -676,11 +678,13 @@ class _SettingRow extends StatelessWidget {
     required this.label,
     required this.icon,
     required this.child,
+    this.labelTrailing,
   });
 
   final String label;
   final IconData icon;
   final Widget child;
+  final Widget? labelTrailing;
 
   @override
   Widget build(BuildContext context) {
@@ -699,6 +703,10 @@ class _SettingRow extends StatelessWidget {
               letterSpacing: 0.5,
             ),
           ),
+          if (labelTrailing != null) ...[
+            const SizedBox(width: 2),
+            labelTrailing!,
+          ],
           const Spacer(),
           child,
         ],
