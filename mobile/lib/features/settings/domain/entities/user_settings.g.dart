@@ -26,6 +26,9 @@ _$UserSettingsImpl _$$UserSettingsImplFromJson(Map<String, dynamic> json) =>
           (json['customCardWidthMm'] as num?)?.toDouble() ?? 70.0,
       customCardHeightMm:
           (json['customCardHeightMm'] as num?)?.toDouble() ?? 120.0,
+      intentPlacement: $enumDecodeNullable(
+              _$IntentPlacementEnumMap, json['intentPlacement']) ??
+          IntentPlacement.beforeShuffle,
       updatedAt: DateTime.parse(json['updatedAt'] as String),
     );
 
@@ -43,6 +46,7 @@ Map<String, dynamic> _$$UserSettingsImplToJson(_$UserSettingsImpl instance) =>
       'cardSizePreset': _$CardSizePresetEnumMap[instance.cardSizePreset]!,
       'customCardWidthMm': instance.customCardWidthMm,
       'customCardHeightMm': instance.customCardHeightMm,
+      'intentPlacement': _$IntentPlacementEnumMap[instance.intentPlacement]!,
       'updatedAt': instance.updatedAt.toIso8601String(),
     };
 
@@ -60,4 +64,10 @@ const _$CardSizePresetEnumMap = {
   CardSizePreset.thoth: 'thoth',
   CardSizePreset.poker: 'poker',
   CardSizePreset.custom: 'custom',
+};
+
+const _$IntentPlacementEnumMap = {
+  IntentPlacement.beforeShuffle: 'beforeShuffle',
+  IntentPlacement.afterDraw: 'afterDraw',
+  IntentPlacement.disabled: 'disabled',
 };

@@ -32,6 +32,7 @@ mixin _$UserSettings {
   CardSizePreset get cardSizePreset => throw _privateConstructorUsedError;
   double get customCardWidthMm => throw _privateConstructorUsedError;
   double get customCardHeightMm => throw _privateConstructorUsedError;
+  IntentPlacement get intentPlacement => throw _privateConstructorUsedError;
   DateTime get updatedAt => throw _privateConstructorUsedError;
 
   /// Serializes this UserSettings to a JSON map.
@@ -63,6 +64,7 @@ abstract class $UserSettingsCopyWith<$Res> {
       CardSizePreset cardSizePreset,
       double customCardWidthMm,
       double customCardHeightMm,
+      IntentPlacement intentPlacement,
       DateTime updatedAt});
 }
 
@@ -93,6 +95,7 @@ class _$UserSettingsCopyWithImpl<$Res, $Val extends UserSettings>
     Object? cardSizePreset = null,
     Object? customCardWidthMm = null,
     Object? customCardHeightMm = null,
+    Object? intentPlacement = null,
     Object? updatedAt = null,
   }) {
     return _then(_value.copyWith(
@@ -144,6 +147,10 @@ class _$UserSettingsCopyWithImpl<$Res, $Val extends UserSettings>
           ? _value.customCardHeightMm
           : customCardHeightMm // ignore: cast_nullable_to_non_nullable
               as double,
+      intentPlacement: null == intentPlacement
+          ? _value.intentPlacement
+          : intentPlacement // ignore: cast_nullable_to_non_nullable
+              as IntentPlacement,
       updatedAt: null == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
@@ -173,6 +180,7 @@ abstract class _$$UserSettingsImplCopyWith<$Res>
       CardSizePreset cardSizePreset,
       double customCardWidthMm,
       double customCardHeightMm,
+      IntentPlacement intentPlacement,
       DateTime updatedAt});
 }
 
@@ -201,6 +209,7 @@ class __$$UserSettingsImplCopyWithImpl<$Res>
     Object? cardSizePreset = null,
     Object? customCardWidthMm = null,
     Object? customCardHeightMm = null,
+    Object? intentPlacement = null,
     Object? updatedAt = null,
   }) {
     return _then(_$UserSettingsImpl(
@@ -252,6 +261,10 @@ class __$$UserSettingsImplCopyWithImpl<$Res>
           ? _value.customCardHeightMm
           : customCardHeightMm // ignore: cast_nullable_to_non_nullable
               as double,
+      intentPlacement: null == intentPlacement
+          ? _value.intentPlacement
+          : intentPlacement // ignore: cast_nullable_to_non_nullable
+              as IntentPlacement,
       updatedAt: null == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
@@ -276,6 +289,7 @@ class _$UserSettingsImpl extends _UserSettings {
       this.cardSizePreset = CardSizePreset.standardTarot,
       this.customCardWidthMm = 70.0,
       this.customCardHeightMm = 120.0,
+      this.intentPlacement = IntentPlacement.beforeShuffle,
       required this.updatedAt})
       : super._();
 
@@ -319,11 +333,14 @@ class _$UserSettingsImpl extends _UserSettings {
   @JsonKey()
   final double customCardHeightMm;
   @override
+  @JsonKey()
+  final IntentPlacement intentPlacement;
+  @override
   final DateTime updatedAt;
 
   @override
   String toString() {
-    return 'UserSettings(selectedDeckId: $selectedDeckId, experienceLevel: $experienceLevel, defaultCardCount: $defaultCardCount, showFaceUp: $showFaceUp, quickDrawEnabled: $quickDrawEnabled, defaultLayoutType: $defaultLayoutType, showCardName: $showCardName, allowReversed: $allowReversed, cardsPerRow: $cardsPerRow, cardSizePreset: $cardSizePreset, customCardWidthMm: $customCardWidthMm, customCardHeightMm: $customCardHeightMm, updatedAt: $updatedAt)';
+    return 'UserSettings(selectedDeckId: $selectedDeckId, experienceLevel: $experienceLevel, defaultCardCount: $defaultCardCount, showFaceUp: $showFaceUp, quickDrawEnabled: $quickDrawEnabled, defaultLayoutType: $defaultLayoutType, showCardName: $showCardName, allowReversed: $allowReversed, cardsPerRow: $cardsPerRow, cardSizePreset: $cardSizePreset, customCardWidthMm: $customCardWidthMm, customCardHeightMm: $customCardHeightMm, intentPlacement: $intentPlacement, updatedAt: $updatedAt)';
   }
 
   @override
@@ -355,6 +372,8 @@ class _$UserSettingsImpl extends _UserSettings {
                 other.customCardWidthMm == customCardWidthMm) &&
             (identical(other.customCardHeightMm, customCardHeightMm) ||
                 other.customCardHeightMm == customCardHeightMm) &&
+            (identical(other.intentPlacement, intentPlacement) ||
+                other.intentPlacement == intentPlacement) &&
             (identical(other.updatedAt, updatedAt) ||
                 other.updatedAt == updatedAt));
   }
@@ -375,6 +394,7 @@ class _$UserSettingsImpl extends _UserSettings {
       cardSizePreset,
       customCardWidthMm,
       customCardHeightMm,
+      intentPlacement,
       updatedAt);
 
   /// Create a copy of UserSettings
@@ -407,6 +427,7 @@ abstract class _UserSettings extends UserSettings {
       final CardSizePreset cardSizePreset,
       final double customCardWidthMm,
       final double customCardHeightMm,
+      final IntentPlacement intentPlacement,
       required final DateTime updatedAt}) = _$UserSettingsImpl;
   const _UserSettings._() : super._();
 
@@ -437,6 +458,8 @@ abstract class _UserSettings extends UserSettings {
   double get customCardWidthMm;
   @override
   double get customCardHeightMm;
+  @override
+  IntentPlacement get intentPlacement;
   @override
   DateTime get updatedAt;
 

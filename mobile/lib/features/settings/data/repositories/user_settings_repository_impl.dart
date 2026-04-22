@@ -3,6 +3,7 @@ import 'package:drift/drift.dart';
 import '../../../../core/database/app_database.dart';
 import '../../../reading/domain/entities/layout_type.dart';
 import '../../domain/entities/card_size_preset.dart';
+import '../../domain/entities/intent_placement.dart';
 import '../../domain/entities/user_settings.dart';
 import '../../domain/repositories/user_settings_repository.dart';
 
@@ -103,6 +104,11 @@ class UserSettingsRepositoryImpl implements UserSettingsRepository {
     );
   }
 
+  @override
+  Future<void> updateIntentPlacement(IntentPlacement value) async {
+    await db.userSettingsDao.updateIntentPlacement(value.name);
+  }
+
   UserSettings _toDomain(UserSettingsTableData row) {
     return UserSettings(
       selectedDeckId: row.selectedDeckId,
@@ -122,6 +128,10 @@ class UserSettingsRepositoryImpl implements UserSettingsRepository {
       ),
       customCardWidthMm: row.customCardWidthMm,
       customCardHeightMm: row.customCardHeightMm,
+      intentPlacement: IntentPlacement.values.firstWhere(
+        (e) => e.name == row.intentPlacement,
+        orElse: () => IntentPlacement.beforeShuffle,
+      ),
       updatedAt: row.updatedAt,
     );
   }

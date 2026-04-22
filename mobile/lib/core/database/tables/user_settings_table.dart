@@ -26,6 +26,8 @@ class UserSettingsTable extends Table {
       real().withDefault(const Constant(120.0))();
   IntColumn get cardsPerRow =>
       integer().nullable().withDefault(const Constant(3))();
+  TextColumn get intentPlacement =>
+      text().withDefault(const Constant('beforeShuffle'))();
   DateTimeColumn get updatedAt => dateTime()();
 
   @override

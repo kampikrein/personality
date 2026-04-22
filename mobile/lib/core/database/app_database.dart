@@ -22,7 +22,7 @@ class AppDatabase extends _$AppDatabase {
   AppDatabase(super.e);
 
   @override
-  int get schemaVersion => 8;
+  int get schemaVersion => 9;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
@@ -103,6 +103,11 @@ class AppDatabase extends _$AppDatabase {
             } finally {
               await m.database.customStatement('PRAGMA foreign_keys = ON');
             }
+          }
+          if (from < 9) {
+            await m.database.customStatement(
+              "ALTER TABLE user_settings ADD COLUMN intent_placement TEXT NOT NULL DEFAULT 'beforeShuffle'",
+            );
           }
         },
       );

@@ -2018,6 +2018,14 @@ class $UserSettingsTableTable extends UserSettingsTable
       type: DriftSqlType.int,
       requiredDuringInsert: false,
       defaultValue: const Constant(3));
+  static const VerificationMeta _intentPlacementMeta =
+      const VerificationMeta('intentPlacement');
+  @override
+  late final GeneratedColumn<String> intentPlacement = GeneratedColumn<String>(
+      'intent_placement', aliasedName, false,
+      type: DriftSqlType.string,
+      requiredDuringInsert: false,
+      defaultValue: const Constant('beforeShuffle'));
   static const VerificationMeta _updatedAtMeta =
       const VerificationMeta('updatedAt');
   @override
@@ -2039,6 +2047,7 @@ class $UserSettingsTableTable extends UserSettingsTable
         customCardWidthMm,
         customCardHeightMm,
         cardsPerRow,
+        intentPlacement,
         updatedAt
       ];
   @override
@@ -2127,6 +2136,12 @@ class $UserSettingsTableTable extends UserSettingsTable
           cardsPerRow.isAcceptableOrUnknown(
               data['cards_per_row']!, _cardsPerRowMeta));
     }
+    if (data.containsKey('intent_placement')) {
+      context.handle(
+          _intentPlacementMeta,
+          intentPlacement.isAcceptableOrUnknown(
+              data['intent_placement']!, _intentPlacementMeta));
+    }
     if (data.containsKey('updated_at')) {
       context.handle(_updatedAtMeta,
           updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta));
@@ -2168,6 +2183,8 @@ class $UserSettingsTableTable extends UserSettingsTable
           data['${effectivePrefix}custom_card_height_mm'])!,
       cardsPerRow: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}cards_per_row']),
+      intentPlacement: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}intent_placement'])!,
       updatedAt: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}updated_at'])!,
     );
@@ -2194,6 +2211,7 @@ class UserSettingsTableData extends DataClass
   final double customCardWidthMm;
   final double customCardHeightMm;
   final int? cardsPerRow;
+  final String intentPlacement;
   final DateTime updatedAt;
   const UserSettingsTableData(
       {required this.id,
@@ -2209,6 +2227,7 @@ class UserSettingsTableData extends DataClass
       required this.customCardWidthMm,
       required this.customCardHeightMm,
       this.cardsPerRow,
+      required this.intentPlacement,
       required this.updatedAt});
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
@@ -2232,6 +2251,7 @@ class UserSettingsTableData extends DataClass
     if (!nullToAbsent || cardsPerRow != null) {
       map['cards_per_row'] = Variable<int>(cardsPerRow);
     }
+    map['intent_placement'] = Variable<String>(intentPlacement);
     map['updated_at'] = Variable<DateTime>(updatedAt);
     return map;
   }
@@ -2257,6 +2277,7 @@ class UserSettingsTableData extends DataClass
       cardsPerRow: cardsPerRow == null && nullToAbsent
           ? const Value.absent()
           : Value(cardsPerRow),
+      intentPlacement: Value(intentPlacement),
       updatedAt: Value(updatedAt),
     );
   }
@@ -2279,6 +2300,7 @@ class UserSettingsTableData extends DataClass
       customCardHeightMm:
           serializer.fromJson<double>(json['customCardHeightMm']),
       cardsPerRow: serializer.fromJson<int?>(json['cardsPerRow']),
+      intentPlacement: serializer.fromJson<String>(json['intentPlacement']),
       updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
     );
   }
@@ -2299,6 +2321,7 @@ class UserSettingsTableData extends DataClass
       'customCardWidthMm': serializer.toJson<double>(customCardWidthMm),
       'customCardHeightMm': serializer.toJson<double>(customCardHeightMm),
       'cardsPerRow': serializer.toJson<int?>(cardsPerRow),
+      'intentPlacement': serializer.toJson<String>(intentPlacement),
       'updatedAt': serializer.toJson<DateTime>(updatedAt),
     };
   }
@@ -2317,6 +2340,7 @@ class UserSettingsTableData extends DataClass
           double? customCardWidthMm,
           double? customCardHeightMm,
           Value<int?> cardsPerRow = const Value.absent(),
+          String? intentPlacement,
           DateTime? updatedAt}) =>
       UserSettingsTableData(
         id: id ?? this.id,
@@ -2334,6 +2358,7 @@ class UserSettingsTableData extends DataClass
         customCardWidthMm: customCardWidthMm ?? this.customCardWidthMm,
         customCardHeightMm: customCardHeightMm ?? this.customCardHeightMm,
         cardsPerRow: cardsPerRow.present ? cardsPerRow.value : this.cardsPerRow,
+        intentPlacement: intentPlacement ?? this.intentPlacement,
         updatedAt: updatedAt ?? this.updatedAt,
       );
   UserSettingsTableData copyWithCompanion(UserSettingsTableCompanion data) {
@@ -2373,6 +2398,9 @@ class UserSettingsTableData extends DataClass
           : this.customCardHeightMm,
       cardsPerRow:
           data.cardsPerRow.present ? data.cardsPerRow.value : this.cardsPerRow,
+      intentPlacement: data.intentPlacement.present
+          ? data.intentPlacement.value
+          : this.intentPlacement,
       updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
     );
   }
@@ -2393,6 +2421,7 @@ class UserSettingsTableData extends DataClass
           ..write('customCardWidthMm: $customCardWidthMm, ')
           ..write('customCardHeightMm: $customCardHeightMm, ')
           ..write('cardsPerRow: $cardsPerRow, ')
+          ..write('intentPlacement: $intentPlacement, ')
           ..write('updatedAt: $updatedAt')
           ..write(')'))
         .toString();
@@ -2413,6 +2442,7 @@ class UserSettingsTableData extends DataClass
       customCardWidthMm,
       customCardHeightMm,
       cardsPerRow,
+      intentPlacement,
       updatedAt);
   @override
   bool operator ==(Object other) =>
@@ -2431,6 +2461,7 @@ class UserSettingsTableData extends DataClass
           other.customCardWidthMm == this.customCardWidthMm &&
           other.customCardHeightMm == this.customCardHeightMm &&
           other.cardsPerRow == this.cardsPerRow &&
+          other.intentPlacement == this.intentPlacement &&
           other.updatedAt == this.updatedAt);
 }
 
@@ -2449,6 +2480,7 @@ class UserSettingsTableCompanion
   final Value<double> customCardWidthMm;
   final Value<double> customCardHeightMm;
   final Value<int?> cardsPerRow;
+  final Value<String> intentPlacement;
   final Value<DateTime> updatedAt;
   const UserSettingsTableCompanion({
     this.id = const Value.absent(),
@@ -2464,6 +2496,7 @@ class UserSettingsTableCompanion
     this.customCardWidthMm = const Value.absent(),
     this.customCardHeightMm = const Value.absent(),
     this.cardsPerRow = const Value.absent(),
+    this.intentPlacement = const Value.absent(),
     this.updatedAt = const Value.absent(),
   });
   UserSettingsTableCompanion.insert({
@@ -2480,6 +2513,7 @@ class UserSettingsTableCompanion
     this.customCardWidthMm = const Value.absent(),
     this.customCardHeightMm = const Value.absent(),
     this.cardsPerRow = const Value.absent(),
+    this.intentPlacement = const Value.absent(),
     required DateTime updatedAt,
   }) : updatedAt = Value(updatedAt);
   static Insertable<UserSettingsTableData> custom({
@@ -2496,6 +2530,7 @@ class UserSettingsTableCompanion
     Expression<double>? customCardWidthMm,
     Expression<double>? customCardHeightMm,
     Expression<int>? cardsPerRow,
+    Expression<String>? intentPlacement,
     Expression<DateTime>? updatedAt,
   }) {
     return RawValuesInsertable({
@@ -2513,6 +2548,7 @@ class UserSettingsTableCompanion
       if (customCardHeightMm != null)
         'custom_card_height_mm': customCardHeightMm,
       if (cardsPerRow != null) 'cards_per_row': cardsPerRow,
+      if (intentPlacement != null) 'intent_placement': intentPlacement,
       if (updatedAt != null) 'updated_at': updatedAt,
     });
   }
@@ -2531,6 +2567,7 @@ class UserSettingsTableCompanion
       Value<double>? customCardWidthMm,
       Value<double>? customCardHeightMm,
       Value<int?>? cardsPerRow,
+      Value<String>? intentPlacement,
       Value<DateTime>? updatedAt}) {
     return UserSettingsTableCompanion(
       id: id ?? this.id,
@@ -2546,6 +2583,7 @@ class UserSettingsTableCompanion
       customCardWidthMm: customCardWidthMm ?? this.customCardWidthMm,
       customCardHeightMm: customCardHeightMm ?? this.customCardHeightMm,
       cardsPerRow: cardsPerRow ?? this.cardsPerRow,
+      intentPlacement: intentPlacement ?? this.intentPlacement,
       updatedAt: updatedAt ?? this.updatedAt,
     );
   }
@@ -2592,6 +2630,9 @@ class UserSettingsTableCompanion
     if (cardsPerRow.present) {
       map['cards_per_row'] = Variable<int>(cardsPerRow.value);
     }
+    if (intentPlacement.present) {
+      map['intent_placement'] = Variable<String>(intentPlacement.value);
+    }
     if (updatedAt.present) {
       map['updated_at'] = Variable<DateTime>(updatedAt.value);
     }
@@ -2614,6 +2655,7 @@ class UserSettingsTableCompanion
           ..write('customCardWidthMm: $customCardWidthMm, ')
           ..write('customCardHeightMm: $customCardHeightMm, ')
           ..write('cardsPerRow: $cardsPerRow, ')
+          ..write('intentPlacement: $intentPlacement, ')
           ..write('updatedAt: $updatedAt')
           ..write(')'))
         .toString();
@@ -4278,6 +4320,7 @@ typedef $$UserSettingsTableTableCreateCompanionBuilder
   Value<double> customCardWidthMm,
   Value<double> customCardHeightMm,
   Value<int?> cardsPerRow,
+  Value<String> intentPlacement,
   required DateTime updatedAt,
 });
 typedef $$UserSettingsTableTableUpdateCompanionBuilder
@@ -4295,6 +4338,7 @@ typedef $$UserSettingsTableTableUpdateCompanionBuilder
   Value<double> customCardWidthMm,
   Value<double> customCardHeightMm,
   Value<int?> cardsPerRow,
+  Value<String> intentPlacement,
   Value<DateTime> updatedAt,
 });
 
@@ -4353,6 +4397,10 @@ class $$UserSettingsTableTableFilterComposer
 
   ColumnFilters<int> get cardsPerRow => $composableBuilder(
       column: $table.cardsPerRow, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get intentPlacement => $composableBuilder(
+      column: $table.intentPlacement,
+      builder: (column) => ColumnFilters(column));
 
   ColumnFilters<DateTime> get updatedAt => $composableBuilder(
       column: $table.updatedAt, builder: (column) => ColumnFilters(column));
@@ -4416,6 +4464,10 @@ class $$UserSettingsTableTableOrderingComposer
   ColumnOrderings<int> get cardsPerRow => $composableBuilder(
       column: $table.cardsPerRow, builder: (column) => ColumnOrderings(column));
 
+  ColumnOrderings<String> get intentPlacement => $composableBuilder(
+      column: $table.intentPlacement,
+      builder: (column) => ColumnOrderings(column));
+
   ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
       column: $table.updatedAt, builder: (column) => ColumnOrderings(column));
 }
@@ -4468,6 +4520,9 @@ class $$UserSettingsTableTableAnnotationComposer
   GeneratedColumn<int> get cardsPerRow => $composableBuilder(
       column: $table.cardsPerRow, builder: (column) => column);
 
+  GeneratedColumn<String> get intentPlacement => $composableBuilder(
+      column: $table.intentPlacement, builder: (column) => column);
+
   GeneratedColumn<DateTime> get updatedAt =>
       $composableBuilder(column: $table.updatedAt, builder: (column) => column);
 }
@@ -4514,6 +4569,7 @@ class $$UserSettingsTableTableTableManager extends RootTableManager<
             Value<double> customCardWidthMm = const Value.absent(),
             Value<double> customCardHeightMm = const Value.absent(),
             Value<int?> cardsPerRow = const Value.absent(),
+            Value<String> intentPlacement = const Value.absent(),
             Value<DateTime> updatedAt = const Value.absent(),
           }) =>
               UserSettingsTableCompanion(
@@ -4530,6 +4586,7 @@ class $$UserSettingsTableTableTableManager extends RootTableManager<
             customCardWidthMm: customCardWidthMm,
             customCardHeightMm: customCardHeightMm,
             cardsPerRow: cardsPerRow,
+            intentPlacement: intentPlacement,
             updatedAt: updatedAt,
           ),
           createCompanionCallback: ({
@@ -4546,6 +4603,7 @@ class $$UserSettingsTableTableTableManager extends RootTableManager<
             Value<double> customCardWidthMm = const Value.absent(),
             Value<double> customCardHeightMm = const Value.absent(),
             Value<int?> cardsPerRow = const Value.absent(),
+            Value<String> intentPlacement = const Value.absent(),
             required DateTime updatedAt,
           }) =>
               UserSettingsTableCompanion.insert(
@@ -4562,6 +4620,7 @@ class $$UserSettingsTableTableTableManager extends RootTableManager<
             customCardWidthMm: customCardWidthMm,
             customCardHeightMm: customCardHeightMm,
             cardsPerRow: cardsPerRow,
+            intentPlacement: intentPlacement,
             updatedAt: updatedAt,
           ),
           withReferenceMapper: (p0) => p0

@@ -1,3 +1,4 @@
+import '../entities/intent_placement.dart';
 import '../entities/user_settings.dart';
 
 abstract class UserSettingsRepository {
@@ -14,4 +15,5 @@ abstract class UserSettingsRepository {
   Future<void> updateCardSizePreset(String presetName);
   Future<void> updateCustomCardSize(double widthMm, double heightMm);
   Future<void> updateCardsPerRow(int count);
+  Future<void> updateIntentPlacement(IntentPlacement value);
 }

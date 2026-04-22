@@ -2,6 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../reading/domain/entities/layout_type.dart';
 import 'card_size_preset.dart';
+import 'intent_placement.dart';
 
 part 'user_settings.freezed.dart';
 part 'user_settings.g.dart';
@@ -23,6 +24,7 @@ class UserSettings with _$UserSettings {
     @Default(CardSizePreset.standardTarot) CardSizePreset cardSizePreset,
     @Default(70.0) double customCardWidthMm,
     @Default(120.0) double customCardHeightMm,
+    @Default(IntentPlacement.beforeShuffle) IntentPlacement intentPlacement,
     required DateTime updatedAt,
   }) = _UserSettings;
 

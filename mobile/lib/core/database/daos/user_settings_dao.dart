@@ -46,6 +46,17 @@ class UserSettingsDao extends DatabaseAccessor<AppDatabase>
     ));
   }
 
+  /// 의도 입력 배치 설정 업데이트. [value]는 IntentPlacement.name (e.g. 'beforeShuffle').
+  Future<void> updateIntentPlacement(String value) async {
+    await _ensureDefaultRow();
+    await (update(userSettingsTable)
+          ..where((s) => s.id.equals(1)))
+        .write(UserSettingsTableCompanion(
+      intentPlacement: Value(value),
+      updatedAt: Value(DateTime.now()),
+    ));
+  }
+
   Future<void> _ensureDefaultRow() async {
     final exists = await (select(userSettingsTable)
           ..where((s) => s.id.equals(1)))
