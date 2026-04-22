@@ -30,8 +30,10 @@ impl_commits: ["bb52950", "ae72da3", "42e5339"]
 ### beforeShuffle (기본값)
 
 셔플 직전 `IntentionPage` 전체 화면이 표시된다. 사용자는 텍스트 필드에 의도/질문을 입력하고
-"셔플 시작" 버튼을 누른다. 입력값은 `readingQuestionProvider`에 저장되어 결과 화면의 `_autoSave`
-시점에 `reading.question`으로 기록된다. 기존 동작과 동일하여 기존 사용자 회귀가 없다.
+"셔플 시작" 버튼을 누른다. 입력값은 `readingQuestionProvider`에 저장되고, Lv3/4 경로에서는
+`AnimatedDrawPage` 또는 `DrawResultPage`의 `_autoSave` 시점에 provider 값이 `reading.question`으로
+기록된다. Lv1(즉시) 경로에는 `beforeShuffle` 분기 진입 자체가 없어 해당 단계가 skip된다.
+기존 동작과 동일하여 기존 사용자 회귀가 없다.
 
 ### afterDraw
 
