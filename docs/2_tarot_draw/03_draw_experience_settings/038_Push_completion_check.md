@@ -85,3 +85,27 @@ Total 8 commits. Sequential history clean.
 
 ## Next: retro
 - 파이프라인 실행의 구조적 교훈 정리 (agent timeout × 2, cycle 5 test infra limitation, docs restructure folder path stale)
+
+---
+
+## Session Log (auto-appended)
+
+| # | Type | Duration | Tokens |
+|---|------|----------|--------|
+| 1 | user-ai-exchange | 0s | 0 |
+| 2 | user-ai-exchange | 451s | 935162 |
+| 3 | user-ai-exchange | 1554s | 4275267 |
+| 4 | user-ai-exchange | 49s | 210710 |
+| 5 | user-ai-exchange | 324s | 1007077 |
+| 6 | user-ai-exchange | 38s | 257096 |
+| 7 | user-ai-exchange | 13870s | 44328177 |
+### Metrics
+
+| Metric | Value |
+|--------|-------|
+| Duration | 45970s |
+| Total Tokens | 51013489 |
+| Input Tokens | 323 |
+| Output Tokens | 236235 |
+| Cache Read | 50002312 |
+| Cache Creation | 774619 |

@@ -101,3 +101,27 @@ Per Plan 034 § 4, 스크린샷은 user-managed Android emulator 를 요구한�
 
 ## Tail Chain Readiness
 impl cycles 6/6 완료. 다음 단계: `[tail] eval → qualify → push → retro`
+
+---
+
+## Session Log (auto-appended)
+
+| # | Type | Duration | Tokens |
+|---|------|----------|--------|
+| 1 | user-ai-exchange | 0s | 0 |
+| 2 | user-ai-exchange | 451s | 935162 |
+| 3 | user-ai-exchange | 1554s | 4275267 |
+| 4 | user-ai-exchange | 49s | 210710 |
+| 5 | user-ai-exchange | 324s | 1007077 |
+| 6 | user-ai-exchange | 38s | 257096 |
+| 7 | user-ai-exchange | 13870s | 44328177 |
+### Metrics
+
+| Metric | Value |
+|--------|-------|
+| Duration | 45970s |
+| Total Tokens | 51013489 |
+| Input Tokens | 323 |
+| Output Tokens | 236235 |
+| Cache Read | 50002312 |
+| Cache Creation | 774619 |

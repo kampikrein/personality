@@ -1,0 +1,28 @@
+  Generating the build script.
+  Compiling the build script.
+  Reading the asset graph.
+  Creating the asset graph.
+  Doing initial build cleanup.
+  Deleting 27 declared outputs which already existed on disk.
+  Updating the asset graph.
+  Building, full build because builders changed.
+  0s riverpod_generator on 86 inputs; lib/core/database/app_database.dart
+W SDK language version 3.11.0 is newer than `analyzer` language version 3.9.0. Run `flutter packages upgrade`.
+  4s riverpod_generator on 86 inputs: 1 no-op; spent 3s sdk; lib/core/database/converters/card_meanings_converter.dart
+  10s riverpod_generator on 86 inputs: 2 output, 17 no-op; spent 6s analyzing, 3s sdk, 1s resolving; lib/core/router/main_shell.dart
+  10s riverpod_generator on 86 inputs: 8 output, 78 no-op; spent 6s analyzing, 3s sdk, 1s resolving
+  0s freezed on 86 inputs; lib/core/database/app_database.dart
+  0s freezed on 86 inputs: 2 output, 5 same, 79 no-op
+  0s json_serializable on 172 inputs; lib/core/database/app_database.dart
+  1s json_serializable on 172 inputs: 28 skipped, 3 output, 32 no-op; lib/features/draw/presentation/pages/draw_result_page.freezed.dart
+  2s json_serializable on 172 inputs: 57 skipped, 7 output, 65 no-op; spent 1s analyzing; lib/features/shuffle/presentation/game/hand_animation_component.freezed.dart
+  3s json_serializable on 172 inputs: 79 skipped, 7 output, 86 no-op; spent 2s analyzing
+  0s drift_dev on 688 inputs; lib/core/database/app_database.dart
+  0s drift_dev on 688 inputs: 34 skipped, 42 output; lib/features/reading/domain/entities/reflective_prompts.dart
+  1s drift_dev on 688 inputs: 406 skipped, 179 output, 103 no-op
+  0s source_gen:combining_builder on 344 inputs; lib/core/database/app_database.dart
+  0s source_gen:combining_builder on 344 inputs: 221 skipped, 20 output, 68 no-op; test/features/draw/animated_draw_reduced_test.dart.types.temp.dart
+  0s source_gen:combining_builder on 344 inputs: 248 skipped, 20 output, 76 no-op
+  Running the post build.
+  Writing the asset graph.
+  Built with build_runner in 15s; wrote 224 outputs.
