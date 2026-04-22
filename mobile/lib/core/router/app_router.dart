@@ -11,6 +11,7 @@ import '../../features/profile/presentation/pages/profile_page.dart';
 import '../../features/reading/presentation/pages/reading_detail_page.dart';
 import '../../features/reading/presentation/pages/reading_list_page.dart';
 import '../../features/settings/presentation/pages/card_size_settings_page.dart';
+import '../../features/settings/presentation/pages/intent_placement_settings_page.dart';
 import '../../features/settings/presentation/pages/settings_page.dart';
 import '../../features/shuffle/domain/entities/shuffle_mode.dart';
 import '../../features/shuffle/presentation/pages/intention_page.dart';
@@ -166,6 +167,13 @@ GoRouter appRouter(AppRouterRef ref) {
         pageBuilder: (context, state) => _fadePage(
             key: state.pageKey,
             child: const CardSizeSettingsPage()),
+      ),
+      GoRoute(
+        path: '/settings/intent-placement',
+        name: 'intent-placement-settings',
+        pageBuilder: (context, state) => _fadePage(
+            key: state.pageKey,
+            child: const IntentPlacementSettingsPage()),
       ),
     ],
   );

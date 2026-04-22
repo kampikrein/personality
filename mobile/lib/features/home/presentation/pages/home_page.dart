@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../deck/presentation/providers/deck_providers.dart';
 import '../../../reading/domain/entities/layout_type.dart';
+import '../../../settings/domain/entities/intent_placement.dart';
 import '../../../settings/domain/entities/user_settings.dart';
 import '../../../settings/domain/repositories/user_settings_repository.dart';
 import '../../../settings/presentation/providers/settings_providers.dart';
@@ -651,6 +652,45 @@ class _DrawSettingsPanelState extends ConsumerState<_DrawSettingsPanel> {
                   const Spacer(),
                   Text(
                     settings?.cardSizePreset.label ?? '표준 타로',
+                    style: const TextStyle(
+                      color: _textSecondary,
+                      fontSize: 12,
+                    ),
+                  ),
+                  const SizedBox(width: 4),
+                  Icon(
+                    Icons.chevron_right,
+                    size: 16,
+                    color: _textSecondary.withValues(alpha: 0.5),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          _GoldHairline(opacity: 0.1),
+
+          // ── 의도 입력 (별도 페이지 진입) ──
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: GestureDetector(
+              onTap: () => context.push('/settings/intent-placement'),
+              child: Row(
+                children: [
+                  Icon(Icons.psychology_outlined,
+                      size: 14, color: _textSecondary),
+                  const SizedBox(width: 8),
+                  const Text(
+                    '의도 입력',
+                    style: TextStyle(
+                      color: _textSecondary,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w500,
+                      letterSpacing: 0.5,
+                    ),
+                  ),
+                  const Spacer(),
+                  Text(
+                    settings?.intentPlacement.shortLabel ?? '뽑기 전',
                     style: const TextStyle(
                       color: _textSecondary,
                       fontSize: 12,
