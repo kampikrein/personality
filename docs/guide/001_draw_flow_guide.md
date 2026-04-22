@@ -115,7 +115,7 @@ flowchart TD
 
 | 모드 | 1단계: 초기 저장 (`_autoSave`) | 2단계: question 갱신 | 최종 reading.question |
 |------|------------------------------|--------------------|--------------------|
-| `beforeShuffle` | 카드 공개 직후, `_questionController.text` = readingQuestionProvider 값 | 없음 | IntentionPage 입력값 |
+| `beforeShuffle` | 카드 공개 직후, `_autoSave`는 `_questionController.text`를 `question`으로 사용. DrawResultPage 경로에서 `_questionController`는 비어있으므로 reading.question은 null. IntentionPage 입력값은 `readingQuestionProvider`에 유지되며 Lv3/4의 AnimatedDrawPage 경로에서 저장된다 | 없음 | AnimatedDrawPage 경유 시 IntentionPage 입력값, 그 외 null |
 | `afterDraw` | 카드 공개 직후, `question = null` (readingQuestionProvider는 빈 문자열) | 사용자가 토글 열고 텍스트 submit → `readingRepository.updateQuestion(readingId, text)` | 사용자 입력값 (미입력 시 null) |
 | `disabled` | 카드 공개 직후, `question = null` | 없음 | 항상 null |
 
