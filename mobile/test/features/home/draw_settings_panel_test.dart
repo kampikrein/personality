@@ -40,6 +40,7 @@ import 'package:personality_mobile/features/deck/presentation/providers/deck_pro
 import 'package:personality_mobile/features/home/presentation/pages/home_page.dart';
 import 'package:personality_mobile/features/reading/domain/entities/layout_type.dart';
 import 'package:personality_mobile/features/settings/domain/entities/card_size_preset.dart';
+import 'package:personality_mobile/features/settings/domain/entities/intent_placement.dart';
 import 'package:personality_mobile/features/settings/domain/entities/user_settings.dart';
 import 'package:personality_mobile/features/settings/domain/repositories/user_settings_repository.dart';
 import 'package:personality_mobile/features/settings/presentation/providers/settings_providers.dart';
@@ -127,6 +128,9 @@ class _FakeSettingsRepo implements UserSettingsRepository {
     updatedCardsPerRow.add(count);
     _current = _current.copyWith(cardsPerRow: count);
   }
+
+  @override
+  Future<void> updateIntentPlacement(IntentPlacement value) async {}
 }
 
 UserSettings _seedSettings({
