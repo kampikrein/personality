@@ -7,6 +7,7 @@ abstract class ReadingRepository {
   Future<void> saveReading(Reading reading);
   Future<void> deleteReading(String id);
   Future<void> updateNotes(String readingId, String? notes);
+  Future<void> updateQuestion(String readingId, String? question);
   Future<void> addDrawnCard(String readingId, DrawnCardInfo card, DateTime createdAt);
   Stream<List<Reading>> watchReadingsBySpreadType(LayoutType spreadType);
   Future<Reading?> getReadingById(String id);

@@ -51,6 +51,16 @@ class ReadingDao extends DatabaseAccessor<AppDatabase> with _$ReadingDaoMixin {
     );
   }
 
+  /// 리딩의 question 필드 업데이트 (afterDraw 모드에서 결과 화면 입력 시 호출).
+  Future<void> updateQuestion(String readingId, String? question) async {
+    await (update(readings)..where((r) => r.id.equals(readingId))).write(
+      ReadingsCompanion(
+        question: Value(question),
+        updatedAt: Value(DateTime.now()),
+      ),
+    );
+  }
+
   /// 리딩에 drawn card 1장 추가. "+1 한 장 더" 기능용.
   Future<void> addDrawnCard(DrawnCardsCompanion card) async {
     await into(drawnCards).insert(card);

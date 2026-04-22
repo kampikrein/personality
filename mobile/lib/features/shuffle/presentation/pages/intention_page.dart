@@ -8,6 +8,9 @@ import '../../../../core/dev_tuner/tunable_var.dart';
 import '../../../../core/dev_tuner/tuner_registry.dart';
 import '../../../../core/widgets/mystical_scaffold.dart';
 import '../../domain/entities/shuffle_mode.dart';
+import '../../../settings/domain/entities/intent_placement.dart';
+import '../../../settings/domain/entities/user_settings.dart';
+import '../../../settings/presentation/providers/settings_providers.dart';
 
 part 'intention_page.g.dart';
 
@@ -39,15 +42,28 @@ class IntentionPage extends ConsumerStatefulWidget {
 
 class _IntentionPageState extends ConsumerState<IntentionPage> {
   final _controller = TextEditingController();
+  bool _shouldRedirect = false;
+  bool _redirectChecked = false;
 
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (mounted) {
-        ref.read(readingQuestionProvider.notifier).clear();
-      }
+      if (!mounted) return;
+      ref.read(readingQuestionProvider.notifier).clear();
     });
+  }
+
+  void _maybeRedirect(IntentPlacement placement) {
+    if (!mounted) return;
+    if (placement != IntentPlacement.beforeShuffle) {
+      setState(() => _shouldRedirect = true);
+      context.pushReplacementNamed(
+        'shuffle',
+        pathParameters: {'deckId': widget.deckId},
+        queryParameters: {'mode': widget.mode.code},
+      );
+    }
   }
 
   @override
@@ -58,6 +74,24 @@ class _IntentionPageState extends ConsumerState<IntentionPage> {
 
   @override
   Widget build(BuildContext context) {
+    if (_shouldRedirect) return const SizedBox.shrink();
+
+    final settingsAsync = ref.watch(userSettingsProvider);
+
+    // Evaluate redirect once: when data first becomes available.
+    if (!_redirectChecked) {
+      settingsAsync.whenData((settings) {
+        _redirectChecked = true;
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          _maybeRedirect(settings.intentPlacement);
+        });
+      });
+    }
+
+    if (settingsAsync.isLoading && settingsAsync.valueOrNull == null) {
+      return const Scaffold(body: Center(child: SizedBox.shrink()));
+    }
+
     if (kDebugMode) {
       ref.read(devTunerRegistryProvider).registerIfAbsent('intention', [
         TunableDouble(label: 'iconSize', provider: intentionIconSizeProvider, min: 32, max: 72, step: 4),

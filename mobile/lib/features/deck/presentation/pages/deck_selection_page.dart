@@ -8,6 +8,9 @@ import '../../../../core/dev_tuner/tuner_registry.dart';
 import '../../../../core/widgets/mystical_scaffold.dart';
 import '../../domain/entities/deck_metadata.dart';
 import '../providers/deck_providers.dart';
+import '../../../settings/domain/entities/intent_placement.dart';
+import '../../../settings/presentation/providers/settings_providers.dart';
+import '../../../shuffle/domain/entities/shuffle_mode.dart';
 
 // ── Dev Tuner 변수 ──
 final deckListPaddingProvider = StateProvider<double>((ref) => 16);
@@ -40,10 +43,21 @@ class DeckSelectionPage extends ConsumerWidget {
               deck: deck,
               onTap: () {
                 ref.read(selectedDeckProvider.notifier).select(deck);
-                context.pushNamed(
-                  'intention',
-                  pathParameters: {'deckId': deck.id},
-                );
+                final intentPlacement =
+                    ref.read(userSettingsProvider).valueOrNull?.intentPlacement ??
+                        IntentPlacement.beforeShuffle;
+                if (intentPlacement == IntentPlacement.beforeShuffle) {
+                  context.pushNamed(
+                    'intention',
+                    pathParameters: {'deckId': deck.id},
+                  );
+                } else {
+                  context.pushNamed(
+                    'shuffle',
+                    pathParameters: {'deckId': deck.id},
+                    queryParameters: {'mode': ShuffleMode.perspective.code},
+                  );
+                }
               },
             );
           },

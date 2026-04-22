@@ -73,23 +73,43 @@ class _HomePageState extends ConsumerState<HomePage>
   }
 
   void _startDraw(int experienceLevel, String deckId) {
+    final intentPlacement =
+        ref.read(userSettingsProvider).valueOrNull?.intentPlacement ??
+            IntentPlacement.beforeShuffle;
+
     switch (experienceLevel) {
       case 1:
         context.push('/draw/result');
       case 2:
         context.push('/draw/animated');
       case 3:
-        context.pushNamed(
-          'intention',
-          pathParameters: {'deckId': deckId},
-          queryParameters: {'mode': ShuffleMode.flat.code},
-        );
+        if (intentPlacement == IntentPlacement.beforeShuffle) {
+          context.pushNamed(
+            'intention',
+            pathParameters: {'deckId': deckId},
+            queryParameters: {'mode': ShuffleMode.flat.code},
+          );
+        } else {
+          context.pushNamed(
+            'shuffle',
+            pathParameters: {'deckId': deckId},
+            queryParameters: {'mode': ShuffleMode.flat.code},
+          );
+        }
       case 4:
-        context.pushNamed(
-          'intention',
-          pathParameters: {'deckId': deckId},
-          queryParameters: {'mode': ShuffleMode.perspective.code},
-        );
+        if (intentPlacement == IntentPlacement.beforeShuffle) {
+          context.pushNamed(
+            'intention',
+            pathParameters: {'deckId': deckId},
+            queryParameters: {'mode': ShuffleMode.perspective.code},
+          );
+        } else {
+          context.pushNamed(
+            'shuffle',
+            pathParameters: {'deckId': deckId},
+            queryParameters: {'mode': ShuffleMode.perspective.code},
+          );
+        }
       default:
         context.push('/draw/result');
     }

@@ -60,6 +60,11 @@ class ReadingRepositoryImpl implements ReadingRepository {
   }
 
   @override
+  Future<void> updateQuestion(String readingId, String? question) async {
+    await db.readingDao.updateQuestion(readingId, question);
+  }
+
+  @override
   Future<void> addDrawnCard(
     String readingId, domain.DrawnCardInfo card, DateTime createdAt,
   ) async {

@@ -8,6 +8,7 @@ import '../../../reading/domain/entities/reading.dart';
 import '../../../reading/domain/entities/layout_type.dart';
 import '../../../reading/presentation/providers/reading_providers.dart';
 import '../../../reading/presentation/widgets/spread_layout.dart';
+import '../../../settings/domain/entities/intent_placement.dart';
 import '../../../settings/presentation/providers/settings_providers.dart';
 import '../../../shuffle/domain/entities/shuffle_config.dart';
 import '../../../shuffle/domain/entities/shuffle_result.dart';
@@ -131,7 +132,11 @@ class _DrawResultPageState extends ConsumerState<DrawResultPage> {
 
   void _updateQuestion() {
     if (_savedReadingId == null) return;
-    ref.read(readingQuestionProvider.notifier).set(_questionController.text);
+    final text = _questionController.text;
+    ref.read(readingRepositoryProvider).updateQuestion(
+      _savedReadingId!,
+      text.isEmpty ? null : text,
+    );
   }
 
   @override
@@ -157,6 +162,8 @@ class _DrawResultPageState extends ConsumerState<DrawResultPage> {
     }
 
     final drawnCards = _shuffleResult!.cards.take(_currentCardCount).toList();
+    final intentPlacement = ref.watch(userSettingsProvider).valueOrNull?.intentPlacement
+        ?? IntentPlacement.beforeShuffle;
 
     return MysticalScaffold(
       appBar: AppBar(
@@ -172,38 +179,40 @@ class _DrawResultPageState extends ConsumerState<DrawResultPage> {
       ),
       body: Column(
         children: [
-          // ── 질문 입력 토글 ──
-          Padding(
-            padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
-            child: GestureDetector(
-              onTap: () => setState(() => _questionExpanded = !_questionExpanded),
-              child: Row(
-                children: [
-                  Icon(
-                    _questionExpanded ? Icons.expand_less : Icons.expand_more,
-                    size: 18,
-                    color: kGold.withValues(alpha: 0.7),
-                  ),
-                  const SizedBox(width: 4),
-                  Text(
-                    '질문이 있으신가요? (선택)',
-                    style: TextStyle(color: kTextSecondary.withValues(alpha: 0.8), fontSize: 12),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          if (_questionExpanded)
+          // ── 질문 입력 토글 (afterDraw 모드 전용) ──
+          if (intentPlacement == IntentPlacement.afterDraw) ...[
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
-              child: TextField(
-                controller: _questionController,
-                decoration: mysticalInputDecoration(hintText: '이 뽑기에 대한 질문...', isDense: true),
-                style: const TextStyle(color: kTextPrimary, fontSize: 13),
-                maxLines: 1,
-                onSubmitted: (_) => _updateQuestion(),
+              child: GestureDetector(
+                onTap: () => setState(() => _questionExpanded = !_questionExpanded),
+                child: Row(
+                  children: [
+                    Icon(
+                      _questionExpanded ? Icons.expand_less : Icons.expand_more,
+                      size: 18,
+                      color: kGold.withValues(alpha: 0.7),
+                    ),
+                    const SizedBox(width: 4),
+                    Text(
+                      '질문이 있으신가요? (선택)',
+                      style: TextStyle(color: kTextSecondary.withValues(alpha: 0.8), fontSize: 12),
+                    ),
+                  ],
+                ),
               ),
             ),
+            if (_questionExpanded)
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
+                child: TextField(
+                  controller: _questionController,
+                  decoration: mysticalInputDecoration(hintText: '이 뽑기에 대한 질문...', isDense: true),
+                  style: const TextStyle(color: kTextPrimary, fontSize: 13),
+                  maxLines: 1,
+                  onSubmitted: (_) => _updateQuestion(),
+                ),
+              ),
+          ],
 
           // ── 스프레드 레이아웃 ──
           Expanded(
