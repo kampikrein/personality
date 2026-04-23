@@ -128,3 +128,29 @@ if (intentPlacement == IntentPlacement.afterDraw) ...[
 없음 — 모든 4개 파일이 컴파일 성공, 올바른 이유로 RED.
 
 T1/T2는 fake 내부에서 GREEN이지만 인터페이스 부재로 `@override` warning이 발생 — 이것이 Cycle 3 구현의 첫 번째 타깃. 인터페이스에 추가 후 `ReadingRepositoryImpl`에도 실제 Drift 쿼리 구현이 필요함.
+
+---
+
+## Session Log (auto-appended)
+
+| # | Type | Duration | Tokens |
+|---|------|----------|--------|
+| 1 | user-ai-exchange | 0s | 0 |
+| 2 | user-ai-exchange | 0s | 0 |
+| 3 | user-ai-exchange | 0s | 0 |
+| 4 | user-ai-exchange | 0s | 0 |
+| 5 | user-ai-exchange | 0s | 0 |
+| 6 | user-ai-exchange | 0s | 0 |
+| 7 | user-ai-exchange | 196s | 462019 |
+| 8 | user-ai-exchange | 105088s | 8988850 |
+| 9 | user-ai-exchange | 196s | 2025463 |
+### Metrics
+
+| Metric | Value |
+|--------|-------|
+| Duration | 112172s |
+| Total Tokens | 11476332 |
+| Input Tokens | 197 |
+| Output Tokens | 70885 |
+| Cache Read | 10450461 |
+| Cache Creation | 954789 |

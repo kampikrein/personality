@@ -118,3 +118,29 @@ Brief Criterion #10 "3모드의 라우트/상태/저장 시점을 한 페이지�
 **verdict: PASS**
 
 6개 체크 모두 통과. 소경미결함 1건(Section 2 beforeShuffle 단락의 `readingQuestionProvider → _autoSave 복사` 표현 부정확)은 실제 동작에 영향 없으며 일줄 수정으로 해소 가능. 파이프라인 DONE 처리 적합.
+
+---
+
+## Session Log (auto-appended)
+
+| # | Type | Duration | Tokens |
+|---|------|----------|--------|
+| 1 | user-ai-exchange | 0s | 0 |
+| 2 | user-ai-exchange | 0s | 0 |
+| 3 | user-ai-exchange | 0s | 0 |
+| 4 | user-ai-exchange | 0s | 0 |
+| 5 | user-ai-exchange | 0s | 0 |
+| 6 | user-ai-exchange | 0s | 0 |
+| 7 | user-ai-exchange | 196s | 462019 |
+| 8 | user-ai-exchange | 105088s | 8988850 |
+| 9 | user-ai-exchange | 196s | 2025463 |
+### Metrics
+
+| Metric | Value |
+|--------|-------|
+| Duration | 112172s |
+| Total Tokens | 11476332 |
+| Input Tokens | 197 |
+| Output Tokens | 70885 |
+| Cache Read | 10450461 |
+| Cache Creation | 954789 |

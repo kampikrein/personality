@@ -83,3 +83,29 @@ Push 비적용:
 - Checkpoint 기준: guide doc Section 2 문구 교정 1건 후 commit.
 - 재검증: push 내부 writer round만으로 충분 (verify 재실행 불필요, 코드 변경 0).
 - 종료 조건: aggregate_score 92 → 95+ 상향 (directional #10: 4→5).
+
+---
+
+## Session Log (auto-appended)
+
+| # | Type | Duration | Tokens |
+|---|------|----------|--------|
+| 1 | user-ai-exchange | 0s | 0 |
+| 2 | user-ai-exchange | 0s | 0 |
+| 3 | user-ai-exchange | 0s | 0 |
+| 4 | user-ai-exchange | 0s | 0 |
+| 5 | user-ai-exchange | 0s | 0 |
+| 6 | user-ai-exchange | 0s | 0 |
+| 7 | user-ai-exchange | 196s | 462019 |
+| 8 | user-ai-exchange | 105088s | 8988850 |
+| 9 | user-ai-exchange | 196s | 2025463 |
+### Metrics
+
+| Metric | Value |
+|--------|-------|
+| Duration | 112172s |
+| Total Tokens | 11476332 |
+| Input Tokens | 197 |
+| Output Tokens | 70885 |
+| Cache Read | 10450461 |
+| Cache Creation | 954789 |

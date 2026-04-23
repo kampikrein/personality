@@ -100,3 +100,29 @@ Brief `040_Brief_intent_placement_setting.md` Decision #2, #3과 완전 일치:
 ## 요약
 
 Cycle 1 데이터 레이어 구현 완료. 15개 신규 테스트 전부 통과, 전체 스위트에 신규 회귀 없음. 6개 기존 실패는 layout_redesign 파이프라인 범위(migration_v7_to_v8, draw_settings_panel T2/T4)로 Cycle 1과 무관하다.
+
+---
+
+## Session Log (auto-appended)
+
+| # | Type | Duration | Tokens |
+|---|------|----------|--------|
+| 1 | user-ai-exchange | 0s | 0 |
+| 2 | user-ai-exchange | 0s | 0 |
+| 3 | user-ai-exchange | 0s | 0 |
+| 4 | user-ai-exchange | 0s | 0 |
+| 5 | user-ai-exchange | 0s | 0 |
+| 6 | user-ai-exchange | 0s | 0 |
+| 7 | user-ai-exchange | 196s | 462019 |
+| 8 | user-ai-exchange | 105088s | 8988850 |
+| 9 | user-ai-exchange | 196s | 2025463 |
+### Metrics
+
+| Metric | Value |
+|--------|-------|
+| Duration | 112172s |
+| Total Tokens | 11476332 |
+| Input Tokens | 197 |
+| Output Tokens | 70885 |
+| Cache Read | 10450461 |
+| Cache Creation | 954789 |

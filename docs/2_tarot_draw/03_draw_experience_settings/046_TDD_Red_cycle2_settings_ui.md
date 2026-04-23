@@ -99,3 +99,29 @@ T5: The finder "Found 0 widgets with text "의도 입력"" could not find any ma
    - `context.push('/settings/intent-placement')` 호출
 3. `mobile/lib/core/router/app_router.dart`
    - `GoRoute(path: '/settings/intent-placement', ...)` 등록
+
+---
+
+## Session Log (auto-appended)
+
+| # | Type | Duration | Tokens |
+|---|------|----------|--------|
+| 1 | user-ai-exchange | 0s | 0 |
+| 2 | user-ai-exchange | 0s | 0 |
+| 3 | user-ai-exchange | 0s | 0 |
+| 4 | user-ai-exchange | 0s | 0 |
+| 5 | user-ai-exchange | 0s | 0 |
+| 6 | user-ai-exchange | 0s | 0 |
+| 7 | user-ai-exchange | 196s | 462019 |
+| 8 | user-ai-exchange | 105088s | 8988850 |
+| 9 | user-ai-exchange | 196s | 2025463 |
+### Metrics
+
+| Metric | Value |
+|--------|-------|
+| Duration | 112172s |
+| Total Tokens | 11476332 |
+| Input Tokens | 197 |
+| Output Tokens | 70885 |
+| Cache Read | 10450461 |
+| Cache Creation | 954789 |
