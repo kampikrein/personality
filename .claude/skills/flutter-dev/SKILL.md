@@ -81,31 +81,35 @@ Claude Code가 `flutter run`을 조작하기 위한 **observable** 방식이 기
 
 **전제:** `tmux`가 설치되어 있어야 함 (`brew install tmux`). 사용자가 tmux 안에서 작업 중이어야 한다.
 
-**Steps (observable — 사용자 세션에 window 추가):**
+**Steps (observable — 사용자 active window에 pane split):**
+
+사용자의 현재 window에 **pane을 split**해서 flutter run을 나란히 표시한다.
+`new-window` (full-screen 전환식 탭)보다 `split-window` (동시 표시) 방식이 **관찰 가능성이 높다** — 사용자가 작업 pane과 flutter 로그 pane을 동시에 본다.
 
 1. ADB 디바이스 확인 (status Step 1 동일)
-2. 사용자가 attached된 세션 ID 탐지
+2. 사용자가 attached된 세션과 현재 window·pane 탐지
    ```bash
    SESSION=$(tmux list-clients -F '#S' | head -1)
+   WINDOW_PANE=$(tmux display-message -p -t "$SESSION" '#{window_index}.#{pane_index}')
+   TARGET_WIN="$SESSION:${WINDOW_PANE%.*}"
    ```
-   - 비어있으면 사용자가 tmux 바깥이므로 **hidden fallback** (아래) 사용.
-3. 기존 flutter window 정리 (idempotent)
-   ```bash
-   tmux kill-window -t "$SESSION:flutter" 2>/dev/null || true
-   ```
-4. 세션에 flutter window 추가 (`-d`로 사용자의 active window 보존)
+   - 비어있으면 **hidden fallback** (아래) 사용.
+3. 세션에 flutter split pane 추가 (`-d`로 포커스 유지, `-h`로 좌우 분할)
    ```bash
    DEVICE_ID=$($ANDROID_HOME/platform-tools/adb devices | awk 'NR>1 && $2=="device"{print $1; exit}')
-   tmux new-window -d -t "$SESSION:" -n flutter \
+   NEW_PANE=$(tmux split-window -d -h -P -F '#{pane_id}' \
+     -t "$TARGET_WIN" \
      -c /Users/kampikrein/A/personality/mobile \
-     "flutter run -d $DEVICE_ID; exec zsh"
+     "flutter run -d $DEVICE_ID; exec zsh")
+   echo "flutter pane = $NEW_PANE"  # e.g. %75
    ```
-   - 끝에 `exec zsh`를 붙여, flutter run 종료돼도 window가 즉시 닫히지 않도록 한다.
-5. 빌드 완료 폴링 (최대 150초, 5초 간격)
+   - `-P -F '#{pane_id}'`로 새 pane id를 캡처 → 이후 조작 target. pane index는 휘발하지만 pane-id(`%75`)는 pane 수명 동안 안정.
+   - 끝에 `exec zsh`를 붙여 flutter run 종료돼도 pane이 닫히지 않도록 한다.
+4. 빌드 완료 폴링 (최대 150초, 5초 간격)
    ```bash
    for i in $(seq 1 30); do
      sleep 5
-     OUT=$(tmux capture-pane -p -t "$SESSION:flutter.0" -S -300)
+     OUT=$(tmux capture-pane -p -t "$NEW_PANE" -S -300)
      if echo "$OUT" | grep -qE "Flutter run key commands"; then
        echo "flutter run ready"
        break
@@ -116,9 +120,13 @@ Claude Code가 `flutter run`을 조작하기 위한 **observable** 방식이 기
      fi
    done
    ```
-6. 사용자 안내: "세션 `$SESSION` window `flutter`에 flutter run이 떠있습니다. `Ctrl-b n` 또는 `Ctrl-b <window_index>`로 전환해 실시간 로그를 보실 수 있습니다. `/flutter-dev reload|restart|stop`으로 조작합니다."
+5. pane-id를 파일에 기록 (다음 Bash 호출에서 재사용)
+   ```bash
+   echo "$NEW_PANE" > /Users/kampikrein/A/personality/mobile/tmp/.flutter_pane
+   ```
+6. 사용자 안내: "현재 window 옆에 flutter pane이 split됐습니다. `Ctrl-b ←/→`로 pane 포커스 이동, `Ctrl-b z`로 해당 pane 확대 토글. `/flutter-dev reload|restart|stop`으로 조작합니다."
 
-**이후 조작의 target 규약**: 이 모드에서는 reload/restart/stop 서브커맨드가 `-t "$SESSION:flutter"`를 사용한다. `$SESSION`은 셸 호출 간 휘발되므로 매번 `tmux list-clients -F '#S' | head -1`로 재탐지한다.
+**이후 조작의 target 규약**: reload/restart/stop은 `/tmp/.flutter_pane`에 저장된 pane-id(`%75`)를 읽어 `tmux send-keys -t "$(cat …/.flutter_pane)"`로 전송한다. pane-id는 pane 수명 동안 불변이므로 window·pane index가 재배치돼도 target이 무너지지 않는다.
 
 ---
 
@@ -144,14 +152,14 @@ tmux send-keys -t flutter_dev "/opt/homebrew/bin/flutter run -d $DEVICE_ID" Ente
 
 ## reload
 
-tmux의 flutter run에 hot reload 키(`r`)를 전달. **observable 모드** 기준 target은 `<user_session>:flutter`.
+tmux의 flutter run pane에 hot reload 키(`r`)를 전달. **observable 모드**에서는 pane-id를 파일에서 읽는다.
 
 ```bash
-TARGET=$(tmux list-clients -F '#S' | head -1):flutter  # observable
+TARGET=$(cat /Users/kampikrein/A/personality/mobile/tmp/.flutter_pane)  # observable (%75 등)
 # fallback: TARGET=flutter_dev
 tmux send-keys -t "$TARGET" 'r'
 sleep 1
-tmux capture-pane -p -t "$TARGET.0" -S -40 | tail -20
+tmux capture-pane -p -t "$TARGET" -S -40 | tail -20
 ```
 
 **주의:** `r` 뒤에 `Enter`를 붙이지 않는다. flutter run은 단일 문자 키 이벤트를 읽으므로 Enter를 붙이면 무응답.
@@ -165,10 +173,10 @@ tmux capture-pane -p -t "$TARGET.0" -S -40 | tail -20
 hot restart 키(`R`). state를 리셋하고 앱 로직을 재시작.
 
 ```bash
-TARGET=$(tmux list-clients -F '#S' | head -1):flutter
+TARGET=$(cat /Users/kampikrein/A/personality/mobile/tmp/.flutter_pane)
 tmux send-keys -t "$TARGET" 'R'
 sleep 2
-tmux capture-pane -p -t "$TARGET.0" -S -40 | tail -20
+tmux capture-pane -p -t "$TARGET" -S -40 | tail -20
 ```
 
 **언제 쓰나:** `initState` / provider 초기화 / DB 스냅샷 / 라우팅 초기 분기 변경. reload로 state가 남아 검증이 어려울 때.
@@ -177,13 +185,14 @@ tmux capture-pane -p -t "$TARGET.0" -S -40 | tail -20
 
 ## stop
 
-flutter run 종료(`q`)하고 window/세션 정리.
+flutter run 종료(`q`) 후 pane 정리. `exec zsh` 때문에 pane 자체는 q 이후 zsh로 잔존 — 필요하면 kill-pane로 닫는다.
 
 ```bash
-TARGET=$(tmux list-clients -F '#S' | head -1):flutter
+TARGET=$(cat /Users/kampikrein/A/personality/mobile/tmp/.flutter_pane)
 tmux send-keys -t "$TARGET" 'q'
 sleep 1
-tmux kill-window -t "$TARGET" 2>/dev/null || true
+tmux kill-pane -t "$TARGET" 2>/dev/null || true
+rm -f /Users/kampikrein/A/personality/mobile/tmp/.flutter_pane
 # hidden fallback: tmux kill-session -t flutter_dev 2>/dev/null || true
 ```
 
@@ -194,8 +203,8 @@ tmux kill-window -t "$TARGET" 2>/dev/null || true
 장시간 누적된 stdout을 파일로 캡처.
 
 ```bash
-TARGET=$(tmux list-clients -F '#S' | head -1):flutter
-tmux capture-pane -pS - -t "$TARGET.0" > /Users/kampikrein/A/personality/mobile/tmp/flutter_run.log
+TARGET=$(cat /Users/kampikrein/A/personality/mobile/tmp/.flutter_pane)
+tmux capture-pane -pS - -t "$TARGET" > /Users/kampikrein/A/personality/mobile/tmp/flutter_run.log
 ```
 
 ---
