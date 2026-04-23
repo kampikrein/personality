@@ -31,6 +31,7 @@ class _DrawResultPageState extends ConsumerState<DrawResultPage> {
   late String _deckId;
   late bool _allowReversed;
   late bool _showCardName;
+  late int _cardsPerRow;
   final Set<int> _revealedPositions = {};
   String? _savedReadingId;
   bool _autoSaved = false;
@@ -57,6 +58,7 @@ class _DrawResultPageState extends ConsumerState<DrawResultPage> {
     _deckId = settings?.selectedDeckId ?? 'rws-standard';
     _allowReversed = settings?.allowReversed ?? true;
     _showCardName = settings?.showCardName ?? true;
+    _cardsPerRow = settings?.cardsPerRow ?? 3;
   }
 
   Future<void> _executeDraw() async {
@@ -224,6 +226,7 @@ class _DrawResultPageState extends ConsumerState<DrawResultPage> {
                 deckId: _deckId,
                 revealedPositions: _revealedPositions,
                 showCardName: _showCardName,
+                cardsPerRow: _cardsPerRow,
                 cardAspectRatio: ref.watch(cardAspectRatioProvider),
                 onCardTap: (_) {},
               ),
