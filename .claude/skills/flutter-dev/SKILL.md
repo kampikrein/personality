@@ -76,51 +76,82 @@ VS Code에서 F5로 실행하는 것이 hot reload 자동화를 위한 표준 �
 
 ## tmux
 
-Claude Code가 직접 `flutter run`을 조작할 수 있도록 detached tmux 세션에 띄운다.
-이후 `reload` / `restart` / `stop` 서브커맨드로 hot reload · hot restart · quit을 원격 트리거.
+Claude Code가 `flutter run`을 조작하기 위한 **observable** 방식이 기본이다.
+사용자가 attached된 기존 tmux 세션에 flutter run window를 **직접 추가**하면, Claude의 send-keys 조작을 사용자가 실시간으로 본다. 별도 `flutter_dev` 세션을 만드는 hidden 방식은 사용자 관찰 가능성이 제로라 권장하지 않는다.
 
-**전제:** `tmux`가 설치되어 있어야 함 (`brew install tmux`). 이미 동일 이름 세션이 있으면 재사용하지 말고 kill 후 재생성.
+**전제:** `tmux`가 설치되어 있어야 함 (`brew install tmux`). 사용자가 tmux 안에서 작업 중이어야 한다.
 
-**Steps:**
+**Steps (observable — 사용자 세션에 window 추가):**
 
 1. ADB 디바이스 확인 (status Step 1 동일)
-2. 기존 세션 정리 (idempotent)
+2. 사용자가 attached된 세션 ID 탐지
    ```bash
-   tmux kill-session -t flutter_dev 2>/dev/null || true
+   SESSION=$(tmux list-clients -F '#S' | head -1)
    ```
-3. detached 세션 생성 (working dir = `mobile/`)
+   - 비어있으면 사용자가 tmux 바깥이므로 **hidden fallback** (아래) 사용.
+3. 기존 flutter window 정리 (idempotent)
    ```bash
-   tmux new-session -d -s flutter_dev -c /Users/kampikrein/A/personality/mobile
+   tmux kill-window -t "$SESSION:flutter" 2>/dev/null || true
    ```
-4. flutter run 투입 (디바이스 ID 명시 권장 — 여러 디바이스 시 충돌 방지)
+4. 세션에 flutter window 추가 (`-d`로 사용자의 active window 보존)
    ```bash
    DEVICE_ID=$($ANDROID_HOME/platform-tools/adb devices | awk 'NR>1 && $2=="device"{print $1; exit}')
-   tmux send-keys -t flutter_dev "/opt/homebrew/bin/flutter run -d $DEVICE_ID" Enter
+   tmux new-window -d -t "$SESSION:" -n flutter \
+     -c /Users/kampikrein/A/personality/mobile \
+     "flutter run -d $DEVICE_ID; exec zsh"
    ```
-5. 빌드 완료 폴링 (최대 120초, 6초 간격)
+   - 끝에 `exec zsh`를 붙여, flutter run 종료돼도 window가 즉시 닫히지 않도록 한다.
+5. 빌드 완료 폴링 (최대 150초, 5초 간격)
    ```bash
-   for i in $(seq 1 20); do
-     sleep 6
-     OUT=$(tmux capture-pane -p -t flutter_dev -S -200)
-     if echo "$OUT" | grep -qE "Flutter run key commands|To hot reload"; then
+   for i in $(seq 1 30); do
+     sleep 5
+     OUT=$(tmux capture-pane -p -t "$SESSION:flutter.0" -S -300)
+     if echo "$OUT" | grep -qE "Flutter run key commands"; then
        echo "flutter run ready"
        break
      fi
-     echo "waiting... ($i/20)"
+     if echo "$OUT" | grep -qE "Connection refused|Error connecting to the service protocol"; then
+       echo "[adb forward stale — kill adb and retry]"
+       break
+     fi
    done
    ```
-6. 사용자 안내: "tmux 세션 `flutter_dev`에 flutter run이 기동됐습니다. `/flutter-dev reload|restart|stop` 으로 조작하세요."
+6. 사용자 안내: "세션 `$SESSION` window `flutter`에 flutter run이 떠있습니다. `Ctrl-b n` 또는 `Ctrl-b <window_index>`로 전환해 실시간 로그를 보실 수 있습니다. `/flutter-dev reload|restart|stop`으로 조작합니다."
+
+**이후 조작의 target 규약**: 이 모드에서는 reload/restart/stop 서브커맨드가 `-t "$SESSION:flutter"`를 사용한다. `$SESSION`은 셸 호출 간 휘발되므로 매번 `tmux list-clients -F '#S' | head -1`로 재탐지한다.
+
+---
+
+### hidden fallback (사용자 관찰 불요, 비권장)
+
+사용자가 tmux 밖에서 Claude Code만 단독 사용 중일 때만.
+
+```bash
+tmux kill-session -t flutter_dev 2>/dev/null || true
+tmux new-session -d -s flutter_dev -c /Users/kampikrein/A/personality/mobile
+tmux send-keys -t flutter_dev "/opt/homebrew/bin/flutter run -d $DEVICE_ID" Enter
+# 이후 target = flutter_dev
+```
+
+---
+
+### ⚠️ 주의: tmux linked-window 금지
+
+과거 한 번 시도했던 `tmux link-window -s flutter_dev:0 -t <user_session>: -a` 방식은 **피한다**.
+이 방식 직후 사용자의 `select-window`를 호출하면 linked window와 원본 세션이 동시에 사라지는 tmux 3.6 거동이 확인됐다 (flutter run이 SIGHUP으로 죽는다). 항상 `new-window -d`로 사용자 세션에 **독립된 window**를 만드는 것이 안전하다.
 
 ---
 
 ## reload
 
-tmux 세션의 flutter run에 hot reload 키(`r`)를 전달.
+tmux의 flutter run에 hot reload 키(`r`)를 전달. **observable 모드** 기준 target은 `<user_session>:flutter`.
 
 ```bash
-tmux send-keys -t flutter_dev 'r'
+TARGET=$(tmux list-clients -F '#S' | head -1):flutter  # observable
+# fallback: TARGET=flutter_dev
+tmux send-keys -t "$TARGET" 'r'
 sleep 1
-tmux capture-pane -p -t flutter_dev -S -40 | tail -20
+tmux capture-pane -p -t "$TARGET.0" -S -40 | tail -20
 ```
 
 **주의:** `r` 뒤에 `Enter`를 붙이지 않는다. flutter run은 단일 문자 키 이벤트를 읽으므로 Enter를 붙이면 무응답.
@@ -134,9 +165,10 @@ tmux capture-pane -p -t flutter_dev -S -40 | tail -20
 hot restart 키(`R`). state를 리셋하고 앱 로직을 재시작.
 
 ```bash
-tmux send-keys -t flutter_dev 'R'
+TARGET=$(tmux list-clients -F '#S' | head -1):flutter
+tmux send-keys -t "$TARGET" 'R'
 sleep 2
-tmux capture-pane -p -t flutter_dev -S -40 | tail -20
+tmux capture-pane -p -t "$TARGET.0" -S -40 | tail -20
 ```
 
 **언제 쓰나:** `initState` / provider 초기화 / DB 스냅샷 / 라우팅 초기 분기 변경. reload로 state가 남아 검증이 어려울 때.
@@ -145,12 +177,14 @@ tmux capture-pane -p -t flutter_dev -S -40 | tail -20
 
 ## stop
 
-flutter run 종료(`q`)하고 tmux 세션 kill.
+flutter run 종료(`q`)하고 window/세션 정리.
 
 ```bash
-tmux send-keys -t flutter_dev 'q'
+TARGET=$(tmux list-clients -F '#S' | head -1):flutter
+tmux send-keys -t "$TARGET" 'q'
 sleep 1
-tmux kill-session -t flutter_dev 2>/dev/null || true
+tmux kill-window -t "$TARGET" 2>/dev/null || true
+# hidden fallback: tmux kill-session -t flutter_dev 2>/dev/null || true
 ```
 
 ---
@@ -160,7 +194,8 @@ tmux kill-session -t flutter_dev 2>/dev/null || true
 장시간 누적된 stdout을 파일로 캡처.
 
 ```bash
-tmux capture-pane -pS - -t flutter_dev > /Users/kampikrein/A/personality/mobile/tmp/flutter_run.log
+TARGET=$(tmux list-clients -F '#S' | head -1):flutter
+tmux capture-pane -pS - -t "$TARGET.0" > /Users/kampikrein/A/personality/mobile/tmp/flutter_run.log
 ```
 
 ---
@@ -276,3 +311,5 @@ iOS 지원 시 이 섹션에 xcrun simctl 기반 명령어를 추가한다.
 | `duplicate session: flutter_dev` | tmux 섹션 Step 2의 `kill-session`이 먼저 실행됐는지 확인, 수동 실행: `tmux kill-session -t flutter_dev` |
 | `no server running` on `send-keys` | `tmux` 서브커맨드로 세션을 먼저 생성하지 않고 `reload`/`restart`/`stop` 호출한 경우. `/flutter-dev tmux` 선행 |
 | reload 후 변경이 반영 안 됨 | state가 캐시된 경우 `restart`(hot restart)로 상향. `initState`·provider 초기화 변경은 restart 필수. |
+| `Error connecting to the service protocol: ... Connection refused` | adb port forwarding stale. `adb kill-server && adb start-server`로 adb 데몬 재기동 후 flutter run 재투입. 외부에서 `adb install -r`로 APK를 덮어썼을 때 자주 발생. |
+| flutter-dev 같은 hidden 세션이 `select-window` 후 사라짐 | tmux 3.6의 link-window + select-window 조합 거동. **linked window 금지.** 사용자 세션에 `new-window -d`로 독립 window 추가 방식 사용. |
