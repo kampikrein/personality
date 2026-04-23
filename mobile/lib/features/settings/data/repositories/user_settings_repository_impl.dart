@@ -126,6 +126,7 @@ class UserSettingsRepositoryImpl implements UserSettingsRepository {
         (p) => p.name == row.cardSizePreset,
         orElse: () => CardSizePreset.standardTarot,
       ),
+      cardsPerRow: row.cardsPerRow ?? 3,
       customCardWidthMm: row.customCardWidthMm,
       customCardHeightMm: row.customCardHeightMm,
       intentPlacement: IntentPlacement.values.firstWhere(
