@@ -1,0 +1,39 @@
+# 에이전트 간 인계 파일 템플릿
+# SOP Share 단계에서 산출물 frontmatter와 함께 자동 생성됨.
+#
+# 릴레이 감쇠 규칙 (파이프라인 전용):
+#   - 수신측 confidence는 원본보다 한 단계 낮게 시작 (high→medium→low)
+#   - 3단계 이상 릴레이된 정보는 원본(full_document) 직접 확인 필수
+#   - 평가루프 내에서는 감쇠 미적용 (검증자가 원본 직접 접근)
+
+handover_id: "WF-{id}-STEP-{N}"
+workflow_id: ""
+created: ""                        # 생성 일시 (YYYY-MM-DD)
+status: pending | delivered | read  # 인계 상태 추적
+source:
+  agent: ""
+  task: ""
+  confidence: high | medium | low
+  # confidence 판정 기준:
+  #   high: 코드/데이터 직접 확인, 2+ 에이전트 교차 확인, 학술 문헌 근거
+  #   medium: 코드 분석 + 해석 혼합, 단일 에이전트 독립 발견
+  #   low: 추론/추정 기반, 불확실한 정보 의존
+target:
+  agent: ""
+  expected_action: ""
+summary: >
+  {1-3줄 요약}
+key_findings:                       # Level 2 요약의 핵심 요소
+  - ""
+artifacts:
+  - path: ""
+    sections: []
+next_steps:
+  - ""
+constraints:                        # 수신 에이전트의 제약 조건
+  - ""
+context_level: 3                    # 이 인계 파일의 압축 수준 (1/2/3)
+full_document: ""                   # Level 1 원본 참조 경로
+validation:
+  criteria: ""
+  validator_agent: ""

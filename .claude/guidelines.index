@@ -1,0 +1,8 @@
+# inject-guidelines index
+# 형식: kw:패턴1|패턴2 → 파일명   (UserPromptSubmit: 키워드 매칭)
+# 형식: path:경로패턴1|패턴2 → 파일명  (PreToolUse: 파일경로 매칭)
+# grep -iqE 패턴 사용 — 정규식 가능, | 로 OR 연결
+
+# 아래 룰을 프로젝트에 맞게 편집하세요
+# kw:키워드1|키워드2 → guidelines-example.md
+# path:폴더명|파일패턴 → guidelines-page-example.md

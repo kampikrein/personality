@@ -1,0 +1,37 @@
+# 평가루프 결과 파일 템플릿
+#
+# severity 기반 verdict 자동 판정:
+#   blocker/major fail 있음 → verdict: fail (재생성)
+#   minor fail만 있음 → verdict: conditional_pass (1회 수정, 재평가 없이 자동 통과)
+#   fail 없음 → verdict: pass
+#
+# conditional_pass 처리:
+#   생성 에이전트에 minor 수정만 지시. "나머지 변경 금지" 명시.
+#   재평가 없이 자동 통과하여 턴 절약.
+
+evaluation:
+  verdict: pass | fail | conditional_pass
+  iteration: 1
+  max_iterations: 3
+  workflow_id: ""
+  step: 0
+  evaluator: ""
+  target_agent: ""
+  overall_score: 0.0                # count(pass) / count(total criteria)
+  criteria:
+    - name: ""
+      severity: blocker | major | minor
+      # severity 가이드:
+      #   blocker: 이것이 해결되지 않으면 산출물을 사용할 수 없음
+      #   major: 품질에 심각한 영향이 있으나 부분적 사용은 가능
+      #   minor: 개선이 바람직하나 현재 상태로도 수용 가능
+      status: pass | fail
+      detail: ""
+      fix_suggestion: ""            # fail인 경우만
+  summary: >
+    {1-2줄 종합 판단}
+  previous_iterations:
+    - iteration: 0
+      overall_score: 0.0
+      verdict: ""
+      failed_criteria: []           # fail한 criteria의 name 목록

@@ -1,0 +1,39 @@
+# 워크플로우 manifest 템플릿
+# 사용법: 새 워크플로우 시작 시 이 파일을 복사하여 워크플로우 디렉토리에 _manifest.yaml로 저장
+
+workflow_id: "WF-{YYYYMMDD}-{작업요약}"
+type: pipeline | critique_loop | hybrid | single_delegation
+status: not_started | in_progress | completed | failed
+created: "YYYY-MM-DD"
+requested_by: "user"
+pattern: "A | B | C | D"
+
+steps:
+  - step: 1
+    agent: "{에이전트명}"
+    task: "{작업 설명}"
+    status: pending | in_progress | completed | failed
+    output: ""           # 산출물 파일명 (완료 시 기입)
+    started_at: ""
+    completed_at: ""
+  - step: 2
+    agent: "{에이전트명}"
+    task: "{작업 설명}"
+    status: pending
+    depends_on: [1]      # 선행 단계 번호
+    output: ""
+    evaluation:          # 평가루프 포함 시
+      required: false
+      validator: ""
+      max_iterations: 3
+      current_iteration: 0
+      verdict: ""
+
+checkpoint:
+  last_completed_step: 0
+  resume_instruction: ""
+
+summary:
+  total_steps: 0
+  completed_steps: 0
+  failed_steps: 0

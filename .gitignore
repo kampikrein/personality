@@ -35,12 +35,6 @@ mobile/ios/.symlinks/
 .agents/
 .opencode/
 .cursor/
-.claude/*
-!.claude/agents/
-!.claude/agent-memory/
-!.claude/protocols/
-!.claude/checklists/
-!.claude/skills/
 
 # === Android bugreports ===
 bugreport-*.zip
