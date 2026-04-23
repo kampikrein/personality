@@ -8,6 +8,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../core/widgets/mystical_scaffold.dart';
 import '../../../deck/presentation/providers/deck_providers.dart';
 import '../../../reading/domain/entities/layout_type.dart';
+import '../../../settings/domain/entities/intent_placement.dart';
 import '../../../settings/presentation/providers/settings_providers.dart';
 import '../../../shuffle/domain/entities/shuffle_config.dart';
 import '../../../shuffle/domain/entities/shuffle_result.dart';
@@ -36,6 +37,7 @@ class _AnimatedDrawPageState extends ConsumerState<AnimatedDrawPage>
   bool _shuffleExecuted = false;
   bool _animationComplete = false;
   bool _navigatedToResult = false;
+  bool _autoStartTriggered = false;
   final List<AnimationController> _slideControllers = [];
   final List<Animation<Offset>> _slideAnimations = [];
   final List<Animation<double>> _fadeAnimations = [];
@@ -142,8 +144,33 @@ class _AnimatedDrawPageState extends ConsumerState<AnimatedDrawPage>
 
   @override
   Widget build(BuildContext context) {
-    // ── 셔플 전: 질문 입력 화면 ──
+    final settingsAsync = ref.watch(userSettingsProvider);
+    final intentPlacement = settingsAsync.valueOrNull?.intentPlacement;
+
+    // 의도 입력이 beforeShuffle이 아니면 질문 화면을 건너뛰고 바로 셔플.
+    if (!_shuffleExecuted &&
+        !_autoStartTriggered &&
+        intentPlacement != null &&
+        intentPlacement != IntentPlacement.beforeShuffle) {
+      _autoStartTriggered = true;
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) _startDraw();
+      });
+      return const MysticalScaffold(
+        title: '카드 뽑기',
+        body: Center(child: CircularProgressIndicator(color: kGold)),
+      );
+    }
+
+    // ── 셔플 전: 질문 입력 화면 (beforeShuffle 전용) ──
     if (!_shuffleExecuted) {
+      // settings가 아직 로딩 중이면 로딩 인디케이터 (intentPlacement 결정 대기).
+      if (intentPlacement == null) {
+        return const MysticalScaffold(
+          title: '카드 뽑기',
+          body: Center(child: CircularProgressIndicator(color: kGold)),
+        );
+      }
       return MysticalScaffold(
         appBar: AppBar(
           title: const Text('카드 뽑기', style: TextStyle(color: kTextPrimary, letterSpacing: 0.5)),
