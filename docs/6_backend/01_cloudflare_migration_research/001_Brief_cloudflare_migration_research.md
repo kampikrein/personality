@@ -69,6 +69,26 @@ Brief 산출 목적: 연구의 **방향·경계·평가 기준**을 정의하여
 - Solid Cable (웹소켓) → **Durable Objects + WebSocket**
 - Hotwire admin dashboard → Workers 상 SSR 또는 별도 SPA 프론트엔드
 
+### Verified Baseline Numbers (2026-04-24, Cloudflare 공식 문서 실측)
+
+연구 중 재확인 불필요. 출처: `developers.cloudflare.com/workers/platform/pricing/`, `developers.cloudflare.com/d1/platform/limits/`.
+
+**Workers 요금**
+- Free: 일 **100,000 요청**, 요청당 CPU **10ms**
+- Paid: **$5/월** (이후 초과분 과금)
+
+**D1 한도**
+| 항목 | Free | Paid |
+|------|------|------|
+| 계정당 DB 수 | 10 | 50,000 |
+| DB당 최대 크기 | 500 MB | 10 GB |
+| 계정 총 스토리지 | 5 GB | 1 TB |
+| Worker당 쿼리 수 | 50 | 1,000 |
+| 최대 쿼리 지속시간 | 30초 | 30초 |
+| 행 크기 | 2 MB | 2 MB |
+
+**D1 처리량 특성**: DB당 단일 스레드, 1ms 쿼리 ≈ 1,000 qps, 100ms 쿼리 ≈ 10 qps. 대규모 마이그레이션은 배치 필수.
+
 ## Boundaries
 
 ### In Scope
@@ -104,7 +124,7 @@ Brief 산출 목적: 연구의 **방향·경계·평가 기준**을 정의하여
 | 4 | 타깃 스택 범위 | **Workers + D1 + Hono + R2 + KV + Queues + Durable Objects** (주변 서비스 포함) | Rails 8은 Solid 스택으로 잡/캐시/웹소켓/스토리지를 통합. 3개만 1:1 매핑 시 주변 컴포넌트 대체 비용이 과소평가됨 | 연구 범위가 CF 생태계 전반으로 확장 | **3개만(Workers/D1/Hono)** 기각 — Rails 대체 불완전; **Workers+D1만** 기각 — Hono의 DX 기여 누락 |
 | 5 | 결제 연동 조사 범위 | **한국(토스/아임포트) 우선 + 글로벌(Stripe) 병행** | 사용자가 결제 대상 지역을 명시하지 않음. 성격/타로 서비스는 한국 MZ 문화 특화 가능성 높고(서비스 기획 docs 존재), 동시에 글로벌 확장 여지도 있음. 두 시나리오 모두 포함이 안전 | 연구 범위 확장. 전환 결정 시 "대상 시장" 결정도 병행 필요 | **토스 only** 기각 — 글로벌 경로 닫음; **Stripe only** 기각 — 한국 UX·규제 미해결 |
 | 6 | 권고안 구조 | **3안 (Stay / Partial / Full migration)** | "전환할지"는 이진 선택처럼 보이나 실무 판단은 **Strangler Pattern**(부분 전환) 경로가 흔함. 현재 모바일이 서버 API를 사용하지 않는 상태 → 신규 API 레이어만 CF로 분리하는 경로(Partial)가 유의미한 제3안 | 결론 복잡도 증가. 각 안의 선택 조건을 명시해야 유용 | **Go/No-go** 기각 — 점진 전환 경로 누락; **N안 스펙트럼** 기각 — 과도한 복잡성 |
-| 7 | 트래픽 시나리오 단계 | **저/중/고 3단계**: 수천 / 수만 / 수십만 MAU | 장기 운영비는 트래픽에 비선형 반응(특히 CF 무료 티어→Workers Paid $5 전환점, D1 10GB 전환점). 단일 시나리오는 비용 비교를 왜곡 | 연구 부담 증가 — 3개 시나리오별 비용 모델링 필요 | **단일 시나리오** 기각 — 전환점 누락; **5단계 이상** 기각 — 과도 |
+| 7 | 트래픽 시나리오 단계 | **저/중/고 3단계**: 수천 / 수만 / 수십만 MAU | 장기 운영비는 트래픽·스토리지에 비선형 반응. 검증된 주요 경계(2026-04 CF 공식): Workers Free→Paid **$5/월**(일 100,000 요청·CPU 10ms/요청 초과), D1 DB당 **500MB→10GB**, 계정 총 **5GB→1TB**, Worker당 쿼리 **50→1,000**. 경계가 복수이므로 단일 시나리오는 비용 비교를 왜곡 | 연구 부담 증가 — 3개 시나리오별 비용 모델링 필요 | **단일 시나리오** 기각 — 전환점 누락; **5단계 이상** 기각 — 과도 |
 | 8 | Brief 품질 프로필 | **Standard + Priority: Longevity/Sustainability** | 사용자 요청에 "장기적 관점"이 명시. 키워드 "제대로/꼼꼼" 없어 Polish/Showcase는 과잉. Priority Dimension으로 지속가능성 축 criteria 1단계 상향 | Standard 기본 밀도(1-2/항목)보다 criteria 수 증가 | **MVP** 기각 — 장기 관점 경시; **Polish** 기각 — 과잉; **Priority 없음** 기각 — 사용자 명시 위반 |
 
 ## Open Questions
