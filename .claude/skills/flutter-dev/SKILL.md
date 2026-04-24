@@ -77,9 +77,25 @@ VS Code에서 F5로 실행하는 것이 hot reload 자동화를 위한 표준 �
 ## tmux
 
 Claude Code가 `flutter run`을 조작하기 위한 **observable** 방식이 기본이다.
-사용자가 attached된 기존 tmux 세션에 flutter run window를 **직접 추가**하면, Claude의 send-keys 조작을 사용자가 실시간으로 본다. 별도 `flutter_dev` 세션을 만드는 hidden 방식은 사용자 관찰 가능성이 제로라 권장하지 않는다.
+사용자가 attached된 기존 tmux 세션에 flutter run pane을 **split로 추가**하면, Claude의 send-keys 조작을 사용자가 실시간으로 본다. 별도 `flutter_dev` 세션을 만드는 hidden 방식은 사용자 관찰 가능성이 제로라 권장하지 않는다.
 
 **전제:** `tmux`가 설치되어 있어야 함 (`brew install tmux`). 사용자가 tmux 안에서 작업 중이어야 한다.
+
+### tmux 용어 빠른 참조 (LLM 혼동 방지)
+
+| 개념 | 설명 | Claude가 건드릴 때 |
+|---|---|---|
+| **session** | 최상위 컨테이너. detach/attach 단위. | 새로 만들지 말고 **사용자 attached 세션을 탐지해 재사용**. `tmux list-clients -F '#S'`. |
+| **window** | session 내부 "탭". full-screen 전환식. | flutter 관찰용으로는 pane split이 더 낫다. window는 DevTools·logcat 병행 시에만. |
+| **pane** | window 내부 분할. **동시 표시**. | 기본 모드. `split-window -h`로 사용자 active window에 추가. |
+| **client** | 같은 session에 붙은 각 터미널 창. | 여러 Terminal.app 창에서 `tmux attach -t <session>` 하면 동일 화면이 **실시간 미러링**. |
+
+**Terminal.app의 `+`/탭과 혼동 주의:** macOS Terminal.app, iTerm2의 탭은 GUI 컨테이너로 tmux와 무관한 별개 레이어. 앱 종료 시 프로세스 종료됨. tmux window는 server-side라 앱 닫아도 살아있음. 사용자가 "탭"이라 말하면 어느 레이어인지 맥락으로 판단.
+
+**target 식별 규약:**
+- 우선 **pane-id(`%NN`)** 사용. pane 수명 동안 안정.
+- session/window 이름은 사용자가 재배치하면 깨진다.
+- pane-id는 `mobile/tmp/.flutter_pane`에 영속화.
 
 **Steps (observable — 사용자 active window에 pane split):**
 
