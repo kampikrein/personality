@@ -70,7 +70,9 @@ class _DrawResultPageState extends ConsumerState<DrawResultPage> {
           setState(() {
             _shuffleResult = upstream;
             _loading = false;
-            for (var i = 0; i < _currentCardCount; i++) _revealedPositions.add(i);
+            for (var i = 0; i < _currentCardCount; i++) {
+              _revealedPositions.add(i);
+            }
           });
           _triggerAutoSave();
           return;
@@ -98,7 +100,9 @@ class _DrawResultPageState extends ConsumerState<DrawResultPage> {
       setState(() {
         _shuffleResult = result;
         _loading = false;
-        for (var i = 0; i < _currentCardCount; i++) _revealedPositions.add(i);
+        for (var i = 0; i < _currentCardCount; i++) {
+          _revealedPositions.add(i);
+        }
       });
       _triggerAutoSave();
     } catch (e, st) {

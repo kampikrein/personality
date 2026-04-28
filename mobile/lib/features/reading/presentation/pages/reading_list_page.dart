@@ -54,7 +54,7 @@ class _ReadingListPageState extends ConsumerState<ReadingListPage> {
             ),
           ),
 
-          GoldHairline(opacity: 0.2),
+          const GoldHairline(opacity: 0.2),
 
           // ── 리딩 목록 ──
           Expanded(

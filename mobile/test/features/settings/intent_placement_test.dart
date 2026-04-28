@@ -254,7 +254,7 @@ void main() {
 
         // PRAGMA table_info returns one row per column.
         final result = await db
-            .customSelect("PRAGMA table_info(user_settings)")
+            .customSelect('PRAGMA table_info(user_settings)')
             .get();
 
         final columnNames = result.map((row) => row.read<String>('name')).toList();
@@ -278,7 +278,7 @@ void main() {
 
         final result = await db
             .customSelect(
-              "SELECT intent_placement FROM user_settings WHERE id = 1",
+              'SELECT intent_placement FROM user_settings WHERE id = 1',
             )
             .getSingle();
 

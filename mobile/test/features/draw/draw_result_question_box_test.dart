@@ -49,7 +49,7 @@ class _FakeDeckRepo implements DeckRepository {
   Future<DeckMetadata?> getDeckById(String id) async => _fakeDeck();
   @override
   Future<List<TarotCard>> getCardsByDeckId(String deckId) async => [
-        TarotCard(
+        const TarotCard(
           id: 'card-01',
           deckId: 'rws-standard',
           cardId: 'fool',
@@ -57,9 +57,9 @@ class _FakeDeckRepo implements DeckRepository {
           arcana: 'major',
           number: 0,
           imagePath: 'assets/cards/rws/fool.jpg',
-          meanings: const CardMeanings(),
+          meanings: CardMeanings(),
         ),
-        TarotCard(
+        const TarotCard(
           id: 'card-02',
           deckId: 'rws-standard',
           cardId: 'magician',
@@ -67,9 +67,9 @@ class _FakeDeckRepo implements DeckRepository {
           arcana: 'major',
           number: 1,
           imagePath: 'assets/cards/rws/magician.jpg',
-          meanings: const CardMeanings(),
+          meanings: CardMeanings(),
         ),
-        TarotCard(
+        const TarotCard(
           id: 'card-03',
           deckId: 'rws-standard',
           cardId: 'high_priestess',
@@ -77,7 +77,7 @@ class _FakeDeckRepo implements DeckRepository {
           arcana: 'major',
           number: 2,
           imagePath: 'assets/cards/rws/high_priestess.jpg',
-          meanings: const CardMeanings(),
+          meanings: CardMeanings(),
         ),
       ];
   @override

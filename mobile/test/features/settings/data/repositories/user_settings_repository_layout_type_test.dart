@@ -60,7 +60,7 @@ Future<void> _forceLegacyColumnValue(
   // Trigger default-row creation.
   await db.userSettingsDao.getSettings();
   await db.customStatement(
-    "UPDATE user_settings SET default_layout_type = ? WHERE id = 1",
+    'UPDATE user_settings SET default_layout_type = ? WHERE id = 1',
     <Object?>[rawValue],
   );
 }

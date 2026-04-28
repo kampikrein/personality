@@ -39,7 +39,7 @@ void main() {
           hasReadingNav,
           isFalse,
           reason:
-              "Cycle 2 (Brief MA-5, IC #11) requires ShufflePage to stop "
+              'Cycle 2 (Brief MA-5, IC #11) requires ShufflePage to stop '
               "navigating to the 'reading' route. Found a residual "
               "pushNamed('reading') or /reading/ push in $_shufflePagePath. "
               'Cycle 1 left shuffle_page.dart:67-70 untouched — Cycle 2 '
@@ -62,7 +62,7 @@ void main() {
           hasNamedReplacement || hasPathReplacement,
           isTrue,
           reason:
-              "Cycle 2 requires ShufflePage to end with "
+              'Cycle 2 requires ShufflePage to end with '
               "pushReplacementNamed('draw-result', pathParameters: "
               "{'deckId': ...}) or pushReplacement('/draw/result'). "
               'Neither pattern found.',

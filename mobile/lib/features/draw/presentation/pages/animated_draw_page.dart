@@ -117,7 +117,9 @@ class _AnimatedDrawPageState extends ConsumerState<AnimatedDrawPage>
     }
     if (_showFaceUp && mounted) {
       setState(() {
-        for (var i = 0; i < _currentCardCount; i++) _revealedPositions.add(i);
+        for (var i = 0; i < _currentCardCount; i++) {
+          _revealedPositions.add(i);
+        }
         _animationComplete = true;
       });
       _maybeGoToResult();
@@ -137,7 +139,9 @@ class _AnimatedDrawPageState extends ConsumerState<AnimatedDrawPage>
 
   @override
   void dispose() {
-    for (final c in _slideControllers) c.dispose();
+    for (final c in _slideControllers) {
+      c.dispose();
+    }
     _questionController.dispose();
     super.dispose();
   }

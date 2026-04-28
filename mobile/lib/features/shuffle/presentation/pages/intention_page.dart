@@ -9,7 +9,6 @@ import '../../../../core/dev_tuner/tuner_registry.dart';
 import '../../../../core/widgets/mystical_scaffold.dart';
 import '../../domain/entities/shuffle_mode.dart';
 import '../../../settings/domain/entities/intent_placement.dart';
-import '../../../settings/domain/entities/user_settings.dart';
 import '../../../settings/presentation/providers/settings_providers.dart';
 
 part 'intention_page.g.dart';

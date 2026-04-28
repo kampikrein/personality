@@ -55,7 +55,7 @@ class _FakeDeckRepo implements DeckRepository {
 }
 
 class _FakeSettingsRepo implements UserSettingsRepository {
-  UserSettings _current;
+  final UserSettings _current;
   _FakeSettingsRepo(this._current);
 
   @override

@@ -95,7 +95,7 @@ class _CardSizeSettingsPageState extends ConsumerState<CardSizeSettingsPage> {
                                   .updateCardSizePreset(preset.name);
                             },
                           ),
-                          if (!isLast) GoldHairline(opacity: 0.1),
+                          if (!isLast) const GoldHairline(opacity: 0.1),
                         ],
                       );
                     }),

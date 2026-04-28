@@ -75,7 +75,7 @@ class ProfilePage extends ConsumerWidget {
           ),
           const SizedBox(height: 28),
 
-          GoldHairline(opacity: 0.3),
+          const GoldHairline(opacity: 0.3),
           const SizedBox(height: 20),
 
           // ── 메뉴 목록 ──
@@ -89,15 +89,15 @@ class ProfilePage extends ConsumerWidget {
                   subtitle: '환경설정',
                   onTap: () => context.pushNamed('settings'),
                 ),
-                GoldHairline(opacity: 0.1),
+                const GoldHairline(opacity: 0.1),
                 _MenuTile(
                   icon: Icons.layers_outlined,
                   title: '덱 관리',
                   subtitle: '덱 선택 및 탐색',
                   onTap: () => context.pushNamed('deck'),
                 ),
-                GoldHairline(opacity: 0.1),
-                _MenuTile(
+                const GoldHairline(opacity: 0.1),
+                const _MenuTile(
                   icon: Icons.info_outline,
                   title: '앱 정보',
                   subtitle: 'Personality Tarot v0.1.1',

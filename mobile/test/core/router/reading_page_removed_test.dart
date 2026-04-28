@@ -55,7 +55,7 @@ void main() {
         );
 
         expect(
-          src.contains("reading/presentation/pages/reading_page.dart"),
+          src.contains('reading/presentation/pages/reading_page.dart'),
           isFalse,
           reason:
               'Cycle 2 removes the reading_page.dart import from '

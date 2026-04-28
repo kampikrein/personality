@@ -146,7 +146,7 @@ class _HomePageState extends ConsumerState<HomePage>
                         ? () => _startDraw(experienceLevel, selectedDeckId)
                         : null,
                   ),
-                  _GoldHairline(opacity: 0.35),
+                  const _GoldHairline(opacity: 0.35),
                   const SizedBox(height: 16),
                   _DrawSettingsPanel(
                     settings: settings,
@@ -468,7 +468,7 @@ class _DrawSettingsPanelState extends ConsumerState<_DrawSettingsPanel> {
               ],
             ),
           ),
-          _GoldHairline(opacity: 0.2),
+          const _GoldHairline(opacity: 0.2),
 
           // ══════════════════════════════════════════════════════════
           //  [기본 설정] 그룹 — 덱 / 레벨 / 역방향
@@ -502,7 +502,7 @@ class _DrawSettingsPanelState extends ConsumerState<_DrawSettingsPanel> {
               },
             ),
           ),
-          _GoldHairline(opacity: 0.1),
+          const _GoldHairline(opacity: 0.1),
 
           // ── 체험 레벨 ──
           _SettingRow(
@@ -519,7 +519,7 @@ class _DrawSettingsPanelState extends ConsumerState<_DrawSettingsPanel> {
               onSelect: (v) => repo.updateExperienceLevel(v),
             ),
           ),
-          _GoldHairline(opacity: 0.1),
+          const _GoldHairline(opacity: 0.1),
 
           // ── 역방향 허용 ──
           _SettingRow(
@@ -532,7 +532,7 @@ class _DrawSettingsPanelState extends ConsumerState<_DrawSettingsPanel> {
           ),
 
           // ── 그룹 구분선 (강한) ──
-          _GoldHairline(opacity: 0.3),
+          const _GoldHairline(opacity: 0.3),
 
           // ══════════════════════════════════════════════════════════
           //  [모양] 그룹 — 배치 / 카드 수 / 한 줄 카드 수 / (grid3x3) 드로우 순서
@@ -563,7 +563,7 @@ class _DrawSettingsPanelState extends ConsumerState<_DrawSettingsPanel> {
               onSelect: (v) => _onLayoutChanged(v, settings, repo),
             ),
           ),
-          _GoldHairline(opacity: 0.1),
+          const _GoldHairline(opacity: 0.1),
 
           // ── 기본 카드 수 (동적 min/max) ──
           _SettingRow(
@@ -579,7 +579,7 @@ class _DrawSettingsPanelState extends ConsumerState<_DrawSettingsPanel> {
               },
             ),
           ),
-          _GoldHairline(opacity: 0.1),
+          const _GoldHairline(opacity: 0.1),
 
           // ── 한 줄 카드 수 (tShape/grid3x3 일 때 비활성) ──
           _SettingRow(
@@ -604,7 +604,7 @@ class _DrawSettingsPanelState extends ConsumerState<_DrawSettingsPanel> {
 
           // ── (조건) 드로우 순서 — grid3x3 전용 (Decision 12) ──
           if (selectedLayout == LayoutType.grid3x3) ...[
-            _GoldHairline(opacity: 0.1),
+            const _GoldHairline(opacity: 0.1),
             _SettingRow(
               label: '드로우 순서',
               icon: Icons.swap_horiz_outlined,
@@ -622,7 +622,7 @@ class _DrawSettingsPanelState extends ConsumerState<_DrawSettingsPanel> {
           ],
 
           // ── 그룹 구분선 (강한) ──
-          _GoldHairline(opacity: 0.3),
+          const _GoldHairline(opacity: 0.3),
 
           // ══════════════════════════════════════════════════════════
           //  [표시 옵션] 그룹 — 앞면 / 카드 이름 / 카드 크기
@@ -638,7 +638,7 @@ class _DrawSettingsPanelState extends ConsumerState<_DrawSettingsPanel> {
               onChanged: (v) => repo.updateShowFaceUp(v),
             ),
           ),
-          _GoldHairline(opacity: 0.1),
+          const _GoldHairline(opacity: 0.1),
 
           // ── 카드 이름 표시 ──
           _SettingRow(
@@ -649,7 +649,7 @@ class _DrawSettingsPanelState extends ConsumerState<_DrawSettingsPanel> {
               onChanged: (v) => repo.updateShowCardName(v),
             ),
           ),
-          _GoldHairline(opacity: 0.1),
+          const _GoldHairline(opacity: 0.1),
 
           // ── 카드 크기 (별도 페이지 진입) ──
           Padding(
@@ -658,7 +658,7 @@ class _DrawSettingsPanelState extends ConsumerState<_DrawSettingsPanel> {
               onTap: () => context.push('/settings/card-size'),
               child: Row(
                 children: [
-                  Icon(Icons.aspect_ratio, size: 14, color: _textSecondary),
+                  const Icon(Icons.aspect_ratio, size: 14, color: _textSecondary),
                   const SizedBox(width: 8),
                   const Text(
                     '카드 크기',
@@ -687,7 +687,7 @@ class _DrawSettingsPanelState extends ConsumerState<_DrawSettingsPanel> {
               ),
             ),
           ),
-          _GoldHairline(opacity: 0.1),
+          const _GoldHairline(opacity: 0.1),
 
           // ── 의도 입력 (별도 페이지 진입) ──
           Padding(
@@ -696,7 +696,7 @@ class _DrawSettingsPanelState extends ConsumerState<_DrawSettingsPanel> {
               onTap: () => context.push('/settings/intent-placement'),
               child: Row(
                 children: [
-                  Icon(Icons.psychology_outlined,
+                  const Icon(Icons.psychology_outlined,
                       size: 14, color: _textSecondary),
                   const SizedBox(width: 8),
                   const Text(
@@ -963,7 +963,7 @@ class _GoldSwitch extends StatelessWidget {
       child: Switch(
         value: value,
         onChanged: onChanged,
-        activeColor: _gold,
+        activeThumbColor: _gold,
         activeTrackColor: _gold.withValues(alpha: 0.25),
         inactiveThumbColor: _textSecondary,
         inactiveTrackColor: _darkSurface.withValues(alpha: 0.6),

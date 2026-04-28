@@ -194,7 +194,7 @@ class _ReadingDetailPageState extends ConsumerState<ReadingDetailPage> {
                 }),
 
                 const SizedBox(height: 20),
-                GoldHairline(opacity: 0.25),
+                const GoldHairline(opacity: 0.25),
                 const SizedBox(height: 16),
 
                 // 메모 섹션

@@ -25,7 +25,7 @@ class _FakeDeckRepo implements DeckRepository {
 }
 
 class _FakeSettingsRepo implements UserSettingsRepository {
-  UserSettings _current;
+  final UserSettings _current;
   _FakeSettingsRepo(this._current);
   @override Stream<UserSettings> watchSettings() => Stream.value(_current);
   @override Future<UserSettings> getSettings() async => _current;
@@ -96,7 +96,7 @@ void main() {
     print('바로 뽑기 count: ${settingsPanelTrigger.evaluate().length}');
     
     // Look for what's visible
-    final allTexts = tester.widgetList(find.byType(Text)).map((w) => (w as Text).data).where((t) => t != null && t!.isNotEmpty).toList();
+    final allTexts = tester.widgetList(find.byType(Text)).map((w) => (w as Text).data).where((t) => t != null && t.isNotEmpty).toList();
     print('Visible texts (first 20): ${allTexts.take(20).toList()}');
   });
 }

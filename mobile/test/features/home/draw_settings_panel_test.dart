@@ -178,8 +178,8 @@ Widget _hostHomePage({
       userSettingsProvider.overrideWith((ref) => repo.watchSettings()),
       watchDecksProvider.overrideWith((ref) => Stream.value(<DeckMetadata>[_fakeDeck()])),
     ],
-    child: MaterialApp(
-      home: const HomePage(),
+    child: const MaterialApp(
+      home: HomePage(),
     ),
   );
 }
