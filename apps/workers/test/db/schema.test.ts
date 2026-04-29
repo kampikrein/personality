@@ -44,7 +44,7 @@ const EXPECTED_TABLES = [
 describe("DB Schema — 14 tables existence (RED phase)", () => {
   it("should have exactly 14 domain tables in sqlite_master", async () => {
     const result = await env.DB.prepare(
-      `SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%' AND name NOT LIKE '_cf_%' ORDER BY name`
+      `SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%' AND name NOT LIKE '_cf_%' AND name != 'd1_migrations' ORDER BY name`
     ).all();
 
     const tableNames = (result.results as { name: string }[]).map((r) => r.name);

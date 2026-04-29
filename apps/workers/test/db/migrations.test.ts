@@ -37,7 +37,7 @@ const EXPECTED_TABLES = [
 describe("Migrations — D1 schema 상태 검증 (RED phase)", () => {
   it("D1 should have 14 tables after migration (0 before migration — RED phase fail)", async () => {
     const result = await env.DB.prepare(
-      `SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%' AND name NOT LIKE '_cf_%' ORDER BY name`
+      `SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%' AND name NOT LIKE '_cf_%' AND name != 'd1_migrations' ORDER BY name`
     ).all();
 
     const tableNames = (result.results as { name: string }[]).map((r) => r.name);
@@ -66,17 +66,15 @@ describe("Migrations — D1 schema 상태 검증 (RED phase)", () => {
     it("creating a table with IF NOT EXISTS should not throw on second call", async () => {
       // IF NOT EXISTS 패턴이 올바르면 두 번 실행해도 에러 없음
       // 이는 drizzle-kit이 migration SQL을 올바르게 생성했을 때의 검증
-      const createSql = `CREATE TABLE IF NOT EXISTS _migration_idempotency_test (
-        id INTEGER PRIMARY KEY,
-        created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
-      )`;
+      // NOTE: D1 exec()은 멀티라인 SQL 불가 → prepare().run() 사용
+      const createSql = "CREATE TABLE IF NOT EXISTS _migration_idempotency_test (id INTEGER PRIMARY KEY, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)";
 
-      await expect(env.DB.exec(createSql)).resolves.toBeDefined();
+      await expect(env.DB.prepare(createSql).run()).resolves.toBeDefined();
       // 두 번째 실행 — 에러 없어야 함
-      await expect(env.DB.exec(createSql)).resolves.toBeDefined();
+      await expect(env.DB.prepare(createSql).run()).resolves.toBeDefined();
 
       // 정리
-      await env.DB.exec(`DROP TABLE IF EXISTS _migration_idempotency_test`);
+      await env.DB.prepare("DROP TABLE IF EXISTS _migration_idempotency_test").run();
     });
 
     it("wrangler d1_migrations table should track applied migrations (after first apply)", async () => {

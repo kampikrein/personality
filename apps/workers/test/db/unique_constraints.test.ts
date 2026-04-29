@@ -145,41 +145,50 @@ describe("UNIQUE Constraints — 3건 (Brief 021 Model Anchors 5) (RED phase)", 
   });
 
   describe("3. insights: UNIQUE(profile_id, context)", () => {
+    // profile_id=150, 250 사용 (beforeEach cleanup의 100/200 삭제 범위 밖)
+    // setup.ts에서 profiles(id=150, 250) fixture 생성됨
+
     it("should allow inserting first insight row", async () => {
+      // cleanup
+      await env.DB.prepare("DELETE FROM insights WHERE profile_id = 150").run().catch(() => {});
       await expect(
         env.DB.prepare(
           `INSERT INTO insights (profile_id, context, suggestions, created_at, updated_at)
-           VALUES (100, 'career', '[]', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)`
+           VALUES (150, 'career', '[]', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)`
         ).run()
       ).resolves.toBeDefined();
     });
 
     it("should reject duplicate (profile_id, context) pair", async () => {
+      // cleanup
+      await env.DB.prepare("DELETE FROM insights WHERE profile_id = 150").run().catch(() => {});
       await env.DB.prepare(
         `INSERT INTO insights (profile_id, context, suggestions, created_at, updated_at)
-         VALUES (100, 'career', '[]', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)`
+         VALUES (150, 'career', '[]', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)`
       ).run();
 
       // 중복 (profile_id, context) → UNIQUE constraint violation
       await expect(
         env.DB.prepare(
           `INSERT INTO insights (profile_id, context, suggestions, created_at, updated_at)
-           VALUES (100, 'career', '["new suggestion"]', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)`
+           VALUES (150, 'career', '["new suggestion"]', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)`
         ).run()
       ).rejects.toThrow();
     });
 
     it("should allow same profile_id with different context", async () => {
+      // cleanup
+      await env.DB.prepare("DELETE FROM insights WHERE profile_id = 250").run().catch(() => {});
       await env.DB.prepare(
         `INSERT INTO insights (profile_id, context, suggestions, created_at, updated_at)
-         VALUES (200, 'career', '[]', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)`
+         VALUES (250, 'career', '[]', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)`
       ).run();
 
       // 같은 profile_id지만 다른 context → 허용
       await expect(
         env.DB.prepare(
           `INSERT INTO insights (profile_id, context, suggestions, created_at, updated_at)
-           VALUES (200, 'relationship', '[]', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)`
+           VALUES (250, 'relationship', '[]', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)`
         ).run()
       ).resolves.toBeDefined();
     });
