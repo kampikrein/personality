@@ -5,6 +5,7 @@
 ## 모노레포 구조
 - `server/` — Rails 8+ 백엔드 (PostgreSQL, RSpec, Hotwire/Turbo, Tailwind CSS)
 - `mobile/` — Flutter 모바일 앱 (타로 + 성격 서비스, 구조만 세팅됨)
+- `apps/workers/` — Cloudflare Workers 백엔드 (Hono, D1, R2, KV — TypeScript, Phase 1 Cycle 1부터)
 - `shared/` — API 계약 (OpenAPI 스키마, placeholder)
 - `docs/` — 공유 문서 (산출물 중앙화)
 

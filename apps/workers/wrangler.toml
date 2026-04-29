@@ -1,0 +1,123 @@
+name = "personality-workers"
+main = "src/index.ts"
+compatibility_date = "2026-04-01"
+compatibility_flags = ["nodejs_compat"]
+
+# TODO(Phase 2): Replace __FILL_IN_PHASE2__ with actual CF account ID after wrangler login
+account_id = "__FILL_IN_PHASE2__"
+
+# top-level = development (wrangler dev 기본)
+[vars]
+ENV = "development"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "personality-d1-prod"
+# TODO(Phase 2): Replace with actual D1 database_id from `wrangler d1 create personality-d1-prod`
+database_id = "__FILL_IN_PHASE2__"
+
+[[kv_namespaces]]
+binding = "KV"
+# TODO(Phase 2): Replace with actual KV namespace IDs from `wrangler kv namespace create`
+id = "__FILL_IN_PHASE2__"
+preview_id = "__FILL_IN_PHASE2__"
+
+[[r2_buckets]]
+binding = "R2_BACKUP"
+bucket_name = "personality-d1-backup"
+
+[[r2_buckets]]
+binding = "R2_SECRETS"
+bucket_name = "personality-secrets"
+
+[[r2_buckets]]
+binding = "R2_UPLOADS"
+bucket_name = "personality-uploads"
+
+# observability — 운영 단계에서 logs 자동 수집
+[observability]
+enabled = true
+
+# ─────────────────────────────────────────────
+# production
+# ─────────────────────────────────────────────
+[env.production]
+name = "personality-workers"
+routes = [
+  # TODO(Phase 2): Replace <DOMAIN> with actual root domain (e.g. personality.app)
+  { pattern = "api.<DOMAIN>/*", zone_name = "<DOMAIN>" },
+  { pattern = "admin.<DOMAIN>/*", zone_name = "<DOMAIN>" },
+]
+
+[env.production.vars]
+ENV = "production"
+
+[[env.production.d1_databases]]
+binding = "DB"
+database_name = "personality-d1-prod"
+# TODO(Phase 2): Replace with actual prod D1 database_id
+database_id = "__FILL_IN_PHASE2__"
+
+[[env.production.kv_namespaces]]
+binding = "KV"
+# TODO(Phase 2): Replace with actual prod KV namespace id
+id = "__FILL_IN_PHASE2__"
+
+[[env.production.r2_buckets]]
+binding = "R2_BACKUP"
+bucket_name = "personality-d1-backup"
+
+[[env.production.r2_buckets]]
+binding = "R2_SECRETS"
+bucket_name = "personality-secrets"
+
+[[env.production.r2_buckets]]
+binding = "R2_UPLOADS"
+bucket_name = "personality-uploads"
+
+# D1 자동 backup 주 1회 (일요일 02:00 KST = 17:00 UTC 일)
+[env.production.triggers]
+crons = ["0 17 * * 0"]
+
+# ─────────────────────────────────────────────
+# staging
+# ─────────────────────────────────────────────
+[env.staging]
+name = "personality-workers-staging"
+routes = [
+  # TODO(Phase 2): Replace <DOMAIN> with actual root domain
+  { pattern = "staging-api.<DOMAIN>/*", zone_name = "<DOMAIN>" },
+  { pattern = "staging-admin.<DOMAIN>/*", zone_name = "<DOMAIN>" },
+]
+
+[env.staging.vars]
+ENV = "staging"
+
+[[env.staging.d1_databases]]
+binding = "DB"
+database_name = "personality-d1-staging"
+# TODO(Phase 2): Replace with actual staging D1 database_id
+database_id = "__FILL_IN_PHASE2__"
+
+[[env.staging.kv_namespaces]]
+binding = "KV"
+# TODO(Phase 2): Replace with actual staging KV namespace id
+id = "__FILL_IN_PHASE2__"
+
+[[env.staging.r2_buckets]]
+binding = "R2_BACKUP"
+bucket_name = "personality-d1-backup-staging"
+
+[[env.staging.r2_buckets]]
+binding = "R2_SECRETS"
+bucket_name = "personality-secrets"
+
+[[env.staging.r2_buckets]]
+binding = "R2_UPLOADS"
+bucket_name = "personality-uploads-staging"
+
+# ─────────────────────────────────────────────
+# preview (동적 — GitHub Actions PR별 생성)
+# wrangler deploy --env staging --name personality-workers-pr-{NUMBER}
+# 별도 [env.preview] 불요 — staging env를 베이스로 PR마다 동적 Worker 생성
+# ─────────────────────────────────────────────

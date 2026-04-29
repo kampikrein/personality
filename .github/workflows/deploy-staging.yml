@@ -1,0 +1,37 @@
+name: Deploy Staging
+
+on:
+  push:
+    branches: [staging]
+    paths:
+      - "apps/workers/**"
+      - ".github/workflows/deploy-staging.yml"
+
+concurrency:
+  group: deploy-staging
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+          cache-dependency-path: apps/workers/package-lock.json
+      - name: Install
+        working-directory: apps/workers
+        run: npm ci
+      - name: Type check
+        working-directory: apps/workers
+        run: npm run type-check
+      - name: Deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          # TODO(Phase 2): Register GitHub Actions secrets (same as production)
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: apps/workers
+          command: deploy --env staging

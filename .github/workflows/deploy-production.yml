@@ -1,0 +1,43 @@
+name: Deploy Production
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "apps/workers/**"
+      - ".github/workflows/deploy-production.yml"
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+          cache-dependency-path: apps/workers/package-lock.json
+      - name: Install
+        working-directory: apps/workers
+        run: npm ci
+      - name: Type check
+        working-directory: apps/workers
+        run: npm run type-check
+      - name: Deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          # TODO(Phase 2): Register CLOUDFLARE_API_TOKEN + CLOUDFLARE_ACCOUNT_ID in GitHub
+          #   repo Settings → Secrets and variables → Actions
+          #   CLOUDFLARE_API_TOKEN: CF Dashboard → API Tokens → "Edit Cloudflare Workers" template
+          #   CLOUDFLARE_ACCOUNT_ID: CF account ID from wrangler whoami
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: apps/workers
+          command: deploy --env production

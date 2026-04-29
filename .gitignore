@@ -39,6 +39,11 @@ mobile/ios/.symlinks/
 # === Android bugreports ===
 bugreport-*.zip
 
+# === Cloudflare Workers ===
+apps/workers/.dev.vars
+apps/workers/.wrangler/
+apps/workers/node_modules/
+
 # === OS ===
 .DS_Store
 .tmp/

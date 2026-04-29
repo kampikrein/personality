@@ -1,0 +1,34 @@
+# .dev.vars.example — local development secrets
+# Copy this file to .dev.vars and fill in actual values.
+# .dev.vars is git-ignored (never commit).
+#
+# For wrangler dev --local, these vars are injected as Workers secrets.
+# Production/staging secrets are managed via `wrangler secret put` (Phase 2).
+
+# AES-256-GCM encryption key for user email (deterministic lookup)
+# Generate: openssl rand -base64 32
+PERSONALITY_ENCRYPTION_KEY=
+
+# Parallel-key rotation fallback (only set during key rotation Phase 1~5)
+# See docs/runbook/secret-rotation.md for rotation procedure
+PERSONALITY_ENCRYPTION_KEY_OLD=
+
+# BetterAuth session secret (HMAC for session JWT signing)
+# Generate: openssl rand -base64 32
+BETTERAUTH_SECRET=
+
+# Mobile Bearer JWT signing key (reserved for Cycle 4)
+# Generate: openssl rand -base64 32
+JWT_SECRET=
+
+# Toss Payments server-side secret key (Phase 2 — Toss merchant registration required)
+# Source: Toss merchant console
+TOSS_SECRET_KEY=
+
+# Toss Payments webhook secret (Model A: plain secret comparison)
+# Source: Toss merchant console
+TOSS_WEBHOOK_SECRET=
+
+# Cloudflare Access JWT audience tag (admin plane verification)
+# Source: CF Dashboard → Access → Applications → audience tag
+CF_ACCESS_AUD=

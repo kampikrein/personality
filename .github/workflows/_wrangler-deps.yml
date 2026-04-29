@@ -1,0 +1,44 @@
+name: Wrangler Setup (Reusable)
+# Reusable workflow — checkout + Node setup + npm ci for apps/workers
+# Usage in caller workflow:
+#   jobs:
+#     setup:
+#       uses: ./.github/workflows/_wrangler-deps.yml
+#       with:
+#         node-version: "22"
+#
+# NOTE: wrangler-action@v3 bundles wrangler itself, so this reusable workflow
+#   is primarily for explicit npm ci + type-check steps before deploy.
+#   If all steps are unified in wrangler-action, this may be simplified.
+
+on:
+  workflow_call:
+    inputs:
+      node-version:
+        description: "Node.js version to use"
+        type: string
+        default: "22"
+    secrets:
+      CLOUDFLARE_API_TOKEN:
+        description: "Cloudflare API token with Workers edit permissions"
+        required: false  # not required here — caller passes to wrangler-action directly
+      CLOUDFLARE_ACCOUNT_ID:
+        description: "Cloudflare account ID"
+        required: false
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ inputs.node-version }}
+          cache: "npm"
+          cache-dependency-path: apps/workers/package-lock.json
+      - name: Install workers dependencies
+        working-directory: apps/workers
+        run: npm ci
+      - name: Type check
+        working-directory: apps/workers
+        run: npm run type-check

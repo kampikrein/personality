@@ -1,0 +1,24 @@
+{
+  "name": "@personality/workers",
+  "version": "0.0.1",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy:prod": "wrangler deploy --env production",
+    "deploy:staging": "wrangler deploy --env staging",
+    "d1:create:prod": "wrangler d1 create personality-d1-prod",
+    "d1:create:staging": "wrangler d1 create personality-d1-staging",
+    "secrets:list:prod": "wrangler secret list --env production",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "hono": "^4.6.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20260101.0",
+    "@types/node": "^22.0.0",
+    "typescript": "^5.6.0",
+    "wrangler": "^3.90.0"
+  }
+}
