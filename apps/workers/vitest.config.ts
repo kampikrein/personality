@@ -6,6 +6,9 @@ export default defineWorkersConfig({
       workers: {
         // wrangler.toml 에서 D1/KV/R2 binding 자동 로드
         wrangler: { configPath: "./wrangler.toml" },
+        // singleWorker=true: 모든 테스트를 단일 Worker 인스턴스에서 실행
+        // (53+ 파일 병렬 시 OS ephemeral port 고갈 방지)
+        singleWorker: true,
         miniflare: {
           // in-memory D1 — 외부 자원 미접촉, 로컬 완결
           d1Databases: ["DB"],

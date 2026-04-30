@@ -1,0 +1,67 @@
+# openapi.yaml — Personality App API Specification
+# Cycle 5 stub — RED phase.
+# GREEN phase: fill in all 32 endpoints (public 22 + admin 10) with full schemas.
+#
+# This file is intentionally incomplete — the openapi/spec.test.ts assertions
+# will FAIL at RED phase because:
+#   1. paths count is 0 (not 32)
+#   2. No operationId / requestBody / responses defined
+#
+openapi: "3.0.3"
+info:
+  title: "Personality App API"
+  version: "1.0.0"
+  description: >
+    Personality portal + tarot mobile API.
+    Phase 1 conversion — Hono Workers backend.
+servers:
+  - url: "https://api.personality.app"
+    description: "Production"
+  - url: "http://localhost:8787"
+    description: "Local development (wrangler dev)"
+paths: {}
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+    CfAccessJwt:
+      type: apiKey
+      in: header
+      name: Cf-Access-Jwt-Assertion
+  schemas:
+    SuccessResponse:
+      type: object
+      required: [success, data]
+      properties:
+        success:
+          type: boolean
+          enum: [true]
+        data:
+          description: "Response payload (type varies by endpoint)"
+    ErrorResponse:
+      type: object
+      required: [success, error]
+      properties:
+        success:
+          type: boolean
+          enum: [false]
+        error:
+          type: object
+          required: [code, message]
+          properties:
+            code:
+              type: string
+              enum:
+                - validation_failed
+                - unauthorized
+                - forbidden
+                - not_found
+                - conflict
+                - rate_limited
+                - internal_error
+            message:
+              type: string
+            details:
+              description: "Optional structured details"
