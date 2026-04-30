@@ -50,7 +50,8 @@ describe("DB Schema — 14 tables existence (RED phase)", () => {
     const tableNames = (result.results as { name: string }[]).map((r) => r.name);
 
     // RED phase: migration 미적용 → 0개 테이블 → fail
-    expect(tableNames).toHaveLength(14);
+    // Cycle 4: 15개 테이블 (14 original + account from 0001 migration)
+    expect(tableNames).toHaveLength(15);
   });
 
   it("should contain all 14 expected table names", async () => {

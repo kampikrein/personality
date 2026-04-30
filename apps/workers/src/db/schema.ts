@@ -45,6 +45,30 @@ export const users = sqliteTable("users", {
   deletedAt: text("deleted_at"),
   createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
   updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  // BetterAuth extension columns (0001 migration)
+  name: text("name"),
+  emailVerified: integer("email_verified", { mode: "boolean" }).default(false),
+  image: text("image"),
+});
+
+/**
+ * account — BetterAuth OAuth provider account records
+ * Maps external OAuth provider accounts to local users.
+ */
+export const account = sqliteTable("account", {
+  id: text("id").primaryKey(),
+  accountId: text("account_id").notNull(),
+  providerId: text("provider_id").notNull(),
+  userId: integer("user_id")
+    .notNull()
+    .references(() => users.id, { onDelete: "cascade" }),
+  accessToken: text("access_token"),
+  refreshToken: text("refresh_token"),
+  idToken: text("id_token"),
+  expiresAt: text("expires_at"),
+  password: text("password"),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
 });
 
 /**

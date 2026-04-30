@@ -17,6 +17,7 @@ import { env } from "cloudflare:test";
 import { beforeAll } from "vitest";
 // Vite ?raw import — Workers 런타임에서 파일 내용을 문자열로 인라인
 import migrationSQL from "../migrations/0000_thin_spyke.sql?raw";
+import migration0001SQL from "../migrations/0001_special_mad_thinker.sql?raw";
 
 // seeds
 import { seed } from "../src/db/seed";
@@ -37,6 +38,16 @@ beforeAll(async () => {
     await env.DB.prepare(statement).run();
   }
 
+  // 2b. migration 0001 SQL 적용 (BetterAuth 컬럼 확장)
+  const statements0001 = migration0001SQL
+    .split("--> statement-breakpoint")
+    .map((s) => s.trim())
+    .filter((s) => s.length > 0);
+
+  for (const statement of statements0001) {
+    await env.DB.prepare(statement).run();
+  }
+
   // 3. d1_migrations 추적 테이블 생성 (wrangler 호환)
   await env.DB.prepare(
     "CREATE TABLE IF NOT EXISTS d1_migrations (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT UNIQUE, applied_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL)"
@@ -45,6 +56,9 @@ beforeAll(async () => {
   // 4. d1_migrations에 적용 기록 삽입 (멱등 — INSERT OR IGNORE)
   await env.DB.prepare(
     "INSERT OR IGNORE INTO d1_migrations (name) VALUES ('0000_thin_spyke.sql')"
+  ).run();
+  await env.DB.prepare(
+    "INSERT OR IGNORE INTO d1_migrations (name) VALUES ('0001_special_mad_thinker.sql')"
   ).run();
 
   // 5. seed 실행 (PersonalityType × 16)

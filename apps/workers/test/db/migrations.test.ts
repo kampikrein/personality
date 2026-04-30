@@ -43,8 +43,9 @@ describe("Migrations — D1 schema 상태 검증 (RED phase)", () => {
     const tableNames = (result.results as { name: string }[]).map((r) => r.name);
 
     // RED phase: migration 미적용 → 0개 → fail
-    // GREEN phase: 14개 테이블 → pass
-    expect(tableNames).toHaveLength(14);
+    // GREEN phase cycle 2: 14개 테이블 → pass
+    // GREEN phase cycle 4: 15개 테이블 (account 테이블 추가 — 0001 migration)
+    expect(tableNames).toHaveLength(15);
   });
 
   it.each(EXPECTED_TABLES.map((t) => [t]))(

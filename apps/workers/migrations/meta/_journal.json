@@ -8,6 +8,13 @@
       "when": 1777445897910,
       "tag": "0000_thin_spyke",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1777527077354,
+      "tag": "0001_special_mad_thinker",
+      "breakpoints": true
     }
   ]
 }
