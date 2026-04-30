@@ -19,4 +19,11 @@ export default defineWorkersConfig({
     // 타임아웃 넉넉히 (D1 in-memory 초기화 포함)
     testTimeout: 15000,
   },
+  // Cycle 4: better-auth depends on Node.js internals (crypto, etc.)
+  // Mark as external so vitest-pool-workers does NOT bundle it into the Workers runtime.
+  // Stubs in src/auth/betterAuth.ts do NOT import better-auth at RED phase.
+  // GREEN phase: use cloudflare:node-compat or separate the betterAuth adapter layer.
+  resolve: {
+    external: ["better-auth"],
+  },
 });

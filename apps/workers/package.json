@@ -17,6 +17,7 @@
     "db:migrate:local": "wrangler d1 migrations apply personality-d1-prod --local"
   },
   "dependencies": {
+    "better-auth": "^1.6.9",
     "drizzle-orm": "^0.36.0",
     "hono": "^4.6.0"
   },
