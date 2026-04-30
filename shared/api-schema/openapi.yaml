@@ -1,15 +1,6 @@
-# openapi.yaml — Personality App API Specification
-# Cycle 5 stub — RED phase.
-# GREEN phase: fill in all 32 endpoints (public 22 + admin 10) with full schemas.
-#
-# This file is intentionally incomplete — the openapi/spec.test.ts assertions
-# will FAIL at RED phase because:
-#   1. paths count is 0 (not 32)
-#   2. No operationId / requestBody / responses defined
-#
 openapi: "3.0.3"
 info:
-  title: "Personality App API"
+  title: "Personality API"
   version: "1.0.0"
   description: >
     Personality portal + tarot mobile API.
@@ -19,7 +10,775 @@ servers:
     description: "Production"
   - url: "http://localhost:8787"
     description: "Local development (wrangler dev)"
-paths: {}
+
+paths:
+  # ── Health ──────────────────────────────────────────────────────────────────
+  /api/health:
+    get:
+      operationId: getHealth
+      summary: Health check
+      tags: [public]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+
+  # ── Sessions ────────────────────────────────────────────────────────────────
+  /api/sessions:
+    post:
+      operationId: createSession
+      summary: Create session (sign in)
+      tags: [public, sessions]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        "200":
+          description: Session created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+    delete:
+      operationId: deleteSession
+      summary: Delete session (sign out)
+      tags: [public, sessions]
+      security:
+        - BearerAuth: []
+      responses:
+        "200":
+          description: Session deleted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+
+  /api/sessions/me:
+    get:
+      operationId: getSessionMe
+      summary: Get current session user
+      tags: [public, sessions]
+      security:
+        - BearerAuth: []
+      responses:
+        "200":
+          description: Current user
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  # ── Accounts ────────────────────────────────────────────────────────────────
+  /api/accounts:
+    post:
+      operationId: createAccount
+      summary: Create account (sign up)
+      tags: [public, accounts]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        "201":
+          description: Account created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+        "400":
+          description: Validation failed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /api/accounts/me:
+    get:
+      operationId: getAccountMe
+      summary: Get current account
+      tags: [public, accounts]
+      security:
+        - BearerAuth: []
+      responses:
+        "200":
+          description: Current account
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+    patch:
+      operationId: updateAccountMe
+      summary: Update current account
+      tags: [public, accounts]
+      security:
+        - BearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+      responses:
+        "200":
+          description: Account updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+
+  # ── Assessment Questions ─────────────────────────────────────────────────────
+  /api/assessment_questions:
+    get:
+      operationId: listAssessmentQuestions
+      summary: List assessment questions
+      tags: [public, assessment_questions]
+      responses:
+        "200":
+          description: Question list
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+
+  /api/assessment_questions/{id}:
+    get:
+      operationId: getAssessmentQuestion
+      summary: Get assessment question
+      tags: [public, assessment_questions]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Question
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+    patch:
+      operationId: updateAssessmentQuestion
+      summary: Update assessment question
+      tags: [public, assessment_questions]
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        "200":
+          description: Question updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+
+  # ── Assessments ──────────────────────────────────────────────────────────────
+  /api/assessments:
+    post:
+      operationId: createAssessment
+      summary: Create assessment
+      tags: [public, assessments]
+      security:
+        - BearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        "201":
+          description: Assessment created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+
+  /api/assessments/{id}:
+    get:
+      operationId: getAssessment
+      summary: Get assessment
+      tags: [public, assessments]
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Assessment
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /api/assessments/{id}/complete:
+    post:
+      operationId: completeAssessment
+      summary: Complete assessment
+      tags: [public, assessments]
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Assessment completed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+
+  /api/assessments/{id}/submit:
+    patch:
+      operationId: submitAssessment
+      summary: Submit assessment (partial)
+      tags: [public, assessments]
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        "200":
+          description: Assessment submitted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+
+  # ── Results ──────────────────────────────────────────────────────────────────
+  /api/results/{assessment_id}:
+    get:
+      operationId: getResult
+      summary: Get assessment result
+      tags: [public, results]
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: assessment_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Result
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /api/results/{assessment_id}/share:
+    get:
+      operationId: getResultShare
+      summary: Get shareable result
+      tags: [public, results]
+      parameters:
+        - name: assessment_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Shareable result
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+
+  # ── Consents ─────────────────────────────────────────────────────────────────
+  /api/consents:
+    post:
+      operationId: createConsent
+      summary: Create consent record
+      tags: [public, consents]
+      security:
+        - BearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        "201":
+          description: Consent created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+
+  /api/consents/{id}:
+    get:
+      operationId: getConsent
+      summary: Get consent record
+      tags: [public, consents]
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Consent
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+    delete:
+      operationId: deleteConsent
+      summary: Delete consent record
+      tags: [public, consents]
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Consent deleted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+    patch:
+      operationId: updateConsent
+      summary: Update consent record
+      tags: [public, consents]
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        "200":
+          description: Consent updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+
+  # ── Deletion Requests ────────────────────────────────────────────────────────
+  /api/deletion_requests:
+    post:
+      operationId: createDeletionRequest
+      summary: Create account deletion request
+      tags: [public, deletion_requests]
+      security:
+        - BearerAuth: []
+      responses:
+        "201":
+          description: Deletion request created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+
+  /api/deletion_requests/{id}:
+    get:
+      operationId: getDeletionRequest
+      summary: Get deletion request status
+      tags: [public, deletion_requests]
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Deletion request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  # ── Admin: Audit Logs ────────────────────────────────────────────────────────
+  /admin/audit_logs:
+    get:
+      operationId: listAdminAuditLogs
+      summary: List audit logs
+      tags: [admin, audit_logs]
+      security:
+        - CfAccessJwt: []
+      responses:
+        "200":
+          description: Audit log list
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /admin/audit_logs/{id}:
+    get:
+      operationId: getAdminAuditLog
+      summary: Get single audit log
+      tags: [admin, audit_logs]
+      security:
+        - CfAccessJwt: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Audit log entry
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  # ── Admin: Question Sets ─────────────────────────────────────────────────────
+  /admin/question_sets:
+    get:
+      operationId: listAdminQuestionSets
+      summary: List question sets
+      tags: [admin, question_sets]
+      security:
+        - CfAccessJwt: []
+      responses:
+        "200":
+          description: Question set list
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+    post:
+      operationId: createAdminQuestionSet
+      summary: Create question set
+      tags: [admin, question_sets]
+      security:
+        - CfAccessJwt: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name]
+              properties:
+                name:
+                  type: string
+                version:
+                  type: string
+      responses:
+        "201":
+          description: Question set created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+        "400":
+          description: Validation failed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /admin/question_sets/{id}:
+    get:
+      operationId: getAdminQuestionSet
+      summary: Get question set
+      tags: [admin, question_sets]
+      security:
+        - CfAccessJwt: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Question set
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+    patch:
+      operationId: updateAdminQuestionSet
+      summary: Update question set
+      tags: [admin, question_sets]
+      security:
+        - CfAccessJwt: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        "200":
+          description: Question set updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+    delete:
+      operationId: deleteAdminQuestionSet
+      summary: Delete question set
+      tags: [admin, question_sets]
+      security:
+        - CfAccessJwt: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Question set deleted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+
+  # ── Admin: Alerts ────────────────────────────────────────────────────────────
+  /admin/alerts:
+    get:
+      operationId: listAdminAlerts
+      summary: List system alerts
+      tags: [admin, alerts]
+      security:
+        - CfAccessJwt: []
+      responses:
+        "200":
+          description: Alert list
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+
+  /admin/alerts/{id}:
+    get:
+      operationId: getAdminAlert
+      summary: Get single alert
+      tags: [admin, alerts]
+      security:
+        - CfAccessJwt: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Alert
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+    patch:
+      operationId: acknowledgeAdminAlert
+      summary: Acknowledge / update alert
+      tags: [admin, alerts]
+      security:
+        - CfAccessJwt: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+      responses:
+        "200":
+          description: Alert updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+
+  # ── Admin: Dashboard ─────────────────────────────────────────────────────────
+  /admin/dashboard:
+    get:
+      operationId: getAdminDashboard
+      summary: Dashboard summary stats
+      tags: [admin, dashboard]
+      security:
+        - CfAccessJwt: []
+      responses:
+        "200":
+          description: Dashboard stats
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+
+  /admin/dashboard/completion_rates:
+    get:
+      operationId: getAdminDashboardCompletionRates
+      summary: Assessment completion rate stats
+      tags: [admin, dashboard]
+      security:
+        - CfAccessJwt: []
+      responses:
+        "200":
+          description: Completion rates
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+
+  /admin/dashboard/drop_off_analysis:
+    get:
+      operationId: getAdminDashboardDropOffAnalysis
+      summary: Drop-off analysis
+      tags: [admin, dashboard]
+      security:
+        - CfAccessJwt: []
+      responses:
+        "200":
+          description: Drop-off analysis
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+
 components:
   securitySchemes:
     BearerAuth:

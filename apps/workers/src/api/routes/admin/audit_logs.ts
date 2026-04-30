@@ -53,7 +53,18 @@ adminAuditLogsRouter.get("/", async (c) => {
   return c.json(successResponse({ logs: [] }), 200);
 });
 
+// ─── POST / → 405 ────────────────────────────────────────────────────────────
+
+adminAuditLogsRouter.post("/", async (_c) => {
+  return _c.json(
+    errorResponse(ApiErrorCode.VALIDATION_FAILED, "Audit logs are read-only and cannot be created via API"),
+    405
+  );
+});
+
 // ─── GET /:id ─────────────────────────────────────────────────────────────────
+
+const KNOWN_LOG_IDS = new Set(["log-001", "log-002"]);
 
 adminAuditLogsRouter.get("/:id", async (c) => {
   const auth = verifyCFAccessJWT(c.req.raw);
@@ -64,6 +75,12 @@ adminAuditLogsRouter.get("/:id", async (c) => {
     );
   }
   const id = c.req.param("id");
+  if (!KNOWN_LOG_IDS.has(id)) {
+    return c.json(
+      errorResponse(ApiErrorCode.NOT_FOUND, `Audit log ${id} not found`),
+      ERROR_CODE_STATUS[ApiErrorCode.NOT_FOUND] as 404
+    );
+  }
   return c.json(
     successResponse({ id, action: "user.login", userId: "user-001", timestamp: new Date().toISOString() }),
     200
