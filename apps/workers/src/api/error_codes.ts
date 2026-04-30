@@ -1,9 +1,8 @@
 /**
  * src/api/error_codes.ts — API error code catalog
- * Cycle 5 stub — RED phase.
+ * Cycle 5 GREEN phase.
  *
  * Error codes are typed enum constants + helper for building error responses.
- * GREEN phase: implement enum + apiError() helper.
  */
 
 /**
@@ -40,5 +39,12 @@ export function apiError(
   message: string,
   details?: unknown
 ): { success: false; error: { code: ApiErrorCode; message: string; details?: unknown } } {
-  throw new Error("not implemented");
+  const err: { success: false; error: { code: ApiErrorCode; message: string; details?: unknown } } = {
+    success: false,
+    error: { code, message },
+  };
+  if (details !== undefined) {
+    err.error.details = details;
+  }
+  return err;
 }

@@ -1,13 +1,12 @@
 /**
  * src/api/routes/public/health.ts — Health check API route
- * Cycle 5 stub — RED phase.
+ * Cycle 5 GREEN phase.
  *
  * Routes:
- *   GET /api/health — 200 OK with envelope
- *
- * GREEN phase: wrap existing /health with envelope middleware.
+ *   GET / → 200 + envelope { success: true, data: { ok: true, timestamp } }
  */
 import { Hono } from "hono";
+import { successResponse } from "../../envelope";
 
 type Bindings = {
   DB: D1Database;
@@ -16,6 +15,6 @@ type Bindings = {
 
 export const healthRouter = new Hono<{ Bindings: Bindings }>();
 
-healthRouter.get("/", async (_c) => {
-  throw new Error("not implemented");
+healthRouter.get("/", async (c) => {
+  return c.json(successResponse({ ok: true, timestamp: new Date().toISOString() }), 200);
 });
