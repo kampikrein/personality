@@ -1,9 +1,12 @@
 /**
- * src/services/profiles/typeContentService.ts — RED phase stub
+ * src/services/profiles/typeContentService.ts — GREEN phase
  * Rails: server/app/services/profiles/type_content_service.rb
  *
- * Maps type_code → personality_types content (locale-aware).
- * Supports locales: 'ko' | 'en'. Falls back to the other locale if primary is blank.
+ * getTypeContent(db, typeCode, locale?) → TypeContent
+ * - locale: 'ko' | 'en', default 'ko'
+ * - fallback: if primary locale is blank → use other locale
+ * - raises for unknown typeCode
+ * - normalizes type_code to uppercase
  */
 
 export interface TypeContent {
@@ -13,10 +16,56 @@ export interface TypeContent {
   caution_patterns: string[];
 }
 
+interface PersonalityTypeRow {
+  character_name_ko: string;
+  character_name_en: string;
+  summary_ko: string | null;
+  summary_en: string | null;
+  strengths: string | null;
+  caution_patterns: string | null;
+}
+
 export async function getTypeContent(
-  _db: unknown,
-  _typeCode: string,
-  _locale?: "ko" | "en"
+  db: D1Database,
+  typeCode: string,
+  locale: "ko" | "en" = "ko"
 ): Promise<TypeContent> {
-  throw new Error("not implemented");
+  const code = typeCode.toUpperCase();
+
+  const row = await db
+    .prepare(
+      `SELECT character_name_ko, character_name_en,
+              summary_ko, summary_en,
+              strengths, caution_patterns
+       FROM personality_types WHERE code = ?`
+    )
+    .bind(code)
+    .first<PersonalityTypeRow>();
+
+  if (!row) {
+    throw new Error(`Unknown personality type: ${code}`);
+  }
+
+  // Strengths & caution_patterns are stored as JSON strings
+  const strengths: string[] = row.strengths ? JSON.parse(row.strengths) : [];
+  const caution_patterns: string[] = row.caution_patterns ? JSON.parse(row.caution_patterns) : [];
+
+  // Locale-aware name selection with fallback
+  let character_name: string;
+  let summary: string | null;
+
+  if (locale === "ko") {
+    character_name = row.character_name_ko || row.character_name_en;
+    summary = row.summary_ko || row.summary_en || null;
+  } else {
+    character_name = row.character_name_en || row.character_name_ko;
+    summary = row.summary_en || row.summary_ko || null;
+  }
+
+  return {
+    character_name,
+    summary,
+    strengths,
+    caution_patterns,
+  };
 }

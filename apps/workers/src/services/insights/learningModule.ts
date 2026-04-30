@@ -1,10 +1,23 @@
 /**
- * src/services/insights/learningModule.ts — RED phase stub
+ * src/services/insights/learningModule.ts — GREEN phase
  * Rails: server/app/services/insights/learning_module.rb
+ *
+ * generateLearningInsight(profile) → { suggestions, explanation }
+ * Pure compute — no DB access.
  */
 
-import type { ModuleResult } from "./careerModule";
+import type { ModuleResult, ProfileForInsight } from "./careerModule";
 
-export function generateLearningInsight(_profile: unknown): ModuleResult {
-  throw new Error("not implemented");
+export function generateLearningInsight(profile: ProfileForInsight): ModuleResult {
+  const suggestions: string[] = [];
+
+  if (profile.learningStyle) {
+    suggestions.push(profile.learningStyle);
+  }
+
+  suggestions.push("Explore resources that match your preferred learning approach.");
+
+  const explanation = `Learning insights for ${profile.typeCode}: Understanding your learning style helps you grow more effectively.`;
+
+  return { suggestions, explanation };
 }
