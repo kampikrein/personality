@@ -44,6 +44,9 @@ apps/workers/.dev.vars
 apps/workers/.wrangler/
 apps/workers/node_modules/
 
+# === Node (root + workspace hoist) ===
+node_modules/
+
 # === OS ===
 .DS_Store
-.tmp/
+.tmp/node_modules/
