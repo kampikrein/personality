@@ -1,6 +1,6 @@
 /**
- * test/ui/pages/public/deletion_requests/show.test.ts — DeletionRequestsShowPage RED tests
- * Cycle 6 RED phase.
+ * test/ui/pages/public/deletion_requests/show.test.ts — DeletionRequestsShowPage GREEN tests
+ * Cycle 6 GREEN phase (Step 0: antipattern fix).
  *
  * GREEN: Renders deletion request status (pending/approved/rejected/completed).
  *   Shows requested_at timestamp.
@@ -24,22 +24,20 @@ const completedRequest: DeletionRequest = {
   processed_at: "2026-04-03T00:00:00Z",
 };
 
-describe("DeletionRequestsShowPage (RED phase)", () => {
+describe("DeletionRequestsShowPage", () => {
   it("DeletionRequestsShowPage is exported", () => {
     expect(DeletionRequestsShowPage).toBeDefined();
     expect(typeof DeletionRequestsShowPage).toBe("function");
   });
 
   it("renders pending status", () => {
-    expect(() =>
-      DeletionRequestsShowPage({ deletionRequest: pendingRequest })
-    ).toThrow("not implemented: DeletionRequestsShowPage");
+    const html = String(DeletionRequestsShowPage({ deletionRequest: pendingRequest }));
+    expect(html).toContain("pending");
   });
 
   it("renders completed status with processed_at", () => {
-    expect(() =>
-      DeletionRequestsShowPage({ deletionRequest: completedRequest })
-    ).toThrow("not implemented: DeletionRequestsShowPage");
+    const html = String(DeletionRequestsShowPage({ deletionRequest: completedRequest }));
+    expect(html).toContain("completed");
   });
 
   it("status is one of valid values", () => {

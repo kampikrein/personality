@@ -1,6 +1,6 @@
 /**
- * test/ui/pages/admin/dashboard/index.test.ts — DashboardIndexPage RED tests
- * Cycle 6 RED phase.
+ * test/ui/pages/admin/dashboard/index.test.ts — DashboardIndexPage GREEN tests
+ * Cycle 6 GREEN phase (Step 0: antipattern fix).
  *
  * GREEN: Renders stat cards: totalAssessments, completionRate (%), dropOffRate (%), activeUsers.
  *   Links to sub-sections: audit_logs, question_sets, alerts.
@@ -17,16 +17,20 @@ const stats: DashboardStats = {
   activeUsers: 342,
 };
 
-describe("DashboardIndexPage (RED phase)", () => {
+describe("DashboardIndexPage", () => {
   it("DashboardIndexPage is exported", () => {
     expect(DashboardIndexPage).toBeDefined();
     expect(typeof DashboardIndexPage).toBe("function");
   });
 
   it("renders dashboard with stats", () => {
-    expect(() =>
-      DashboardIndexPage({ stats })
-    ).toThrow("not implemented: DashboardIndexPage");
+    const html = String(DashboardIndexPage({ stats }));
+    expect(html).toContain("1240");
+  });
+
+  it("renders completion rate", () => {
+    const html = String(DashboardIndexPage({ stats }));
+    expect(html).toContain("78.5");
   });
 
   it("stats object has completionRate and dropOffRate", () => {

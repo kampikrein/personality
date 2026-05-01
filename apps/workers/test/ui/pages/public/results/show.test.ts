@@ -1,6 +1,6 @@
 /**
- * test/ui/pages/public/results/show.test.ts — ResultsShowPage RED tests
- * Cycle 6 RED phase.
+ * test/ui/pages/public/results/show.test.ts — ResultsShowPage GREEN tests
+ * Cycle 6 GREEN phase (Step 0: antipattern fix).
  *
  * Stimulus mapping:
  *   - type_reveal_controller: letter animation on type code
@@ -48,42 +48,39 @@ const insights: InsightCard[] = [
   { title: "Growth Areas", body: "Emotional expression, flexibility" },
 ];
 
-describe("ResultsShowPage (RED phase)", () => {
+describe("ResultsShowPage", () => {
   it("ResultsShowPage is exported", () => {
     expect(ResultsShowPage).toBeDefined();
     expect(typeof ResultsShowPage).toBe("function");
   });
 
   it("renders full results page", () => {
-    expect(() =>
-      ResultsShowPage({ typeHero, spectrum, insights })
-    ).toThrow("not implemented: ResultsShowPage");
+    const html = String(ResultsShowPage({ typeHero, spectrum, insights }));
+    expect(html).toContain("The Architect");
   });
 });
 
-describe("TypeHero partial (RED phase)", () => {
+describe("TypeHero partial", () => {
   it("TypeHero is exported", () => {
     expect(TypeHero).toBeDefined();
     expect(typeof TypeHero).toBe("function");
   });
 
   it("renders type hero", () => {
-    expect(() =>
-      TypeHero(typeHero)
-    ).toThrow("not implemented: TypeHero");
+    const html = String(TypeHero(typeHero));
+    expect(html).toContain("INTJ");
   });
 });
 
-describe("SpectrumPartial (RED phase)", () => {
+describe("SpectrumPartial", () => {
   it("SpectrumPartial is exported", () => {
     expect(SpectrumPartial).toBeDefined();
     expect(typeof SpectrumPartial).toBe("function");
   });
 
   it("renders spectrum bars", () => {
-    expect(() =>
-      SpectrumPartial(spectrum)
-    ).toThrow("not implemented: SpectrumPartial");
+    const html = String(SpectrumPartial(spectrum));
+    expect(html).toContain("Energy");
   });
 
   it("spectrum has 4 domains", () => {
@@ -92,28 +89,26 @@ describe("SpectrumPartial (RED phase)", () => {
   });
 });
 
-describe("InsightCardPartial (RED phase)", () => {
+describe("InsightCardPartial", () => {
   it("InsightCardPartial is exported", () => {
     expect(InsightCardPartial).toBeDefined();
     expect(typeof InsightCardPartial).toBe("function");
   });
 
   it("renders insight card", () => {
-    expect(() =>
-      InsightCardPartial(insights[0])
-    ).toThrow("not implemented: InsightCardPartial");
+    const html = String(InsightCardPartial(insights[0]));
+    expect(html).toContain("Your Strengths");
   });
 });
 
-describe("TrustNotice partial (RED phase)", () => {
+describe("TrustNotice partial", () => {
   it("TrustNotice is exported", () => {
     expect(TrustNotice).toBeDefined();
     expect(typeof TrustNotice).toBe("function");
   });
 
   it("renders trust notice", () => {
-    expect(() =>
-      TrustNotice()
-    ).toThrow("not implemented: TrustNotice");
+    const html = String(TrustNotice());
+    expect(html).toBeDefined();
   });
 });

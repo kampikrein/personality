@@ -1,6 +1,6 @@
 /**
- * test/ui/pages/admin/alerts/index.test.ts — AlertsIndexPage RED tests
- * Cycle 6 RED phase.
+ * test/ui/pages/admin/alerts/index.test.ts — AlertsIndexPage GREEN tests
+ * Cycle 6 GREEN phase (Step 0: antipattern fix).
  *
  * GREEN: Renders active alerts table with message, severity, created_at.
  *   Dismiss action per alert.
@@ -15,22 +15,25 @@ const alerts: AdminAlert[] = [
   { id: "a-2", message: "Low completion rate", severity: "medium", active: true, created_at: "2026-04-02T00:00:00Z" },
 ];
 
-describe("AlertsIndexPage (RED phase)", () => {
+describe("AlertsIndexPage", () => {
   it("AlertsIndexPage is exported", () => {
     expect(AlertsIndexPage).toBeDefined();
     expect(typeof AlertsIndexPage).toBe("function");
   });
 
   it("renders active alerts", () => {
-    expect(() =>
-      AlertsIndexPage({ alerts })
-    ).toThrow("not implemented: AlertsIndexPage");
+    const html = String(AlertsIndexPage({ alerts }));
+    expect(html).toContain("High drop-off on Q5");
+  });
+
+  it("renders severity information", () => {
+    const html = String(AlertsIndexPage({ alerts }));
+    expect(html).toContain("high");
   });
 
   it("renders empty state", () => {
-    expect(() =>
-      AlertsIndexPage({ alerts: [] })
-    ).toThrow("not implemented: AlertsIndexPage");
+    const html = String(AlertsIndexPage({ alerts: [] }));
+    expect(html).toBeDefined();
   });
 
   it("alerts have severity field", () => {

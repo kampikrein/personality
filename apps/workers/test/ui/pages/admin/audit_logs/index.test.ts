@@ -1,6 +1,6 @@
 /**
- * test/ui/pages/admin/audit_logs/index.test.ts — AuditLogsIndexPage RED tests
- * Cycle 6 RED phase.
+ * test/ui/pages/admin/audit_logs/index.test.ts — AuditLogsIndexPage GREEN tests
+ * Cycle 6 GREEN phase (Step 0: antipattern fix).
  *
  * GREEN: Renders table with action, actor_email, created_at columns.
  *   Pagination controls when totalPages > 1.
@@ -16,28 +16,30 @@ const sampleLogs: AuditLog[] = [
   { id: "2", action: "assessment.delete", actor_email: "admin@example.com", created_at: "2026-04-02T00:00:00Z" },
 ];
 
-describe("AuditLogsIndexPage (RED phase)", () => {
+describe("AuditLogsIndexPage", () => {
   it("AuditLogsIndexPage is exported", () => {
     expect(AuditLogsIndexPage).toBeDefined();
     expect(typeof AuditLogsIndexPage).toBe("function");
   });
 
   it("renders logs list", () => {
-    expect(() =>
-      AuditLogsIndexPage({ logs: sampleLogs })
-    ).toThrow("not implemented: AuditLogsIndexPage");
+    const html = String(AuditLogsIndexPage({ logs: sampleLogs }));
+    expect(html).toContain("user.create");
+  });
+
+  it("renders actor email", () => {
+    const html = String(AuditLogsIndexPage({ logs: sampleLogs }));
+    expect(html).toContain("admin@example.com");
   });
 
   it("renders empty state", () => {
-    expect(() =>
-      AuditLogsIndexPage({ logs: [] })
-    ).toThrow("not implemented: AuditLogsIndexPage");
+    const html = String(AuditLogsIndexPage({ logs: [] }));
+    expect(html).toBeDefined();
   });
 
   it("renders with pagination", () => {
-    expect(() =>
-      AuditLogsIndexPage({ logs: sampleLogs, page: 1, totalPages: 5 })
-    ).toThrow("not implemented: AuditLogsIndexPage");
+    const html = String(AuditLogsIndexPage({ logs: sampleLogs, page: 1, totalPages: 5 }));
+    expect(html).toBeDefined();
   });
 
   it("log entries have required fields", () => {

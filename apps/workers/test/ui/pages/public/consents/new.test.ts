@@ -1,6 +1,6 @@
 /**
- * test/ui/pages/public/consents/new.test.ts — ConsentsNewPage RED tests
- * Cycle 6 RED phase.
+ * test/ui/pages/public/consents/new.test.ts — ConsentsNewPage GREEN tests
+ * Cycle 6 GREEN phase (Step 0: antipattern fix).
  *
  * GREEN: Renders consent form with data_processing + third_party checkboxes.
  *   Disabled submit until required consents checked.
@@ -10,16 +10,20 @@
 import { describe, it, expect } from "vitest";
 import { ConsentsNewPage } from "../../../../../src/ui/pages/public/consents/new";
 
-describe("ConsentsNewPage (RED phase)", () => {
+describe("ConsentsNewPage", () => {
   it("ConsentsNewPage is exported", () => {
     expect(ConsentsNewPage).toBeDefined();
     expect(typeof ConsentsNewPage).toBe("function");
   });
 
   it("renders consent form", () => {
-    expect(() =>
-      ConsentsNewPage({ csrfToken: "csrf-consent", assessmentId: "assessment-abc" })
-    ).toThrow("not implemented: ConsentsNewPage");
+    const html = String(ConsentsNewPage({ csrfToken: "csrf-consent", assessmentId: "assessment-abc" }));
+    expect(html).toContain("csrf-consent");
+  });
+
+  it("embeds assessmentId in form", () => {
+    const html = String(ConsentsNewPage({ csrfToken: "csrf-consent", assessmentId: "assessment-abc" }));
+    expect(html).toContain("assessment-abc");
   });
 
   it("assessmentId is linked in form", () => {

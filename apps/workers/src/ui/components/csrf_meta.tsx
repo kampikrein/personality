@@ -1,13 +1,12 @@
 /**
- * src/ui/components/csrf_meta.tsx — CSRF meta tag stub
- * Cycle 6 RED phase. Embeds csrf-token for JS fetch usage.
+ * src/ui/components/csrf_meta.tsx — CSRF meta tag
+ * Cycle 6 GREEN phase. Embeds csrf-token for JS fetch usage.
  */
 
 export interface CsrfMetaProps {
   token: string;
 }
 
-// RED stub — not implemented
-export function CsrfMeta(_props: CsrfMetaProps): unknown {
-  throw new Error("not implemented: CsrfMeta");
+export function CsrfMeta(props: CsrfMetaProps): string {
+  return `<meta name="csrf-token" content="${props.token}">`;
 }

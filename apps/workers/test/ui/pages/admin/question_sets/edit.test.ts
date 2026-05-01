@@ -1,6 +1,6 @@
 /**
- * test/ui/pages/admin/question_sets/edit.test.ts — QuestionSetsEditPage RED tests
- * Cycle 6 RED phase.
+ * test/ui/pages/admin/question_sets/edit.test.ts — QuestionSetsEditPage GREEN tests
+ * Cycle 6 GREEN phase (Step 0: antipattern fix).
  *
  * GREEN: Renders edit form pre-filled with existing values + CSRF + validation messages.
  */
@@ -11,25 +11,28 @@ import type { QuestionSet } from "../../../../../src/ui/pages/admin/question_set
 
 const qs: QuestionSet = { id: "qs-1", name: "MBTI Set", description: "Core", active: true };
 
-describe("QuestionSetsEditPage (RED phase)", () => {
+describe("QuestionSetsEditPage", () => {
   it("QuestionSetsEditPage is exported", () => {
     expect(QuestionSetsEditPage).toBeDefined();
     expect(typeof QuestionSetsEditPage).toBe("function");
   });
 
   it("renders edit form with existing values", () => {
-    expect(() =>
-      QuestionSetsEditPage({ questionSet: qs, csrfToken: "csrf-xyz" })
-    ).toThrow("not implemented: QuestionSetsEditPage");
+    const html = String(QuestionSetsEditPage({ questionSet: qs, csrfToken: "csrf-xyz" }));
+    expect(html).toContain("MBTI Set");
+  });
+
+  it("renders csrf token", () => {
+    const html = String(QuestionSetsEditPage({ questionSet: qs, csrfToken: "csrf-xyz" }));
+    expect(html).toContain("csrf-xyz");
   });
 
   it("renders with validation errors", () => {
-    expect(() =>
-      QuestionSetsEditPage({
-        questionSet: qs,
-        csrfToken: "csrf-xyz",
-        errors: { name: ["is too short"] },
-      })
-    ).toThrow("not implemented: QuestionSetsEditPage");
+    const html = String(QuestionSetsEditPage({
+      questionSet: qs,
+      csrfToken: "csrf-xyz",
+      errors: { name: ["is too short"] },
+    }));
+    expect(html).toContain("is too short");
   });
 });

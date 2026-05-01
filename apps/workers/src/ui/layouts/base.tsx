@@ -1,6 +1,6 @@
 /**
- * src/ui/layouts/base.tsx — Base HTML layout stub
- * Cycle 6 RED phase. SSR layout with CSP nonce slot.
+ * src/ui/layouts/base.tsx — Base HTML layout
+ * Cycle 6 GREEN phase. SSR layout with CSP nonce slot.
  */
 
 export interface BaseLayoutProps {
@@ -9,7 +9,18 @@ export interface BaseLayoutProps {
   children?: unknown;
 }
 
-// RED stub — not implemented
-export function BaseLayout(_props: BaseLayoutProps): unknown {
-  throw new Error("not implemented: BaseLayout");
+export function BaseLayout(props: BaseLayoutProps): string {
+  const nonceTag = props.nonce
+    ? `<meta name="csp-nonce" content="${props.nonce}">`
+    : "";
+  return `<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${props.title}</title>
+${nonceTag}
+</head>
+<body>${props.children ?? ""}</body>
+</html>`;
 }

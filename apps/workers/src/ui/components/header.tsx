@@ -1,6 +1,6 @@
 /**
- * src/ui/components/header.tsx — Site header stub
- * Cycle 6 RED phase.
+ * src/ui/components/header.tsx — Site header
+ * Cycle 6 GREEN phase.
  */
 
 export interface HeaderProps {
@@ -9,7 +9,17 @@ export interface HeaderProps {
   currentPath?: string;
 }
 
-// RED stub — not implemented
-export function Header(_props: HeaderProps): unknown {
-  throw new Error("not implemented: Header");
+export function Header(props: HeaderProps): string {
+  const { isAdmin = false, userEmail = null, currentPath = "" } = props;
+  const userLinks = userEmail
+    ? `<span>${userEmail}</span><a href="/signout">Logout</a>`
+    : `<a href="/signin">Login</a><a href="/signup">Sign Up</a>`;
+  const adminLinks = isAdmin
+    ? `<a href="/admin/dashboard">Admin</a>`
+    : "";
+  return `<header>
+<a href="/">Personality</a>
+${adminLinks}
+<nav data-current-path="${currentPath}">${userLinks}</nav>
+</header>`;
 }

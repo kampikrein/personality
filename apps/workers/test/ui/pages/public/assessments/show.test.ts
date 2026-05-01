@@ -1,6 +1,6 @@
 /**
- * test/ui/pages/public/assessments/show.test.ts — AssessmentShowPage RED tests
- * Cycle 6 RED phase.
+ * test/ui/pages/public/assessments/show.test.ts — AssessmentShowPage GREEN tests
+ * Cycle 6 GREEN phase (Step 0: antipattern fix).
  *
  * GREEN: Renders progress bar (progress_controller), answered/total count.
  *   Link to current unanswered question.
@@ -10,32 +10,30 @@
 import { describe, it, expect } from "vitest";
 import { AssessmentShowPage } from "../../../../../src/ui/pages/public/assessments/show";
 
-describe("AssessmentShowPage (RED phase)", () => {
+describe("AssessmentShowPage", () => {
   it("AssessmentShowPage is exported", () => {
     expect(AssessmentShowPage).toBeDefined();
     expect(typeof AssessmentShowPage).toBe("function");
   });
 
   it("renders progress state", () => {
-    expect(() =>
-      AssessmentShowPage({
-        assessmentId: "assessment-001",
-        progress: 45,
-        totalQuestions: 40,
-        answeredQuestions: 18,
-      })
-    ).toThrow("not implemented: AssessmentShowPage");
+    const html = String(AssessmentShowPage({
+      assessmentId: "assessment-001",
+      progress: 45,
+      totalQuestions: 40,
+      answeredQuestions: 18,
+    }));
+    expect(html).toContain("18");
   });
 
   it("renders completed state", () => {
-    expect(() =>
-      AssessmentShowPage({
-        assessmentId: "assessment-001",
-        progress: 100,
-        totalQuestions: 40,
-        answeredQuestions: 40,
-      })
-    ).toThrow("not implemented: AssessmentShowPage");
+    const html = String(AssessmentShowPage({
+      assessmentId: "assessment-001",
+      progress: 100,
+      totalQuestions: 40,
+      answeredQuestions: 40,
+    }));
+    expect(html).toContain("40");
   });
 
   it("progress is 0-100", () => {
