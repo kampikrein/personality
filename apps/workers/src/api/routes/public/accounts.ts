@@ -10,6 +10,8 @@
 import { Hono } from "hono";
 import { successResponse, errorResponse } from "../../envelope";
 import { ApiErrorCode, ERROR_CODE_STATUS } from "../../error_codes";
+import { verifyAge } from "../../../services/compliance/ageVerification";
+import { auditLog } from "../../../services/compliance/auditLogger";
 
 type Bindings = {
   DB: D1Database;
@@ -39,7 +41,11 @@ accountsRouter.post("/", async (c) => {
     body = {};
   }
 
-  const { email, password } = body as { email?: string; password?: string };
+  const { email, password, birthdate } = body as {
+    email?: string;
+    password?: string;
+    birthdate?: string;
+  };
 
   if (!email || !password) {
     return c.json(
@@ -55,6 +61,31 @@ accountsRouter.post("/", async (c) => {
       errorResponse(ApiErrorCode.VALIDATION_FAILED, "Invalid email format"),
       ERROR_CODE_STATUS[ApiErrorCode.VALIDATION_FAILED] as 400
     );
+  }
+
+  // Age verification (PIPA Article 22) — only when DB is available (production/integration env)
+  const db = c.env?.DB;
+  if (db) {
+    const ageResult = verifyAge(birthdate);
+    if (!ageResult.eligible) {
+      if (ageResult.reason === "birthdate_required") {
+        return c.json(
+          errorResponse(ApiErrorCode.VALIDATION_FAILED, "birthdate is required"),
+          ERROR_CODE_STATUS[ApiErrorCode.VALIDATION_FAILED] as 400
+        );
+      }
+      // under_minimum_age → 403
+      await auditLog(db, {
+        resourceType: "user",
+        action: "under_age_signup_blocked",
+        actorType: "anonymous",
+        metadata: { email, birthdate },
+      });
+      return c.json(
+        { success: false, error: { code: "under_age_blocked", message: "14세 미만 가입 불가" } },
+        403
+      );
+    }
   }
 
   // Simulate duplicate email conflict

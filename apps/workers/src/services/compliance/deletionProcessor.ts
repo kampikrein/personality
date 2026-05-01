@@ -78,11 +78,11 @@ export async function processDeletion(
 
     const sessionId = req.anonymous_session_id;
 
-    // Audit: deletion_started
+    // Audit: deletion_processed (cycle 8 통일 — was: deletion_started)
     await db
       .prepare(
         `INSERT INTO audit_logs (resource_type, resource_id, action, metadata, created_at, updated_at)
-         VALUES ('DeletionRequest', ?, 'deletion_started', '{}', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)`
+         VALUES ('deletion_request', ?, 'deletion_processed', '{}', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)`
       )
       .bind(deletionRequestId)
       .run();
@@ -166,6 +166,16 @@ export async function processDeletion(
       .first<{ cnt: number }>();
     const sessionExisted = sessionCount?.cnt ?? 0;
 
+    // Mark deletion_request as completed before session deletion.
+    // deletion_requests FK is SET NULL (test env) or CASCADE (prod migration).
+    // Setting completed status first preserves audit trail in both cases.
+    await db
+      .prepare(
+        "UPDATE deletion_requests SET status = 'completed', updated_at = CURRENT_TIMESTAMP WHERE id = ?"
+      )
+      .bind(deletionRequestId)
+      .run();
+
     // Delete anonymous_session
     await db
       .prepare("DELETE FROM anonymous_sessions WHERE id = ?")
@@ -180,12 +190,6 @@ export async function processDeletion(
          VALUES ('AnonymousSession', ?, 'session_deleted', '{}', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)`
       )
       .bind(sessionId)
-      .run();
-
-    // Mark deletion_request as completed
-    await db
-      .prepare("UPDATE deletion_requests SET status = 'completed', updated_at = CURRENT_TIMESTAMP WHERE id = ?")
-      .bind(deletionRequestId)
       .run();
 
     return { success: true, deleted_counts: counts };

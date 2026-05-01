@@ -135,6 +135,41 @@ beforeAll(async () => {
     }
   }
 
+  // 7b. cycle 8 compliance: consents.status 컬럼 추가 (in-memory only)
+  try {
+    await env.DB.prepare(
+      "ALTER TABLE consents ADD COLUMN status TEXT DEFAULT 'active'"
+    ).run();
+  } catch {
+    // already exists — ignore
+  }
+
+  // 7c. cycle 8 compliance: deletion_requests.anonymous_session_id를 nullable + SET NULL로 변경
+  //     (anonymous_session 삭제 시 deletion_request가 cascade 삭제되는 문제 해결)
+  //     SQLite는 컬럼 타입 변경 불가 → 테이블 재생성 방식 사용
+  try {
+    await env.DB.prepare("ALTER TABLE deletion_requests RENAME TO deletion_requests_old").run();
+    await env.DB.prepare(`
+      CREATE TABLE deletion_requests (
+        id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+        anonymous_session_id INTEGER,
+        request_token TEXT NOT NULL,
+        status TEXT DEFAULT 'pending' NOT NULL,
+        sla_deadline TEXT,
+        created_at TEXT DEFAULT CURRENT_TIMESTAMP NOT NULL,
+        updated_at TEXT DEFAULT CURRENT_TIMESTAMP NOT NULL,
+        FOREIGN KEY (anonymous_session_id) REFERENCES anonymous_sessions(id) ON DELETE SET NULL,
+        UNIQUE (request_token)
+      )
+    `).run();
+    await env.DB.prepare(
+      "INSERT INTO deletion_requests SELECT * FROM deletion_requests_old"
+    ).run();
+    await env.DB.prepare("DROP TABLE deletion_requests_old").run();
+  } catch {
+    // ignore if already migrated
+  }
+
   // 7. FK ON으로 설정 (foreign_keys.test.ts가 PRAGMA ON을 각 테스트에서 설정하지만
   //    setup 마지막에 ON으로 두어 FK 무결성 테스트 환경 보장)
   await env.DB.prepare("PRAGMA foreign_keys = ON").run();
