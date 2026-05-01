@@ -10,7 +10,16 @@ export interface AssessmentShowProps {
   answeredQuestions: number;
 }
 
-// RED stub — not implemented
-export function AssessmentShowPage(_props: AssessmentShowProps): unknown {
-  throw new Error("not implemented: AssessmentShowPage");
+export function AssessmentShowPage(props: AssessmentShowProps): string {
+  return `<div class="assessment-show">
+  <h1>Assessment Progress</h1>
+  <div class="progress-bar">
+    <div class="progress" style="width:${props.progress}%"></div>
+  </div>
+  <p>${props.answeredQuestions} / ${props.totalQuestions} questions answered</p>
+  ${props.progress < 100
+    ? `<a href="/api/assessments/${props.assessmentId}/next_question">Continue</a>`
+    : `<a href="/results/${props.assessmentId}">View Results</a>`
+  }
+</div>`;
 }

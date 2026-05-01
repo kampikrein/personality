@@ -16,7 +16,16 @@ export interface DeletionRequestsShowProps {
   deletionRequest: DeletionRequest;
 }
 
-// RED stub — not implemented
-export function DeletionRequestsShowPage(_props: DeletionRequestsShowProps): unknown {
-  throw new Error("not implemented: DeletionRequestsShowPage");
+export function DeletionRequestsShowPage(props: DeletionRequestsShowProps): string {
+  const { deletionRequest: dr } = props;
+  const processedAt = dr.processed_at
+    ? `<p>Processed: ${dr.processed_at}</p>`
+    : "";
+
+  return `<div class="deletion-request-show">
+  <h1>Deletion Request Status</h1>
+  <p>Status: ${dr.status}</p>
+  <p>Requested: ${dr.requested_at}</p>
+  ${processedAt}
+</div>`;
 }

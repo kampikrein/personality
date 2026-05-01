@@ -22,20 +22,19 @@ const adminUser: CFAccessPayload = {
   admin: true,
 };
 
-describe("CSP nonce integration (RED phase)", () => {
-  it("BaseLayout nonce prop is accepted", () => {
+describe("CSP nonce integration (GREEN phase)", () => {
+  it("BaseLayout renders nonce in meta tag", () => {
     const nonce = "csp-nonce-abc123";
     const props = { title: "Test", nonce };
-    expect(props.nonce).toBe("csp-nonce-abc123");
-    // Full render: throws until GREEN
-    expect(() => BaseLayout(props)).toThrow("not implemented: BaseLayout");
+    const html = String(BaseLayout(props));
+    expect(html).toContain("csp-nonce-abc123");
   });
 
-  it("AdminLayout nonce prop is accepted", () => {
+  it("AdminLayout renders nonce via BaseLayout", () => {
     const nonce = "admin-nonce-xyz";
     const props = { title: "Admin", user: adminUser, nonce };
-    expect(props.nonce).toBe("admin-nonce-xyz");
-    expect(() => AdminLayout(props)).toThrow("not implemented: AdminLayout");
+    const html = String(AdminLayout(props));
+    expect(html).toContain("admin-nonce-xyz");
   });
 
   it("nonce string is base64url format (no +/=)", () => {

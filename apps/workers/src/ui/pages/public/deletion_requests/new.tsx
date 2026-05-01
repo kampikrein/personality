@@ -8,7 +8,15 @@ export interface DeletionRequestsNewProps {
   userId: string;
 }
 
-// RED stub — not implemented
-export function DeletionRequestsNewPage(_props: DeletionRequestsNewProps): unknown {
-  throw new Error("not implemented: DeletionRequestsNewPage");
+export function DeletionRequestsNewPage(props: DeletionRequestsNewProps): string {
+  return `<div class="deletion-request-new">
+  <h1>Request Data Deletion</h1>
+  <p class="warning">Warning: This action will permanently delete all your data and cannot be undone.</p>
+  <form method="post" action="/api/deletion_requests">
+    <input type="hidden" name="csrf_token" value="${props.csrfToken}">
+    <input type="hidden" name="user_id" value="${props.userId}">
+    <button type="submit" class="danger-btn">Confirm Delete My Data</button>
+  </form>
+  <a href="/settings">Cancel</a>
+</div>`;
 }

@@ -9,7 +9,16 @@ export interface QuestionSetsShowProps {
   questionSet: QuestionSet;
 }
 
-// RED stub — not implemented
-export function QuestionSetsShowPage(_props: QuestionSetsShowProps): unknown {
-  throw new Error("not implemented: QuestionSetsShowPage");
+export function QuestionSetsShowPage(props: QuestionSetsShowProps): string {
+  const { questionSet: qs } = props;
+  return `<div class="admin-question-set-detail">
+  <h1>${qs.name}</h1>
+  <p>${qs.description ?? ""}</p>
+  <p>Status: ${qs.active ? "Active" : "Inactive"}</p>
+  <a href="/admin/question_sets/${qs.id}/edit">Edit</a>
+  <form method="post" action="/admin/question_sets/${qs.id}">
+    <input type="hidden" name="_method" value="DELETE">
+    <button type="submit">Delete</button>
+  </form>
+</div>`;
 }

@@ -8,7 +8,15 @@ export interface ConsentsNewProps {
   assessmentId: string;
 }
 
-// RED stub — not implemented
-export function ConsentsNewPage(_props: ConsentsNewProps): unknown {
-  throw new Error("not implemented: ConsentsNewPage");
+export function ConsentsNewPage(props: ConsentsNewProps): string {
+  return `<div class="consents-new">
+  <h1>Data Consent</h1>
+  <form method="post" action="/api/consents">
+    <input type="hidden" name="csrf_token" value="${props.csrfToken}">
+    <input type="hidden" name="assessment_id" value="${props.assessmentId}">
+    <label><input type="checkbox" name="data_processing" required> I consent to data processing</label>
+    <label><input type="checkbox" name="third_party"> I consent to third-party sharing</label>
+    <button type="submit">Continue</button>
+  </form>
+</div>`;
 }

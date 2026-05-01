@@ -24,24 +24,47 @@ export interface ResultsShowProps {
   insights: InsightCard[];
 }
 
-// RED stub — not implemented
-export function ResultsShowPage(_props: ResultsShowProps): unknown {
-  throw new Error("not implemented: ResultsShowPage");
+export function TypeHero(props: TypeHeroData): string {
+  return `<div class="type-hero">
+  <h1 class="type-code">${props.typeCode}</h1>
+  <h2 class="type-name">${props.typeName}</h2>
+  <p class="tagline">${props.tagline}</p>
+</div>`;
 }
 
-// Partial stubs
-export function TypeHero(_props: TypeHeroData): unknown {
-  throw new Error("not implemented: TypeHero");
+export function SpectrumPartial(props: SpectrumData): string {
+  const bars = props.domains.map(
+    (d) =>
+      `<div class="spectrum-bar">
+    <span class="domain-name">${d.name}</span>
+    <div class="bar-track"><div class="bar-fill" style="width:${d.score}%"></div></div>
+    <span class="score">${d.score}</span>
+  </div>`
+  ).join("");
+
+  return `<div class="spectrum">${bars}</div>`;
 }
 
-export function SpectrumPartial(_props: SpectrumData): unknown {
-  throw new Error("not implemented: SpectrumPartial");
+export function InsightCardPartial(props: InsightCard): string {
+  return `<div class="insight-card">
+  <h3>${props.title}</h3>
+  <p>${props.body}</p>
+</div>`;
 }
 
-export function InsightCardPartial(_props: InsightCard): unknown {
-  throw new Error("not implemented: InsightCardPartial");
+export function TrustNotice(): string {
+  return `<div class="trust-notice">
+  <p>This assessment is for personal insight only and is not a clinical diagnosis. Results may vary.</p>
+</div>`;
 }
 
-export function TrustNotice(): unknown {
-  throw new Error("not implemented: TrustNotice");
+export function ResultsShowPage(props: ResultsShowProps): string {
+  const insightsHtml = props.insights.map((card) => InsightCardPartial(card)).join("");
+
+  return `<div class="results-show">
+  ${TypeHero(props.typeHero)}
+  ${SpectrumPartial(props.spectrum)}
+  <div class="insights">${insightsHtml}</div>
+  ${TrustNotice()}
+</div>`;
 }

@@ -11,19 +11,18 @@
 import { describe, it, expect } from "vitest";
 import { PublicLayout } from "../../../src/ui/layouts/public";
 
-describe("hx-boost integration (RED phase)", () => {
-  it("PublicLayout accepts hxBoost prop", () => {
+describe("hx-boost integration (GREEN phase)", () => {
+  it("PublicLayout renders hx-boost on body when hxBoost is true", () => {
     const props = { title: "Test", user: null, hxBoost: true };
-    expect(props.hxBoost).toBe(true);
-    // Full render test: throws until GREEN
-    expect(() => PublicLayout(props)).toThrow("not implemented: PublicLayout");
+    const html = String(PublicLayout(props));
+    expect(html).toContain('hx-boost="true"');
   });
 
-  it("hxBoost is optional (defaults to false)", () => {
+  it("hxBoost is optional (defaults to false — no hx-boost attr on body)", () => {
     const props = { title: "Test", user: null };
-    // hxBoost is undefined — should still render without hx-boost attribute
     expect(props).not.toHaveProperty("hxBoost");
-    expect(() => PublicLayout(props)).toThrow("not implemented: PublicLayout");
+    const html = String(PublicLayout(props));
+    expect(html).not.toContain('hx-boost="true"');
   });
 
   it("hx-boost prop type is boolean", () => {
