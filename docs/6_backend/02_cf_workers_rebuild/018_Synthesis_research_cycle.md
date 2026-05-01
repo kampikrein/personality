@@ -171,3 +171,21 @@ S-018-F10 [Low]      Astro 6 GA 확인 (2026-03-10) — admin에 미채택 (과�
 | R3 Eval | [015_Eval_R3.md](./015_Eval_R3.md) |
 | R4 Eval | [016_Eval_R4.md](./016_Eval_R4.md) |
 | R5 Eval | [017_Eval_R5.md](./017_Eval_R5.md) |
+
+---
+
+## Session Log (auto-appended)
+
+| # | Type | Duration | Tokens |
+|---|------|----------|--------|
+| 1 | user-ai-exchange | 25s | 43455 |
+### Metrics
+
+| Metric | Value |
+|--------|-------|
+| Duration | 25s |
+| Total Tokens | 43455 |
+| Input Tokens | 6 |
+| Output Tokens | 1821 |
+| Cache Read | 0 |
+| Cache Creation | 41628 |

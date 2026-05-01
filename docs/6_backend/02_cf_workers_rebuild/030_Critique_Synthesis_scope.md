@@ -162,3 +162,21 @@ keywords: [critique-synthesis, scope-026, makeplan-readiness, brief-mapping, pip
 | Critique 029 (S3) | [`029_Critique_pipeline_consistency.md`](./029_Critique_pipeline_consistency.md) |
 | Synthesis 018 (research) | [`018_Synthesis_research_cycle.md`](./018_Synthesis_research_cycle.md) |
 | Synthesis 025 (Brief 021 critique) | [`025_Critique_Synthesis.md`](./025_Critique_Synthesis.md) |
+
+---
+
+## Session Log (auto-appended)
+
+| # | Type | Duration | Tokens |
+|---|------|----------|--------|
+| 1 | user-ai-exchange | 25s | 43455 |
+### Metrics
+
+| Metric | Value |
+|--------|-------|
+| Duration | 25s |
+| Total Tokens | 43455 |
+| Input Tokens | 6 |
+| Output Tokens | 1821 |
+| Cache Read | 0 |
+| Cache Creation | 41628 |

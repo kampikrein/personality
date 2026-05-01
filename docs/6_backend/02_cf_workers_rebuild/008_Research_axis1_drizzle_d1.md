@@ -401,3 +401,21 @@ priority-ordered findings:
 | — | 프로젝트 user 모델 | `/Users/kampikrein/A/personality/server/app/models/user.rb:4` | `encrypts :email, deterministic: true` 실측 |
 | — | Brief 결정 | `/Users/kampikrein/A/personality/docs/6_backend/02_cf_workers_rebuild/001_Brief_cf_workers_rebuild.md` Decision 3, In Scope 3·6, Constraint C3-W3 | 통합 패턴 위임 근거 |
 | — | Scope R1 정의 | `/Users/kampikrein/A/personality/docs/6_backend/02_cf_workers_rebuild/007_Scope_cf_workers_rebuild.md` Cycle 2, R1 axis | 본 연구 범위 |
+
+---
+
+## Session Log (auto-appended)
+
+| # | Type | Duration | Tokens |
+|---|------|----------|--------|
+| 1 | user-ai-exchange | 25s | 43455 |
+### Metrics
+
+| Metric | Value |
+|--------|-------|
+| Duration | 25s |
+| Total Tokens | 43455 |
+| Input Tokens | 6 |
+| Output Tokens | 1821 |
+| Cache Read | 0 |
+| Cache Creation | 41628 |

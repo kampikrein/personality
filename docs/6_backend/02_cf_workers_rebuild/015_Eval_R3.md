@@ -195,3 +195,21 @@ Verdict: PROCEED
 Findings: D:3 C:1 A:1 S:1 (6건)
 Document: docs/6_backend/02_cf_workers_rebuild/015_Eval_R3.md
 ```
+
+---
+
+## Session Log (auto-appended)
+
+| # | Type | Duration | Tokens |
+|---|------|----------|--------|
+| 1 | user-ai-exchange | 25s | 43455 |
+### Metrics
+
+| Metric | Value |
+|--------|-------|
+| Duration | 25s |
+| Total Tokens | 43455 |
+| Input Tokens | 6 |
+| Output Tokens | 1821 |
+| Cache Read | 0 |
+| Cache Creation | 41628 |

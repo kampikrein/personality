@@ -284,3 +284,21 @@ app/components/admin/
 ### 트레이스
 - Brief: [`001_Brief_cf_workers_rebuild.md`](./001_Brief_cf_workers_rebuild.md) — Decision 4(잠정), In Scope 7, M11
 - Scope: [`007_Scope_cf_workers_rebuild.md`](./007_Scope_cf_workers_rebuild.md) — R3 4개 핵심 질문
+
+---
+
+## Session Log (auto-appended)
+
+| # | Type | Duration | Tokens |
+|---|------|----------|--------|
+| 1 | user-ai-exchange | 25s | 43455 |
+### Metrics
+
+| Metric | Value |
+|--------|-------|
+| Duration | 25s |
+| Total Tokens | 43455 |
+| Input Tokens | 6 |
+| Output Tokens | 1821 |
+| Cache Read | 0 |
+| Cache Creation | 41628 |

@@ -389,3 +389,21 @@ Pure D1 saga 채택. Durable Object 미사용. 8단계는 다음과 같이 분�
 - `server/app/services/insights/context_engine.rb` (step 8 entry)
 - Brief: `docs/6_backend/02_cf_workers_rebuild/001_Brief_cf_workers_rebuild.md`
 - Scope: `docs/6_backend/02_cf_workers_rebuild/007_Scope_cf_workers_rebuild.md`
+
+---
+
+## Session Log (auto-appended)
+
+| # | Type | Duration | Tokens |
+|---|------|----------|--------|
+| 1 | user-ai-exchange | 25s | 43455 |
+### Metrics
+
+| Metric | Value |
+|--------|-------|
+| Duration | 25s |
+| Total Tokens | 43455 |
+| Input Tokens | 6 |
+| Output Tokens | 1821 |
+| Cache Read | 0 |
+| Cache Creation | 41628 |

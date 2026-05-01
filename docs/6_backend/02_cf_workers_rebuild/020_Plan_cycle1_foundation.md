@@ -1235,3 +1235,21 @@ npm install  # workspace 인식 확인 (root에서)
 <!-- verify skill이 채움 -->
 | # | 항목 | 심각도 | 설명 |
 |---|------|--------|------|
+
+---
+
+## Session Log (auto-appended)
+
+| # | Type | Duration | Tokens |
+|---|------|----------|--------|
+| 1 | user-ai-exchange | 25s | 43455 |
+### Metrics
+
+| Metric | Value |
+|--------|-------|
+| Duration | 25s |
+| Total Tokens | 43455 |
+| Input Tokens | 6 |
+| Output Tokens | 1821 |
+| Cache Read | 0 |
+| Cache Creation | 41628 |

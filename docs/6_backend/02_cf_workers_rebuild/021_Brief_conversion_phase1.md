@@ -347,3 +347,21 @@ Phase 2 Brief 022 작성자가 단일 인덱스로 입력 자료 확보할 수 �
 | Synthesis 018 (research) | [`018_Synthesis_research_cycle.md`](./018_Synthesis_research_cycle.md) | 5축 cross-axis 정합 |
 | Plan 020 (Cycle 1) | [`020_Plan_cycle1_foundation.md`](./020_Plan_cycle1_foundation.md) | Cycle 1 Foundation (한정형 재정의 필요 — M5) |
 | Pipeline DB | `tmp/007_cf_workers_rebuild_1c64.db` | C2 적용 완료 (10 items interrupted) |
+
+---
+
+## Session Log (auto-appended)
+
+| # | Type | Duration | Tokens |
+|---|------|----------|--------|
+| 1 | user-ai-exchange | 25s | 43455 |
+### Metrics
+
+| Metric | Value |
+|--------|-------|
+| Duration | 25s |
+| Total Tokens | 43455 |
+| Input Tokens | 6 |
+| Output Tokens | 1821 |
+| Cache Read | 0 |
+| Cache Creation | 41628 |

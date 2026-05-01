@@ -160,3 +160,21 @@ Verdict: PROCEED (SUFFICIENT)
 Findings: D:0 C:0 A:0 S:3 (cross-axis UNIQUE 제약 3건)
 Document: /Users/kampikrein/A/personality/docs/6_backend/02_cf_workers_rebuild/014_Eval_R2.md
 ```
+
+---
+
+## Session Log (auto-appended)
+
+| # | Type | Duration | Tokens |
+|---|------|----------|--------|
+| 1 | user-ai-exchange | 25s | 43455 |
+### Metrics
+
+| Metric | Value |
+|--------|-------|
+| Duration | 25s |
+| Total Tokens | 43455 |
+| Input Tokens | 6 |
+| Output Tokens | 1821 |
+| Cache Read | 0 |
+| Cache Creation | 41628 |

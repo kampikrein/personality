@@ -185,3 +185,21 @@ Scope 026 모든 결정 / cycle 영역 / In Scope 매핑이 Brief 021 + Synthesi
 | Synthesis 025 (Brief 021 critique) | [`025_Critique_Synthesis.md`](./025_Critique_Synthesis.md) |
 | Plan 020 (Cycle 1 Foundation) | [`020_Plan_cycle1_foundation.md`](./020_Plan_cycle1_foundation.md) |
 | Pipeline DB | `tmp/007_cf_workers_rebuild_1c64.db` |
+
+---
+
+## Session Log (auto-appended)
+
+| # | Type | Duration | Tokens |
+|---|------|----------|--------|
+| 1 | user-ai-exchange | 25s | 43455 |
+### Metrics
+
+| Metric | Value |
+|--------|-------|
+| Duration | 25s |
+| Total Tokens | 43455 |
+| Input Tokens | 6 |
+| Output Tokens | 1821 |
+| Cache Read | 0 |
+| Cache Creation | 41628 |

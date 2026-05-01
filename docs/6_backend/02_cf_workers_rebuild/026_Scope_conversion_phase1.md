@@ -408,3 +408,21 @@ Brief 001 + Brief 021 모두 status: completed + deep_critique 완료 → 통상
 - Research Synthesis: [`018_Synthesis_research_cycle.md`](./018_Synthesis_research_cycle.md)
 - Plan 020 (Cycle 1 Foundation, M5 보강 필요): [`020_Plan_cycle1_foundation.md`](./020_Plan_cycle1_foundation.md)
 - Pipeline DB: `tmp/007_cf_workers_rebuild_1c64.db` (재사용 — 새 init 금지)
+
+---
+
+## Session Log (auto-appended)
+
+| # | Type | Duration | Tokens |
+|---|------|----------|--------|
+| 1 | user-ai-exchange | 25s | 43455 |
+### Metrics
+
+| Metric | Value |
+|--------|-------|
+| Duration | 25s |
+| Total Tokens | 43455 |
+| Input Tokens | 6 |
+| Output Tokens | 1821 |
+| Cache Read | 0 |
+| Cache Creation | 41628 |

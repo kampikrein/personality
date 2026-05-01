@@ -294,3 +294,21 @@ priority_dimensions: [longevity, sustainability, cutover_safety, compliance, sec
 | 3 | ← | Critique 004 (Risk) | 3 Critical + 5 Major + 13 R-risks 매핑 | 비평 종료 |
 | 4 | ← | Critique 005 (Alternatives) | 11 Decision 평가 + 5 핵심 발견 | 비평 종료 |
 | 5 | → | Brief 001 | Critical 4 + Major 14 + Medium 8 통합 권고 | Brief 보강 |
+
+---
+
+## Session Log (auto-appended)
+
+| # | Type | Duration | Tokens |
+|---|------|----------|--------|
+| 1 | user-ai-exchange | 25s | 43455 |
+### Metrics
+
+| Metric | Value |
+|--------|-------|
+| Duration | 25s |
+| Total Tokens | 43455 |
+| Input Tokens | 6 |
+| Output Tokens | 1821 |
+| Cache Read | 0 |
+| Cache Creation | 41628 |

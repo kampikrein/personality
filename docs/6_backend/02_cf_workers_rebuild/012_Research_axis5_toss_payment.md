@@ -501,3 +501,21 @@ ACCOUNT 시뮬레이션)로 실 통신 검증.
 - https://docs.tosspayments.com/resources/faq — 일반 FAQ (보조)
 - https://pages.tosspayments.com/terms/homepage/privacy/policy-240216/ — 개인정보
   처리방침 (보조)
+
+---
+
+## Session Log (auto-appended)
+
+| # | Type | Duration | Tokens |
+|---|------|----------|--------|
+| 1 | user-ai-exchange | 25s | 43455 |
+### Metrics
+
+| Metric | Value |
+|--------|-------|
+| Duration | 25s |
+| Total Tokens | 43455 |
+| Input Tokens | 6 |
+| Output Tokens | 1821 |
+| Cache Read | 0 |
+| Cache Creation | 41628 |

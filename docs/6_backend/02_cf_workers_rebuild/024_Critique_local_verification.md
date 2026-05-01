@@ -314,3 +314,21 @@ Brief 021 Decision 2(`wrangler dev --local --persist` + `@cloudflare/vitest-pool
 - Research 009 (D1 saga): `/Users/kampikrein/A/personality/docs/6_backend/02_cf_workers_rebuild/009_Research_axis2_d1_saga.md`
 - Research 011 (Auth hybrid): `/Users/kampikrein/A/personality/docs/6_backend/02_cf_workers_rebuild/011_Research_axis4_auth_hybrid.md`
 - Synthesis 018: `/Users/kampikrein/A/personality/docs/6_backend/02_cf_workers_rebuild/018_Synthesis_research_cycle.md`
+
+---
+
+## Session Log (auto-appended)
+
+| # | Type | Duration | Tokens |
+|---|------|----------|--------|
+| 1 | user-ai-exchange | 25s | 43455 |
+### Metrics
+
+| Metric | Value |
+|--------|-------|
+| Duration | 25s |
+| Total Tokens | 43455 |
+| Input Tokens | 6 |
+| Output Tokens | 1821 |
+| Cache Read | 0 |
+| Cache Creation | 41628 |

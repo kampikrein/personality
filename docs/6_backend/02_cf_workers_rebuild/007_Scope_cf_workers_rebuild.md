@@ -326,3 +326,21 @@ Brief.md `status: completed` + Complex 조합으로 통상 4역할 숙의 모드
 - Critique Synthesis: [`006_Critique_Synthesis.md`](./006_Critique_Synthesis.md)
 - 본 연구 최종: [`../01_cloudflare_migration_research/010_Research_cloudflare_migration.md`](../01_cloudflare_migration_research/010_Research_cloudflare_migration.md)
 - Rails 자산 인벤토리: [`../01_cloudflare_migration_research/003_Agent_current_rails_assets.md`](../01_cloudflare_migration_research/003_Agent_current_rails_assets.md)
+
+---
+
+## Session Log (auto-appended)
+
+| # | Type | Duration | Tokens |
+|---|------|----------|--------|
+| 1 | user-ai-exchange | 25s | 43455 |
+### Metrics
+
+| Metric | Value |
+|--------|-------|
+| Duration | 25s |
+| Total Tokens | 43455 |
+| Input Tokens | 6 |
+| Output Tokens | 1821 |
+| Cache Read | 0 |
+| Cache Creation | 41628 |

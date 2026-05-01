@@ -367,3 +367,21 @@ keywords: [cloudflare, workers, hono, d1, rails-rebuild, full-migration, typescr
 | 현 Rails 코드 | `server/` | 이식 소스 |
 | 모바일 클라이언트 | `mobile/` | API 소비자 |
 | 공유 API 스키마 | `shared/api-schema/` | API 계약 정의 위치 |
+
+---
+
+## Session Log (auto-appended)
+
+| # | Type | Duration | Tokens |
+|---|------|----------|--------|
+| 1 | user-ai-exchange | 25s | 43455 |
+### Metrics
+
+| Metric | Value |
+|--------|-------|
+| Duration | 25s |
+| Total Tokens | 43455 |
+| Input Tokens | 6 |
+| Output Tokens | 1821 |
+| Cache Read | 0 |
+| Cache Creation | 41628 |

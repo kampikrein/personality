@@ -170,3 +170,21 @@ Brief 반영: Mn1, Mn2, Mn5, Mn7만 반영. Mn3/Mn4/Mn6은 makeplan/scope 위임
 | Critique 022 (W1) | [`022_Critique_phase_feasibility.md`](./022_Critique_phase_feasibility.md) |
 | Critique 023 (W2) | [`023_Critique_phase2_reentry.md`](./023_Critique_phase2_reentry.md) |
 | Critique 024 (W3) | [`024_Critique_local_verification.md`](./024_Critique_local_verification.md) |
+
+---
+
+## Session Log (auto-appended)
+
+| # | Type | Duration | Tokens |
+|---|------|----------|--------|
+| 1 | user-ai-exchange | 25s | 43455 |
+### Metrics
+
+| Metric | Value |
+|--------|-------|
+| Duration | 25s |
+| Total Tokens | 43455 |
+| Input Tokens | 6 |
+| Output Tokens | 1821 |
+| Cache Read | 0 |
+| Cache Creation | 41628 |

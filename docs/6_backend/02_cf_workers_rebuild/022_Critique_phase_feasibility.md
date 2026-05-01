@@ -211,3 +211,21 @@ Brief 021은 "외부 자원 미접촉"을 다음과 같이 정의:
 | Plan 020 | `/Users/kampikrein/A/personality/docs/6_backend/02_cf_workers_rebuild/020_Plan_cycle1_foundation.md` | W6 (assets.directory 미언급) |
 | Rails server inventory | `/Users/kampikrein/A/personality/server/app/{controllers,models,services,views,javascript/controllers}/` | S4·S5 인벤토리 read-only 검증 |
 | Rails Gemfile / database.yml | `/Users/kampikrein/A/personality/server/{Gemfile,config/database.yml}` | S4 — Rails 8.1.2 + sqlite3 확인, M3 (Ruby 8.x 호환성 부패 위험) |
+
+---
+
+## Session Log (auto-appended)
+
+| # | Type | Duration | Tokens |
+|---|------|----------|--------|
+| 1 | user-ai-exchange | 25s | 43455 |
+### Metrics
+
+| Metric | Value |
+|--------|-------|
+| Duration | 25s |
+| Total Tokens | 43455 |
+| Input Tokens | 6 |
+| Output Tokens | 1821 |
+| Cache Read | 0 |
+| Cache Creation | 41628 |

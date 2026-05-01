@@ -202,3 +202,21 @@ P1 2건만 적용해도 Cycle 5/6 진입 가능. P2 4건 추가 시 7 사이클 
   - `/Users/kampikrein/A/personality/server/app/views/{assessments,results,sessions,accounts,consents,deletion_requests,assessment_questions}/*.erb` (13 public, layouts/pwa 제외)
   - `/Users/kampikrein/A/personality/server/app/javascript/controllers/*_controller.js` (8)
   - `/Users/kampikrein/A/personality/server/spec/**/*_spec.rb` (18)
+
+---
+
+## Session Log (auto-appended)
+
+| # | Type | Duration | Tokens |
+|---|------|----------|--------|
+| 1 | user-ai-exchange | 25s | 43455 |
+### Metrics
+
+| Metric | Value |
+|--------|-------|
+| Duration | 25s |
+| Total Tokens | 43455 |
+| Input Tokens | 6 |
+| Output Tokens | 1821 |
+| Cache Read | 0 |
+| Cache Creation | 41628 |

@@ -245,3 +245,21 @@ Scope 026 `cycles[]`에 cycle: 7/9는 등장하지 않는다 (deferred로 별도
 - 실측 명령:
   - `pipeline.sh next cf_workers_rebuild` → `13|1|implementation`
   - `sqlite3 … "SELECT … WHERE status='pending' AND phase='impl' ORDER BY cycle, sub_cycle, seq;"` → 30행, cycle 8 verify 직후 cycle 10 eval로 점프 확인
+
+---
+
+## Session Log (auto-appended)
+
+| # | Type | Duration | Tokens |
+|---|------|----------|--------|
+| 1 | user-ai-exchange | 25s | 43455 |
+### Metrics
+
+| Metric | Value |
+|--------|-------|
+| Duration | 25s |
+| Total Tokens | 43455 |
+| Input Tokens | 6 |
+| Output Tokens | 1821 |
+| Cache Read | 0 |
+| Cache Creation | 41628 |

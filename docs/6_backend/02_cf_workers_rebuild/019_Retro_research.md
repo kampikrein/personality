@@ -60,3 +60,21 @@ summary: >
 | OQ-5: Hono CSRF 미들웨어 분기 — 모바일(Bearer JWT bypass) vs admin(strict Origin) | Cycle 4/5 makeplan 통합 결정 |
 
 10 impl 사이클 입력 매핑 완료. Synthesis(018) § 5가 사이클별 research 결정 참조 SOT.
+
+---
+
+## Session Log (auto-appended)
+
+| # | Type | Duration | Tokens |
+|---|------|----------|--------|
+| 1 | user-ai-exchange | 25s | 43455 |
+### Metrics
+
+| Metric | Value |
+|--------|-------|
+| Duration | 25s |
+| Total Tokens | 43455 |
+| Input Tokens | 6 |
+| Output Tokens | 1821 |
+| Cache Read | 0 |
+| Cache Creation | 41628 |

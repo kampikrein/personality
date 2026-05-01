@@ -546,3 +546,21 @@ Brief Decision 8의 "Lucia 기각 (2024-Q4~2025-03 sunset 확정)" **재확인 �
 - `/Users/kampikrein/A/personality/server/app/controllers/sessions_controller.rb:14-37` — 현 anonymous session 흐름 (BetterAuth 이식 대상 아님 — anonymous 흐름은 session token KV 직접)
 - `/Users/kampikrein/A/personality/docs/6_backend/02_cf_workers_rebuild/001_Brief_cf_workers_rebuild.md` — Decision 8, In Scope 6/18/19, Anchor 9/13/19
 - `/Users/kampikrein/A/personality/docs/6_backend/02_cf_workers_rebuild/007_Scope_cf_workers_rebuild.md` — R4 axis 정의
+
+---
+
+## Session Log (auto-appended)
+
+| # | Type | Duration | Tokens |
+|---|------|----------|--------|
+| 1 | user-ai-exchange | 25s | 43455 |
+### Metrics
+
+| Metric | Value |
+|--------|-------|
+| Duration | 25s |
+| Total Tokens | 43455 |
+| Input Tokens | 6 |
+| Output Tokens | 1821 |
+| Cache Read | 0 |
+| Cache Creation | 41628 |

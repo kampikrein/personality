@@ -211,3 +211,21 @@ Phase 1 정책상 server/ read-only는 2,3,4,5 영역 부패를 막지 못함(�
 | 6 | ← | Pipeline DB | cycle 7/9/10 status=pending 실측, 'deferred' status enum 부재 | Cycle 비평 |
 | 7 | → | Brief 022 작성자 | W3 Phase 2 Carryover Inputs 인덱싱 부재 — Brief 021 보강 권고 | (간접) |
 | 8 | → | Cycle 1 implementation skill | W1 Pipeline DB 마이그레이션을 첫 step으로 권고 | (간접) |
+
+---
+
+## Session Log (auto-appended)
+
+| # | Type | Duration | Tokens |
+|---|------|----------|--------|
+| 1 | user-ai-exchange | 25s | 43455 |
+### Metrics
+
+| Metric | Value |
+|--------|-------|
+| Duration | 25s |
+| Total Tokens | 43455 |
+| Input Tokens | 6 |
+| Output Tokens | 1821 |
+| Cache Read | 0 |
+| Cache Creation | 41628 |
