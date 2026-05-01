@@ -1,40 +1,36 @@
 /**
- * test/ui/components/header.test.ts — Header component RED tests
- * Cycle 6 RED phase.
+ * test/ui/components/header.test.ts — Header component GREEN tests
+ * Cycle 6 GREEN phase (Step 0: antipattern fix).
  *
- * GREEN: Header renders site name, admin nav (when isAdmin=true), user email, login/logout.
+ * Header renders site name, admin nav (when isAdmin=true), user email, login/logout.
  */
 
 import { describe, it, expect } from "vitest";
 import { Header } from "../../../src/ui/components/header";
 
-describe("Header component (RED phase)", () => {
+describe("Header component", () => {
   it("Header is exported", () => {
     expect(Header).toBeDefined();
     expect(typeof Header).toBe("function");
   });
 
   it("renders guest header (no user)", () => {
-    expect(() =>
-      Header({ isAdmin: false, userEmail: null })
-    ).toThrow("not implemented: Header");
+    const html = String(Header({ isAdmin: false, userEmail: null }));
+    expect(html).toContain("/signin");
   });
 
   it("renders admin header", () => {
-    expect(() =>
-      Header({ isAdmin: true, userEmail: "admin@personality.app" })
-    ).toThrow("not implemented: Header");
+    const html = String(Header({ isAdmin: true, userEmail: "admin@personality.app" }));
+    expect(html).toContain("admin@personality.app");
   });
 
   it("renders public user header", () => {
-    expect(() =>
-      Header({ isAdmin: false, userEmail: "user@example.com" })
-    ).toThrow("not implemented: Header");
+    const html = String(Header({ isAdmin: false, userEmail: "user@example.com" }));
+    expect(html).toContain("user@example.com");
   });
 
   it("accepts currentPath for active link highlighting", () => {
-    expect(() =>
-      Header({ isAdmin: false, userEmail: null, currentPath: "/signin" })
-    ).toThrow("not implemented: Header");
+    const html = String(Header({ isAdmin: false, userEmail: null, currentPath: "/signin" }));
+    expect(html).toContain("/signin");
   });
 });

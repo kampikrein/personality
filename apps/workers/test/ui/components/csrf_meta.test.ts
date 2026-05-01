@@ -1,30 +1,29 @@
 /**
- * test/ui/components/csrf_meta.test.ts — CsrfMeta component RED tests
- * Cycle 6 RED phase.
+ * test/ui/components/csrf_meta.test.ts — CsrfMeta component GREEN tests
+ * Cycle 6 GREEN phase (Step 0: antipattern fix).
  *
- * GREEN: CsrfMeta renders <meta name="csrf-token" content="{token}">
+ * CsrfMeta renders <meta name="csrf-token" content="{token}">
  *   Uses cycle 4 csrf middleware token value.
  */
 
 import { describe, it, expect } from "vitest";
 import { CsrfMeta } from "../../../src/ui/components/csrf_meta";
 
-describe("CsrfMeta component (RED phase)", () => {
+describe("CsrfMeta component", () => {
   it("CsrfMeta is exported", () => {
     expect(CsrfMeta).toBeDefined();
     expect(typeof CsrfMeta).toBe("function");
   });
 
   it("renders with csrf token", () => {
-    expect(() =>
-      CsrfMeta({ token: "csrf-token-value-abc123" })
-    ).toThrow("not implemented: CsrfMeta");
+    const html = String(CsrfMeta({ token: "csrf-token-value-abc123" }));
+    expect(html).toContain('name="csrf-token"');
+    expect(html).toContain("csrf-token-value-abc123");
   });
 
   it("renders with different token values", () => {
-    expect(() =>
-      CsrfMeta({ token: "another-csrf-token" })
-    ).toThrow("not implemented: CsrfMeta");
+    const html = String(CsrfMeta({ token: "another-csrf-token" }));
+    expect(html).toContain("another-csrf-token");
   });
 
   it("token prop is a string", () => {

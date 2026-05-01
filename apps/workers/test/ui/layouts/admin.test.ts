@@ -1,10 +1,9 @@
 /**
- * test/ui/layouts/admin.test.ts — AdminLayout RED tests
- * Cycle 6 RED phase.
+ * test/ui/layouts/admin.test.ts — AdminLayout GREEN tests
+ * Cycle 6 GREEN phase (Step 0: antipattern fix).
  *
- * GREEN: AdminLayout renders BaseLayout with admin nav (audit_logs, question_sets, alerts, dashboard)
+ * AdminLayout renders BaseLayout with admin nav (audit_logs, question_sets, alerts, dashboard)
  *   - user email shown in header
- *   - hx-boost script included
  *   - cfAccessVerifier payload (admin: true) accepted
  */
 
@@ -22,28 +21,25 @@ const adminUser: CFAccessPayload = {
   admin: true,
 };
 
-describe("AdminLayout (RED phase)", () => {
+describe("AdminLayout", () => {
   it("AdminLayout is exported", () => {
     expect(AdminLayout).toBeDefined();
     expect(typeof AdminLayout).toBe("function");
   });
 
   it("renders with CF Access admin user", () => {
-    expect(() =>
-      AdminLayout({ title: "Admin Dashboard", user: adminUser })
-    ).toThrow("not implemented: AdminLayout");
+    const html = String(AdminLayout({ title: "Admin Dashboard", user: adminUser }));
+    expect(html).toContain("Admin Dashboard");
   });
 
   it("accepts nonce for CSP", () => {
-    expect(() =>
-      AdminLayout({ title: "Admin", user: adminUser, nonce: "nonce-xyz" })
-    ).toThrow("not implemented: AdminLayout");
+    const html = String(AdminLayout({ title: "Admin", user: adminUser, nonce: "nonce-xyz" }));
+    expect(html).toContain("nonce-xyz");
   });
 
   it("accepts children", () => {
-    expect(() =>
-      AdminLayout({ title: "Admin", user: adminUser, children: "page content" })
-    ).toThrow("not implemented: AdminLayout");
+    const html = String(AdminLayout({ title: "Admin", user: adminUser, children: "page content" }));
+    expect(html).toContain("page content");
   });
 
   it("user payload has admin flag", () => {

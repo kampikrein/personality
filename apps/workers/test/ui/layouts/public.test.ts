@@ -1,8 +1,8 @@
 /**
- * test/ui/layouts/public.test.ts — PublicLayout RED tests
- * Cycle 6 RED phase.
+ * test/ui/layouts/public.test.ts — PublicLayout GREEN tests
+ * Cycle 6 GREEN phase (Step 0: antipattern fix).
  *
- * GREEN: PublicLayout renders with:
+ * PublicLayout renders with:
  *   - login link when user is null
  *   - logout link + user email when user is present
  *   - hx-boost="true" on <body> when hxBoost=true
@@ -18,39 +18,34 @@ const loggedInUser: PublicUser = {
   email: "user@example.com",
 };
 
-describe("PublicLayout (RED phase)", () => {
+describe("PublicLayout", () => {
   it("PublicLayout is exported", () => {
     expect(PublicLayout).toBeDefined();
     expect(typeof PublicLayout).toBe("function");
   });
 
   it("renders without user (guest)", () => {
-    expect(() =>
-      PublicLayout({ title: "Welcome", user: null })
-    ).toThrow("not implemented: PublicLayout");
+    const html = String(PublicLayout({ title: "Welcome", user: null }));
+    expect(html).toContain("Welcome");
   });
 
   it("renders with logged-in user", () => {
-    expect(() =>
-      PublicLayout({ title: "My Page", user: loggedInUser })
-    ).toThrow("not implemented: PublicLayout");
+    const html = String(PublicLayout({ title: "My Page", user: loggedInUser }));
+    expect(html).toContain("My Page");
   });
 
   it("accepts hxBoost flag", () => {
-    expect(() =>
-      PublicLayout({ title: "Test", user: null, hxBoost: true })
-    ).toThrow("not implemented: PublicLayout");
+    const html = String(PublicLayout({ title: "Test", user: null, hxBoost: true }));
+    expect(html).toContain('hx-boost="true"');
   });
 
   it("accepts nonce for CSP", () => {
-    expect(() =>
-      PublicLayout({ title: "Test", user: null, nonce: "pub-nonce" })
-    ).toThrow("not implemented: PublicLayout");
+    const html = String(PublicLayout({ title: "Test", user: null, nonce: "pub-nonce" }));
+    expect(html).toContain("pub-nonce");
   });
 
   it("accepts children", () => {
-    expect(() =>
-      PublicLayout({ title: "Test", user: null, children: "body" })
-    ).toThrow("not implemented: PublicLayout");
+    const html = String(PublicLayout({ title: "Test", user: null, children: "body" }));
+    expect(html).toContain("body");
   });
 });
