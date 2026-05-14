@@ -32,7 +32,7 @@ jobs:
         run: npm run type-check
       - name: Deploy preview Worker
         id: deploy
-        uses: cloudflare/wrangler-action@v3
+        uses: cloudflare/wrangler-action@v4
         with:
           # TODO(Phase 2): Register GitHub Actions secrets
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
