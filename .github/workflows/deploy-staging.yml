@@ -28,7 +28,7 @@ jobs:
         working-directory: apps/workers
         run: npm run type-check
       - name: Deploy
-        uses: cloudflare/wrangler-action@v3
+        uses: cloudflare/wrangler-action@v4
         with:
           # TODO(Phase 2): Register GitHub Actions secrets (same as production)
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
